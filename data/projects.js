@@ -105,7 +105,7 @@ export const projectsData = [
     solution: "Diseñé y maqueté una experiencia interactiva con switch dual Día/Noche que transforma toda la interfaz en tiempo real para lucir ambos modelos.",
     impact: "+35% en tiempo de permanencia validado en Microsoft Clarity y +25% en clics directos a preventa.",
     kpis: [
-      { value: "+35%", label: "Tiempo en pantalla (Clarity)", desc: "Mayor retención y exploración del producto" },
+      { value: "+35%", label: "Tiempo en pantalla", desc: "Mayor retención y exploración de producto con mapas de interacción" },
       { value: "Día / Noche", label: "Switch interactivo en vivo", desc: "Alterna en tiempo real entre Perla y Negro" },
       { value: "+25%", label: "Clics hacia preventa", desc: "Paso directo hacia el carrito de compra" }
     ],

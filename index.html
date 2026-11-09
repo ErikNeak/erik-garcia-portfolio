@@ -313,10 +313,18 @@
     /* =========================================================================
        CARRUSEL HORIZONTAL CON PROFUNDIDAD Y DIFUMINADO (HORIZONTAL DECK)
        ========================================================================= */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw;
+      width: 100%;
+      position: relative;
+    }
+
     .horiz-deck-stage {
       perspective: 1200px;
       perspective-origin: center center;
       transform-style: preserve-3d;
+      touch-action: pan-y;
     }
 
     .horiz-card {
@@ -324,6 +332,7 @@
       width: 285px;
       height: 400px;
       transform-origin: center center;
+      touch-action: pan-y;
       transition: transform 0.55s cubic-bezier(0.19, 1, 0.22, 1),
                   filter 0.45s cubic-bezier(0.19, 1, 0.22, 1),
                   box-shadow 0.45s ease,
@@ -336,8 +345,22 @@
 
     @media (max-width: 640px) {
       .horiz-card {
-        width: 240px;
-        height: 350px;
+        width: 235px;
+        height: 345px;
+      }
+      .horiz-card[data-offset="-1"] {
+        transform: translate3d(-105px, -4px, -35px) scale(0.85) !important;
+      }
+      .horiz-card[data-offset="1"] {
+        transform: translate3d(105px, -4px, -35px) scale(0.85) !important;
+      }
+      .horiz-card[data-offset="-2"] {
+        transform: translate3d(-175px, -8px, -70px) scale(0.70) !important;
+        opacity: 0.35 !important;
+      }
+      .horiz-card[data-offset="2"] {
+        transform: translate3d(175px, -8px, -70px) scale(0.70) !important;
+        opacity: 0.35 !important;
       }
     }
 
@@ -459,10 +482,16 @@
 
     <!-- 1. BARRA SUPERIOR: CORNERS TÁCTICOS Y BOTÓN SALTAR -->
     <div class="relative z-30 flex items-start justify-between w-full font-mono text-[11px] sm:text-xs">
-      <div class="flex items-center gap-2 border-l-2 border-t-2 border-eva-acid pl-2.5 pt-1.5 bg-[#080410]/90">
-        <span class="w-2 h-2 bg-eva-acid rounded-full animate-pulse"></span>
-        <span class="text-eva-acid font-bold tracking-wider">NERV_OS</span>
-        <span class="text-eva-mist hidden sm:inline">// KERNEL 4.1</span>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 border-l-2 border-t-2 border-eva-acid pl-2.5 pt-1.5 bg-[#080410]/90">
+          <span class="w-2 h-2 bg-eva-acid rounded-full animate-pulse"></span>
+          <span class="text-eva-acid font-bold tracking-wider">NERV_OS</span>
+          <span class="text-eva-mist hidden sm:inline">// KERNEL 4.1</span>
+        </div>
+        <div class="hidden md:flex items-center gap-1.5 px-2.5 py-1 bg-[#1A050B] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-ping"></span>
+          <span>ALERTA TÁCTICA // CONDICIÓN ROJA</span>
+        </div>
       </div>
 
       <button id="btn-skip-boot" onclick="if(window.launchPortfolio){window.launchPortfolio(true);}else{document.getElementById('boot-screen').style.display='none';document.body.style.overflow='auto';}" class="px-3 py-1.5 border border-eva-border bg-[#140A26]/90 text-eva-mist hover:text-white hover:border-eva-acid hover:shadow-acid-glow transition-all flex items-center gap-1.5 font-mono text-[10px] sm:text-xs group cursor-pointer">
@@ -536,8 +565,8 @@
         </div>
       </div>
 
-      <!-- Alerta de Lanzamiento Forzado / Bypass de Seguridad (Easter Egg) -->
-      <div id="boot-override-alert" class="hidden w-full max-w-md mt-2 p-2 border border-eva-orange bg-eva-orange/20 text-eva-orange font-mono text-[11px] font-bold text-center tracking-wider animate-pulse"></div>
+      <!-- Alerta de Lanzamiento Forzado / Bypass de Seguridad (Easter Egg Modo Berserk EVA-01) -->
+      <div id="boot-override-alert" class="hidden w-full max-w-md mt-2 p-2.5 border-2 border-[#FF003C] bg-[#2A050F]/90 text-white font-mono text-xs font-bold text-center tracking-wider animate-pulse shadow-[0_0_30px_rgba(255,0,60,0.5)]"></div>
 
       <!-- 3. CAJA DE TELEMETRÍA Y EASTER EGGS (TERMINAL LOG) -->
       <div class="w-full max-w-md mt-3 bg-[#05020A] border border-eva-acid/60 text-left font-mono text-[11px] sm:text-xs overflow-hidden shadow-panel-depth">
@@ -640,8 +669,12 @@
         </a>
       </nav>
 
-      <!-- Derecha: Botón Portafolio + Botón CV Refinados (No Invasivos) -->
+      <!-- Derecha: Status Rojo NERV + Botón Portafolio + Botón CV Refinados -->
       <div class="flex items-center gap-2 sm:gap-2.5">
+        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 bg-[#1A030A] border border-[#FF003C]/40 text-[#FF4D6D] font-mono text-[10px] tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-ping"></span>
+          <span>CONDICIÓN ROJA</span>
+        </div>
         <a 
           href="archivo.html" 
           class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#090412] border border-[#3B1D6E] hover:border-eva-acid text-eva-lavender hover:text-white text-[11px] font-mono font-medium tracking-wider uppercase transition-all"
@@ -727,15 +760,21 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           <!-- Columna Izquierda: Copywriting Humano & Directo -->
-          <div class="lg:col-span-7 space-y-6">
-            <div id="hero-status-container" class="empty:hidden"></div>
+          <div class="lg:col-span-6 space-y-6 flex flex-col justify-center">
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-bold tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-pulse"></span>
+                <span>NERV // ESTADO DE ALERTA OPERACIONAL</span>
+              </div>
+              <div id="hero-status-container" class="empty:hidden"></div>
+            </div>
 
             <h1 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[46px] text-white tracking-tight leading-[1.12]">
               DISEÑO DE INTERFACES DE ALTA CONVERSIÓN <span class="text-eva-acid">IMPULSADO POR IA</span>
             </h1>
 
             <p class="font-sans text-base sm:text-lg text-eva-lavender leading-relaxed font-normal max-w-2xl">
-              Diseñador Senior UI/UX, Web y Multimedia especializado en plataformas e-commerce y sistemas digitales de alto impacto. Combino análisis de comportamiento real (<strong class="text-white font-semibold">Microsoft Clarity</strong>), arquitectura de conversión CRO y flujos de automatización con <strong class="text-white font-semibold">IA generativa</strong> para transformar requerimientos de negocio en productos rentables, escalables y hasta 5 veces más rápidos de implementar.
+              Diseñador Senior UI/UX, Web y Multimedia especializado en plataformas e-commerce y sistemas digitales de alto impacto. Combino análisis de comportamiento de usuario, arquitectura de conversión CRO y flujos de automatización con <strong class="text-white font-semibold">IA generativa</strong> para transformar requerimientos de negocio en productos rentables, escalables y hasta 5 veces más rápidos de implementar.
             </p>
 
             <div class="pt-2 flex flex-wrap items-center gap-3.5">
@@ -757,28 +796,32 @@
             </div>
           </div>
 
-          <!-- Columna Derecha: Visor Táctico Multimedia (Video Showreel Sin Enmarcado Pesado) -->
-          <div id="heroParallaxStage" class="lg:col-span-5 relative flex flex-col items-center justify-center py-2 select-none">
+          <!-- Columna Derecha: Visor Táctico Multimedia (Video Showreel Ampliado a Proporción del Título) -->
+          <div id="heroParallaxStage" class="lg:col-span-6 relative flex flex-col items-center justify-center py-2 select-none w-full">
             
             <!-- Aura Volumétrica Ambiental en Púrpura Abisal y Verde Ácido con Parallax -->
             <div id="heroAura" class="absolute -inset-8 bg-gradient-to-tr from-[#3B1D6E]/70 via-[#4DFF36]/25 to-[#A855F7]/35 rounded-3xl pointer-events-none -z-10 animate-hero-aura transition-transform duration-300 ease-out"></div>
             
             <!-- Pestaña Superior de Telemetría del Reel -->
-            <div class="w-full max-w-[500px] mb-2.5 flex items-center justify-between text-xs font-mono">
+            <div class="w-full max-w-full lg:max-w-[620px] mb-2.5 flex items-center justify-between text-xs font-mono">
               <div class="inline-flex items-center gap-2 px-2.5 py-1 bg-[#090412] border border-eva-border text-white">
                 <span class="w-2 h-2 rounded-full bg-eva-acid animate-ping"></span>
                 <span class="font-bold tracking-wider text-[11px]">SHOWCASE REEL // ERIK GARCÍA</span>
               </div>
               
-              <div class="flex items-center gap-2 text-[10px] text-eva-mist bg-[#090412] px-2 py-1 border border-eva-border">
+              <div class="flex items-center gap-2 text-[10px] text-eva-mist bg-[#090412] px-2.5 py-1 border border-eva-border">
+                <span class="px-1.5 py-0.5 bg-[#FF003C]/15 border border-[#FF003C]/60 text-[#FF3366] font-bold text-[9px] flex items-center gap-1">
+                  <span class="w-1 h-1 rounded-full bg-[#FF003C] animate-ping"></span>REC LIVE
+                </span>
                 <span class="text-eva-acid font-bold">4K DCI</span>
                 <span class="text-eva-border">•</span>
-                <span class="text-white font-bold">60.0 FPS</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-ping"></span>
+                <span id="heroFpsCounter" class="text-eva-acid font-mono font-bold tracking-wider">60.0 FPS</span>
               </div>
             </div>
 
-            <!-- Contenedor del Video SIN ENMARCADO PESADO (Frameless / Edge-to-Edge Floating Canvas) -->
-            <div id="heroParallaxCard" class="relative w-full max-w-[500px] aspect-video sm:aspect-[16/10] bg-[#090412] border border-eva-border flex items-center justify-center group overflow-hidden transition-transform duration-200 ease-out will-change-transform shadow-[0_20px_60px_rgba(12,7,23,0.9)]">
+            <!-- Contenedor del Video SIN ENMARCADO PESADO (Escalado para balancear la altura del título y descripción) -->
+            <div id="heroParallaxCard" class="relative w-full max-w-full lg:max-w-[620px] aspect-[16/10] sm:aspect-[16/10] lg:aspect-[16/10] min-h-[280px] sm:min-h-[350px] lg:min-h-[390px] xl:min-h-[420px] bg-[#090412] border border-eva-border flex items-center justify-center group overflow-hidden transition-transform duration-200 ease-out will-change-transform shadow-[0_20px_60px_rgba(12,7,23,0.9)]">
               
               <!-- 4 Micro-Brackets Angulares de Mira Técnica en Verde Ácido (#4DFF36) Discretos -->
               <div class="absolute top-1.5 left-1.5 w-4 h-4 border-t-2 border-l-2 border-eva-acid transition-all duration-300 group-hover:scale-125 z-20 pointer-events-none"></div>
@@ -833,7 +876,7 @@
             </div>
 
             <!-- Barra de Telemetría Inferior con Ecualizador y Reloj en Tiempo Real -->
-            <div class="w-full max-w-[500px] mt-2.5 px-4 py-2 bg-[#090412]/90 border border-[#3B1D6E] flex items-center justify-between gap-3 font-mono text-xs shadow-panel-depth">
+            <div class="w-full max-w-full lg:max-w-[620px] mt-2.5 px-4 py-2 bg-[#090412]/90 border border-[#3B1D6E] flex items-center justify-between gap-3 font-mono text-xs shadow-panel-depth">
               <!-- Ecualizador Gráfico Táctico -->
               <div class="flex items-end gap-1 h-4">
                 <span class="w-1 bg-eva-acid shadow-acid-glow animate-eq-1"></span>
@@ -878,7 +921,7 @@
               <span class="text-base font-mono text-white">Retención</span>
             </div>
             <p class="font-sans text-sm text-eva-lavender mt-2 leading-relaxed">
-              Incremento en retención de landings validado con Microsoft Clarity.
+              Incremento en tiempo de permanencia y retención validado en analítica de usuario.
             </p>
           </div>
 
@@ -950,27 +993,28 @@
       <section id="proyectos" class="space-y-8">
         
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-eva-border pb-6">
-          <div class="space-y-2 max-w-2xl">
-            <div class="font-mono text-xs text-eva-acid font-bold uppercase tracking-wider flex items-center gap-2">
-              <i data-lucide="star" class="w-4 h-4"></i>
-              <span>01 // SELECCIÓN INSIGNIA DE PORTAFOLIO</span>
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-bold tracking-wider">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-pulse"></span>
+              <span>AVISO TÁCTICO // SELECCIÓN DESTACADA</span>
             </div>
-            <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white">
-              Casos de Estudio Destacados
+            <div class="font-mono text-xs text-eva-acid font-bold uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="folder-kanban" class="w-4 h-4"></i>
+              <span>01 // SELECCIÓN INSIGNIA</span>
+            </div>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+              Portafolio
             </h2>
-            <p class="font-sans text-sm sm:text-base text-eva-lavender">
-              Una muestra curada de mis proyectos de mayor impacto comercial y técnico. Para explorar los 15 casos de estudio completos con buscador, consola Workbench y vista por disciplinas, abre el archivo completo.
-            </p>
           </div>
 
           <div class="flex flex-wrap items-center gap-3">
             <a 
               href="archivo.html" 
-              class="btn-chamfer px-5 py-3 bg-eva-acid hover:bg-white text-black font-mono text-xs font-extrabold transition-all shadow-acid-glow flex items-center gap-2 group"
+              class="btn-chamfer px-6 sm:px-8 py-3.5 sm:py-4 bg-eva-acid hover:bg-white text-black font-mono text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(77,255,54,0.45)] hover:shadow-[0_0_35px_rgba(255,255,255,0.7)] flex items-center gap-2.5 sm:gap-3 group border-2 border-eva-acid shrink-0"
             >
-              <i data-lucide="folder-kanban" class="w-4 h-4"></i>
-              <span>Abrir Catálogo Completo [15 Casos]</span>
-              <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              <i data-lucide="folder-kanban" class="w-4 h-4 sm:w-5 sm:h-5 text-black"></i>
+              <span>Entrar al Portafolio [15 Casos]</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 text-black group-hover:translate-x-1.5 transition-transform"></i>
             </a>
           </div>
         </div>
@@ -1075,9 +1119,9 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-4 font-mono text-xs">
             <div class="space-y-1">
-              <span class="text-eva-mist text-[11px] block uppercase">UBICACIÓN &amp; MODALIDAD</span>
+              <span class="text-eva-mist text-[11px] block uppercase">UBICACIÓN</span>
               <span class="text-white font-bold block text-sm">Ciudad de México (CDMX)</span>
-              <span class="text-eva-acid text-[11px] block">Disponible Híbrido / Remoto</span>
+              <span class="text-eva-lavender text-[11px] block">Disponibilidad Inmediata</span>
             </div>
 
             <div class="space-y-1">
@@ -1088,14 +1132,14 @@
 
             <div class="space-y-1">
               <span class="text-eva-mist text-[11px] block uppercase">ESPECIALIDAD CRO &amp; IA</span>
-              <span class="text-eva-acid font-bold block text-sm">E-Commerce CRO (Clarity)</span>
+              <span class="text-eva-acid font-bold block text-sm">E-Commerce CRO &amp; UX</span>
               <span class="text-eva-lavender text-[11px] block">Design Systems &amp; Flujos IA</span>
             </div>
 
             <div class="space-y-1">
-              <span class="text-eva-mist text-[11px] block uppercase">FORMACIÓN UNIVERSITARIA</span>
-              <span class="text-white font-bold block text-sm">Doble Licenciatura UNITEC</span>
-              <span class="text-eva-lavender text-[11px] block">Diseño Gráfico + Arte Digital</span>
+              <span class="text-eva-mist text-[11px] block uppercase">FORMACIÓN PROFESIONAL</span>
+              <span class="text-white font-bold block text-sm">Lic. en Diseño, Animación y Arte Digital</span>
+              <span class="text-eva-lavender text-[11px] block">Doble Licenciatura • UNITEC</span>
             </div>
           </div>
         </div>
@@ -1112,9 +1156,14 @@
             <article class="bg-[#140A26] border border-eva-border p-6 sm:p-8 relative group hover:border-eva-acid transition-colors shadow-panel-depth">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-eva-border">
                 <div>
-                  <span class="inline-block px-2.5 py-0.5 bg-[#090412] text-eva-acid border border-eva-acid/50 font-mono text-xs font-bold mb-2">
-                    NOVIEMBRE 2021 — ACTUALIDAD | CDMX
-                  </span>
+                  <div class="flex flex-wrap items-center gap-2 mb-2">
+                    <span class="inline-block px-2.5 py-0.5 bg-[#090412] text-eva-acid border border-eva-acid/50 font-mono text-xs font-bold">
+                      NOVIEMBRE 2021 — ACTUALIDAD | CDMX
+                    </span>
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-bold">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C]"></span>ROL PRINCIPAL
+                    </span>
+                  </div>
                   <h4 class="font-display font-bold text-xl sm:text-2xl text-white">
                     Diseñador Web y Gráfico Senior (Analista de Diseño)
                   </h4>
@@ -1139,7 +1188,7 @@
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="text-eva-acid font-mono font-bold mt-0.5">03.</span>
-                  <span><strong class="text-white font-semibold">Campañas y UI/UX CRO:</strong> Diseñé interfaces web y landings promocionales para campañas de alto tráfico (Hot Sale, Buen Fin, Regreso a Clases), analizando el comportamiento de usuario con <strong class="text-white font-semibold">Microsoft Clarity</strong> para optimizar layouts (<strong class="text-eva-acid font-semibold">+35% retención, +25% clics a conversión</strong>).</span>
+                  <span><strong class="text-white font-semibold">Campañas y UI/UX CRO:</strong> Diseñé interfaces web y landings promocionales para campañas de alto tráfico (Hot Sale, Buen Fin, Regreso a Clases), analizando el comportamiento de usuario con telemetría de navegación para optimizar layouts (<strong class="text-eva-acid font-semibold">+35% retención, +25% clics a conversión</strong>).</span>
                 </li>
               </ul>
             </article>
@@ -1235,9 +1284,14 @@
 
             <!-- Matriz de Dominio de Software con id="stack" para navegación directa -->
             <div id="stack" class="scroll-mt-24 space-y-3">
-              <h3 class="font-mono text-sm uppercase tracking-wider text-white border-l-2 border-eva-acid pl-3 font-bold">
-                Dominio de Software &amp; Herramientas
-              </h3>
+              <div class="flex items-center justify-between">
+                <h3 class="font-mono text-sm uppercase tracking-wider text-white border-l-2 border-eva-acid pl-3 font-bold">
+                  Dominio de Software &amp; Herramientas
+                </h3>
+                <span class="hidden sm:inline-block font-mono text-[10px] text-[#FF4D6D] bg-[#20050C] border border-[#FF003C]/50 px-2 py-0.5 font-bold tracking-wider">
+                  CLASIFICACIÓN NERV // NIVEL 01
+                </span>
+              </div>
 
               <div class="bg-[#140A26] border border-eva-border p-6 space-y-6 shadow-panel-depth">
                 
@@ -1338,8 +1392,8 @@
                       <span>JavaScript</span>
                     </div>
                     <div class="flex items-center gap-2.5 px-3 py-2 bg-[#090412] border border-[#3B1D6E] text-white font-medium hover:border-eva-acid transition-colors col-span-2">
-                      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4DFF36" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="#FFFFFF" stroke-width="1.5"/><circle cx="12" cy="12" r="2" fill="#4DFF36"/></svg>
-                      <span>Microsoft Clarity</span>
+                      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill="#FFFFFF"/></svg>
+                      <span>Git / GitHub CI-CD</span>
                     </div>
                   </div>
                 </div>
@@ -1430,7 +1484,7 @@
               <i data-lucide="map-pin" class="w-4 h-4 text-eva-mecha"></i>
             </span>
             <span class="text-sm text-white font-bold mt-2">
-              Ciudad de México (CDMX) — Disponible Híbrido / Remoto
+              Ciudad de México (CDMX)
             </span>
           </div>
 
@@ -1457,7 +1511,11 @@
           <span class="text-white font-bold">© 2026 ERIK ENRIQUE GARCÍA GODÍNEZ</span>
           <span>— PORTAFOLIO PROFESIONAL // EDICIÓN EVA-01</span>
         </div>
-        <div class="flex items-center gap-6">
+        <div class="flex flex-wrap items-center gap-4">
+          <div class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#1A030A] border border-[#FF003C]/40 text-[#FF4D6D] text-[10px] font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-pulse"></span>
+            <span>NERV DEFENSE // CONDICIÓN ROJA</span>
+          </div>
           <a href="archivo.html" class="text-eva-acid hover:text-white transition-colors font-bold flex items-center gap-1">
             <span>Abrir Portafolio Completo [15 CASOS]</span>
             <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
@@ -1514,24 +1572,24 @@
       <!-- Cuerpo del Modal -->
       <div class="overflow-y-auto p-5 sm:p-8 space-y-8 flex-1">
         
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-eva-border pb-6">
-          <div class="space-y-3 max-w-3xl">
-            <div class="flex flex-wrap items-center gap-2">
-              <span id="modalCategory" class="px-3 py-1 bg-[#090412] border border-eva-acid text-eva-acid font-mono text-xs font-bold uppercase tracking-wider">
-                CATEGORÍA
-              </span>
-              <span id="modalRole" class="px-3 py-1 bg-[#090412] border border-[#3B1D6E] text-eva-lavender font-mono text-xs font-bold uppercase tracking-wider">
-                ROL
-              </span>
-              <div id="modalTools" class="flex flex-wrap items-center gap-1.5"></div>
-            </div>
-            <h2 id="modalTitle" class="font-display font-extrabold text-2xl sm:text-4xl text-white tracking-tight leading-tight">
-              Título del Proyecto
-            </h2>
-            <p id="modalShortDesc" class="font-sans text-eva-lavender text-base leading-relaxed font-normal"></p>
+        <div class="space-y-4 border-b border-eva-border pb-6">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="modalCategory" class="px-3 py-1 bg-[#090412] border border-eva-acid text-eva-acid font-mono text-xs font-bold uppercase tracking-wider">
+              CATEGORÍA
+            </span>
+            <span id="modalRole" class="px-3 py-1 bg-[#090412] border border-[#3B1D6E] text-eva-lavender font-mono text-xs font-bold uppercase tracking-wider">
+              ROL
+            </span>
+            <div id="modalTools" class="flex flex-wrap items-center gap-1.5"></div>
           </div>
+          
+          <h2 id="modalTitle" class="w-full font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-snug">
+            Título del Proyecto
+          </h2>
+          
+          <p id="modalShortDesc" class="w-full font-sans text-eva-lavender text-base sm:text-lg leading-relaxed font-normal max-w-4xl"></p>
 
-          <div id="modalKpis" class="grid grid-cols-3 gap-3 shrink-0"></div>
+          <div id="modalKpis" class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 w-full"></div>
         </div>
 
         <!-- Visor de Mockup en Alta Resolución -->

@@ -112,7 +112,7 @@ const projectsData = [
     solution: "Diseñé y maqueté una experiencia interactiva con switch dual Día/Noche que transforma toda la interfaz en tiempo real para lucir ambos modelos.",
     impact: "+35% en tiempo de permanencia validado en Microsoft Clarity y +25% en clics directos a preventa.",
     kpis: [
-      { value: "+35%", label: "Tiempo en pantalla (Clarity)", desc: "Mayor retención y exploración del producto" },
+      { value: "+35%", label: "Tiempo en pantalla", desc: "Mayor retención y exploración de producto con mapas de interacción" },
       { value: "Día / Noche", label: "Switch interactivo en vivo", desc: "Alterna en tiempo real entre Perla y Negro" },
       { value: "+25%", label: "Clics hacia preventa", desc: "Paso directo hacia el carrito de compra" }
     ],
@@ -1113,22 +1113,41 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Soporte táctil swipe horizontal en móvil
+    // Soporte táctil swipe horizontal seguro en móvil (sin desplazar el layout de la página)
     let touchStartX = 0;
+    let touchStartY = 0;
+    let isHorizontalSwipe = false;
+
     stageEl.addEventListener('touchstart', (e) => {
       if (e.touches && e.touches[0]) {
         touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isHorizontalSwipe = false;
       }
     }, { passive: true });
+
+    stageEl.addEventListener('touchmove', (e) => {
+      if (!e.touches || !e.touches[0]) return;
+      const diffX = e.touches[0].clientX - touchStartX;
+      const diffY = e.touches[0].clientY - touchStartY;
+
+      // Si el desplazamiento es marcadamente horizontal, prevenimos el arrastre lateral de la página
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
+        isHorizontalSwipe = true;
+        if (e.cancelable) e.preventDefault();
+      }
+    }, { passive: false });
 
     stageEl.addEventListener('touchend', (e) => {
       if (e.changedTouches && e.changedTouches[0]) {
         const diffX = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(diffX) > 40) {
+        const diffY = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
           if (diffX < 0) setActiveIndex(activeIdx + 1, true);
           else setActiveIndex(activeIdx - 1, true);
         }
       }
+      isHorizontalSwipe = false;
     }, { passive: true });
 
     // Renderizar una sola vez el proyecto destacado fijo (no cambia con el carrusel)
@@ -1148,8 +1167,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Contenedor de Destacados en index.html
   const featuredBentoGrid = document.getElementById('featuredBentoGrid');
-  let currentFeaturedTab = 'flagship';
-
   function renderFeaturedOnIndex() {
     if (!featuredBentoGrid) return;
     const featuredIds = [
@@ -1161,92 +1178,24 @@ document.addEventListener('DOMContentLoaded', () => {
       'malamorrx-streetwear'
     ];
 
-    const tabs = [
-      {
-        id: 'flagship',
-        label: '★ Destacados',
-        accentColor: '#4DFF36',
-        deckLabel: 'PROYECTOS DESTACADOS // SELECCIÓN',
-        getProjects: () => featuredIds.map(id => projectsData.find(p => p.id === id)).filter(Boolean)
-      },
-      {
-        id: 'ui-ux',
-        label: '01. UI/UX',
-        accentColor: '#4DFF36',
-        deckLabel: 'DIV_01 // DISEÑO WEB & LANDINGS',
-        getProjects: () => projectsData.filter(p => p.category === 'ui-ux')
-      },
-      {
-        id: '3d-vfx',
-        label: '02. 3D & Video',
-        accentColor: '#A855F7',
-        deckLabel: 'DIV_02 // MODELADO 3D & PRODUCCIÓN',
-        getProjects: () => projectsData.filter(p => p.category === '3d-motion' || p.category === '3d-vfx')
-      },
-      {
-        id: 'branding',
-        label: '03. Branding',
-        accentColor: '#FF5900',
-        deckLabel: 'DIV_03 // IDENTIDAD VISUAL',
-        getProjects: () => projectsData.filter(p => p.category === 'branding')
-      },
-      {
-        id: 'creative-lab',
-        label: '04. Arte & IA',
-        accentColor: '#00F0FF',
-        deckLabel: 'DIV_04 // FOTOGRAFÍA & IA',
-        getProjects: () => projectsData.filter(p => p.category === 'creative-lab')
-      }
-    ];
-
-    const activeTabObj = tabs.find(t => t.id === currentFeaturedTab) || tabs[0];
-    const activeProjects = activeTabObj.getProjects();
+    const activeProjects = featuredIds
+      .map(id => projectsData.find(p => p.id === id))
+      .filter(Boolean);
 
     featuredBentoGrid.innerHTML = '';
 
-    // Barra de pestañas rápidas para explorar los Destacados o cada División desde Inicio
-    const tabsBar = document.createElement('div');
-    tabsBar.className = "flex flex-wrap items-center justify-between gap-3 mb-6 bg-[#140A26]/90 border border-[#3B1D6E] p-3";
-    tabsBar.innerHTML = `
-      <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
-        ${tabs.map(t => {
-      const isAct = t.id === activeTabObj.id;
-      return `
-            <button type="button" data-feat-tab="${t.id}" class="px-3 py-1.5 border transition-all cursor-pointer font-bold ${isAct
-          ? 'bg-eva-acid text-black border-eva-acid shadow-acid-glow'
-          : 'bg-[#090412] text-eva-lavender border-[#3B1D6E] hover:border-eva-acid hover:text-white'
-        }">
-              ${t.label}
-            </button>
-          `;
-    }).join('')}
-      </div>
-      <div class="hidden xl:flex items-center gap-2 font-mono text-[11px] text-eva-acid px-2.5 py-1 bg-[#090412] border border-[#3B1D6E]">
-        <span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-ping"></span>
-        <span>AUTO-PLAY ACTIVO</span>
-      </div>
-    `;
-
-    tabsBar.querySelectorAll('button[data-feat-tab]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentFeaturedTab = btn.getAttribute('data-feat-tab');
-        renderFeaturedOnIndex();
-      });
+    // En la página principal: mostramos exclusivamente los proyectos insignia destacados
+    const splitCarouselBlock = createSplitHorizontalCarouselBlock(activeProjects, {
+      showFeaturedSide: true,
+      wideStage: false,
+      accentColor: '#4DFF36',
+      deckLabel: 'PROYECTOS DESTACADOS // SELECCIÓN PRINCIPAL',
+      autoPlayDelay: 3400
     });
 
-      // En la página principal: tarjeta destacada fija + carrusel horizontal interactivo
-      const splitCarouselBlock = createSplitHorizontalCarouselBlock(activeProjects, {
-        showFeaturedSide: true,
-        wideStage: false,
-        accentColor: activeTabObj.accentColor,
-        deckLabel: activeTabObj.deckLabel,
-        autoPlayDelay: 3400
-      });
-
-      featuredBentoGrid.appendChild(tabsBar);
-      featuredBentoGrid.appendChild(splitCarouselBlock);
-      refreshLucideIcons();
-    }
+    featuredBentoGrid.appendChild(splitCarouselBlock);
+    refreshLucideIcons();
+  }
 
   function render() {
         if (featuredBentoGrid) {
@@ -1928,6 +1877,24 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateClock, 1000);
       }
 
+      // 1.1 Telemetría dinámica de FPS estilo motor de videojuegos (fluctuación 58.2 - 61.4 FPS)
+      const fpsEl = document.getElementById('heroFpsCounter');
+      if (fpsEl) {
+        function jitterHeroFps() {
+          const baseFps = 60.0;
+          const jitter = (Math.random() * 2.8) - 1.3; // Rango típico entre 58.7 y 61.5
+          const currentFps = (baseFps + jitter).toFixed(1);
+          fpsEl.textContent = `${currentFps} FPS`;
+          if (parseFloat(currentFps) < 58.8) {
+            fpsEl.className = 'text-eva-amber font-mono font-bold tracking-wider transition-colors';
+          } else {
+            fpsEl.className = 'text-eva-acid font-mono font-bold tracking-wider transition-colors';
+          }
+        }
+        jitterHeroFps();
+        setInterval(jitterHeroFps, 320);
+      }
+
       // 2. Efecto de inclinación 3D e interactividad Parallax con cursor
       if (stage && card) {
         let isHovered = false;
@@ -2058,10 +2025,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const telemetryLines = [
       "[01/05] INICIALIZANDO ENTORNO TÁCTICO // NERV OS 4.1...",
-      "[02/05] SINCRONIZANDO NERVIO A10 & DENSIDAD LCL: ÓPTIMA...",
-      "[03/05] CARGANDO ARCHIVO DE CASOS DE ESTUDIO [15 PROYECTOS]...",
-      "[04/05] PROTOCOLO 3D LAB & BLACKMAGIC 4K LOG: ONLINE...",
-      "[05/05] SISTEMA LISTO PARA INSPECCIÓN."
+      "[02/05] TELEMETRÍA PILOTO: NERVIO A10 ÓPTIMO // CONEXIÓN ESTABLE...",
+      "[03/05] ALERTA TÁCTICA: CONDICIÓN ROJA ACTIVA // SINCRONIZACIÓN EVA-01...",
+      "[04/05] CARGANDO ARCHIVO DE CASOS DE ESTUDIO [15 PROYECTOS]...",
+      "[05/05] SISTEMA LISTO PARA INSPECCIÓN // ENTRADA TÁCTICA HABILITADA."
     ];
 
     function initBootSequence() {
@@ -2171,24 +2138,50 @@ document.addEventListener('DOMContentLoaded', () => {
       const overrideMsg = document.getElementById("boot-override-alert");
       const heroBadgeContainer = document.getElementById("hero-status-container");
 
-      // Override manual / Easter Egg: Si presionó antes del 100%
+      // Override manual / Easter Egg: Si presionó antes del 100% (Modo Berserk EVA-01)
       if (isManual && syncProgress < 100) {
         isForcedLaunch = true;
         if (overrideMsg) {
-          overrideMsg.innerText = "// OVERRIDE MANUAL ACTIVADO: INICIANDO ANTES DE TIEMPO";
-          overrideMsg.classList.remove("hidden");
+          overrideMsg.innerHTML = `
+            <div class="flex items-center justify-center gap-2 text-[#FF2A55] font-bold">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FF003C] animate-ping"></span>
+              <span>⚠️ ALERTA CRÍTICA // MODO BERSERK ACTIVADO [EVA-01 TEST TYPE]</span>
+            </div>
+            <p class="text-[10px] text-white/90 mt-1 font-mono">
+              SINCRONIZACIÓN FORZADA AL ${syncProgress}% • LIMITADORES NERV ANULADOS
+            </p>
+          `;
+          overrideMsg.className = "w-full max-w-md mt-2 p-2.5 border-2 border-[#FF003C] bg-[#2A050F]/90 text-white font-mono text-xs font-bold text-center tracking-wider animate-pulse shadow-[0_0_30px_rgba(255,0,60,0.5)]";
         }
-        // Dejar un badge alusivo en el Hero del portafolio
+
+        // Tonalidad roja de emergencia sutil estilo EVA-01 Berserk (no invasivo)
+        if (bootScreen) {
+          bootScreen.style.boxShadow = "inset 0 0 100px rgba(255, 0, 60, 0.45)";
+          const scanline = bootScreen.querySelector(".animate-boot-scanline");
+          if (scanline) {
+            scanline.className = "pointer-events-none absolute inset-x-0 h-1.5 bg-gradient-to-r from-transparent via-[#FF003C] to-transparent opacity-95 blur-[1px] animate-boot-scanline z-20";
+          }
+        }
+
+        // Dejar un badge táctico NERV Berserk en el Hero del portafolio (elegante y no invasivo)
         if (heroBadgeContainer) {
-          heroBadgeContainer.innerHTML += `
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-eva-orange/20 border border-eva-orange text-eva-orange font-mono text-[10px] animate-pulse">
-            ⚡ MODO OVERCLOCK // SYNC MANUAL
-          </span>
-        `;
+          heroBadgeContainer.innerHTML = `
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#20050C]/90 border border-[#FF003C] text-[#FF4D6D] font-mono text-[11px] font-bold tracking-wider animate-pulse shadow-[0_0_15px_rgba(255,0,60,0.35)]">
+              <span class="w-2 h-2 rounded-full bg-[#FF003C] animate-ping"></span>
+              <span>🚨 PROTOCOLO NERV // MODO BERSERK ACTIVADO [SYNC > 400%]</span>
+              <span class="text-white/60 font-mono text-[10px] hidden sm:inline">• EVA-01 OVERRIDE</span>
+            </div>
+          `;
+        }
+
+        // Tono rojo fuego sutil en el aura del hero video reel
+        const heroAura = document.getElementById("heroAura");
+        if (heroAura) {
+          heroAura.className = "absolute -inset-8 bg-gradient-to-tr from-[#FF003C]/40 via-[#E60026]/20 to-[#3B1D6E]/60 rounded-3xl pointer-events-none -z-10 animate-hero-aura transition-all duration-700 ease-out";
         }
       }
 
-      const fadeDelay = (isManual && syncProgress < 100) ? 250 : 0;
+      const fadeDelay = (isManual && syncProgress < 100) ? 450 : 0;
       setTimeout(() => {
         if (bootScreen) {
           bootScreen.style.transition = "all 0.5s ease";

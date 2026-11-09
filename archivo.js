@@ -112,7 +112,7 @@ const projectsData = [
     solution: "Diseñé y maqueté una experiencia interactiva con switch dual Día/Noche que transforma toda la interfaz en tiempo real para lucir ambos modelos.",
     impact: "+35% en tiempo de permanencia validado en Microsoft Clarity y +25% en clics directos a preventa.",
     kpis: [
-      { value: "+35%", label: "Tiempo en pantalla (Clarity)", desc: "Mayor retención y exploración del producto" },
+      { value: "+35%", label: "Tiempo en pantalla", desc: "Mayor retención y exploración de producto con mapas de interacción" },
       { value: "Día / Noche", label: "Switch interactivo en vivo", desc: "Alterna en tiempo real entre Perla y Negro" },
       { value: "+25%", label: "Clics hacia preventa", desc: "Paso directo hacia el carrito de compra" }
     ],
@@ -1114,22 +1114,41 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Soporte táctil swipe horizontal en móvil
+    // Soporte táctil swipe horizontal seguro en móvil (sin desplazar el layout de la página)
     let touchStartX = 0;
+    let touchStartY = 0;
+    let isHorizontalSwipe = false;
+
     stageEl.addEventListener('touchstart', (e) => {
       if (e.touches && e.touches[0]) {
         touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isHorizontalSwipe = false;
       }
     }, { passive: true });
+
+    stageEl.addEventListener('touchmove', (e) => {
+      if (!e.touches || !e.touches[0]) return;
+      const diffX = e.touches[0].clientX - touchStartX;
+      const diffY = e.touches[0].clientY - touchStartY;
+
+      // Si el desplazamiento es marcadamente horizontal, prevenimos el arrastre lateral de la página
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
+        isHorizontalSwipe = true;
+        if (e.cancelable) e.preventDefault();
+      }
+    }, { passive: false });
 
     stageEl.addEventListener('touchend', (e) => {
       if (e.changedTouches && e.changedTouches[0]) {
         const diffX = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(diffX) > 40) {
+        const diffY = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
           if (diffX < 0) setActiveIndex(activeIdx + 1, true);
           else setActiveIndex(activeIdx - 1, true);
         }
       }
+      isHorizontalSwipe = false;
     }, { passive: true });
 
     // Renderizar una sola vez el proyecto destacado fijo (no cambia con el carrusel)
@@ -1910,6 +1929,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       updateClock();
       setInterval(updateClock, 1000);
+    }
+
+    // 1.1 Telemetría dinámica de FPS estilo motor de videojuegos (fluctuación 58.2 - 61.4 FPS)
+    const fpsEl = document.getElementById('heroFpsCounter');
+    if (fpsEl) {
+      function jitterHeroFps() {
+        const baseFps = 60.0;
+        const jitter = (Math.random() * 2.8) - 1.3;
+        const currentFps = (baseFps + jitter).toFixed(1);
+        fpsEl.textContent = `${currentFps} FPS`;
+        if (parseFloat(currentFps) < 58.8) {
+          fpsEl.className = 'text-eva-amber font-mono font-bold tracking-wider transition-colors';
+        } else {
+          fpsEl.className = 'text-eva-acid font-mono font-bold tracking-wider transition-colors';
+        }
+      }
+      jitterHeroFps();
+      setInterval(jitterHeroFps, 320);
     }
 
     // 2. Efecto de inclinación 3D e interactividad Parallax con cursor

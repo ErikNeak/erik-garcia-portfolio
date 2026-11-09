@@ -215,10 +215,18 @@
     /* =========================================================================
        02. CARRUSEL HORIZONTAL CON PROFUNDIDAD Y DIFUMINADO (HORIZONTAL DECK)
        ========================================================================= */
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw;
+      width: 100%;
+      position: relative;
+    }
+
     .horiz-deck-stage {
       perspective: 1200px;
       perspective-origin: center center;
       transform-style: preserve-3d;
+      touch-action: pan-y;
     }
 
     .horiz-card {
@@ -226,6 +234,7 @@
       width: 285px;
       height: 400px;
       transform-origin: center center;
+      touch-action: pan-y;
       transition: transform 0.55s cubic-bezier(0.19, 1, 0.22, 1),
                   filter 0.45s cubic-bezier(0.19, 1, 0.22, 1),
                   box-shadow 0.45s ease,
@@ -238,8 +247,22 @@
 
     @media (max-width: 640px) {
       .horiz-card {
-        width: 240px;
-        height: 350px;
+        width: 235px;
+        height: 345px;
+      }
+      .horiz-card[data-offset="-1"] {
+        transform: translate3d(-105px, -4px, -35px) scale(0.85) !important;
+      }
+      .horiz-card[data-offset="1"] {
+        transform: translate3d(105px, -4px, -35px) scale(0.85) !important;
+      }
+      .horiz-card[data-offset="-2"] {
+        transform: translate3d(-175px, -8px, -70px) scale(0.70) !important;
+        opacity: 0.35 !important;
+      }
+      .horiz-card[data-offset="2"] {
+        transform: translate3d(175px, -8px, -70px) scale(0.70) !important;
+        opacity: 0.35 !important;
       }
     }
 
@@ -610,13 +633,13 @@
 
             <div class="flex items-center justify-between border-b border-eva-border pb-3">
               <span class="font-mono text-xs font-bold text-eva-acid bg-[#090412] px-2.5 py-1 border border-eva-border">PASO 01</span>
-              <span class="font-mono text-xs text-eva-mist">Clarity + Stitch + Figma</span>
+              <span class="font-mono text-xs text-eva-mist">Analítica UX + Stitch + Figma</span>
             </div>
             <h3 class="font-display font-bold text-xl text-white">
               01. Analítica de Usuario y Prototipado
             </h3>
             <p class="font-sans text-sm sm:text-base text-eva-lavender leading-relaxed">
-              Analizo mapas de calor en Microsoft Clarity para detectar fricciones y estructuro interfaces responsivas en Figma y Google Stitch.
+              Analizo mapas de interacción y analítica de navegación para detectar fricciones y estructuro interfaces responsivas en Figma y Google Stitch.
             </p>
           </article>
 
@@ -713,7 +736,7 @@
               <i data-lucide="map-pin" class="w-4 h-4 text-eva-mecha"></i>
             </span>
             <span class="text-sm text-white font-bold mt-2">
-              Ciudad de México (CDMX) — Disponible Híbrido / Remoto
+              Ciudad de México (CDMX)
             </span>
           </div>
 
@@ -792,27 +815,27 @@
       <!-- Cuerpo del Modal -->
       <div class="overflow-y-auto p-5 sm:p-8 space-y-8 flex-1">
 
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-eva-border pb-6">
-          <div class="space-y-3 max-w-3xl">
-            <div class="flex flex-wrap items-center gap-2">
-              <span id="modalCategory"
-                class="px-3 py-1 bg-[#090412] border border-eva-acid text-eva-acid font-mono text-xs font-bold uppercase tracking-wider">
-                CATEGORÍA
-              </span>
-              <span id="modalRole"
-                class="px-3 py-1 bg-[#090412] border border-[#3B1D6E] text-eva-lavender font-mono text-xs font-bold uppercase tracking-wider">
-                ROL
-              </span>
-              <div id="modalTools" class="flex flex-wrap items-center gap-1.5"></div>
-            </div>
-            <h2 id="modalTitle"
-              class="font-display font-extrabold text-2xl sm:text-4xl text-white tracking-tight leading-tight">
-              Título del Proyecto
-            </h2>
-            <p id="modalShortDesc" class="font-sans text-eva-lavender text-base leading-relaxed font-normal"></p>
+        <div class="space-y-4 border-b border-eva-border pb-6">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="modalCategory"
+              class="px-3 py-1 bg-[#090412] border border-eva-acid text-eva-acid font-mono text-xs font-bold uppercase tracking-wider">
+              CATEGORÍA
+            </span>
+            <span id="modalRole"
+              class="px-3 py-1 bg-[#090412] border border-[#3B1D6E] text-eva-lavender font-mono text-xs font-bold uppercase tracking-wider">
+              ROL
+            </span>
+            <div id="modalTools" class="flex flex-wrap items-center gap-1.5"></div>
           </div>
+          
+          <h2 id="modalTitle"
+            class="w-full font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-snug">
+            Título del Proyecto
+          </h2>
+          
+          <p id="modalShortDesc" class="w-full font-sans text-eva-lavender text-base sm:text-lg leading-relaxed font-normal max-w-4xl"></p>
 
-          <div id="modalKpis" class="grid grid-cols-3 gap-3 shrink-0"></div>
+          <div id="modalKpis" class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 w-full"></div>
         </div>
 
         <!-- Visor de Mockup en Alta Resolución -->
