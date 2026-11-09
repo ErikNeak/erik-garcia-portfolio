@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta name="description" content="Portal del cliente de Futurx: administra tus beneficios, planes activos y propuestas personalizadas de forma rápida." />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Gestionar Suscripción - Futurx</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Red Hat Display', sans-serif;
+            color: #f1e0d1;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .grainy-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 20%, rgba(0, 196, 188, 0.1) 0%, transparent 40%);
+        }
+
+        .card-glow {
+            box-shadow: 0 0 50px -12px rgba(255, 158, 0, 0.2);
+        }
+
+        .proposal-glow {
+            box-shadow: 0 0 60px -10px rgba(0, 196, 188, 0.3);
+            border: 1px solid rgba(0, 196, 188, 0.3) !important;
+        }
+
+        .btn-primary {
+            background: #ff9e00;
+            color: #1a120a;
+            box-shadow: 0 10px 20px -5px rgba(255, 158, 0, 0.4);
+        }
+
+        .btn-proposal {
+            background: #00c4bc;
+            color: #002d2b;
+            box-shadow: 0 10px 20px -5px rgba(0, 196, 188, 0.4);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-anim { animation: float 6s ease-in-out infinite; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+    </style>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../imag/Icono naranja.png">
+    <link rel="apple-touch-icon" href="../imag/Icono naranja.png">
+    <link rel="icon" type="image/svg+xml" href="../imag/favicon.svg">
+</head>
+
+<body class="bg-[#0a0a0a] grainy-gradient min-h-screen relative">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none grainy-overlay"></div>
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-3 bg-[#161616]/70 backdrop-blur-lg rounded-2xl mt-6 mx-auto w-[90%] max-w-7xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] backdrop-saturate-150">
+        <a href="../index.html" class="flex items-center hover:scale-105 transition-transform">
+            <img src="../imag/Logo naranja.png" alt="Futurx" class="h-8">
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all" href="../secciones/servicios.html">Servicios</a>
+            <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../index.html#proceso">¿Cómo funciona?</a>
+            <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../secciones/planes.html">Planes</a>
+            <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../secciones/portafolio.html">Portafolio</a>
+            <a class="font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest"
+                href="dashboard.html">Panel</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="text-right hidden sm:block mr-4 border-r border-white/10 pr-4">
+                <p class="text-[10px] text-white/40 uppercase tracking-widest font-sans">Portal Cliente</p>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <p id="user-display" class="font-bold text-xs text-white">Invitado</p>
+                </div>
+            </div>
+            <button id="logout-btn" class="text-white/60 hover:text-red-400 transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">logout</span>
+            </button>
+            <!-- Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-[60]">
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed top-24 right-6 left-6 z-[55] liquid-glass rounded-[32px] p-12 flex flex-col items-center gap-8 transition-all duration-500 opacity-0 pointer-events-none -translate-y-10 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../index.html">Inicio</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../secciones/planes.html">Planes</a>
+        <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase border-b-2 border-[#ff9e00]" href="dashboard.html">Panel</a>
+        <button id="mobile-logout-btn" class="text-xl font-bold text-red-400 tracking-widest uppercase mt-4">Cerrar Sesión</button>
+    </div>
+
+    <main class="pt-32 pb-20 px-8 max-w-5xl mx-auto relative z-10">
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">Gestión de <span class="text-primary">Suscripción</span></h1>
+            <p class="text-white/40 font-sans uppercase tracking-[0.2em] text-xs">Administra tus beneficios y propuestas personalizadas</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-1 gap-10">
+            <!-- Current Plan Card -->
+            <div id="current-plan-card" class="hidden liquid-glass p-8 md:p-12 rounded-[3rem] border-white/10 relative overflow-hidden card-glow">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+                    <div>
+                        <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-4 border border-primary/20">Plan Activo</span>
+                        <h2 id="plan-name" class="text-4xl font-black text-white mb-2">Contenido Pro</h2>
+                        <p class="text-white/60 font-sans" id="billing-cycle-text">Inició facturación el 15 de Octubre, 2023</p>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-white/40 text-xs uppercase tracking-widest mb-1">Costo Mensual</p>
+                        <h3 id="plan-price" class="text-3xl font-black text-white">$7,500 <span class="text-sm font-normal text-white/40">MXN</span></h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                        <span class="material-symbols-outlined text-primary mb-3">local_fire_department</span>
+                        <p class="text-white/40 text-[10px] uppercase tracking-widest mb-1">Bomberazos</p>
+                        <h4 id="bomberazos-stat" class="text-xl font-bold text-white">4 / 4</h4>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                        <span class="material-symbols-outlined text-secondary mb-3">auto_awesome</span>
+                        <p class="text-white/40 text-[10px] uppercase tracking-widest mb-1">Créditos Diseño</p>
+                        <h4 class="text-xl font-bold text-white">Ilimitado</h4>
+                    </div>
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
+                        <span class="material-symbols-outlined text-accent mb-3">verified</span>
+                        <p class="text-white/40 text-[10px] uppercase tracking-widest mb-1">Status</p>
+                        <h4 id="plan-status-text" class="text-xl font-bold text-green-400">Activo</h4>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 border-t border-white/5 pt-10">
+                    <button onclick="window.location.href='../secciones/planes.html'" class="flex-1 py-4 btn-primary rounded-2xl font-bold uppercase tracking-widest text-xs transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-sm">upgrade</span> Mejorar Plan
+                    </button>
+                    <button id="cancel-btn" class="flex-1 py-4 bg-white/5 border border-white/10 text-red-400 hover:bg-red-500/10 rounded-2xl font-bold uppercase tracking-widest text-xs transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-sm">cancel</span> Cancelar Suscripción
+                    </button>
+                </div>
+            </div>
+
+            <!-- No Plan State / Selection -->
+            <div id="no-plan-card" class="hidden liquid-glass p-8 md:p-12 rounded-[3rem] border-white/10 relative overflow-hidden card-glow">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+                
+                <div class="text-center mb-12 relative z-10">
+                    <span class="material-symbols-outlined text-6xl text-primary mb-4">shopping_cart</span>
+                    <h2 class="text-4xl font-black text-white mb-2">Activa tu Potencial</h2>
+                    <p class="text-white/40">Elige el plan que mejor se adapte al momento de tu marca.</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex justify-center gap-4 mb-16 relative z-10">
+                    <button onclick="switchPlanTab('social')" id="tab-social" class="px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-primary text-[#1a120a] shadow-[0_0_30px_rgba(255,158,0,0.4)] hover:scale-105 active:scale-95">Contenido (P)</button>
+                    <button onclick="switchPlanTab('web')" id="tab-web" class="px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 active:scale-95">Suscripción (S)</button>
+                </div>
+
+                <!-- Social Media Plans -->
+                <div id="plans-social" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in relative z-10">
+                    <!-- P-01: Presencia Visual -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-white/5 hover:border-primary/30 transition-all duration-500 group flex flex-col hover:-translate-y-2">
+                        <h3 class="text-2xl font-black text-white mb-2">P-01: Presencia Visual</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Diseño para marcas en crecimiento</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> 15 Gráficos o Stories</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Redacción básica con IA</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Retoque de imagen profesional</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Calendario mensual</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">$4,500 <span class="text-[10px] font-normal text-white/40">/ mes</span></div>
+                            <button onclick="window.location.href='pago_stripe.html?plan=p-01'" class="w-full py-4 rounded-xl border-2 border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-[#1a120a] hover:border-transparent transition-all">Elegir Plan</button>
+                        </div>
+                    </div>
+
+                    <!-- P-02: Contenido Pro -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-primary/20 bg-gradient-to-br from-primary/10 to-transparent transition-all duration-500 group flex flex-col relative overflow-hidden hover:-translate-y-2 shadow-[0_20px_50px_rgba(255,158,0,0.1)]">
+                        <div class="absolute top-6 right-6 px-3 py-1 rounded-full bg-primary/20 text-primary text-[8px] font-black uppercase tracking-tighter border border-primary/30">Destacado</div>
+                        <h3 class="text-2xl font-black text-primary mb-2">P-02: Contenido Pro</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Storytelling y volumen</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">verified</span> 25 Gráficos + 4 Videos</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">verified</span> Storytelling persuasivo</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">verified</span> Fondos únicos con IA</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">verified</span> Programación 1 red social</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">$7,500 <span class="text-[10px] font-normal text-white/40">/ mes</span></div>
+                            <button onclick="window.location.href='pago_stripe.html?plan=p-02'" class="w-full py-4 rounded-xl bg-primary text-[#1a120a] text-[10px] font-bold uppercase tracking-widest shadow-[0_10px_30px_rgba(255,158,0,0.3)] hover:scale-[1.02] transition-all">Suscribirse Pro</button>
+                        </div>
+                    </div>
+
+                    <!-- P-03: Gestión Total -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-white/5 hover:border-primary/30 transition-all duration-500 group flex flex-col hover:-translate-y-2">
+                        <h3 class="text-2xl font-black text-white mb-2">P-03: Dominio Digital</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Dominio total de redes</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">star</span> 30 Gráficos + 8 Videos</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">star</span> Ganchos para viralidad</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">star</span> Locución con IA</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">star</span> Programación 3 redes</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">Desde $12,000</div>
+                            <button onclick="window.location.href='pago_stripe.html?plan=p-03'" class="w-full py-4 rounded-xl border-2 border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-[#1a120a] hover:border-transparent transition-all">Suscribirse Elite</button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Content -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-white/5 border-dashed hover:border-primary/50 transition-all duration-500 group flex flex-col hover:-translate-y-2">
+                        <h3 class="text-2xl font-black text-white mb-2">Custom P</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Contenido a la medida</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">tune</span> Volumen ajustable</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">add_box</span> Edición especial</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">A Medida</div>
+                            <a href="../secciones/contacto.html" class="block text-center py-4 rounded-xl border-2 border-primary/30 text-primary text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-[#1a120a] transition-all">Cotizar Plan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Plans -->
+                <div id="plans-web" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in relative z-10">
+                    <!-- S-01: Gráfico Básico -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-white/5 hover:border-secondary/30 transition-all duration-500 group flex flex-col hover:-translate-y-2">
+                        <h3 class="text-2xl font-black text-white mb-2">S-01: Gráfico Básico</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Flujo constante de trabajo 2D</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">branding_watermark</span> Gráfico & Branding</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">schedule</span> 5 Solicitudes simultáneas</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">bolt</span> 2 Bomberazos al mes</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">psychology</span> Cambios IA (4 hrs)</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">$6,500 <span class="text-[10px] font-normal text-white/40">/ mes</span></div>
+                            <button onclick="window.location.href='pago_stripe.html?plan=s-01'" class="w-full py-4 rounded-xl border-2 border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-secondary hover:text-[#002d2b] hover:border-transparent transition-all">Seleccionar</button>
+                        </div>
+                    </div>
+
+                    <!-- S-02: UX Estratégico -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-secondary/20 bg-gradient-to-br from-secondary/10 to-transparent transition-all duration-500 group flex flex-col relative overflow-hidden hover:-translate-y-2 shadow-[0_20px_50px_rgba(0,196,188,0.1)]">
+                        <div class="absolute top-6 right-6 px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[8px] font-black uppercase tracking-tighter border border-secondary/30">Vanguardia</div>
+                        <h3 class="text-2xl font-black text-secondary mb-2">S-02: UX Estratégico</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Maquetación Web Profesional</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">web</span> Especialidad: UX/UI</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">schedule</span> 6 Solicitudes simultáneas</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">bolt</span> 3 Bomberazos al mes</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">psychology</span> Cambios IA (3 hrs)</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">$9,500 <span class="text-[10px] font-normal text-white/40">/ mes</span></div>
+                            <button onclick="window.location.href='pago_stripe.html?plan=s-02'" class="w-full py-4 rounded-xl bg-secondary text-[#002d2b] text-[10px] font-bold uppercase tracking-widest shadow-[0_10px_30px_rgba(0,196,188,0.3)] hover:scale-[1.02] transition-all">Seleccionar</button>
+                        </div>
+                    </div>
+
+                    <!-- S-03: Audiovisual Provisual Pro -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-white/5 hover:border-secondary/30 transition-all duration-500 group flex flex-col hover:-translate-y-2">
+                        <h3 class="text-2xl font-black text-white mb-2">S-03: Audiovisual Pro</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Gestión Video y Foto</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">movie</span> Gestión Audiovisual</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">bolt</span> 4 Bomberazos al mes</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">psychology</span> Prioridad IA (2 hrs)</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">schedule</span> 6 Solicitudes simultáneas</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-3xl font-black text-white mb-1">Desde $13,500</div>
+                            <button onclick="window.location.href='pago_stripe.html?plan=s-03'" class="w-full py-4 rounded-xl border-2 border-white/10 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-secondary hover:text-[#002d2b] hover:border-transparent transition-all">Seleccionar</button>
+                        </div>
+                    </div>
+
+                    <!-- Custom S -->
+                    <div class="liquid-glass p-8 rounded-[2.5rem] border-white/5 border-dashed hover:border-secondary/50 transition-all duration-500 group flex flex-col hover:-translate-y-2">
+                        <h3 class="text-2xl font-black text-white mb-2">Custom S</h3>
+                        <p class="text-[10px] text-white/60 uppercase tracking-widest mb-8">Sistemas o audiovisual</p>
+                        <ul class="space-y-4 flex-grow mb-10 text-[11px] text-white">
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">code</span> Desarrollo a medida</li>
+                            <li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary text-sm">api</span> Integraciones</li>
+                        </ul>
+                        <div class="mt-auto text-center">
+                            <a href="../secciones/contacto.html" class="block w-full py-4 rounded-xl border-2 border-secondary/30 text-secondary text-[10px] font-bold uppercase tracking-widest hover:bg-secondary hover:text-[#002d2b] transition-all">Describir Idea</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proposed Plan Card (Hidden by default) -->
+            <div id="proposed-plan-card" class="hidden liquid-glass p-8 md:p-12 rounded-[3rem] border-secondary/30 relative overflow-hidden proposal-glow float-anim mt-10">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 blur-[50px] rounded-full"></div>
+                
+                <div class="flex items-start gap-4 mb-8">
+                    <div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center border border-secondary/20">
+                        <span class="material-symbols-outlined text-secondary">star_border</span>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black text-white">Propuesta Personalizada</h3>
+                        <p class="text-secondary/80 font-sans text-sm">El equipo de Futurx ha diseñado un plan solo para ti.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-white/40 text-[10px] uppercase tracking-widest mb-1">Nombre del Plan</p>
+                            <h4 id="proposed-name" class="text-3xl font-black text-white">Plan Custom Elite</h4>
+                        </div>
+                        <div class="flex gap-8">
+                            <div>
+                                <p class="text-white/40 text-[10px] uppercase tracking-widest mb-1">Bomberazos</p>
+                                <h4 id="proposed-bomberazos" class="text-xl font-bold text-white">6 al mes</h4>
+                            </div>
+                            <div>
+                                <p class="text-white/40 text-[10px] uppercase tracking-widest mb-1">Precio Especial</p>
+                                <h4 id="proposed-price" class="text-xl font-bold text-secondary">$10,500 <span class="text-xs font-normal opacity-60">/ mes</span></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="accept-proposal-btn" class="w-full md:w-auto py-5 px-10 btn-proposal rounded-2xl font-black uppercase tracking-widest text-sm transition-all hover:scale-[1.05] active:scale-95 flex items-center justify-center gap-3">
+                        Aceptar y Pagar Propuesta
+                        <span class="material-symbols-outlined">payments</span>
+                    </button>
+                </div>
+
+                <p class="text-[10px] text-white/20 uppercase tracking-widest text-center border-t border-white/5 pt-6">Esta es una oferta limitada y exclusiva para tu cuenta.</p>
+            </div>
+        </div>
+
+        <!-- Empty State (if no user) -->
+        <div id="auth-warning" class="hidden liquid-glass p-12 rounded-[3rem] text-center">
+            <span class="material-symbols-outlined text-6xl text-white/10 mb-6">lock</span>
+            <h2 class="text-2xl font-bold text-white mb-4">Inicia Sesión para Gestionar</h2>
+            <p class="text-white/40 mb-8">Debes estar autenticado para ver los detalles de tu plan y facturación.</p>
+            <a href="login.html" class="inline-block py-4 px-10 btn-primary rounded-2xl font-bold uppercase tracking-widest text-xs">Ir al Login</a>
+        </div>
+    </main>
+
+    <!-- Confirmation Modals -->
+    <div id="cancel-modal-overlay" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] hidden items-center justify-center p-6 transition-all duration-300">
+        <div class="liquid-glass w-full max-w-md p-10 rounded-[3rem] border-red-500/20 text-center scale-90 transition-all duration-300" id="cancel-modal">
+            <div class="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-8 border border-red-500/20">
+                <span class="material-symbols-outlined text-4xl text-red-500">warning</span>
+            </div>
+            <h2 class="text-3xl font-black text-white mb-4">¿Estás Seguro?</h2>
+            <p class="text-white/40 text-sm mb-10 leading-relaxed">Al cancelar perderás tus beneficios premium y no se renovará el próximo mes. Podrás seguir usando el portal hasta el fin de tu ciclo actual.</p>
+            <div class="flex flex-col gap-4">
+                <button id="confirm-cancel-btn" class="w-full py-4 bg-red-500 text-white rounded-2xl font-bold uppercase tracking-widest text-xs transition-all hover:bg-red-600">Sí, Cancelar Suscripción</button>
+                <button onclick="closeCancelModal()" class="w-full py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all">No, Mantener Beneficios</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth, db } from './firebase-config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+        let currentUserData = null;
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                document.getElementById('user-display').textContent = user.email;
+                try {
+                    const userRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userRef);
+                    
+                    if (userDoc.exists()) {
+                        currentUserData = userDoc.data();
+                        document.getElementById('user-display').textContent = currentUserData.name || user.email;
+                        updateUI();
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                }
+            } else {
+                document.getElementById('current-plan-card').classList.add('hidden');
+                document.getElementById('no-plan-card').classList.add('hidden');
+                document.getElementById('auth-warning').classList.remove('hidden');
+            }
+        });
+
+        // Tab Switching
+        window.switchPlanTab = (tab) => {
+            const socialBtn = document.getElementById('tab-social');
+            const webBtn = document.getElementById('tab-web');
+            const socialPlans = document.getElementById('plans-social');
+            const webPlans = document.getElementById('plans-web');
+
+            if (tab === 'social') {
+                socialBtn.className = "px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-primary text-[#1a120a] shadow-[0_0_20px_rgba(255,158,0,0.3)]";
+                webBtn.className = "px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-white/5 border border-white/10 text-white/60 hover:text-white";
+                socialPlans.classList.remove('hidden');
+                socialPlans.classList.add('grid');
+                webPlans.classList.remove('grid');
+                webPlans.classList.add('hidden');
+            } else {
+                webBtn.className = "px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-secondary text-[#002d2b] shadow-[0_0_20px_rgba(0,196,188,0.3)]";
+                socialBtn.className = "px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-white/5 border border-white/10 text-white/60 hover:text-white";
+                webPlans.classList.remove('hidden');
+                webPlans.classList.add('grid');
+                socialPlans.classList.remove('grid');
+                socialPlans.classList.add('hidden');
+            }
+        };
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuBtn) {
+            menuBtn.onclick = () => {
+                const isHidden = mobileMenu.classList.contains('opacity-0');
+                if (isHidden) {
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                } else {
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                }
+            };
+        }
+
+        // Logout
+        const logoutBtn = document.getElementById('logout-btn');
+        if(logoutBtn) {
+            logoutBtn.onclick = async () => {
+                const { signOut } = await import("https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js");
+                await signOut(auth);
+                window.location.href = 'login.html';
+            };
+        }
+
+        function updateUI() {
+            if (!currentUserData) return;
+
+            const hasActivePlan = currentUserData.planActual && currentUserData.planActual !== 'Cancelado' && currentUserData.planActual !== 'Sin Plan';
+
+            if (hasActivePlan) {
+                document.getElementById('current-plan-card').classList.remove('hidden');
+                document.getElementById('no-plan-card').classList.add('hidden');
+                
+                document.getElementById('plan-name').textContent = currentUserData.planActual;
+                
+                const max = currentUserData.bomberazosMax || 0;
+                const used = currentUserData.bomberazosUsed || 0;
+                const restantes = max - used;
+                document.getElementById('bomberazos-stat').textContent = `${restantes < 0 ? 0 : restantes} / ${max}`;
+                
+                // Status Color
+                const statusText = document.getElementById('plan-status-text');
+                statusText.textContent = 'Activo';
+                statusText.className = 'text-xl font-bold text-green-400';
+
+                // Precios sugeridos (Hardcoded por ahora basándonos en el nombre)
+                const prices = {
+                    'Base Social': '$4,500',
+                    'Contenido Pro': '$7,500',
+                    'Gestión Total': '$12,000'
+                };
+                document.getElementById('plan-price').innerHTML = `${prices[currentUserData.planActual] || '$Custom'} <span class="text-sm font-normal text-white/40">MXN</span>`;
+            } else {
+                document.getElementById('current-plan-card').classList.add('hidden');
+                document.getElementById('no-plan-card').classList.remove('hidden');
+            }
+
+            if (currentUserData.billingCycleStart) {
+                const date = new Date(currentUserData.billingCycleStart);
+                document.getElementById('billing-cycle-text').textContent = `Inició facturación el ${date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+            }
+
+            // Propuesta Personalizada
+            if (currentUserData.proposedPlan) {
+                const prop = currentUserData.proposedPlan;
+                document.getElementById('proposed-name').textContent = prop.name;
+                document.getElementById('proposed-bomberazos').textContent = `${prop.bomberazos} al mes`;
+                document.getElementById('proposed-price').innerHTML = `$${prop.price} <span class="text-xs font-normal opacity-60">/ mes</span>`;
+                
+                const propCard = document.getElementById('proposed-plan-card');
+                propCard.classList.remove('hidden');
+                propCard.classList.add('block');
+
+                // Lógica de botón aceptar
+                document.getElementById('accept-proposal-btn').onclick = () => {
+                    const params = new URLSearchParams({
+                        plan: 'custom',
+                        name: prop.name,
+                        price: prop.price,
+                        bomberazos: prop.bomberazos
+                    });
+                    window.location.href = `pago_stripe.html?${params.toString()}`;
+                };
+            }
+        }
+
+        // Modal Logic
+        const cancelOverlay = document.getElementById('cancel-modal-overlay');
+        const cancelModal = document.getElementById('cancel-modal');
+        const cancelBtn = document.getElementById('cancel-btn');
+
+        cancelBtn.onclick = () => {
+            cancelOverlay.classList.remove('hidden');
+            cancelOverlay.classList.add('flex');
+            setTimeout(() => cancelModal.classList.remove('scale-90'), 10);
+        };
+
+        window.closeCancelModal = () => {
+            cancelModal.classList.add('scale-90');
+            setTimeout(() => {
+                cancelOverlay.classList.remove('flex');
+                cancelOverlay.classList.add('hidden');
+            }, 300);
+        };
+
+        document.getElementById('confirm-cancel-btn').onclick = async () => {
+            const btn = document.getElementById('confirm-cancel-btn');
+            btn.disabled = true;
+            btn.textContent = 'Procesando...';
+
+            try {
+                const user = auth.currentUser;
+                if (user) {
+                    const userRef = doc(db, "users", user.uid);
+                    await updateDoc(userRef, {
+                        planActual: 'Cancelado',
+                        bomberazosMax: 0,
+                        bomberazosUsed: 0
+                        // En producción aquí se cancelaría el subscription_id de Stripe vía Webhook/Cloud Function
+                    });
+                    alert('Suscripción cancelada. Tus beneficios se detendrán al finalizar el ciclo.');
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.error("Error cancelling:", error);
+                alert("Ocurrió un error. Intenta de nuevo.");
+                btn.disabled = false;
+                btn.textContent = 'Sí, Cancelar Suscripción';
+            }
+        };
+    </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({duration: 800, once: true});</script>
+</body>
+</html>

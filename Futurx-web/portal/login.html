@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta name="description" content="Inicia sesión en tu cuenta de cliente de Futurx para interactuar con tu equipo de diseño y desarrollo." />
+    <title>Iniciar Sesión - Portal Futurx</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Red Hat Display', sans-serif;
+            color: #f1e0d1;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .liquid-glass {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .grainy-gradient {
+            background-image: radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 20%, rgba(0, 196, 188, 0.1) 0%, transparent 40%);
+        }
+    </style>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../imag/Icono naranja.png">
+    <link rel="apple-touch-icon" href="../imag/Icono naranja.png">
+    <link rel="icon" type="image/svg+xml" href="../imag/favicon.svg">
+</head>
+
+<body class="grainy-gradient">
+    <div class="max-w-md w-full px-8">
+        <div class="text-center mb-12">
+            <a href="../index.html" class="text-4xl font-black text-white tracking-tighter mb-4 inline-block">Futurx</a>
+            <p class="text-white/40 font-sans uppercase tracking-widest text-xs">Acceso al Portal de Cliente</p>
+        </div>
+
+        <div class="liquid-glass p-10 rounded-[2.5rem] border-white/10 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none grainy-overlay"></div>
+            
+            <form id="login-form" class="relative z-10 space-y-6">
+                <div class="space-y-2">
+                    <label class="font-sans text-xs uppercase tracking-tighter text-white/60 px-2">Correo Electrónico</label>
+                    <input id="email" type="email" required
+                        class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-4 px-5 text-white font-body-md transition-all placeholder:text-white/20"
+                        placeholder="ejemplo@correo.com" />
+                </div>
+                
+                <div class="space-y-2">
+                    <label class="font-sans text-xs uppercase tracking-tighter text-white/60 px-2">Contraseña</label>
+                    <div class="relative">
+                        <input id="password" type="password" required
+                            class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-4 px-5 text-white font-body-md transition-all placeholder:text-white/20 pr-12"
+                            placeholder="••••••••" />
+                        <button type="button" id="show-pwd-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-xl pointer-events-none">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs px-2">
+                    <label class="flex items-center gap-2 cursor-pointer text-white/40 hover:text-white transition-colors">
+                        <input type="checkbox" class="rounded border-white/10 bg-white/5 text-[#ff9e00] focus:ring-offset-0 focus:ring-[#ff9e00]">
+                        Recordarme
+                    </label>
+                    <a href="#" class="text-[#ff9e00] hover:underline">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-4 bg-[#ff9e00] text-[#1a120a] rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(255,158,0,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2">
+                    Ingresar
+                    <span class="material-symbols-outlined">login</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="text-center mt-6">
+            <a href="registro.html" class="text-white/40 text-sm hover:text-white transition-colors">
+                ¿No tienes cuenta? <span class="text-[#ff9e00]">Regístrate aquí</span>
+            </a>
+        </div>
+
+        <p class="text-center mt-4 text-white/30 text-sm">
+            ¿Aún no eres cliente? <a href="../secciones/contacto.html" class="text-white hover:text-[#ff9e00] transition-colors">Habla con nosotros</a>
+        </p>
+    </div>
+
+    <!-- Error Modal (Simple) -->
+    <div id="error-msg" class="hidden fixed top-6 left-1/2 -translate-x-1/2 bg-red-500/90 text-white px-6 py-3 rounded-full text-sm font-bold shadow-2xl z-50 transition-all text-center max-w-[90%]">
+        Error de autenticación
+    </div>
+
+    <script type="module">
+        import { auth } from './firebase-config.js';
+        import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+        console.log("Firebase loaded in Login:", auth);
+
+        const form = document.getElementById('login-form');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const errorMsg = document.getElementById('error-msg');
+        
+        // Mostrar contraseña
+        const pwdInput = document.getElementById('password');
+        const showPwdBtn = document.getElementById('show-pwd-btn');
+        
+        const showPwd = () => { pwdInput.type = 'text'; showPwdBtn.querySelector('span').textContent = 'visibility_off'; };
+        const hidePwd = () => { pwdInput.type = 'password'; showPwdBtn.querySelector('span').textContent = 'visibility'; };
+        
+        showPwdBtn.addEventListener('mousedown', showPwd);
+        showPwdBtn.addEventListener('mouseup', hidePwd);
+        showPwdBtn.addEventListener('mouseleave', hidePwd);
+        showPwdBtn.addEventListener('touchstart', showPwd, {passive: true});
+        showPwdBtn.addEventListener('touchend', hidePwd);
+
+        // Función para mostrar errores
+        function showError(msg) {
+            errorMsg.textContent = msg;
+            errorMsg.classList.remove('hidden');
+            setTimeout(() => errorMsg.classList.add('hidden'), 6000);
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Procesando...';
+            submitBtn.disabled = true;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                window.location.href = 'dashboard.html';
+            } catch (error) {
+                console.error("Auth error:", error);
+                showError('Error: ' + error.message);
+            } finally {
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({duration: 800, once: true});</script>
+</body>
+
+</html>

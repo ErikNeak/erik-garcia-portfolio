@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta name="description" content="Elige el plan de diseño y desarrollo web que mejor se adapte a tu marca. Suscripción mensual flexible con entregas rápidas y calidad de élite." />
+    <title>Planes de Suscripción de Diseño Ilimitado | Futurx</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Red Hat Display', sans-serif;
+            color: #f1e0d1;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .grainy-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 15% 20%, rgba(0, 196, 188, 0.1) 0%, transparent 40%);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Custom Scrollbar Styles */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 158, 0, 0.3);
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 158, 0, 0.6);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb868",
+                        "surface-container": "#271e15",
+                        "secondary-fixed": "#63f8ef",
+                        "inverse-on-surface": "#382f25",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-surface": "#f1e0d1",
+                        "tertiary": "#d2cfcf",
+                        "surface-container-highest": "#3d3329",
+                        "surface-container-high": "#32281f",
+                        "on-secondary-container": "#004a47",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed-dim": "#3ddcd3",
+                        "on-surface-variant": "#dac2ad",
+                        "on-primary": "#482900",
+                        "primary-fixed-dim": "#ffb868",
+                        "on-tertiary-container": "#474646",
+                        "on-primary-fixed-variant": "#673d00",
+                        "outline": "#a28d79",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#f1e0d1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#663c00",
+                        "on-secondary": "#003734",
+                        "primary-fixed": "#ffddbb",
+                        "primary-container": "#ff9e00",
+                        "on-primary-fixed": "#2b1700",
+                        "inverse-surface": "#f1e0d1",
+                        "on-tertiary": "#313030",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00c2ba",
+                        "background": "#1a120a",
+                        "surface-container-lowest": "#140d05",
+                        "tertiary-container": "#b6b4b3",
+                        "secondary": "#41ded6",
+                        "surface": "#1a120a",
+                        "outline-variant": "#544433",
+                        "surface-dim": "#1a120a",
+                        "error-container": "#93000a",
+                        "surface-bright": "#42372d",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary": "#ffc586",
+                        "surface-variant": "#3d3329",
+                        "surface-container-low": "#221a11",
+                        "on-secondary-fixed": "#00201e",
+                        "inverse-primary": "#885200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Red Hat Display", "sans-serif"],
+                        "red-hat": ["Red Hat Display", "sans-serif"],
+                        "label-bold": ["Red Hat Display", "sans-serif"],
+                        "body-md": ["Red Hat Display", "sans-serif"],
+                        "body-lg": ["Red Hat Display", "sans-serif"],
+                        "headline-lg": ["Red Hat Display", "sans-serif"],
+                        "headline-md": ["Red Hat Display", "sans-serif"],
+                        "display-xl": ["Red Hat Display", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../imag/Icono naranja.png">
+    <link rel="apple-touch-icon" href="../imag/Icono naranja.png">
+    <link rel="icon" type="image/svg+xml" href="../imag/favicon.svg">
+</head>
+
+<body class="bg-background grainy-gradient min-h-screen">
+    <!-- Banner de Urgencia Sticky -->
+    <div id="sticky-banner"
+        class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ff4500] to-[#ff9e00] text-[#1a120a] text-center py-2.5 px-4 text-[10px] sm:text-xs font-black tracking-widest uppercase shadow-md">
+        🚀 ¡Aprovecha el lanzamiento! Solo quedan 2 cupones del 15% de descuento disponibles para nuevos miembros este
+        mes
+    </div>
+
+    <!-- TopNavBar -->
+    <nav id="main-nav"
+        class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-3 bg-[#161616]/70 backdrop-blur-lg rounded-2xl mt-16 mx-auto w-[90%] max-w-7xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] backdrop-saturate-150 transition-all duration-300">
+        <a href="../index.html" class="flex items-center hover:scale-105 transition-transform">
+            <img src="../imag/Logo naranja.png" alt="Futurx" class="h-8">
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a id="nav-proceso"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../index.html#proceso">¿Cómo funciona?</a>
+            <a class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="servicios.html">Servicios</a>
+            <a id="nav-planes"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-[#ff9e00] transition-all"
+                href="planes.html">Planes</a>
+            <a id="nav-portafolio"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="portafolio.html">Portafolio</a>
+            <a id="nav-suscripcion"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="terminos.html">Suscripción</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- <a href="../portal/login.html" class="hidden md:flex text-white/60 hover:text-[#ff9e00] font-sans text-sm font-bold uppercase tracking-widest transition-all px-4 py-2 border border-white/10 rounded-lg">
+                Portal Cliente
+            </a> -->
+            <a href="contacto.html"
+                class="hidden sm:flex bg-[#ff9e00] text-[#1a120a] px-6 py-2 rounded-lg font-sans text-sm font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,158,0,0.4)] transition-all scale-95 active:scale-90 items-center justify-center">
+                Contacto
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-[60]">
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed top-32 right-6 left-6 z-[55] liquid-glass rounded-[32px] p-12 flex flex-col items-center gap-8 transition-all duration-500 opacity-0 pointer-events-none -translate-y-10 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors"
+            href="../index.html">Inicio</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors"
+            href="../index.html#proceso">Proceso</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors"
+            href="servicios.html">Servicios</a>
+        <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase" href="planes.html">Planes</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors"
+            href="terminos.html">Suscripción</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors"
+            href="portafolio.html">Portafolio</a>
+        <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase border border-[#ff9e00]/30 px-8 py-3 rounded-xl bg-[#ff9e00]/5 w-full text-center"
+            href="contacto.html">Contacto</a>
+        <!-- <a class="text-lg font-bold text-white/60 tracking-widest uppercase" href="../portal/login.html">Portal Cliente</a> -->
+    </div>
+
+    <!-- Hero Section -->
+    <section data-aos="fade-up" class="pt-40 pb-20 px-8 max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-none text-white mb-6 font-sans">Planes que <span
+                class="text-[#ff9e00]">escalan</span> tu visión.</h1>
+        <p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+            Seleccionamos las mejores herramientas y estrategias para que tu marca destaque en un entorno saturado. Sin
+            complicaciones, solo resultados premium.
+        </p>
+        <div class="flex flex-col items-center gap-6">
+            <div class="flex justify-center gap-4">
+                <a href="#web"
+                    class="bg-[#00c4bc] text-[#1a120a] px-8 py-3 rounded-xl font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(0,196,188,0.4)] transition-all">Suscripción</a>
+                <a href="#planes"
+                    class="border-2 border-[#ff9e00] text-[#ff9e00] px-8 py-3 rounded-xl font-bold uppercase tracking-widest hover:bg-[#ff9e00]/10 transition-all">Contenido</a>
+            </div>
+
+            <!-- Toggles de Descuento y Moneda -->
+            <div
+                class="flex flex-col sm:flex-row items-center gap-6 mt-6 bg-white/5 px-6 py-3 rounded-2xl border border-white/10">
+                <!-- Toggle Descuento -->
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-bold text-white transition-colors" id="label-mensual">Mensual</span>
+                    <button id="toggle-descuento" onclick="toggleDescuento()"
+                        class="w-14 h-8 bg-white/10 rounded-full p-1 relative transition-colors duration-300 border border-white/20">
+                        <div id="toggle-knob"
+                            class="w-6 h-6 bg-[#ff9e00] rounded-full shadow-md transform transition-transform duration-300 translate-x-0">
+                        </div>
+                    </button>
+                    <span class="text-sm font-bold text-white/60 flex items-center gap-2 transition-colors"
+                        id="label-anual">
+                        Anual
+                        <span
+                            class="px-3 py-1 bg-gradient-to-r from-[#ff9e00] to-[#ff4500] text-[#1a120a] rounded-full text-[10px] uppercase tracking-widest font-black shadow-[0_0_15px_rgba(255,158,0,0.5)] animate-pulse">-15%</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- S-Series Section -->
+    <section data-aos="fade-up" id="web" class="py-20 px-8 max-w-7xl mx-auto bg-white/5 rounded-[3rem]">
+        <div class="mb-16 text-center">
+            <h2 class="text-headline-lg font-headline-lg text-white mb-4">Planes de <span
+                    class="text-[#00c4bc]">Suscripción (S-Series)</span></h2>
+            <p class="text-white/60">Enfoque en diseño avanzado, UX/UI y gestión audiovisual estratégica.</p>
+        </div>
+
+        <div
+            class="flex md:grid overflow-x-auto md:overflow-x-visible md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch pt-12 pb-12 snap-x snap-mandatory custom-scrollbar pr-8 lg:pr-0 md:pr-0">
+            <!-- S-01: Gráfico Básico -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-white/5 transition-all duration-300 flex flex-col">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px]">
+                    <h3 class="text-2xl font-black text-white leading-tight">S-01: Gráfico Básico</h3>
+                </div>
+                <div class="space-y-1 mb-6">
+                    <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">1 Solicitud Simultánea</p>
+                    <p class="text-white/30 text-[10px]">Entrega: 48-72h hábiles</p>
+                    <p class="text-red-400/80 text-[10px] font-bold uppercase tracking-widest">Bomberazos: No incluidos
+                    </p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-[11px]">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Diseño 2D Operativo
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Diseño gráfico & Branding general
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Banners & Pitch Decks
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Cambios ilimitados
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$9,800" data-annual-mxn="$8,330"
+                            data-monthly-usd="$499" data-annual-usd="$424">$9,800</span>
+                        <span class="text-xs font-normal text-white/40 price-currency-subtext">/mes</span>
+                    </div>
+                    <div class="price-annual-total text-[10px] text-[#00c4bc] font-bold uppercase tracking-wider hidden mb-2"
+                        data-annual-total-mxn="Ahorras: $17,640/año" data-annual-total-usd="Ahorras: $900/año">Ahorras:
+                        $17,640/año</div>
+                    <a href="contacto.html?plan=s-01"
+                        class="block text-center py-3 rounded-xl border-2 border-[#00c4bc]/30 text-[#00c4bc] text-sm font-bold hover:bg-[#00c4bc] hover:text-[#1a120a] transition-all">Empezar
+                        Proyecto</a>
+                </div>
+            </div>
+
+            <!-- S-02: UX Estratégico -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-[#00c4bc]/20 bg-gradient-to-br from-[#00c4bc]/5 to-transparent transition-all duration-300 flex flex-col relative overflow-hidden hover:border-[#00c4bc] transition-all">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px]">
+                    <h3 class="text-2xl font-black text-[#00c4bc] leading-tight">S-02: UX Estratégico</h3>
+                    <span
+                        class="px-3 py-1 rounded-full bg-[#00c4bc]/20 text-[#00c4bc] text-[10px] font-black uppercase tracking-tighter border border-[#00c4bc]/30 whitespace-nowrap">Más
+                        popular</span>
+                </div>
+                <div class="space-y-1 mb-6">
+                    <p class="text-white/60 text-[10px] uppercase tracking-widest font-bold">1 Solicitud Simultánea</p>
+                    <p class="text-white/40 text-[10px]">Entrega: 48h hábiles</p>
+                    <p class="text-primary text-[10px] font-bold uppercase tracking-widest">1 Bomberazo al mes (24h)</p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-[11px]">
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">verified</span>
+                        Diseño UI/UX avanzado
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">verified</span>
+                        Wireframes & Prototipos interactivos
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">verified</span>
+                        Gestión de Desarrollo Web
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">verified</span>
+                        Cambios prioritarios
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-4xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$16,500" data-annual-mxn="$14,025"
+                            data-monthly-usd="$849" data-annual-usd="$721">$16,500</span>
+                        <span class="text-xs font-normal text-white/40 price-currency-subtext">/mes</span>
+                    </div>
+                    <div class="price-annual-total text-[10px] text-[#00c4bc] font-bold uppercase tracking-wider hidden mb-2"
+                        data-annual-total-mxn="Ahorras: $29,700/año" data-annual-total-usd="Ahorras: $1,536/año">
+                        Ahorras: $29,700/año</div>
+                    <a href="contacto.html?plan=s-02"
+                        class="block text-center py-3 rounded-xl bg-[#00c4bc] text-[#1a120a] text-sm font-bold shadow-[0_10px_30px_rgba(0,196,188,0.3)] hover:scale-105 transition-all font-sans">Solicitar
+                        Web</a>
+                </div>
+            </div>
+
+            <!-- S-03: Audiovisual Pro -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-white/5 transition-all duration-300 flex flex-col">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px]">
+                    <h3 class="text-2xl font-black text-white leading-tight">S-03: Audiovisual Pro</h3>
+                </div>
+                <div class="space-y-1 mb-6">
+                    <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">1 Solicitud Simultánea</p>
+                    <p class="text-white/30 text-[10px]">Entrega: 24-48h hábiles</p>
+                    <p class="text-primary text-[10px] font-bold uppercase tracking-widest">2 Bomberazos al mes (12h)
+                    </p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-[11px]">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">star</span>
+                        Modelado de Producto, Renders Fotorrealistas CGI, Animación de Entornos Virtuales y Optimización
+                        3D por IA
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">star</span>
+                        Motion Graphics & Animaciones 2D/3D Avanzadas
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">star</span>
+                        Edición de Video Avanzada (Reels/TikTok)
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">star</span>
+                        Inteligencia Artificial Audiovisual
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$24,500" data-annual-mxn="$20,825"
+                            data-monthly-usd="$1,249" data-annual-usd="$1,061">$24,500</span>
+                        <span class="text-xs font-normal text-white/40 price-currency-subtext">/mes</span>
+                    </div>
+                    <div class="price-annual-total text-[10px] text-[#00c4bc] font-bold uppercase tracking-wider hidden mb-2"
+                        data-annual-total-mxn="Ahorras: $44,100/año" data-annual-total-usd="Ahorras: $2,256/año">
+                        Ahorras: $44,100/año</div>
+                    <a href="contacto.html?plan=s-03"
+                        class="block text-center py-3 rounded-xl border-2 border-white/10 text-white text-sm font-bold hover:bg-[#00c4bc] hover:text-[#1a120a] hover:border-transparent transition-all font-sans">Seleccionar
+                        Plan</a>
+                </div>
+            </div>
+
+            <!-- S-04 Custom / Enterprise -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-[#00c4bc]/40 bg-[url('../imag/noise.png')] bg-cover relative overflow-hidden flex flex-col h-full hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,196,188,0.15)]">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#00c4bc]/10 to-transparent pointer-events-none">
+                </div>
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px] relative z-10">
+                    <h3 class="text-2xl font-black text-[#00c4bc] leading-tight">S-04: A Medida</h3>
+                    <span
+                        class="px-3 py-1 rounded-full bg-[#00c4bc] text-[#1a120a] text-[10px] font-black uppercase tracking-tighter shadow-lg whitespace-nowrap">Personalizado</span>
+                </div>
+                <div class="space-y-1 mb-6 relative z-10">
+                    <p class="text-white/60 text-[10px] uppercase tracking-widest font-bold">Escala Sin Límites</p>
+                    <p class="text-primary text-[10px] font-bold uppercase tracking-widest">Prioridad Absoluta</p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-[11px] relative z-10">
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">tune</span>
+                        Constructor Interactivo
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">all_inclusive</span>
+                        Capacidad Expandible
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">3d_rotation</span>
+                        Modelado de Producto, Renders Fotorrealistas CGI, Animación de Entornos Virtuales y Optimización
+                        3D
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">support_agent</span>
+                        Soporte Directo VIP
+                    </li>
+                </ul>
+                <div class="mt-auto relative z-10">
+                    <div class="text-3xl font-bold text-white mb-2">Arma tu Plan</div>
+                    <a href="constructor_planes.html"
+                        class="block text-center w-full py-3 rounded-xl bg-[#00c4bc] text-[#1a120a] text-sm font-black transition-all hover:scale-105 shadow-[0_10px_30px_rgba(0,196,188,0.4)] font-sans">Construir
+                        Suscripción</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Promocional: Futurx Custom -->
+        <div class="py-20 max-w-5xl mx-auto">
+            <div
+                class="liquid-glass p-12 rounded-[3.5rem] border-[#ff9e00]/30 bg-gradient-to-br from-[#121212] via-[#ff9e00]/5 to-[#080808] text-center shadow-[0_30px_100px_rgba(0,0,0,0.8)] relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('../imag/noise.png')] opacity-[0.03] pointer-events-none"></div>
+                <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                    <span
+                        class="px-4 py-1.5 rounded-full bg-[#ff9e00]/10 text-[#ff9e00] text-xs font-bold uppercase tracking-widest border border-[#ff9e00]/20">A
+                        la Medida</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white font-sans leading-tight">
+                        Configura tu Plan <span class="text-[#ff9e00]">Futurx Custom</span></h2>
+                    <p class="text-white/60 text-sm md:text-base leading-relaxed font-semibold">
+                        ¿Nuestros planes estándar no se adaptan al volumen de tus marcas? Diseña a la medida la
+                        capacidad operativa, velocidad de entrega y el equipo asignado a tus proyectos en tiempo real,
+                        incluyendo entregables de Modelado de Producto, Renders Fotorrealistas CGI, Animación de
+                        Entornos Virtuales y Optimización de Activos 3D asistidos por IA de última generación.
+                    </p>
+                    <div class="pt-4">
+                        <a href="constructor_planes.html"
+                            class="inline-block px-8 py-4 rounded-xl bg-[#ff9e00] text-[#1a120a] font-black uppercase tracking-widest hover:scale-105 hover:shadow-[0_10px_40px_rgba(255,158,0,0.4)] transition-all font-sans text-sm">
+                            Abrir Constructor Custom
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- P-Series Section -->
+    <section data-aos="fade-up" id="planes" class="py-20 px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-headline-lg font-headline-lg text-white mb-4">Planes de <span
+                    class="text-[#ff9e00]">Contenido (P-Series)</span></h2>
+            <p class="text-white/60">Enfocado en marcas que buscan volumen de contenido y una gestión activa de su
+                comunidad.</p>
+        </div>
+
+        <div
+            class="flex md:grid overflow-x-auto md:overflow-x-visible md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto gap-6 items-stretch pt-12 pb-12 snap-x snap-mandatory custom-scrollbar pr-8 lg:pr-0 md:pr-0">
+            <!-- P-01: Presencia Visual -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-white/5 transition-all duration-300 flex flex-col">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px]">
+                    <h3 class="text-2xl font-black text-white leading-tight">P-01: Presencia Visual</h3>
+                </div>
+                <div class="space-y-1 mb-6">
+                    <p class="text-white/40 text-xs uppercase tracking-widest">15 Gráficos/Stories</p>
+                    <p class="text-white/30 text-[10px] uppercase tracking-widest">Entrega: Carpeta Drive</p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-xs">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        15 activos gráficos o stories
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Copywriting con IA Básica
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Foco en consistencia visual
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Entrega mensual en Drive
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$6,000" data-annual-mxn="$5,100"
+                            data-monthly-usd="$299" data-annual-usd="$254">$6,000</span>
+                        <span class="text-xs font-normal text-white/40 price-currency-subtext">/mes</span>
+                    </div>
+                    <div class="price-annual-total text-[10px] text-[#ff9e00] font-bold uppercase tracking-wider hidden mb-2"
+                        data-annual-total-mxn="Ahorras: $10,800/año" data-annual-total-usd="Ahorras: $540/año">Ahorras:
+                        $10,800/año</div>
+                    <a href="contacto.html?plan=p-01"
+                        class="block text-center py-3 rounded-xl border-2 border-white/10 text-white text-sm font-bold hover:bg-[#ff9e00] hover:text-[#1a120a] hover:border-transparent transition-all">Elegir
+                        Plan</a>
+                </div>
+            </div>
+
+            <!-- P-02: Contenido Pro -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-[#ff9e00]/20 bg-gradient-to-br from-[#ff9e00]/5 to-transparent transition-all duration-300 flex flex-col relative overflow-hidden">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px]">
+                    <h3 class="text-2xl font-black text-[#ff9e00] leading-tight">P-02: Contenido Pro</h3>
+                    <span
+                        class="px-3 py-1 rounded-full bg-[#ff9e00]/20 text-[#ff9e00] text-[10px] font-black uppercase tracking-tighter border border-[#ff9e00]/30 whitespace-nowrap">Más
+                        popular</span>
+                </div>
+                <div class="space-y-1 mb-6">
+                    <p class="text-white/60 text-xs uppercase tracking-widest">25 Gráficos + 4 Reels/TikTok</p>
+                    <p class="text-[#ff9e00] text-[10px] font-bold uppercase tracking-widest">Publicación: 1 Red Social
+                    </p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-xs">
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">verified</span>
+                        Storytelling Persuasivo con IA
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">verified</span>
+                        4 Reels o TikToks editados/mes
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">verified</span>
+                        Programación & Publicación (1 Red)
+                    </li>
+                    <li class="flex items-start gap-3 text-white">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">verified</span>
+                        Diseño de Kit de Stickers
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-4xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$9,800" data-annual-mxn="$8,330"
+                            data-monthly-usd="$499" data-annual-usd="$424">$9,800</span>
+                        <span class="text-xs font-normal text-white/40 price-currency-subtext">/mes</span>
+                    </div>
+                    <div class="price-annual-total text-[10px] text-[#ff9e00] font-bold uppercase tracking-wider hidden mb-2"
+                        data-annual-total-mxn="Ahorras: $17,640/año" data-annual-total-usd="Ahorras: $900/año">Ahorras:
+                        $17,640/año</div>
+                    <a href="contacto.html?plan=p-02"
+                        class="block text-center py-3 rounded-xl bg-[#ff9e00] text-[#1a120a] text-sm font-bold shadow-[0_10px_30px_rgba(255,158,0,0.3)] hover:scale-105 transition-all font-sans">Suscribirse
+                        Pro</a>
+                </div>
+            </div>
+
+            <!-- P-03: Dominio Digital -->
+            <div
+                class="plan-card flex-none md:flex-initial w-[85%] md:w-full md:col-span-2 md:mx-auto md:max-w-[calc(50%-12px)] lg:col-span-1 lg:max-w-none snap-center liquid-glass p-8 rounded-[2.5rem] border-white/5 transition-all duration-300 flex flex-col">
+                <div class="flex flex-wrap items-start justify-between gap-4 mb-4 min-h-[56px]">
+                    <h3 class="text-2xl font-black text-white leading-tight">P-03: Dominio Digital</h3>
+                </div>
+                <div class="space-y-1 mb-6">
+                    <p class="text-white/40 text-xs uppercase tracking-widest">30 Gráficos + 8 Reels/TikTok</p>
+                    <p class="text-primary text-[10px] font-bold uppercase tracking-widest">Publicación: 3 Redes +
+                        Reporte</p>
+                </div>
+                <ul class="space-y-3 flex-grow mb-10 text-xs">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">star</span>
+                        Ganchos Pro (Hooks) & Copy IA
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">star</span>
+                        8 Reels o TikToks editados/mes
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">star</span>
+                        Publicación y gestión en 3 Redes
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">star</span>
+                        Reporte de métricas y competencia
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$16,000" data-annual-mxn="$13,600"
+                            data-monthly-usd="$799" data-annual-usd="$679">$16,000</span>
+                        <span class="text-xs font-normal text-white/40 price-currency-subtext">/mes</span>
+                    </div>
+                    <div class="price-annual-total text-[10px] text-[#ff9e00] font-bold uppercase tracking-wider hidden mb-2"
+                        data-annual-total-mxn="Ahorras: $28,800/año" data-annual-total-usd="Ahorras: $1,440/año">
+                        Ahorras: $28,800/año</div>
+                    <a href="contacto.html?plan=p-03"
+                        class="block text-center py-3 rounded-xl border-2 border-white/10 text-white text-sm font-bold hover:bg-[#ff9e00] hover:text-[#1a120a] hover:border-transparent transition-all">Suscribirse
+                        Total</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios por Proyecto (Pago Único) -->
+    <section data-aos="fade-up" id="individuales" class="py-20 px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span
+                class="px-4 py-1.5 rounded-full bg-[#ff9e00]/10 text-[#ff9e00] text-xs font-bold uppercase tracking-widest border border-[#ff9e00]/20">Sin
+                Suscripción</span>
+            <h2 class="text-headline-lg font-headline-lg text-white mt-4 mb-4">Servicios por Proyecto</h2>
+            <p class="text-white/60">¿Prefieres trabajar por proyecto? Adquiere servicios individuales sin cuotas
+                mensuales recurrentes y con la misma calidad premium de Futurx.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch pt-12 pb-12">
+            <!-- Card 1: Identidad Express -->
+            <div
+                class="group plan-card flex-none md:flex-initial w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-white/5 flex flex-col h-full hover:scale-105 hover:z-20 transition-all duration-500">
+                <div class="mb-6">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-2 min-h-[56px]">
+                        <h4 class="text-2xl font-black text-white leading-tight">Identidad Express</h4>
+                    </div>
+                    <div class="space-y-1 mb-6">
+                        <p class="text-white/40 text-xs uppercase tracking-widest font-bold">Entrega: 5-7 días hábiles
+                        </p>
+                        <p class="text-white/30 text-[10px]">Manual básico de uso de marca</p>
+                    </div>
+                </div>
+                <ul class="space-y-3 flex-grow text-xs mb-10">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Diseño de Logotipo & Isotipo
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Paleta de colores & Tipografías
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Estilos visuales y aplicaciones
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        3 revisiones incluidas
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$15,500" data-annual-mxn="$15,500"
+                            data-monthly-usd="$849" data-annual-usd="$849">$15,500</span>
+                        <span class="text-xs font-normal text-white/40">/servicio</span>
+                    </div>
+                    <a href="contacto.html?service=branding"
+                        class="block text-center w-full py-3 rounded-xl border-2 border-white/10 text-white text-sm font-bold transition-all duration-300 group-hover:bg-[#ff9e00] group-hover:text-[#1a120a] group-hover:border-transparent group-hover:shadow-[0_10px_30px_rgba(255,158,0,0.3)]">Adquirir</a>
+                </div>
+            </div>
+
+            <!-- Card 2: Landing Page Premium -->
+            <div
+                class="group plan-card flex-none md:flex-initial w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-[#00c4bc]/20 bg-gradient-to-br from-[#00c4bc]/5 to-transparent relative overflow-hidden flex flex-col h-full hover:scale-105 hover:z-20 transition-all duration-500">
+                <div class="mb-6">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-2 min-h-[56px]">
+                        <h4 class="text-2xl font-black text-white leading-tight font-sans">Landing Page
+                            Premium</h4>
+                    </div>
+                    <div class="space-y-1 mb-6">
+                        <p class="text-[#00c4bc] text-xs uppercase tracking-widest font-bold">Framer / Webflow</p>
+                        <p class="text-white/30 text-[10px]">Totalmente responsiva & SEO-ready</p>
+                    </div>
+                </div>
+                <ul class="space-y-3 flex-grow text-xs mb-10">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Diseño a medida en Figma
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Desarrollo en Framer o Webflow
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Animaciones y transiciones premium
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Optimización de velocidad y SEO
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$12,500" data-annual-mxn="$12,500"
+                            data-monthly-usd="$699" data-annual-usd="$699">$12,500</span>
+                        <span class="text-xs font-normal text-white/40">/proyecto</span>
+                    </div>
+                    <a href="contacto.html?service=landing"
+                        class="block text-center w-full py-3 rounded-xl border-2 border-[#00c4bc] bg-[#00c4bc]/10 text-white text-sm font-bold transition-all duration-300 group-hover:bg-[#00c4bc] group-hover:text-[#1a120a] group-hover:border-transparent group-hover:shadow-[0_10px_30px_rgba(0,196,188,0.3)]">Adquirir</a>
+                </div>
+            </div>
+
+            <!-- Card 3: Video / Reel / TikTok -->
+            <div
+                class="group plan-card flex-none md:flex-initial w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-white/5 flex flex-col h-full hover:scale-105 hover:z-20 transition-all duration-500">
+                <div class="mb-6">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-2 min-h-[56px]">
+                        <h4 class="text-2xl font-black text-white leading-tight font-sans">Video / Reel /
+                            TikTok</h4>
+                    </div>
+                    <div class="space-y-1 mb-6">
+                        <p class="text-white/40 text-xs uppercase tracking-widest font-bold">Entrega: 48-72h</p>
+                        <p class="text-white/30 text-[10px]">Edición de alto impacto vertical</p>
+                    </div>
+                </div>
+                <ul class="space-y-3 flex-grow text-xs mb-10">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Cortes dinámicos & Efectos
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Subtítulos animados y emojis
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Diseño de portada (Thumbnail)
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#ff9e00] text-lg">check_circle</span>
+                        Diseño de audio & Sound FX
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$7,500" data-annual-mxn="$7,500"
+                            data-monthly-usd="$499" data-annual-usd="$499">$7,500</span>
+                        <span class="text-xs font-normal text-white/40">/video</span>
+                    </div>
+                    <a href="contacto.html?service=video"
+                        class="block text-center w-full py-3 rounded-xl border-2 border-white/10 text-white text-sm font-bold transition-all duration-300 group-hover:bg-[#ff9e00] group-hover:text-[#1a120a] group-hover:border-transparent group-hover:shadow-[0_10px_30px_rgba(255,158,0,0.3)]">Adquirir</a>
+                </div>
+            </div>
+
+            <!-- Card 4: Modelado & Render 3D -->
+            <div
+                class="group plan-card flex-none md:flex-initial w-full snap-center liquid-glass p-8 rounded-[2.5rem] border-[#00c4bc]/20 bg-gradient-to-br from-[#00c4bc]/5 to-transparent relative overflow-hidden flex flex-col h-full hover:scale-105 hover:z-20 transition-all duration-500">
+                <div class="mb-6">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-2 min-h-[56px]">
+                        <h4 class="text-2xl font-black text-[#00c4bc] leading-tight font-sans">Modelado &
+                            Render 3D</h4>
+                    </div>
+                    <div class="space-y-1 mb-6">
+                        <p class="text-[#00c4bc] text-xs uppercase tracking-widest font-bold">CGI Fotorrealista</p>
+                        <p class="text-white/30 text-[10px]">Modelado 3D desde plano o foto</p>
+                    </div>
+                </div>
+                <ul class="space-y-3 flex-grow text-xs mb-10">
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Modelado 3D de Envase / Producto
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Texturizado e Iluminación de estudio
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        3 Renders en alta resolución
+                    </li>
+                    <li class="flex items-start gap-3 text-white/80">
+                        <span class="material-symbols-outlined text-[#00c4bc] text-lg">check_circle</span>
+                        Revisiones de material/color
+                    </li>
+                </ul>
+                <div class="mt-auto flex flex-col justify-end min-h-[90px]">
+                    <div class="text-3xl font-black text-white mb-1">
+                        <span class="price-value" data-monthly-mxn="$15,000" data-annual-mxn="15,000"
+                            data-monthly-usd="$799" data-annual-usd="$799">$15,000</span>
+                        <span class="text-xs font-normal text-white/40">/producto</span>
+                    </div>
+                    <a href="contacto.html?service=3d"
+                        class="block text-center w-full py-3 rounded-xl border-2 border-[#00c4bc] bg-[#00c4bc]/10 text-white text-sm font-bold transition-all duration-300 group-hover:bg-[#00c4bc] group-hover:text-[#1a120a] group-hover:border-transparent group-hover:shadow-[0_10px_30px_rgba(0,196,188,0.3)]">Adquirir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section data-aos="fade-up" class="py-20 px-8 max-w-5xl mx-auto overflow-x-auto">
+        <h2 class="text-3xl font-bold text-white mb-12 text-center">Comparativa de Beneficios</h2>
+        <table class="w-full text-left border-collapse liquid-glass rounded-3xl overflow-hidden">
+            <thead>
+                <tr class="border-b border-white/10">
+                    <th class="p-6 text-[#ff9e00] font-bold">Característica</th>
+                    <th class="p-6 text-white font-bold">Presencia Visual (P-01)</th>
+                    <th class="p-6 text-white font-bold">Contenido Pro (P-02)</th>
+                    <th class="p-6 text-white font-bold">Dominio Digital (P-03)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b border-white/5">
+                    <td class="p-6 text-white/60">Contenido / mes</td>
+                    <td class="p-6 text-white">15 Gráficos</td>
+                    <td class="p-6 text-white">25 Gráficos + 4 Videos</td>
+                    <td class="p-6 text-white">30 Gráficos + 8 Videos</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                    <td class="p-6 text-white/60">Bomberazos (24h)</td>
+                    <td class="p-6 text-white">1 al mes</td>
+                    <td class="p-6 text-white">2 al mes</td>
+                    <td class="p-6 text-white">3 al mes</td>
+                </tr>
+                <tr class="border-b border-white/5">
+                    <td class="p-6 text-white/60">Gestión de Redes</td>
+                    <td class="p-6 text-white/40">No incluye</td>
+                    <td class="p-6 text-white">1 Red Social</td>
+                    <td class="p-6 text-white">3 Redes Sociales</td>
+                </tr>
+                <tr>
+                    <td class="p-6 text-white/60">Reporte de Métricas</td>
+                    <td class="p-6 text-white">Trimestral</td>
+                    <td class="p-6 text-white">Mensual</td>
+                    <td class="p-6 text-white">Mensual + Análisis Comp.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Beneficios de Fidelidad (Descuentos) -->
+    <section data-aos="fade-up" class="py-20 px-8 max-w-5xl mx-auto">
+        <div
+            class="liquid-glass p-12 rounded-[3rem] border-[#ff9e00]/20 bg-gradient-to-br from-[#ff9e00]/5 to-transparent text-center">
+            <h2 class="text-3xl font-black text-white mb-4 uppercase tracking-tighter">Beneficios de <span
+                    class="text-[#ff9e00]">Fidelidad</span></h2>
+            <p class="text-white/60 mb-12 max-w-2xl mx-auto">Obtén descuentos exclusivos al asegurar tu presencia
+                digital a largo plazo mediante pagos adelantados.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Trimestral -->
+                <div
+                    class="p-6 rounded-2xl bg-white/5 border border-white/10 transition-all hover:border-[#ff9e00]/30 group">
+                    <p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Pago Trimestral</p>
+                    <div class="text-4xl font-black text-[#ff9e00] mb-2">5% <span class="text-xs">OFF</span></div>
+                    <p class="text-[11px] text-white/60">Descuento total en 3 meses de servicio.</p>
+                </div>
+                <!-- Semestral -->
+                <div
+                    class="p-6 rounded-2xl bg-white/5 border border-white/10 transition-all hover:border-[#ff9e00]/30 group relative">
+                    <div
+                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#ff9e00] text-[#1a120a] px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-tighter">
+                        Más Popular</div>
+                    <p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Pago Semestral</p>
+                    <div class="text-4xl font-black text-[#ff9e00] mb-2">10% <span class="text-xs">OFF</span></div>
+                    <p class="text-[11px] text-white/60">Descuento total en 6 meses de servicio.</p>
+                </div>
+                <!-- Anual -->
+                <div
+                    class="p-6 rounded-2xl bg-white/5 border border-white/10 transition-all hover:border-[#ff9e00]/30 group">
+                    <p class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2">Pago Anual</p>
+                    <div class="text-4xl font-black text-[#ff9e00] mb-2">15% <span class="text-xs">OFF</span></div>
+                    <p class="text-[11px] text-white/60">Máximo ahorro asegurando 12 meses.</p>
+                </div>
+            </div>
+
+            <div class="mt-12">
+                <a href="contacto.html" class="inline-flex items-center gap-2 text-[#ff9e00] font-bold hover:underline">
+                    Solicitar facturación recurrente o descuentos <span
+                        class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] border-t border-white/5 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-lg font-bold text-white"><img src="../imag/Logo naranja.png" alt="Futurx" class="h-8">
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 items-center">
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100"
+                    href="#">
+                    <span class="material-symbols-outlined text-sm">photo_camera</span> Instagram
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100"
+                    href="terminos.html#privacy">
+                    <span class="material-symbols-outlined text-sm">security</span> Política de Privacidad
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100"
+                    href="terminos.html#terms">
+                    <span class="material-symbols-outlined text-sm">gavel</span> Términos de Servicio
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100"
+                    href="#">
+                    <span class="material-symbols-outlined text-sm">chat</span> WhatsApp
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100"
+                    href="mailto:hello@futurx.studio">
+                    <span class="material-symbols-outlined text-sm">mail</span> Correo
+                </a>
+            </div>
+            <!-- Selector de Divisa -->
+            <div
+                class="flex items-center gap-1 bg-white/5 border border-white/10 rounded-xl p-1 font-sans text-[10px] font-bold">
+                <button onclick="changeFooterCurrency('MXN')" id="footer-btn-mxn"
+                    class="px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]">MXN</button>
+                <button onclick="changeFooterCurrency('USD')" id="footer-btn-usd"
+                    class="px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white">USD</button>
+            </div>
+            <div class="font-sans text-xs text-white/40">© 2024 Futurx Studio. Todos los derechos
+                reservados.</div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuLinks = mobileMenu.querySelectorAll('a');
+
+            function toggleMenu() {
+                menuBtn.classList.toggle('open');
+                mobileMenu.classList.toggle('opacity-0');
+                mobileMenu.classList.toggle('pointer-events-none');
+                mobileMenu.classList.toggle('-translate-y-10');
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+            menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+
+    <script>
+        let isAnual = false;
+
+        function toggleDescuento() {
+            isAnual = !isAnual;
+            const knob = document.getElementById('toggle-knob');
+            const labelMensual = document.getElementById('label-mensual');
+            const labelAnual = document.getElementById('label-anual');
+
+            if (isAnual) {
+                knob.classList.remove('translate-x-0');
+                knob.classList.add('translate-x-6');
+                labelMensual.classList.replace('text-white', 'text-white/60');
+                labelAnual.classList.replace('text-white/60', 'text-white');
+            } else {
+                knob.classList.remove('translate-x-6');
+                knob.classList.add('translate-x-0');
+                labelMensual.classList.replace('text-white/60', 'text-white');
+                labelAnual.classList.replace('text-white', 'text-white/60');
+            }
+            updatePrices();
+        }
+
+
+
+        function updatePrices() {
+            const prices = document.querySelectorAll('.price-value');
+            const totals = document.querySelectorAll('.price-annual-total');
+            const currencySubtext = document.querySelectorAll('.price-currency-subtext');
+
+            prices.forEach(price => {
+                const key = `${isAnual ? 'annual' : 'monthly'}-${isUSD ? 'usd' : 'mxn'}`;
+                const val = price.getAttribute(`data-${key}`);
+                if (val) {
+                    price.textContent = val;
+                    price.classList.add('animate-pulse');
+                    setTimeout(() => price.classList.remove('animate-pulse'), 300);
+                }
+            });
+
+            currencySubtext.forEach(sub => {
+                sub.textContent = isUSD ? '/ USD al mes' : '/mes';
+            });
+
+            totals.forEach(total => {
+                const key = `annual-total-${isUSD ? 'usd' : 'mxn'}`;
+                const val = total.getAttribute(`data-${key}`);
+                if (isAnual && val) {
+                    total.textContent = val;
+                    total.classList.remove('hidden');
+                } else {
+                    total.classList.add('hidden');
+                }
+            });
+        }
+
+        // Custom Calculator Lógica
+        const formatterMxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 });
+        const formatterUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+
+
+
+
+    </script>
+
+    <!-- Global Currency Persistence Script -->
+    <script>
+        var isUSD = false;
+        function initGlobalCurrency() {
+            const currency = localStorage.getItem('currency') || 'MXN';
+            window.isUSD = (currency === 'USD');
+            if (typeof isUSD !== 'undefined') {
+                isUSD = window.isUSD;
+            }
+            updateFooterCurrencyUI(currency);
+
+            if (typeof updatePrices === 'function') {
+                updatePrices();
+            }
+            if (typeof calcularPresupuesto === 'function') {
+                calcularPresupuesto();
+            }
+        }
+
+        function changeFooterCurrency(currency) {
+            localStorage.setItem('currency', currency);
+            window.isUSD = (currency === 'USD');
+            if (typeof isUSD !== 'undefined') {
+                isUSD = window.isUSD;
+            }
+            updateFooterCurrencyUI(currency);
+
+            if (typeof updatePrices === 'function') {
+                updatePrices();
+            }
+            if (typeof calcularPresupuesto === 'function') {
+                calcularPresupuesto();
+            }
+        }
+
+        function updateFooterCurrencyUI(currency) {
+            const btnMxn = document.getElementById('footer-btn-mxn');
+            const btnUsd = document.getElementById('footer-btn-usd');
+            if (!btnMxn || !btnUsd) return;
+
+            if (currency === 'USD') {
+                btnMxn.className = "px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white";
+                btnUsd.className = "px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]";
+            } else {
+                btnUsd.className = "px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white";
+                btnMxn.className = "px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]";
+            }
+        }
+
+        // Initialize on DOMContentLoaded or immediately if already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGlobalCurrency);
+        } else {
+            initGlobalCurrency();
+        }
+    </script>
+</body>
+
+</html>

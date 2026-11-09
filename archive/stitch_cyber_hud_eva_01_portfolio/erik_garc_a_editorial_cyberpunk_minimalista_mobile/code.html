@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="mobile_tab" name="shell-type"/>
+<title>Erik García // Senior Product Designer [EVA-01 Aesthetic]</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            evaBg: "#0C0717",
+            evaPanel: "#150B28",
+            evaSurface: "#1E1038",
+            evaBorder: "#3B1D6E",
+            acidGreen: "#4DFF36",
+            mechaOrange: "#FF5900",
+            titaniumWhite: "#FFFFFF",
+            lavenderGray: "#B8B3C7",
+            mistGray: "#6D657E"
+          },
+          fontFamily: {
+            mono: ["JetBrains Mono", "monospace"],
+            display: ["Space Grotesk", "sans-serif"],
+            body: ["Inter", "sans-serif"]
+          },
+          boxShadow: {
+            neonGreen: "0 0 16px rgba(77, 255, 54, 0.25)",
+            neonGreenSm: "0 0 8px rgba(77, 255, 54, 0.4)",
+            neonOrangeSm: "0 0 8px rgba(255, 89, 0, 0.4)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+        background-color: #0C0717;
+        color: #B8B3C7;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .clip-corner {
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    }
+    .clip-corner-all {
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px);
+    }
+  </style>
+</head>
+<body class="bg-evaBg text-lavenderGray font-body antialiased flex flex-col min-h-screen selection:bg-acidGreen selection:text-evaBg">
+<!-- 1. TOPBAR HUD COMPACTA (56px fijo) -->
+<header class="fixed top-0 left-0 right-0 w-full z-50 bg-evaPanel/90 backdrop-blur-md border-b border-evaBorder pt-safe">
+<div class="h-14 px-4 max-w-[390px] mx-auto flex items-center justify-between">
+<!-- Identificador NERV -->
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-acidGreen shadow-neonGreenSm rounded-xs animate-ping"></div>
+<span class="font-display font-bold text-xs tracking-wider text-titaniumWhite">ERIK GARCÍA</span>
+<span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-semibold bg-acidGreen/15 text-acidGreen border border-acidGreen/40">[EVA_01]</span>
+</div>
+<!-- Telemetría & Botón Menú -->
+<div class="flex items-center gap-2.5">
+<div class="hidden xs:flex flex-col text-right">
+<span class="font-mono text-[9px] text-mistGray leading-tight">TELEMETRÍA</span>
+<span class="font-mono text-[10px] text-acidGreen font-medium leading-tight">SYS.SYNC 98.4%</span>
+</div>
+<div class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface flex items-center gap-1.5 xs:hidden">
+<span class="w-1.5 h-1.5 rounded-full bg-acidGreen"></span>
+<span class="font-mono text-[10px] text-acidGreen">98.4%</span>
+</div>
+<button aria-label="Abrir menú táctico" class="w-8 h-8 rounded border border-evaBorder bg-evaSurface text-titaniumWhite flex items-center justify-center hover:border-acidGreen hover:text-acidGreen transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+</button>
+</div>
+</div>
+</header>
+<!-- CONTENIDO PRINCIPAL ADAPTADO A 390px -->
+<main class="w-full max-w-[390px] mx-auto flex flex-col relative pt-16 pb-36 px-4 gap-8">
+<!-- 2. HERO MÓVIL VERTICALIZADO -->
+<section class="flex flex-col gap-4 pt-2">
+<!-- Visor de Consola 3D EVA-01 -->
+<div class="relative w-full rounded-lg border border-evaBorder bg-evaPanel overflow-hidden shadow-lg group">
+<!-- Decoración HUD Corner -->
+<div class="absolute top-2 left-2 z-10 font-mono text-[9px] text-acidGreen tracking-widest bg-evaBg/80 px-2 py-0.5 border border-evaBorder rounded backdrop-blur-sm">
+        CAM_01 // 3D_VIEWPORT
+      </div>
+<div class="absolute top-2 right-2 z-10 font-mono text-[9px] text-mechaOrange tracking-widest bg-evaBg/80 px-1.5 py-0.5 border border-evaBorder rounded backdrop-blur-sm">
+        NERV.SPEC
+      </div>
+<div class="relative w-full aspect-video bg-[#080510] flex items-center justify-center overflow-hidden">
+<img alt="Consola EVA-01 Portafolio 3D" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARyy9H1h7S34CfXnQLe9f650sjwc0IxzrTUoWWYSZDTpKpYUEPzEhUrZ3wF8nfDngc0rq-uQLrS1exWGvoXITxROUbkBGSXqMAJhLL9XpVW6WdqW80TUCzXxS4Koj0Xve9u7fWpTrna7z9zuXbgbN_rnmQ357VAiwrRmKAG9MNU-tMErqPtNO4xFnTMmYaUL43W-r7vP9qGp2HvrW-1Xz5MUCR1bV-qb7jCU1UDS-E0CjXNoMBjlRf"/>
+</div>
+<div class="px-3 py-2 border-t border-evaBorder bg-evaPanel flex items-center justify-between font-mono text-[10px]">
+<span class="text-mistGray">HARDWARE RETRO-FUTURISTA</span>
+<span class="text-titaniumWhite font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-acidGreen shadow-neonGreenSm"></span>
+          EVA-01 CONSOLE
+        </span>
+</div>
+</div>
+<!-- Píldora Naranja Mecha -->
+<div class="inline-flex items-center gap-1.5 self-start px-2.5 py-1 rounded bg-mechaOrange/15 border border-mechaOrange/50 shadow-neonOrangeSm">
+<span class="w-1.5 h-1.5 rounded-full bg-mechaOrange"></span>
+<span class="font-mono text-[10px] tracking-wider text-mechaOrange font-bold uppercase">
+        E-COMMERCE ARCHITECTURE • AI PIPELINES
+      </span>
+</div>
+<!-- Titular Contundente -->
+<h1 class="font-display text-[27px] leading-[1.18] font-bold text-titaniumWhite tracking-tight">
+      Interfaces de alta conversión y dirección técnica con IA
+    </h1>
+<!-- Párrafo Descriptivo -->
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+      Senior Product Designer &amp; Desarrollador Técnico. Fusiono arquitectura de información para retail masivo con pipelines generativos y modelado 3D interactivo.
+    </p>
+<!-- Botones CTAs Hero -->
+<div class="flex flex-col gap-2.5 pt-1">
+<a class="h-11 px-5 rounded bg-acidGreen text-[#0C0717] font-mono text-xs font-bold flex items-center justify-center gap-2 hover:bg-[#3ce527] transition-all shadow-neonGreen active:scale-[0.98]" href="#proyectos">
+<span>EXPLORAR TRABAJOS</span>
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</a>
+<a class="h-11 px-5 rounded border border-evaBorder bg-evaSurface/90 backdrop-blur-sm text-titaniumWhite font-mono text-xs font-medium flex items-center justify-center gap-2 hover:border-acidGreen hover:text-acidGreen transition-colors active:scale-[0.98]" href="#proceso">
+<span>PROCESO TÉCNICO</span>
+<span class="material-symbols-outlined text-[16px]">tune</span>
+</a>
+</div>
+</section>
+<!-- 3. MÉTRICAS EN MATRIZ 2x2 -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between pb-1 border-b border-evaBorder">
+<span class="font-mono text-[10px] text-mistGray uppercase tracking-wider">// BENCHMARK DE RENDIMIENTO</span>
+<span class="font-mono text-[9px] text-acidGreen font-semibold">STATUS: VERIFICADO</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- KPI 1 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-8 h-8 bg-acidGreen/5 rounded-bl-xl border-l border-b border-evaBorder pointer-events-none"></div>
+<div class="font-display text-2xl font-bold text-titaniumWhite flex items-baseline">
+<span class="text-acidGreen mr-0.5">+</span>6 <span class="text-xs font-mono font-normal text-mistGray ml-1">Años</span>
+</div>
+<span class="font-body text-xs text-lavenderGray leading-snug">Exp. Corporativa</span>
+</div>
+<!-- KPI 2 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-8 h-8 bg-mechaOrange/5 rounded-bl-xl border-l border-b border-evaBorder pointer-events-none"></div>
+<div class="font-display text-2xl font-bold text-acidGreen flex items-baseline">
+<span class="text-mechaOrange mr-0.5">-</span>80%
+        </div>
+<span class="font-body text-xs text-lavenderGray leading-snug">Maquetación IA</span>
+</div>
+<!-- KPI 3 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm flex flex-col gap-1 relative overflow-hidden">
+<div class="font-display text-2xl font-bold text-acidGreen flex items-baseline">
+          +35%
+        </div>
+<span class="font-body text-xs text-lavenderGray leading-snug">Conversión CRO</span>
+</div>
+<!-- KPI 4 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm flex flex-col gap-1 relative overflow-hidden">
+<div class="font-display text-2xl font-bold text-acidGreen flex items-baseline">
+          +25%
+        </div>
+<span class="font-body text-xs text-lavenderGray leading-snug">Clics CTR</span>
+</div>
+</div>
+</section>
+<!-- 4. SEPARADOR TÉCNICO DE DESCANSO (32px con micro-badge) -->
+<div class="h-8 flex items-center justify-between relative">
+<div class="w-full h-px bg-evaBorder"></div>
+<span class="absolute right-0 bg-evaBg pl-3 font-mono text-[9px] text-acidGreen uppercase tracking-widest font-semibold">
+      // SEC_01 : PROYECTOS
+    </span>
+</div>
+<!-- 5. SELECTOR DE FILTROS CON SCROLL HORIZONTAL -->
+<div class="overflow-x-auto flex items-center gap-2 pb-1 no-scrollbar -mx-4 px-4">
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded text-[11px] font-mono font-bold bg-acidGreen text-[#0C0717] shadow-neonGreenSm transition-all">
+      TODOS
+    </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded text-[11px] font-mono border border-evaBorder bg-evaPanel text-lavenderGray hover:text-acidGreen hover:border-acidGreen/50 transition-all">
+      UI/UX &amp; E-COMMERCE
+    </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded text-[11px] font-mono border border-evaBorder bg-evaPanel text-lavenderGray hover:text-acidGreen hover:border-acidGreen/50 transition-all">
+      3D &amp; MOTION
+    </button>
+<button class="whitespace-nowrap px-3.5 py-1.5 rounded text-[11px] font-mono border border-evaBorder bg-evaPanel text-lavenderGray hover:text-acidGreen hover:border-acidGreen/50 transition-all">
+      BRANDING
+    </button>
+</div>
+<!-- 6. TARJETAS DE PROYECTOS (1 COLUMNA) -->
+<section class="flex flex-col gap-5" id="proyectos">
+<!-- Proyecto 1: RadioShack Huawei P60 Pro -->
+<article class="rounded-lg border border-evaBorder hover:border-acidGreen transition-all duration-300 bg-evaPanel overflow-hidden flex flex-col group shadow-md hover:shadow-neonGreen">
+<div class="relative w-full aspect-video bg-[#080510] overflow-hidden border-b border-evaBorder">
+<span class="absolute top-2 left-2 z-10 font-mono text-[9px] text-titaniumWhite bg-evaBg/80 px-2 py-0.5 rounded border border-evaBorder backdrop-blur-sm">
+          CASE #01
+        </span>
+<img alt="RadioShack Huawei P60 Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGFblsBVsOJfIjGYGuL4hudWtwfK-VSBIhAEZHFAFP3ScCJQpqEoPqCtfupvW678WQ4fuI6SX5vNnfbIHdY2bBM9nduJ19mKEMUQ9r20bv3G0i_DH0YCJZMqHKAPUtwbCt-k0DqWNxSGqHr4gcl5FxFB9-eqQTsq7WsWcaGcfiWN7lw8iRrUccx2FcDnEiTNC9ZYNVd8ANPAVz4dmAXtOE1I4aBEV4xdNNExDqi3fJhS_zjlX-SYf1"/>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<!-- Badges de stack -->
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Figma Tokens</span>
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Photoshop</span>
+<span class="px-2 py-0.5 rounded border border-mechaOrange/40 bg-mechaOrange/10 font-mono text-[10px] text-mechaOrange">E-Commerce CRO</span>
+</div>
+<div>
+<h3 class="font-display text-base font-bold text-titaniumWhite group-hover:text-acidGreen transition-colors">
+            RadioShack: Huawei P60 Pro
+          </h3>
+<p class="font-body text-xs text-lavenderGray mt-1 leading-relaxed">
+            Diseño responsivo de alta tasa de conversión con selector interactivo día/noche y showcase XMAGE optimizado para retail masivo.
+          </p>
+</div>
+<div class="pt-1 border-t border-evaBorder/50 flex items-center justify-between">
+<span class="font-mono text-[10px] text-mistGray">RETAIL // HARDWARE</span>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-acidGreen font-semibold hover:underline" href="#">
+<span>VER CASO DE ESTUDIO</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Proyecto 2: Asegura VC Insurtech -->
+<article class="rounded-lg border border-evaBorder hover:border-acidGreen transition-all duration-300 bg-evaPanel overflow-hidden flex flex-col group shadow-md hover:shadow-neonGreen">
+<div class="relative w-full aspect-video bg-[#080510] overflow-hidden border-b border-evaBorder">
+<span class="absolute top-2 left-2 z-10 font-mono text-[9px] text-titaniumWhite bg-evaBg/80 px-2 py-0.5 rounded border border-evaBorder backdrop-blur-sm">
+          CASE #02
+        </span>
+<img alt="Asegura VC Insurtech Platform" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOqKu9PTcyrMwIs4oB7D8UCJWbFiUN9GYQmIGjXp88lIcE-cVPtHNlodq0XiBOam0fiuO9kt6qUanKc_JsqZqsroy3s6AT8iJgg_4EPxGxf7jjxn-xHRJQDnOgk3YPafYu5Lk65p9kpuE38m-L0Qx0wZQDxGd9lNXx7mMFa_YRpJm2_XvsylualI13smWqBgT9Ok_Fuaywk5uCHeNDIzSUYUJbco4v_UDklxXIgZeQJOBN4BnE34m_"/>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded border border-acidGreen/40 bg-acidGreen/10 font-mono text-[10px] text-acidGreen">Google Stitch</span>
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">AI Prompting</span>
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Insurtech UX</span>
+</div>
+<div>
+<h3 class="font-display text-base font-bold text-titaniumWhite group-hover:text-acidGreen transition-colors">
+            Asegura VC • Insurtech Platform
+          </h3>
+<p class="font-body text-xs text-lavenderGray mt-1 leading-relaxed">
+            Cotizador modular de pólizas multiproducto desarrollado bajo sprints de prompting semántico y maquetación web acelerada.
+          </p>
+</div>
+<div class="pt-1 border-t border-evaBorder/50 flex items-center justify-between">
+<span class="font-mono text-[10px] text-mistGray">FINTECH // FLOWS</span>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-acidGreen font-semibold hover:underline" href="#">
+<span>VER CASO DE ESTUDIO</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Proyecto 3: Mascota 3D & Consola EVA-01 -->
+<article class="rounded-lg border border-evaBorder hover:border-acidGreen transition-all duration-300 bg-evaPanel overflow-hidden flex flex-col group shadow-md hover:shadow-neonGreen">
+<div class="relative w-full aspect-video bg-[#080510] overflow-hidden border-b border-evaBorder">
+<span class="absolute top-2 left-2 z-10 font-mono text-[9px] text-titaniumWhite bg-evaBg/80 px-2 py-0.5 rounded border border-evaBorder backdrop-blur-sm">
+          CASE #03
+        </span>
+<img alt="Mascota 3D y Consola EVA-01" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCklNFartqbHHEwKe27hxVk49LAtThpzXnyoiicmEYcFcCiNFqI365JjnvedQ-ml2KQZvLMjbbPza5VZCfDe7nldMggpqqt8xRCDaeYbvsjhdcwhBEYhBNxnpiVrAyxfB5dgSmqrWywpFlWdVnmxXVuamBOZ5XnNWpn7Y21Ae_TZ7dPmDXEr2fzPkHW4qz31PzY_1xyZztps2iYQc-340dX02jpDFHgumUJ5ZODjuBwyFnAsJ1TdFFO"/>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Autodesk Maya</span>
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Google Flow</span>
+<span class="px-2 py-0.5 rounded border border-acidGreen/40 bg-acidGreen/10 font-mono text-[10px] text-acidGreen">Realtime 3D</span>
+</div>
+<div>
+<h3 class="font-display text-base font-bold text-titaniumWhite group-hover:text-acidGreen transition-colors">
+            Mascota Corporativa &amp; Consola EVA-01
+          </h3>
+<p class="font-body text-xs text-lavenderGray mt-1 leading-relaxed">
+            Modelado mecha tridimensional, texturizado procedimental y simulación lumínica integrada en tiempo real para entornos interactivos.
+          </p>
+</div>
+<div class="pt-1 border-t border-evaBorder/50 flex items-center justify-between">
+<span class="font-mono text-[10px] text-mistGray">HARDWARE // 3D ASSETS</span>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-acidGreen font-semibold hover:underline" href="#">
+<span>VER CASO DE ESTUDIO</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Proyecto 4: Mala Morrx & Dealer Media -->
+<article class="rounded-lg border border-evaBorder hover:border-acidGreen transition-all duration-300 bg-evaPanel overflow-hidden flex flex-col group shadow-md hover:shadow-neonGreen">
+<div class="relative w-full aspect-video bg-[#080510] overflow-hidden border-b border-evaBorder">
+<span class="absolute top-2 left-2 z-10 font-mono text-[9px] text-titaniumWhite bg-evaBg/80 px-2 py-0.5 rounded border border-evaBorder backdrop-blur-sm">
+          CASE #04
+        </span>
+<img alt="Mala Morrx y Dealer Media" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC98ca3A6L-FoTW_TRhRV8W7f8zFgHKZxQiixNb5SarAXrJxsXmoB38HyUo3OUpP_CaCbmzwQyojREYS6qTy5VFMY3atgeRpM22xpbTumaNCdgP0y_hC6z49E-IjmSycnJp6Juty95WbHDez8KtB2Urzry5l535IaNF8SU7ulyB6M8mxfVoQftAwrr-WFHGoYEsksOY1rDXIee-sEwUhajmiUh0hjTuAi5YfgmrroMwSqnEumTKRYm1"/>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Lettering</span>
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Branding</span>
+<span class="px-2 py-0.5 rounded border border-evaBorder bg-evaSurface font-mono text-[10px] text-lavenderGray">Packaging</span>
+</div>
+<div>
+<h3 class="font-display text-base font-bold text-titaniumWhite group-hover:text-acidGreen transition-colors">
+            Mala Morrx &amp; Dealer Media
+          </h3>
+<p class="font-body text-xs text-lavenderGray mt-1 leading-relaxed">
+            Identidad visual contracultural, tipografía custom y dirección artística para drops de indumentaria urbana y medios digitales.
+          </p>
+</div>
+<div class="pt-1 border-t border-evaBorder/50 flex items-center justify-between">
+<span class="font-mono text-[10px] text-mistGray">BRANDING // CULTURE</span>
+<a class="inline-flex items-center gap-1 font-mono text-xs text-acidGreen font-semibold hover:underline" href="#">
+<span>VER CASO DE ESTUDIO</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</section>
+<!-- SEPARADOR TÉCNICO DE DESCANSO -->
+<div class="h-8 flex items-center justify-between relative">
+<div class="w-full h-px bg-evaBorder"></div>
+<span class="absolute right-0 bg-evaBg pl-3 font-mono text-[9px] text-acidGreen uppercase tracking-widest font-semibold">
+      // SEC_02 : PIPELINE
+    </span>
+</div>
+<!-- 7. PIPELINE STEPPER MÓVIL (4 ETAPAS SECUENCIALES CON PULSO LUMÍNICO) -->
+<section class="flex flex-col gap-3" id="proceso">
+<div class="flex items-center justify-between pb-1 border-b border-evaBorder">
+<h2 class="font-display text-sm font-bold text-titaniumWhite tracking-tight">Pipeline Técnico Sincronizado</h2>
+<span class="font-mono text-[9px] text-mechaOrange font-semibold">AI ACCELERATION</span>
+</div>
+<div class="relative pl-6 flex flex-col gap-4 pt-1">
+<!-- Línea conectora vertical de pulso -->
+<div class="absolute left-2.5 top-3 bottom-3 w-0.5 bg-gradient-to-b from-acidGreen via-evaBorder to-mechaOrange"></div>
+<!-- Etapa 01 -->
+<div class="relative flex flex-col gap-1 p-3 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm">
+<div class="absolute -left-6 top-3 w-2.5 h-2.5 rounded-full bg-acidGreen shadow-neonGreenSm border-2 border-evaBg"></div>
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-acidGreen">01. DATOS &amp; UX</span>
+<span class="font-mono text-[9px] text-mistGray">PROMPT SPEC</span>
+</div>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Definición algorítmica de arquitectura, benchmarking CRO y estructuración semántica en minutos con modelos LLM.
+        </p>
+</div>
+<!-- Etapa 02 -->
+<div class="relative flex flex-col gap-1 p-3 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm">
+<div class="absolute -left-6 top-3 w-2.5 h-2.5 rounded-full bg-acidGreen shadow-neonGreenSm border-2 border-evaBg"></div>
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-acidGreen">02. UI TOKENS</span>
+<span class="font-mono text-[9px] text-mistGray">FIGMA ATOMIC</span>
+</div>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Sistemas modulares, micro-interacciones de precisión y variables de color/espaciado alineadas con tokens de producción.
+        </p>
+</div>
+<!-- Etapa 03 -->
+<div class="relative flex flex-col gap-1 p-3 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm">
+<div class="absolute -left-6 top-3 w-2.5 h-2.5 rounded-full bg-acidGreen shadow-neonGreenSm border-2 border-evaBg"></div>
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-acidGreen">03. 3D &amp; PIPELINE</span>
+<span class="font-mono text-[9px] text-mistGray">MAYA + FLOW</span>
+</div>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Generación acelerada de visuales mecha, texturas procedimentales y renders tridimensionales para landing pages y retail.
+        </p>
+</div>
+<!-- Etapa 04 -->
+<div class="relative flex flex-col gap-1 p-3 rounded-lg border border-evaBorder bg-evaSurface/90 backdrop-blur-sm">
+<div class="absolute -left-6 top-3 w-2.5 h-2.5 rounded-full bg-mechaOrange shadow-neonOrangeSm border-2 border-evaBg"></div>
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-mechaOrange">04. FRONT-END</span>
+<span class="font-mono text-[9px] text-mistGray">QA &amp; DEPLOY</span>
+</div>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Implementación responsiva ultraligera en Tailwind/HTML5 con validación en vivo de métricas de retención y conversión.
+        </p>
+</div>
+</div>
+</section>
+<!-- SEPARADOR TÉCNICO DE DESCANSO -->
+<div class="h-8 flex items-center justify-between relative">
+<div class="w-full h-px border-t border-dashed border-evaBorder"></div>
+<span class="absolute right-0 bg-evaBg pl-3 font-mono text-[9px] text-acidGreen uppercase tracking-widest font-semibold">
+      // SEC_03 : TRAYECTORIA
+    </span>
+</div>
+<!-- 8. EXPEDIENTE PROFESIONAL MÓVIL -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between pb-1 border-b border-evaBorder">
+<h2 class="font-display text-sm font-bold text-titaniumWhite tracking-tight">Expediente Corporativo</h2>
+<span class="font-mono text-[9px] text-mistGray">LOG DE ACTIVIDAD</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Rol 1 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaPanel flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-titaniumWhite">Office Depot // RadioShack</span>
+<span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-acidGreen/15 text-acidGreen border border-acidGreen/30">2021 — PRESENTE</span>
+</div>
+<span class="font-mono text-[10px] text-mechaOrange font-semibold">Senior Product &amp; E-Commerce Designer</span>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Liderazgo visual y técnico de landings de tecnología para marcas globales (Huawei, Apple, Samsung), orquestación de sistemas de diseño y mejora continua del funnel CRO.
+        </p>
+</div>
+<!-- Rol 2 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaPanel flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-titaniumWhite">Asegura VC &amp; Sector Insurtech</span>
+<span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-evaSurface text-lavenderGray border border-evaBorder">2022 — 2024</span>
+</div>
+<span class="font-mono text-[10px] text-acidGreen font-semibold">Lead UI/UX Architect</span>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Arquitectura de cotizadores multiproducto, unificación semántica con tokens y aceleración de entregables mediante pipelines generativos de IA.
+        </p>
+</div>
+<!-- Rol 3 -->
+<div class="p-3.5 rounded-lg border border-evaBorder bg-evaPanel flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs font-bold text-titaniumWhite">Freelance Creative Director</span>
+<span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-evaSurface text-lavenderGray border border-evaBorder">2018 — PRESENTE</span>
+</div>
+<span class="font-mono text-[10px] text-mistGray font-semibold">3D Artist &amp; Brand Systems</span>
+<p class="font-body text-xs text-lavenderGray leading-relaxed">
+          Identidades visuales de alto impacto (Mala Morrx, Dealer Media), modelado retro-mecha 3D y producción de assets interactivos.
+        </p>
+</div>
+</div>
+</section>
+<!-- 9. CIERRE DE CONTACTO PROFESIONAL (TERMINAL ENFOCADO EN CONTRATACIÓN) -->
+<section class="p-4 rounded-lg border border-acidGreen/50 bg-evaSurface/95 backdrop-blur-md flex flex-col gap-3.5 relative shadow-neonGreen">
+<div class="flex items-center justify-between border-b border-evaBorder pb-2">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-acidGreen shadow-neonGreenSm animate-pulse"></span>
+<span class="font-mono text-[10px] font-bold text-acidGreen">TERMINAL OPERATIVA NERV</span>
+</div>
+<span class="font-mono text-[9px] text-mistGray">CANAL SEGURO</span>
+</div>
+<div>
+<h3 class="font-display text-sm font-bold text-titaniumWhite leading-tight">
+        SISTEMA SINCRONIZADO // DISPONIBLE PARA INCORPORACIÓN
+      </h3>
+<p class="font-body text-xs text-lavenderGray mt-1 leading-relaxed">
+        Abierto a roles como Senior Product Designer, Lead UI/UX o E-Commerce Design Architect para squads de alto rendimiento.
+      </p>
+</div>
+<!-- Puertos de Contacto Directo -->
+<div class="grid grid-cols-1 gap-2 pt-1 font-mono text-xs">
+<a class="p-2.5 rounded border border-evaBorder bg-evaPanel hover:border-acidGreen flex items-center justify-between text-titaniumWhite hover:text-acidGreen transition-colors" href="mailto:erik.garcia@example.com">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-acidGreen">mail</span>
+<span class="text-[11px]">erik.garcia@example.com</span>
+</span>
+<span class="text-[9px] text-mistGray">[EMAIL]</span>
+</a>
+<a class="p-2.5 rounded border border-evaBorder bg-evaPanel hover:border-acidGreen flex items-center justify-between text-titaniumWhite hover:text-acidGreen transition-colors" href="https://wa.me/" rel="noopener noreferrer" target="_blank">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-acidGreen">chat</span>
+<span class="text-[11px]">+52 (55) • WHATSAPP DIRECTO</span>
+</span>
+<span class="text-[9px] text-mistGray">[CHAT]</span>
+</a>
+<a class="p-2.5 rounded border border-evaBorder bg-evaPanel hover:border-acidGreen flex items-center justify-between text-titaniumWhite hover:text-acidGreen transition-colors" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-acidGreen">share</span>
+<span class="text-[11px]">linkedin.com/in/erikgarcia</span>
+</span>
+<span class="text-[9px] text-mistGray">[LINKEDIN]</span>
+</a>
+</div>
+</section>
+</main>
+<!-- BARRA FIJA INFERIOR DE ALTA CONVERSIÓN -->
+<footer class="fixed bottom-0 left-0 right-0 w-full z-50 pb-safe bg-evaPanel/95 backdrop-blur-md border-t border-evaBorder shadow-2xl">
+<div class="max-w-[390px] mx-auto px-4 py-2.5 flex items-center gap-2.5">
+<a class="flex-1 h-11 rounded bg-acidGreen text-[#0C0717] font-mono text-xs font-bold flex items-center justify-center gap-2 shadow-neonGreen hover:bg-[#3de027] active:scale-[0.98] transition-all" href="mailto:erik.garcia@example.com">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>CONTACTO DIRECTO</span>
+</a>
+<a class="h-11 px-3.5 rounded border border-evaBorder bg-evaSurface text-titaniumWhite font-mono text-xs font-medium flex items-center justify-center gap-1.5 hover:border-acidGreen hover:text-acidGreen active:scale-[0.98] transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>CV</span>
+</a>
+</div>
+</footer>
+</body></html>

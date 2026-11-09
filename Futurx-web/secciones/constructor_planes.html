@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+    <meta name="description" content="Configura y cotiza un plan de diseño y desarrollo a la medida de las necesidades específicas de tu empresa o startup." />
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Arma tu Plan | Futurx Studio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb868",
+                        "surface-container": "#271e15",
+                        "secondary-fixed": "#63f8ef",
+                        "inverse-on-surface": "#382f25",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-surface": "#f1e0d1",
+                        "tertiary": "#d2cfcf",
+                        "surface-container-highest": "#3d3329",
+                        "surface-container-high": "#32281f",
+                        "on-secondary-container": "#004a47",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed-dim": "#3ddcd3",
+                        "on-surface-variant": "#dac2ad",
+                        "on-primary": "#482900",
+                        "primary-fixed-dim": "#ffb868",
+                        "on-tertiary-container": "#474646",
+                        "on-primary-fixed-variant": "#673d00",
+                        "outline": "#a28d79",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#f1e0d1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#663c00",
+                        "on-secondary": "#003734",
+                        "primary-fixed": "#ffddbb",
+                        "primary-container": "#ff9e00",
+                        "on-primary-fixed": "#2b1700",
+                        "inverse-surface": "#f1e0d1",
+                        "on-tertiary": "#313030",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00c2ba",
+                        "background": "#1a120a",
+                        "surface-container-lowest": "#140d05",
+                        "tertiary-container": "#b6b4b3",
+                        "secondary": "#41ded6",
+                        "surface": "#1a120a",
+                        "outline-variant": "#544433",
+                        "surface-dim": "#1a120a",
+                        "error-container": "#93000a",
+                        "surface-bright": "#42372d",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary": "#ffc586",
+                        "surface-variant": "#3d3329",
+                        "surface-container-low": "#221a11",
+                        "on-secondary-fixed": "#00201e",
+                        "inverse-primary": "#885200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "sans": ["Red Hat Display", "sans-serif"],
+                        "red-hat": ["Red Hat Display", "sans-serif"],
+                        "label-bold": ["Red Hat Display", "sans-serif"],
+                        "body-md": ["Red Hat Display", "sans-serif"],
+                        "body-lg": ["Red Hat Display", "sans-serif"],
+                        "headline-lg": ["Red Hat Display", "sans-serif"],
+                        "headline-md": ["Red Hat Display", "sans-serif"],
+                        "display-xl": ["Red Hat Display", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../imag/Icono naranja.png">
+    <link rel="apple-touch-icon" href="../imag/Icono naranja.png">
+    <link rel="icon" type="image/svg+xml" href="../imag/favicon.svg">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Red Hat Display', sans-serif;
+            color: #f1e0d1;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .grainy-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 10% 20%, rgba(0, 196, 188, 0.1) 0%, transparent 40%);
+        }
+
+        /* Animations */
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 158, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 158, 0, 0.1);
+        }
+
+        .service-card.selected {
+            border-color: #ff9e00;
+            background: rgba(255, 158, 0, 0.1);
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
+
+        label:has(input:checked) {
+            border-color: #ff9e00 !important;
+            background-color: rgba(255, 158, 0, 0.05) !important;
+        }
+
+        .config-btn {
+            transition: all 0.2s;
+        }
+        .config-btn.active {
+            background-color: #00c4bc;
+            color: #1a120a;
+            border-color: #00c4bc;
+            font-weight: bold;
+        }
+
+        .price-update {
+            animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); color: #00c4bc; }
+            100% { transform: scale(1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 158, 0, 0.3); border-radius: 10px; }
+    </style>
+</head>
+
+<body class="bg-background grainy-gradient min-h-screen flex flex-col relative pb-48 md:pb-0">
+
+    <!-- TopNavBar -->
+    <nav id="main-nav"
+        class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-3 bg-[#161616]/70 backdrop-blur-lg rounded-2xl mt-6 mx-auto w-[90%] max-w-7xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] backdrop-saturate-150 transition-all duration-300">
+        <a href="../index.html" class="flex items-center hover:scale-105 transition-transform">
+            <img src="../imag/Logo naranja.png" alt="Futurx" class="h-8">
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a id="nav-proceso"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../index.html#proceso">¿Cómo funciona?</a>
+            <a class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all" href="servicios.html">Servicios</a>
+            <a id="nav-planes"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="planes.html">Planes</a>
+            <a id="nav-portafolio"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="portafolio.html">Portafolio</a>
+            <a id="nav-suscripcion"
+                class="nav-link font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="terminos.html">Suscripción</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="contacto.html"
+                class="hidden sm:flex bg-[#ff9e00] text-[#1a120a] px-6 py-2 rounded-lg font-sans text-sm font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,158,0,0.4)] transition-all scale-95 active:scale-90 items-center justify-center">
+                Contacto
+            </a>
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-[60]">
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed top-24 right-6 left-6 z-[55] liquid-glass rounded-[32px] p-12 flex flex-col items-center gap-8 transition-all duration-500 opacity-0 pointer-events-none -translate-y-10 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../index.html">Inicio</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../index.html#proceso">Proceso</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="servicios.html">Servicios</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="planes.html">Planes</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="terminos.html">Suscripción</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="portafolio.html">Portafolio</a>
+        <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase border border-[#ff9e00]/30 px-8 py-3 rounded-xl bg-[#ff9e00]/5 w-full text-center" href="contacto.html">Contacto</a>
+    </div>
+
+    <main class="max-w-7xl mx-auto w-full px-6 md:px-8 flex-1 flex flex-col lg:flex-row gap-8 lg:gap-12 pb-24 pt-28 md:pt-32">
+        <!-- Columna Izquierda: Formulario de Configuración -->
+        <div class="w-full lg:w-2/3 flex flex-col gap-8">
+            <div class="mb-4">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-none text-white mb-4 font-sans">
+                    Constructor <span class="text-[#ff9e00]">Futurx Custom</span>
+                </h1>
+                <p class="text-white/60 text-lg leading-relaxed">
+                    Configura a la medida la capacidad operativa, velocidad de entrega y el perfil del equipo asignado a tus proyectos.
+                </p>
+            </div>
+
+            <!-- Grupo 1: Servicios Creativos Incluidos -->
+            <div class="space-y-6">
+                <h3 class="text-[#00c4bc] font-bold text-lg uppercase tracking-wider flex items-center gap-2 border-b border-[#00c4bc]/20 pb-2 font-sans">
+                    <span class="material-symbols-outlined">design_services</span> 1. Perfiles Creativos & Servicios
+                </h3>
+                <div class="grid grid-cols-1 gap-4">
+                    <!-- Checkbox 1: Diseño & Identidad -->
+                    <label class="group block relative cursor-pointer select-none rounded-[2rem] border border-white/10 bg-[#161d2b]/50 p-6 transition-all duration-300 hover:scale-[1.01] hover:border-[#ff9e00]/50 hover:bg-[#161d2b]/80">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 group-hover:text-[#ff9e00] transition-colors">
+                                    <span class="material-symbols-outlined text-2xl">brush</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Diseño & Identidad</h4>
+                                    <p class="text-white/40 text-xs mt-1">Branding, Identidad Visual, Ilustración y Arte Digital. Roles: 1 Diseñador Gráfico.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 flex-shrink-0">
+                                <span id="lbl-price-diseno" class="text-[#ff9e00] font-black text-sm">$9,800 MXN</span>
+                                <input type="checkbox" id="chk-diseno" checked onchange="calcularPresupuesto()" class="w-6 h-6 rounded border-white/20 text-[#ff9e00] focus:ring-[#ff9e00] bg-black/40">
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Checkbox 2: Diseño Web, App & UX/UI -->
+                    <label class="group block relative cursor-pointer select-none rounded-[2rem] border border-white/10 bg-[#161d2b]/50 p-6 transition-all duration-300 hover:scale-[1.01] hover:border-[#ff9e00]/50 hover:bg-[#161d2b]/80">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 group-hover:text-[#ff9e00] transition-colors">
+                                    <span class="material-symbols-outlined text-2xl">code</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Diseño Web, App & UX/UI</h4>
+                                    <p class="text-white/40 text-xs mt-1">Interfaces UX/UI, Wireframes, Prototipos y Code-Ready. Roles: 1 Programador + 1 Diseñador.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 flex-shrink-0">
+                                <span id="lbl-price-web-ux" class="text-[#ff9e00] font-black text-sm">$13,500 MXN</span>
+                                <input type="checkbox" id="chk-web-ux" onchange="calcularPresupuesto()" class="w-6 h-6 rounded border-white/20 text-[#ff9e00] focus:ring-[#ff9e00] bg-black/40">
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Checkbox 3: Multimedia & Audiovisual -->
+                    <label class="group block relative cursor-pointer select-none rounded-[2rem] border border-white/10 bg-[#161d2b]/50 p-6 transition-all duration-300 hover:scale-[1.01] hover:border-[#ff9e00]/50 hover:bg-[#161d2b]/80">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 group-hover:text-[#ff9e00] transition-colors">
+                                    <span class="material-symbols-outlined text-2xl">movie</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Multimedia & Audiovisual</h4>
+                                    <p class="text-white/40 text-xs mt-1">Edición de Video, Motion Graphics y Reels/TikToks. Roles: 1 Editor de Video.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 flex-shrink-0">
+                                <span id="lbl-price-multimedia" class="text-[#ff9e00] font-black text-sm">$8,000 MXN</span>
+                                <input type="checkbox" id="chk-multimedia" onchange="calcularPresupuesto()" class="w-6 h-6 rounded border-white/20 text-[#ff9e00] focus:ring-[#ff9e00] bg-black/40">
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Checkbox 4: Contenido & Redes Sociales -->
+                    <label class="group block relative cursor-pointer select-none rounded-[2rem] border border-white/10 bg-[#161d2b]/50 p-6 transition-all duration-300 hover:scale-[1.01] hover:border-[#ff9e00]/50 hover:bg-[#161d2b]/80">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 group-hover:text-[#ff9e00] transition-colors">
+                                    <span class="material-symbols-outlined text-2xl">campaign</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Contenido & Redes Sociales</h4>
+                                    <p class="text-white/40 text-xs mt-1">Estrategia de Contenidos, Copywriting y Publicaciones. Roles: 1 Estratega de Marketing.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 flex-shrink-0">
+                                <span id="lbl-price-redes" class="text-[#ff9e00] font-black text-sm">$6,000 MXN</span>
+                                <input type="checkbox" id="chk-redes" onchange="calcularPresupuesto()" class="w-6 h-6 rounded border-white/20 text-[#ff9e00] focus:ring-[#ff9e00] bg-black/40">
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Checkbox 5: Modelado 3D & Renderizado CGI -->
+                    <label class="group block relative cursor-pointer select-none rounded-[2rem] border border-white/10 bg-[#161d2b]/50 p-6 transition-all duration-300 hover:scale-[1.01] hover:border-[#ff9e00]/50 hover:bg-[#161d2b]/80">
+                        <div class="flex items-center justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80 group-hover:text-[#ff9e00] transition-colors">
+                                    <span class="material-symbols-outlined text-2xl">3d_rotation</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base">Modelado 3D & Renderizado CGI</h4>
+                                    <p class="text-white/40 text-xs mt-1">Modelado de Producto, Renders Fotorrealistas CGI, Animación de Entornos Virtuales y Optimización 3D. Roles: 1 Artista 3D.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 flex-shrink-0">
+                                <span id="lbl-price-3d" class="text-[#ff9e00] font-black text-sm">$14,500 MXN</span>
+                                <input type="checkbox" id="chk-3d" onchange="calcularPresupuesto()" class="w-6 h-6 rounded border-white/20 text-[#ff9e00] focus:ring-[#ff9e00] bg-black/40">
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Grupo 2: Capacidad Operativa -->
+            <div class="space-y-6">
+                <h3 class="text-[#ff9e00] font-bold text-lg uppercase tracking-wider flex items-center gap-2 border-b border-[#ff9e00]/20 pb-2 font-sans">
+                    <span class="material-symbols-outlined">settings</span> 2. Capacidad & Volumen
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Marcas a Gestionar -->
+                    <div class="flex items-center justify-between p-6 rounded-[2rem] border border-white/10 bg-[#161d2b]/50 hover:scale-[1.01] transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80">
+                                <span class="material-symbols-outlined text-2xl">style</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Marcas a Gestionar</h4>
+                                <p id="lbl-desc-marcas" class="text-white/40 text-[10px] mt-1">Base: 1, Max: 10. Extra: +$3,000</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <button onclick="decrementCounter('count-marcas', 1, 10)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all font-bold text-sm">-</button>
+                            <span id="count-marcas" class="text-white font-bold text-lg min-w-[24px] text-center">1</span>
+                            <button onclick="incrementCounter('count-marcas', 1, 10)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all font-bold text-sm">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Trabajos en Simultáneo -->
+                    <div class="flex items-center justify-between p-6 rounded-[2rem] border border-white/10 bg-[#161d2b]/50 hover:scale-[1.01] transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80">
+                                <span class="material-symbols-outlined text-2xl">bolt</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Trabajos Simultáneos</h4>
+                                <p id="simultaneos-desc" class="text-white/40 text-[10px] mt-1">Base: 1, Max: 5 por marca. Extra: +$1,500</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <button onclick="decrementCounter('count-simultaneos', 1, 50)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all font-bold text-sm">-</button>
+                            <span id="count-simultaneos" class="text-white font-bold text-lg min-w-[24px] text-center">1</span>
+                            <button onclick="incrementCounter('count-simultaneos', 1, 50)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all font-bold text-sm">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Créditos de Bomberazos -->
+                    <div class="flex items-center justify-between p-6 rounded-[2rem] border border-white/10 bg-[#161d2b]/50 hover:scale-[1.01] transition-all duration-300 col-span-1 md:col-span-2">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white/80">
+                                <span class="material-symbols-outlined text-2xl">alarm</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Créditos de Bomberazos</h4>
+                                <p id="lbl-desc-bomberazos" class="text-white/40 text-[10px] mt-1">Urgencias entregadas en menos de 24 horas. Max: 10. Cada uno: +$800</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 flex-shrink-0">
+                            <button onclick="decrementCounter('count-bomberazos', 0, 10)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all font-bold text-sm">-</button>
+                            <span id="count-bomberazos" class="text-white font-bold text-lg min-w-[24px] text-center">0</span>
+                            <button onclick="incrementCounter('count-bomberazos', 0, 10)" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all font-bold text-sm">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grupo 3: Tiempos de Entrega -->
+            <div class="space-y-6">
+                <h3 class="text-[#00c4bc] font-bold text-lg uppercase tracking-wider flex items-center gap-2 border-b border-[#00c4bc]/20 pb-2 font-sans">
+                    <span class="material-symbols-outlined">rocket_launch</span> 3. Velocidad de Entrega
+                </h3>
+                <div class="flex flex-col p-6 rounded-[2.5rem] border border-white/10 bg-[#161d2b]/50 hover:scale-[1.01] transition-all duration-300">
+                    <select id="select-velocidad" onchange="calcularPresupuesto()" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:border-[#ff9e00] focus:ring-[#ff9e00] font-sans">
+                        <option value="normal">Estándar (3 días hábiles) - +0%</option>
+                        <option value="express">Express (2 días hábiles) - +15%</option>
+                        <option value="flash">Flash (1 día hábil) - +60%</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Widget Resumen Sticky -->
+        <div class="w-full lg:w-1/3">
+            <div class="liquid-glass border border-white/10 rounded-[2.5rem] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.8)] sticky top-32 flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-black text-[#ff9e00] font-sans mb-1">Resumen Custom</h3>
+                    <p class="text-white/40 text-[10px] uppercase tracking-widest font-bold">Tu Cotización y Equipo en Tiempo Real</p>
+                </div>
+
+                <!-- Contador de Staff -->
+                <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl flex items-center gap-3">
+                    <span class="material-symbols-outlined text-[#ff9e00] text-2xl">group</span>
+                    <div class="text-xs text-white/80 font-semibold leading-relaxed" id="lbl-staff-summary">
+                        Estarán trabajando <span class="font-black text-[#ff9e00]" id="lbl-staff-count">0</span> especialistas en tu cuenta de forma activa.
+                    </div>
+                </div>
+
+                <!-- Dynamic Team Allocation -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-bold text-xs uppercase tracking-wider font-sans">Tu Equipo Creativo Asignado</h4>
+                    <p class="text-xs text-white/60 font-semibold" id="lbl-team-text">Tu equipo Futurx estará conformado por: ...</p>
+                    
+                    <div class="flex flex-col gap-2 max-h-[220px] overflow-y-auto pr-2 custom-scrollbar">
+                        <!-- Project Manager -->
+                        <div id="team-pm" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#ff9e00] text-lg">assignment_ind</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Project Manager Dedicado</div>
+                                <div class="text-[9px] text-white/40 uppercase">Coordinación & Gestión de Flujo</div>
+                            </div>
+                        </div>
+
+                        <!-- Diseñador -->
+                        <div id="team-diseno" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#00c4bc] text-lg">brush</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Diseñador Creativo</div>
+                                <div class="text-[9px] text-white/40 uppercase">Branding, Identidad & Assets</div>
+                            </div>
+                        </div>
+
+                        <!-- Diseñador UX/UI -->
+                        <div id="team-ux" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#00c4bc] text-lg">web</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Diseñador UX/UI</div>
+                                <div class="text-[9px] text-white/40 uppercase">Maquetación & Prototipos de Interfaces</div>
+                            </div>
+                        </div>
+
+                        <!-- Programador Web -->
+                        <div id="team-web" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#ff9e00] text-lg">code</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Programador Web</div>
+                                <div class="text-[9px] text-white/40 uppercase">Código Frontend Limpio & Responsivo</div>
+                            </div>
+                        </div>
+
+                        <!-- Editor de Video -->
+                        <div id="team-video" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#ff9e00] text-lg">movie</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Editor de Video</div>
+                                <div class="text-[9px] text-white/40 uppercase">Cortes, Color & Postproducción</div>
+                            </div>
+                        </div>
+
+                        <!-- Estratega de Marketing -->
+                        <div id="team-marketing" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#00c4bc] text-lg">campaign</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Estratega de Marketing</div>
+                                <div class="text-[9px] text-white/40 uppercase">Estrategia, Copywriting & Contenido</div>
+                            </div>
+                        </div>
+
+                        <!-- Motion Designer -->
+                        <div id="team-motion" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#00c4bc] text-lg">animation</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Motion Designer</div>
+                                <div class="text-[9px] text-white/40 uppercase">Animaciones 2D/3D & Efectos Especiales</div>
+                            </div>
+                        </div>
+
+                        <!-- Artista 3D / CGI Specialist -->
+                        <div id="team-artista3d" class="hidden flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <span class="material-symbols-outlined text-[#00c4bc] text-lg">3d_rotation</span>
+                            <div>
+                                <div class="text-xs font-bold text-white">Artista 3D / CGI Specialist</div>
+                                <div class="text-[9px] text-white/40 uppercase">Modelado CGI & Animación 3D</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Logs / Alert Info -->
+                <div class="space-y-2 text-xs border-b border-white/10 pb-4">
+                    <div id="text-web-ux" class="hidden text-[#00c4bc] font-bold">✓ Incluye Programador Web y Diseñador UX</div>
+                    <div id="text-multimedia" class="hidden text-[#00c4bc] font-bold">✓ Incluye Editor de Video y Motion Designer</div>
+                    <div id="text-redes" class="hidden text-[#00c4bc] font-bold">✓ Incluye Estratega de Marketing</div>
+                    <div id="text-3d" class="hidden text-[#00c4bc] font-bold">✓ Incluye Artista 3D / CGI Specialist</div>
+                    <div id="text-pm" class="hidden text-[#ff9e00] font-bold">✓ Incluye 1 Project Manager/Estratega</div>
+                </div>
+
+                <!-- Desglose de Precios -->
+                <div class="space-y-3 text-xs">
+                    <div class="flex justify-between items-center text-white/60">
+                        <span>Subtotal Base:</span>
+                        <span class="font-bold text-white" id="lbl-subtotal">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center text-white/60">
+                        <span>Descuento Volumen:</span>
+                        <span class="font-bold text-emerald-400" id="lbl-descuento">$0</span>
+                    </div>
+                    <div class="flex justify-between items-center text-white/60">
+                        <span id="lbl-inhouse-text">Costo In-House Equivalente:</span>
+                        <span class="font-bold text-white" id="lbl-inhouse">$0</span>
+                    </div>
+                </div>
+
+                <!-- Ahorro Badge -->
+                <div class="bg-emerald-500/10 border border-emerald-500/20 px-6 py-4 rounded-2xl flex items-center gap-3">
+                    <span class="material-symbols-outlined text-emerald-400 text-2xl animate-pulse">savings</span>
+                    <div class="text-xs text-emerald-400 font-semibold leading-relaxed" id="lbl-ahorro-container">
+                        Ahorro In-House Garantizado: <span class="font-black" id="lbl-ahorro-mensual">$0</span> <span id="lbl-ahorro-currency">MXN</span> al mes frente a contratación interna
+                    </div>
+                </div>
+
+                <!-- Display Precio Neta -->
+                <div class="p-6 bg-white/5 rounded-2xl border border-white/10 flex flex-col gap-1">
+                    <span class="text-xs text-white/40 uppercase tracking-wider font-bold">Inversión Mensual Estimada</span>
+                    <div class="mt-1">
+                        <span class="text-xl md:text-2xl font-black text-white block leading-normal" id="lbl-total-final">$0 MXN / mes</span>
+                    </div>
+                </div>
+
+                <!-- Formulario de Contacto Custom -->
+                <form id="custom-contact-form" class="liquid-glass p-5 rounded-3xl border border-white/10 space-y-4 bg-black/20 mt-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-white/60 uppercase tracking-wider block">Nombre de tu Empresa / Contacto</label>
+                        <input type="text" name="Nombre" required placeholder="Ej. Alex Rivera / TechCorp" 
+                            class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-white text-xs focus:border-[#ff9e00] focus:ring-[#ff9e00] font-sans placeholder:text-white/20">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-white/60 uppercase tracking-wider block">Correo Electrónico</label>
+                        <input type="email" name="Correo" required placeholder="alex@empresa.com" 
+                            class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-white text-xs focus:border-[#ff9e00] focus:ring-[#ff9e00] font-sans placeholder:text-white/20">
+                    </div>
+                    <button type="submit" class="w-full py-4 rounded-xl bg-[#ff9e00] text-[#1a120a] font-black uppercase tracking-widest hover:scale-105 hover:shadow-[0_10px_30px_rgba(255,158,0,0.4)] transition-all font-sans text-sm">
+                        Solicitar Propuesta Custom
+                    </button>
+                </form>
+                <p class="text-[10px] text-white/30 text-center leading-normal">
+                    *El descuento por volumen aplica únicamente en contratos semestrales o anuales. Sujeto a confirmación de facturación.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] border-t border-white/5 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-lg font-bold text-white"><img src="../imag/Logo naranja.png" alt="Futurx" class="h-8"></div>
+            <div class="flex flex-wrap justify-center gap-8 items-center">
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="#">
+                    <span class="material-symbols-outlined text-sm">photo_camera</span> Instagram
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="terminos.html#privacy">
+                    <span class="material-symbols-outlined text-sm">security</span> Política de Privacidad
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="terminos.html#terms">
+                    <span class="material-symbols-outlined text-sm">gavel</span> Términos de Servicio
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="#">
+                    <span class="material-symbols-outlined text-sm">chat</span> WhatsApp
+                </a>
+                <a class="flex items-center gap-2 font-sans text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="mailto:hello@futurx.studio">
+                    <span class="material-symbols-outlined text-sm">mail</span> Correo
+                </a>
+            </div>
+                        <!-- Selector de Divisa -->
+            <div class="flex items-center gap-1 bg-white/5 border border-white/10 rounded-xl p-1 font-sans text-[10px] font-bold">
+                <button onclick="changeFooterCurrency('MXN')" id="footer-btn-mxn" class="px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]">MXN</button>
+                <button onclick="changeFooterCurrency('USD')" id="footer-btn-usd" class="px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white">USD</button>
+            </div>
+            <div class="font-sans text-xs text-white/40">© 2024 Futurx Studio. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        const formatterMxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 });
+        const formatterUsd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+
+        function getFormatter() {
+            return window.isUSD ? formatterUsd : formatterMxn;
+        }
+
+        let prevTotal = 0;
+        let prevAhorro = 0;
+        let animationFrameId = null;
+        let currentCalculation = {
+            totalFinal: 0,
+            ahorroReal: 0
+        };
+
+        function updateCounterLimits() {
+            const marcas = parseInt(document.getElementById('count-marcas').textContent) || 1;
+            const simultaneosEl = document.getElementById('count-simultaneos');
+            let simultaneos = parseInt(simultaneosEl.textContent) || 1;
+            
+            const maxSimultaneos = 5 * marcas;
+            const extraCost = window.isUSD ? '+$75' : '+$1,500';
+            document.getElementById('simultaneos-desc').textContent = `Base: 1, Max: ${maxSimultaneos} (${maxSimultaneos} para ${marcas} marcas). Extra: ${extraCost}`;
+
+            if (simultaneos > maxSimultaneos) {
+                simultaneos = maxSimultaneos;
+                simultaneosEl.textContent = simultaneos;
+            }
+        }
+
+        function decrementCounter(id, min, max) {
+            const el = document.getElementById(id);
+            let val = parseInt(el.textContent) || 0;
+            if (val > min) {
+                val--;
+                el.textContent = val;
+                if (id === 'count-marcas') {
+                    updateCounterLimits();
+                }
+                calcularPresupuesto();
+            }
+        }
+
+        function incrementCounter(id, min, max) {
+            const el = document.getElementById(id);
+            let val = parseInt(el.textContent) || 0;
+            
+            let dynamicMax = max;
+            if (id === 'count-simultaneos') {
+                const marcas = parseInt(document.getElementById('count-marcas').textContent) || 1;
+                dynamicMax = 5 * marcas;
+            }
+
+            if (val < dynamicMax) {
+                val++;
+                el.textContent = val;
+                calcularPresupuesto();
+            }
+        }
+
+        function updateWidgetDisplay() {
+            if (window.isUSD) {
+                let formattedUsd = formatterUsd.format(currentCalculation.totalFinal);
+                document.getElementById('lbl-total-final').textContent = `${formattedUsd} USD / mes`;
+            } else {
+                let formattedMxn = formatterMxn.format(currentCalculation.totalFinal);
+                document.getElementById('lbl-total-final').textContent = `${formattedMxn} MXN / mes`;
+            }
+            
+            const fmt = getFormatter();
+            document.getElementById('lbl-ahorro-mensual').textContent = fmt.format(currentCalculation.ahorroReal);
+        }
+
+        function animateWidget(targetTotal, targetAhorro, duration = 400) {
+            const startTime = performance.now();
+            const startTotal = prevTotal;
+            const startAhorro = prevAhorro;
+            
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const ease = progress * (2 - progress);
+                
+                currentCalculation.totalFinal = Math.round(startTotal + ease * (targetTotal - startTotal));
+                currentCalculation.ahorroReal = Math.round(startAhorro + ease * (targetAhorro - startAhorro));
+                
+                updateWidgetDisplay();
+                
+                if (progress < 1) {
+                    animationFrameId = requestAnimationFrame(step);
+                } else {
+                    prevTotal = targetTotal;
+                    prevAhorro = targetAhorro;
+                }
+            }
+            
+            animationFrameId = requestAnimationFrame(step);
+        }
+
+        function calcularPresupuesto() {
+            const priceDiseno = document.getElementById('lbl-price-diseno');
+            const priceWebUx = document.getElementById('lbl-price-web-ux');
+            const priceMultimedia = document.getElementById('lbl-price-multimedia');
+            const priceRedes = document.getElementById('lbl-price-redes');
+            const price3d = document.getElementById('lbl-price-3d');
+            
+            const marcasDesc = document.getElementById('lbl-desc-marcas');
+            const simultaneosDesc = document.getElementById('simultaneos-desc');
+            const bomberazosDesc = document.getElementById('lbl-desc-bomberazos');
+            const ahorroCurrency = document.getElementById('lbl-ahorro-currency');
+
+            if (priceDiseno) priceDiseno.textContent = window.isUSD ? '$699 USD' : '$9,800 MXN';
+            if (priceWebUx) {
+                const disenoChecked = document.getElementById('chk-diseno').checked;
+                if (disenoChecked) {
+                    priceWebUx.textContent = window.isUSD ? '$350 USD' : '$6,700 MXN';
+                } else {
+                    priceWebUx.textContent = window.isUSD ? '$849 USD' : '$13,500 MXN';
+                }
+            }
+            if (priceMultimedia) priceMultimedia.textContent = window.isUSD ? '$499 USD' : '$8,000 MXN';
+            if (priceRedes) priceRedes.textContent = window.isUSD ? '$399 USD' : '$6,000 MXN';
+            if (price3d) {
+                const multimediaChecked = document.getElementById('chk-multimedia').checked;
+                if (multimediaChecked) {
+                    price3d.textContent = window.isUSD ? '$599 USD' : '$10,500 MXN';
+                } else {
+                    price3d.textContent = window.isUSD ? '$849 USD' : '$14,500 MXN';
+                }
+            }
+            
+            if (marcasDesc) marcasDesc.textContent = window.isUSD ? 'Base: 1, Max: 10. Extra: +$150' : 'Base: 1, Max: 10. Extra: +$3,000';
+            
+            const marcas = parseInt(document.getElementById('count-marcas').textContent) || 1;
+            const maxSimultaneos = 5 * marcas;
+            const extraSimultaneosCost = window.isUSD ? '+$75' : '+$1,500';
+            if (simultaneosDesc) {
+                simultaneosDesc.textContent = `Base: 1, Max: ${maxSimultaneos} (${maxSimultaneos} para ${marcas} marcas). Extra: ${extraSimultaneosCost}`;
+            }
+            
+            if (bomberazosDesc) bomberazosDesc.textContent = window.isUSD ? 'Urgencias entregadas en menos de 24 horas. Max: 10. Cada uno: +$45' : 'Urgencias entregadas en menos de 24 horas. Max: 10. Cada uno: +$800';
+            if (ahorroCurrency) ahorroCurrency.textContent = window.isUSD ? 'USD' : 'MXN';
+
+            const chkDiseno = document.getElementById('chk-diseno').checked;
+            const chkWebUx = document.getElementById('chk-web-ux').checked;
+            const chkMultimedia = document.getElementById('chk-multimedia').checked;
+            const chkRedes = document.getElementById('chk-redes').checked;
+            const chk3d = document.getElementById('chk-3d').checked;
+
+            let basePrice = 0;
+            let designers = 0;
+            let programmers = 0;
+            let editors = 0;
+            let marketing = 0;
+            let artists3d = 0;
+            let pms = 0;
+
+            if (window.isUSD) {
+                if (chkDiseno) {
+                    basePrice += 699;
+                    designers += 1;
+                }
+                if (chkWebUx) {
+                    if (chkDiseno) {
+                        basePrice += 350;
+                        programmers += 1;
+                    } else {
+                        basePrice += 849;
+                        programmers += 1;
+                        designers += 1;
+                    }
+                }
+                if (chkMultimedia) {
+                    basePrice += 499;
+                    editors += 1;
+                }
+                if (chkRedes) {
+                    basePrice += 399;
+                    marketing += 1;
+                }
+                if (chk3d) {
+                    if (chkMultimedia) {
+                        basePrice += 599;
+                    } else {
+                        basePrice += 849;
+                    }
+                }
+            } else {
+                if (chkDiseno) {
+                    basePrice += 9800;
+                    designers += 1;
+                }
+                if (chkWebUx) {
+                    if (chkDiseno) {
+                        basePrice += 6700;
+                        programmers += 1;
+                    } else {
+                        basePrice += 13500;
+                        programmers += 1;
+                        designers += 1;
+                    }
+                }
+                if (chkMultimedia) {
+                    basePrice += 8000;
+                    editors += 1;
+                }
+                if (chkRedes) {
+                    basePrice += 6000;
+                    marketing += 1;
+                }
+                if (chk3d) {
+                    if (chkMultimedia) {
+                        basePrice += 10500;
+                    } else {
+                        basePrice += 14500;
+                    }
+                }
+            }
+
+            const simultaneosEl = document.getElementById('count-simultaneos');
+            let simultaneos = parseInt(simultaneosEl.textContent) || 1;
+            if (simultaneos > maxSimultaneos) {
+                simultaneos = maxSimultaneos;
+                simultaneosEl.textContent = simultaneos;
+            }
+            const bomberazos = parseInt(document.getElementById('count-bomberazos').textContent) || 0;
+
+            if (chk3d) {
+                artists3d = (simultaneos > 3) ? 2 : 1;
+            }
+
+            let extraMarcas = 0;
+            let extraSimultaneos = 0;
+            let extraBomberazos = 0;
+
+            if (window.isUSD) {
+                extraMarcas = (marcas - 1) * 150;
+                extraSimultaneos = (simultaneos - 1) * 75;
+                extraBomberazos = bomberazos * 45;
+            } else {
+                extraMarcas = (marcas - 1) * 3000;
+                extraSimultaneos = (simultaneos - 1) * 1500;
+                extraBomberazos = bomberazos * 800;
+            }
+
+            let subtotal = basePrice + extraMarcas + extraSimultaneos + extraBomberazos;
+
+            const anyChecked = chkDiseno || chkWebUx || chkMultimedia || chkRedes || chk3d;
+            if (anyChecked) {
+                let extrasVolumen = Math.floor((marcas - 1) * 0.3) + Math.floor((simultaneos - 1) * 0.3);
+                if (designers > 0) designers = Math.min(3, designers + extrasVolumen);
+                if (editors > 0) editors = Math.min(2, editors + extrasVolumen);
+                if (programmers > 0) programmers = Math.min(2, programmers + Math.floor((simultaneos - 1) * 0.3));
+            }
+
+            const speedSelect = document.getElementById('select-velocidad');
+            const speedVal = speedSelect.value;
+            
+            if (speedVal === 'flash') {
+                subtotal *= 1.60;
+                if (designers > 0) designers = Math.min(3, designers + 1);
+            } else if (speedVal === 'express') {
+                subtotal *= 1.15;
+            }
+
+            if (anyChecked) {
+                if (marcas > 2 || (designers + programmers + editors + marketing + artists3d) >= 3) {
+                    pms = 1;
+                }
+                if (marcas > 5) {
+                    pms = 2;
+                }
+            }
+
+            if (anyChecked && marcas > 2) {
+                if (window.isUSD) {
+                    subtotal += 200;
+                } else {
+                    subtotal += 4000;
+                }
+            }
+
+            const totalStaff = designers + programmers + editors + marketing + artists3d + pms;
+
+            let totalInHouseStaff = 0;
+            let costInHouse = 0;
+
+            if (anyChecked) {
+                totalInHouseStaff = totalStaff;
+                if (window.isUSD) {
+                    costInHouse = (designers * 1250) + (programmers * 1750) + (editors * 1400) + (marketing * 1100) + (artists3d * 1900) + (pms * 1600);
+                } else {
+                    costInHouse = (designers * 25000) + (programmers * 35000) + (editors * 28000) + (marketing * 22000) + (artists3d * 38000) + (pms * 32000);
+                }
+            }
+
+            let discountPct = 0;
+            const thresholdHigh = window.isUSD ? 1250 : 25000;
+            const thresholdLow = window.isUSD ? 750 : 15000;
+
+            if (subtotal > thresholdHigh) {
+                discountPct = 0.20;
+            } else if (subtotal > thresholdLow) {
+                discountPct = 0.10;
+            }
+
+            const discountVal = subtotal * discountPct;
+            const totalFinal = subtotal * (1 - discountPct);
+
+            let ahorroReal = 0;
+            if (anyChecked) {
+                ahorroReal = Math.max(totalFinal * 0.35, costInHouse - totalFinal);
+            }
+
+            const textWebUX = document.getElementById('text-web-ux');
+            const textMultimedia = document.getElementById('text-multimedia');
+            const textRedes = document.getElementById('text-redes');
+            const text3d = document.getElementById('text-3d');
+            const textPM = document.getElementById('text-pm');
+
+            if (chkWebUx) {
+                if (textWebUX) textWebUX.classList.remove('hidden');
+            } else {
+                if (textWebUX) textWebUX.classList.add('hidden');
+            }
+
+            if (chkMultimedia) {
+                if (textMultimedia) textMultimedia.classList.remove('hidden');
+            } else {
+                if (textMultimedia) textMultimedia.classList.add('hidden');
+            }
+
+            if (chkRedes) {
+                if (textRedes) textRedes.classList.remove('hidden');
+            } else {
+                if (textRedes) textRedes.classList.add('hidden');
+            }
+
+            if (chk3d) {
+                if (text3d) text3d.classList.remove('hidden');
+            } else {
+                if (text3d) text3d.classList.add('hidden');
+            }
+
+            if (pms > 0) {
+                if (textPM) textPM.classList.remove('hidden');
+            } else {
+                if (textPM) textPM.classList.add('hidden');
+            }
+
+            const teamPM = document.getElementById('team-pm');
+            const teamDiseno = document.getElementById('team-diseno');
+            const teamWeb = document.getElementById('team-web');
+            const teamUX = document.getElementById('team-ux');
+            const teamVideo = document.getElementById('team-video');
+            const teamMotion = document.getElementById('team-motion');
+            const teamMarketing = document.getElementById('team-marketing');
+            const teamArtista3d = document.getElementById('team-artista3d');
+
+            if (pms > 0) {
+                if (teamPM) {
+                    teamPM.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+                    teamPM.querySelector('.text-xs').innerHTML = `Project Manager Dedicado <span class="text-[#ff9e00] font-black">(${pms})</span>`;
+                }
+            } else {
+                if (teamPM) teamPM.className = "hidden";
+            }
+
+            if (designers > 0) {
+                if (teamDiseno) {
+                    teamDiseno.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+                    teamDiseno.querySelector('.text-xs').innerHTML = `Diseñador Creativo <span class="text-[#ff9e00] font-black">(${designers})</span>`;
+                }
+            } else {
+                if (teamDiseno) teamDiseno.className = "hidden";
+            }
+
+            if (chkWebUx) {
+                if (teamWeb) {
+                    teamWeb.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+                    teamWeb.querySelector('.text-xs').innerHTML = `Programador Web <span class="text-[#ff9e00] font-black">(${programmers})</span>`;
+                }
+                if (teamUX) teamUX.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+            } else {
+                if (teamWeb) teamWeb.className = "hidden";
+                if (teamUX) teamUX.className = "hidden";
+            }
+
+            if (editors > 0) {
+                if (teamVideo) {
+                    teamVideo.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+                    teamVideo.querySelector('.text-xs').innerHTML = `Editor de Video <span class="text-[#ff9e00] font-black">(${editors})</span>`;
+                }
+                if (teamMotion) teamMotion.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+            } else {
+                if (teamVideo) teamVideo.className = "hidden";
+                if (teamMotion) teamMotion.className = "hidden";
+            }
+
+            if (marketing > 0) {
+                if (teamMarketing) {
+                    teamMarketing.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+                    teamMarketing.querySelector('.text-xs').innerHTML = `Estratega de Marketing <span class="text-[#ff9e00] font-black">(${marketing})</span>`;
+                }
+            } else {
+                if (teamMarketing) teamMarketing.className = "hidden";
+            }
+
+            if (artists3d > 0) {
+                if (teamArtista3d) {
+                    teamArtista3d.className = "flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5";
+                    teamArtista3d.querySelector('.text-xs').innerHTML = `Artista 3D / CGI Specialist <span class="text-[#ff9e00] font-black">(${artists3d})</span>`;
+                }
+            } else {
+                if (teamArtista3d) teamArtista3d.className = "hidden";
+            }
+
+            const teamTextEl = document.getElementById('lbl-team-text');
+            if (teamTextEl) {
+                if (anyChecked) {
+                    let activeRolesList = [];
+                    if (pms > 0) activeRolesList.push(`${pms} PM${pms > 1 ? 's' : ''}`);
+                    if (designers > 0) activeRolesList.push(`${designers} Diseñador${designers > 1 ? 'es' : ''} Creativo${designers > 1 ? 's' : ''}`);
+                    if (chkWebUx) {
+                        if (programmers > 0) activeRolesList.push(`${programmers} Programador${programmers > 1 ? 'es' : ''} Web`);
+                        activeRolesList.push(`1 Diseñador UX/UI`);
+                    }
+                    if (editors > 0) {
+                        activeRolesList.push(`${editors} Editor${editors > 1 ? 'es' : ''} de Video`);
+                        activeRolesList.push(`1 Motion Designer`);
+                    }
+                    if (chkRedes) {
+                        if (marketing > 0) activeRolesList.push(`${marketing} Estratega${marketing > 1 ? 's' : ''} de Marketing`);
+                    }
+                    if (artists3d > 0) {
+                        activeRolesList.push(`${artists3d} Artista${artists3d > 1 ? 's' : ''} 3D / CGI Specialist${artists3d > 1 ? 's' : ''}`);
+                    }
+                    let rolesStrStr = activeRolesList.join(', ');
+                    teamTextEl.textContent = `Tu cuenta estará respaldada por un equipo de ${totalStaff} profesionales: ${rolesStrStr}.`;
+                } else {
+                    teamTextEl.textContent = "Tu equipo Futurx estará conformado por: ...";
+                }
+            }
+
+            const staffCountEl = document.getElementById('lbl-staff-count');
+            if (staffCountEl) staffCountEl.textContent = totalStaff;
+
+            const lblInHouseText = document.getElementById('lbl-inhouse-text');
+            if (lblInHouseText) {
+                lblInHouseText.textContent = `Costo In-House (${totalInHouseStaff} ${totalInHouseStaff === 1 ? 'persona' : 'personas'}):`;
+            }
+
+            const fmt = getFormatter();
+            document.getElementById('lbl-subtotal').textContent = fmt.format(subtotal);
+            document.getElementById('lbl-descuento').textContent = discountPct > 0 ? `-${fmt.format(discountVal)} (${discountPct * 100}%)` : '$0';
+            document.getElementById('lbl-inhouse').textContent = fmt.format(costInHouse);
+
+            animateWidget(totalFinal, ahorroReal);
+        }
+
+        function checkout() {
+            const chkDiseno = document.getElementById('chk-diseno').checked;
+            const chkWebUx = document.getElementById('chk-web-ux').checked;
+            const chkMultimedia = document.getElementById('chk-multimedia').checked;
+            const chkRedes = document.getElementById('chk-redes').checked;
+            const chk3d = document.getElementById('chk-3d').checked;
+            
+            const marcas = parseInt(document.getElementById('count-marcas').textContent) || 1;
+            const simultaneos = parseInt(document.getElementById('count-simultaneos').textContent) || 1;
+            const bomberazos = parseInt(document.getElementById('count-bomberazos').textContent) || 0;
+            const speedSelect = document.getElementById('select-velocidad');
+            const speedText = speedSelect.options[speedSelect.selectedIndex].text;
+            
+            const totalFinalValue = currentCalculation.totalFinal;
+            const ahorroValue = currentCalculation.ahorroReal;
+            const fmt = getFormatter();
+            const totalFinalStr = fmt.format(totalFinalValue);
+            const ahorroStr = fmt.format(ahorroValue);
+
+            let categories = [];
+            if (chkDiseno) categories.push("- Diseño & Identidad");
+            if (chkWebUx) categories.push("- Diseño Web, App & UX/UI");
+            if (chkMultimedia) categories.push("- Multimedia & Audiovisual");
+            if (chkRedes) categories.push("- Contenido & Redes Sociales");
+            if (chk3d) categories.push("- Modelado 3D & Renderizado CGI");
+
+            let msg = `Hola Futurx, me interesa contratar un *Plan Personalizado Custom*:\n\n`;
+            msg += `*Categorías Seleccionadas:*\n${categories.join('\n')}\n\n`;
+            msg += `*Capacidad:*\n`;
+            msg += `- Marcas a Gestionar: ${marcas}\n`;
+            msg += `- Trabajos en Simultáneo: ${simultaneos}\n`;
+            msg += `- Bomberazos: ${bomberazos}\n`;
+            msg += `- Velocidad de Entrega: ${speedText}\n\n`;
+            
+            const teamText = document.getElementById('lbl-team-text').textContent;
+            msg += `*${teamText}*\n\n`;
+
+            const currencyStr = window.isUSD ? 'USD' : 'MXN';
+            msg += `*Inversión Mensual Neta:* ${totalFinalStr} ${currencyStr}/mes\n`;
+            msg += `*Ahorro vs. In-House:* ${ahorroStr} ${currencyStr}/mes\n`;
+
+            const whatsappNumber = "525500000000"; 
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function showToast(message) {
+            let toast = document.createElement('div');
+            toast.className = "fixed bottom-10 right-10 z-[100] liquid-glass border border-emerald-500/30 text-emerald-400 px-6 py-4 rounded-2xl shadow-[0_20px_50px_rgba(16,185,129,0.3)] flex items-center gap-3 transition-all duration-500 transform translate-y-20 opacity-0 font-sans text-sm";
+            toast.style.background = "rgba(16, 28, 20, 0.85)";
+            toast.style.backdropFilter = "blur(20px)";
+            toast.innerHTML = `
+                <span class="material-symbols-outlined text-emerald-400 text-2xl animate-pulse">check_circle</span>
+                <div>
+                    <div class="font-bold text-white">¡Enviado!</div>
+                    <div class="text-xs text-white/80 mt-0.5">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-20', 'opacity-0');
+            }, 100);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 6000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateCounterLimits();
+            calcularPresupuesto();
+            
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenuBtn.classList.toggle('open');
+                    mobileMenu.classList.toggle('opacity-0');
+                    mobileMenu.classList.toggle('pointer-events-none');
+                    mobileMenu.classList.toggle('-translate-y-10');
+                });
+            }
+
+            const customForm = document.getElementById('custom-contact-form');
+            if (customForm) {
+                customForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const submitBtn = customForm.querySelector('button[type="submit"]');
+                    const originalContent = submitBtn.innerHTML;
+                    
+                    const nameVal = customForm.querySelector('input[name="Nombre"]').value;
+                    const emailVal = customForm.querySelector('input[name="Correo"]').value;
+                    
+                    const chkDiseno = document.getElementById('chk-diseno').checked;
+                    const chkWebUx = document.getElementById('chk-web-ux').checked;
+                    const chkMultimedia = document.getElementById('chk-multimedia').checked;
+                    const chkRedes = document.getElementById('chk-redes').checked;
+                    const chk3d = document.getElementById('chk-3d').checked;
+                    
+                    const marcas = parseInt(document.getElementById('count-marcas').textContent) || 1;
+                    const simultaneos = parseInt(document.getElementById('count-simultaneos').textContent) || 1;
+                    const bomberazos = parseInt(document.getElementById('count-bomberazos').textContent) || 0;
+                    const speedSelect = document.getElementById('select-velocidad');
+                    const speedText = speedSelect.options[speedSelect.selectedIndex].text;
+                    
+                    const totalFinalValue = currentCalculation.totalFinal;
+                    const ahorroValue = currentCalculation.ahorroReal;
+                    const fmt = getFormatter();
+                    const totalFinalStr = fmt.format(totalFinalValue);
+                    const ahorroStr = fmt.format(ahorroValue);
+                    
+                    let categories = [];
+                    if (chkDiseno) categories.push("Diseño");
+                    if (chkWebUx) categories.push("Web/UX");
+                    if (chkMultimedia) categories.push("Multimedia");
+                    if (chkRedes) categories.push("Redes");
+                    if (chk3d) categories.push("3D");
+
+                    const currencyStr = window.isUSD ? 'USD' : 'MXN';
+                    
+                    // 1. Capture total staff count
+                    const valorStaffTotal = parseInt(document.getElementById('lbl-staff-count').textContent) || 0;
+                    
+                    // 2. Format DetallesCustom with newlines and bullets
+                    const stringFormateadoDetalles = `  ↳ Categorías Activas: ${categories.join(', ')}\n  ↳ Marcas en Gestión: ${marcas}\n  ↳ Trabajos Simultáneos: ${simultaneos}\n  ↳ Bomberazos Solicitados: ${bomberazos}\n  ↳ Velocidad de Producción: ${speedText}\n  ↳ Precio Final Estimado: ${totalFinalStr} ${currencyStr}\n  ↳ Ahorro In-House Calculado: ${ahorroStr} ${currencyStr}`;
+                    
+                    // 3. Append to FormData
+                    const fd = new FormData();
+                    fd.append('Tipo', 'Plan Custom');
+                    fd.append('Nombre', nameVal);
+                    fd.append('Correo', emailVal);
+                    fd.append('StaffTotal', valorStaffTotal);
+                    fd.append('DetallesCustom', stringFormateadoDetalles);
+                    
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = `Procesando solicitud...`;
+                    
+                    fetch('https://script.google.com/macros/s/AKfycbxzxLfIZhxIS-nszseUgL_akKc-lWhg9HSBJjiGFhnmP0XABzU_WlNt2I7fW8BOde630Q/exec', {
+                        method: 'POST',
+                        body: fd
+                    })
+                    .then(response => {
+                        showToast("¡Solicitud enviada con éxito! Nuestro equipo analizará tu configuración y te contactará en breve");
+                        customForm.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalContent;
+                    })
+                    .catch(error => {
+                        console.error('Error submitting custom quote:', error);
+                        submitBtn.innerHTML = `Error al enviar. Intenta de nuevo.`;
+                        submitBtn.disabled = false;
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalContent;
+                        }, 5000);
+                    });
+                });
+            }
+        });
+    </script>
+
+    <!-- Global Currency Persistence Script -->
+    <script>
+        var isUSD = false;
+        function initGlobalCurrency() {
+            const currency = localStorage.getItem('currency') || 'MXN';
+            window.isUSD = (currency === 'USD');
+            if (typeof isUSD !== 'undefined') {
+                isUSD = window.isUSD;
+            }
+            updateFooterCurrencyUI(currency);
+            
+            if (typeof updatePrices === 'function') {
+                updatePrices();
+            }
+            if (typeof calcularPresupuesto === 'function') {
+                calcularPresupuesto();
+            }
+        }
+
+        function changeFooterCurrency(currency) {
+            localStorage.setItem('currency', currency);
+            window.isUSD = (currency === 'USD');
+            if (typeof isUSD !== 'undefined') {
+                isUSD = window.isUSD;
+            }
+            updateFooterCurrencyUI(currency);
+            
+            if (typeof updatePrices === 'function') {
+                updatePrices();
+            }
+            if (typeof calcularPresupuesto === 'function') {
+                calcularPresupuesto();
+            }
+        }
+
+        function updateFooterCurrencyUI(currency) {
+            const btnMxn = document.getElementById('footer-btn-mxn');
+            const btnUsd = document.getElementById('footer-btn-usd');
+            if (!btnMxn || !btnUsd) return;
+            
+            if (currency === 'USD') {
+                btnMxn.className = "px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white";
+                btnUsd.className = "px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]";
+            } else {
+                btnUsd.className = "px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white";
+                btnMxn.className = "px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]";
+            }
+        }
+
+        // Initialize on DOMContentLoaded or immediately if already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGlobalCurrency);
+        } else {
+            initGlobalCurrency();
+        }
+    </script>
+</body>
+</html>

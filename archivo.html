@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html class="dark scroll-smooth" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Portafolio Completo [15 Casos] // Erik García — Senior UI/UX &amp; Multimedia</title>
+  <meta name="description"
+    content="Catálogo interactivo con los 15 casos de estudio de Erik García: UI/UX & E-Commerce, 3D & VFX, Branding e Ilustración/Fotografía." />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230C0717%22/><text y=%22.85em%22 x=%22.1em%22 font-family=%22monospace%22 font-weight=%22bold%22 font-size=%2280%22 fill=%22%234DFF36%22>01</text></svg>">
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            eva: {
+              bg: "#0C0717",          // Violeta carbón abisal
+              panel: "#140A26",       // Púrpura espacial modular
+              surface: "#1E1038",     // Violeta grafito elevado
+              border: "#3B1D6E",      // Violeta eléctrico 1px
+              grid: "#28144A",        // Acento de retícula
+              acid: "#4DFF36",        // Verde ácido EVA-01
+              green: "#4DFF36",       // Verde neón EVA
+              mecha: "#FF5900",       // Naranja mecha
+              orange: "#FF5900",      // Naranja mecha
+              muted: "#6D657E",       // Gris atenuado
+              neonPurple: "#A855F7",  // Púrpura neón 3D
+              cyan: "#00F0FF",        // Cyan de telemetría
+              white: "#FFFFFF",       // Blanco titanio nítido
+              lavender: "#EDE8F5",    // Lavanda blanco de alto contraste
+              mist: "#C8C2D6",        // Texto nítido de sistema / HUD
+              badgeBg: "#090412"      // Fondo negro mate para badges técnicos
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          boxShadow: {
+            'acid-glow': '0 0 16px rgba(77, 255, 54, 0.35)',
+            'mecha-glow': '0 0 16px rgba(255, 89, 0, 0.35)',
+            'purple-glow': '0 0 16px rgba(168, 85, 247, 0.35)',
+            'panel-depth': '0 10px 40px rgba(12, 7, 23, 0.8), 0 0 0 1px #3B1D6E'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0C0717;
+      color: #EDE8F5;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0C0717;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #3B1D6E;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4DFF36;
+    }
+
+    .btn-chamfer {
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    }
+
+    /* Brackets angulares tácticos estilo NERV / EVA-01 */
+    .tactical-card {
+      position: relative;
+    }
+
+    .tactical-bracket {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      border-color: #3B1D6E;
+      z-index: 20;
+    }
+
+    .tactical-card:hover .tactical-bracket {
+      border-color: #4DFF36;
+    }
+
+    .tactical-card:hover .tactical-bracket-tl {
+      transform: translate(-2px, -2px);
+    }
+
+    .tactical-card:hover .tactical-bracket-tr {
+      transform: translate(2px, -2px);
+    }
+
+    .tactical-card:hover .tactical-bracket-bl {
+      transform: translate(-2px, 2px);
+    }
+
+    .tactical-card:hover .tactical-bracket-br {
+      transform: translate(2px, 2px);
+    }
+
+    .tactical-bracket-tl {
+      top: 4px;
+      left: 4px;
+      border-top: 2px solid #3B1D6E;
+      border-left: 2px solid #3B1D6E;
+    }
+
+    .tactical-bracket-tr {
+      top: 4px;
+      right: 4px;
+      border-top: 2px solid #3B1D6E;
+      border-right: 2px solid #3B1D6E;
+    }
+
+    .tactical-bracket-bl {
+      bottom: 4px;
+      left: 4px;
+      border-bottom: 2px solid #3B1D6E;
+      border-left: 2px solid #3B1D6E;
+    }
+
+    .tactical-bracket-br {
+      bottom: 4px;
+      right: 4px;
+      border-bottom: 2px solid #3B1D6E;
+      border-right: 2px solid #3B1D6E;
+    }
+
+    /* Scroll Reveals */
+    .hud-reveal,
+    .reveal-item {
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .card-hover-fx {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .card-hover-fx:hover {
+      transform: translateY(-4px);
+    }
+
+    .workbench-item {
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .workbench-item.active {
+      background-color: rgba(30, 16, 56, 0.95);
+      border-color: #4DFF36;
+      box-shadow: 0 0 15px rgba(77, 255, 54, 0.25);
+    }
+
+    .table-row-hover {
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .table-row-hover:hover {
+      background-color: rgba(30, 16, 56, 0.85);
+      border-color: #4DFF36;
+    }
+
+    /* =========================================================================
+       01. CORTE ANGULAR MECHA 45° (LÁMINA TÉCNICA BA-04)
+       ========================================================================= */
+    .mecha-cut-45 {
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    /* =========================================================================
+       02. CARRUSEL HORIZONTAL CON PROFUNDIDAD Y DIFUMINADO (HORIZONTAL DECK)
+       ========================================================================= */
+    .horiz-deck-stage {
+      perspective: 1200px;
+      perspective-origin: center center;
+      transform-style: preserve-3d;
+    }
+
+    .horiz-card {
+      position: absolute;
+      width: 285px;
+      height: 400px;
+      transform-origin: center center;
+      transition: transform 0.55s cubic-bezier(0.19, 1, 0.22, 1),
+                  filter 0.45s cubic-bezier(0.19, 1, 0.22, 1),
+                  box-shadow 0.45s ease,
+                  border-color 0.4s ease,
+                  opacity 0.45s ease;
+      will-change: transform, filter, opacity;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    @media (max-width: 640px) {
+      .horiz-card {
+        width: 240px;
+        height: 350px;
+      }
+    }
+
+    /* Posición central (activa / enfocada) */
+    .horiz-card[data-offset="0"] {
+      transform: translate3d(0px, 0px, 45px) scale(1);
+      filter: blur(0px) brightness(1);
+      opacity: 1;
+      z-index: 30;
+    }
+
+    /* Cartas laterales inmediatas (atrás nivel 1 - difuminado suave para verse mejor atrás) */
+    .horiz-card[data-offset="-1"] {
+      transform: translate3d(-210px, -6px, -45px) scale(0.85);
+      filter: blur(1.2px) brightness(0.82);
+      opacity: 0.90;
+      z-index: 20;
+    }
+    .horiz-card[data-offset="1"] {
+      transform: translate3d(210px, -6px, -45px) scale(0.85);
+      filter: blur(1.2px) brightness(0.82);
+      opacity: 0.90;
+      z-index: 20;
+    }
+
+    /* Cartas laterales lejanas (atrás nivel 2 - difuminado moderado y visibles al fondo) */
+    .horiz-card[data-offset="-2"] {
+      transform: translate3d(-355px, -12px, -95px) scale(0.73);
+      filter: blur(2.2px) brightness(0.65);
+      opacity: 0.72;
+      z-index: 10;
+    }
+    .horiz-card[data-offset="2"] {
+      transform: translate3d(355px, -12px, -95px) scale(0.73);
+      filter: blur(2.2px) brightness(0.65);
+      opacity: 0.72;
+      z-index: 10;
+    }
+
+    /* Cartas ocultas en el fondo */
+    .horiz-card[data-offset="hidden"] {
+      transform: translate3d(0px, -16px, -150px) scale(0.58);
+      filter: blur(4px) brightness(0.35);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      .horiz-card[data-offset="-1"] {
+        transform: translate3d(-125px, -4px, -40px) scale(0.84);
+      }
+      .horiz-card[data-offset="1"] {
+        transform: translate3d(125px, -4px, -40px) scale(0.84);
+      }
+      .horiz-card[data-offset="-2"] {
+        transform: translate3d(-205px, -8px, -85px) scale(0.72);
+      }
+      .horiz-card[data-offset="2"] {
+        transform: translate3d(205px, -8px, -85px) scale(0.72);
+      }
+    }
+
+    /* Hover sobre carta central o lateral */
+    .horiz-card[data-offset="0"]:hover {
+      transform: translate3d(0px, -8px, 60px) scale(1.04);
+      border-color: #4DFF36 !important;
+      box-shadow: 0 0 38px rgba(77, 255, 54, 0.5), 0 22px 48px rgba(0, 0, 0, 0.92) !important;
+    }
+    .horiz-card[data-offset="-1"]:hover {
+      filter: blur(0.3px) brightness(0.95);
+      opacity: 0.98;
+      border-color: #4DFF36 !important;
+    }
+    .horiz-card[data-offset="1"]:hover {
+      filter: blur(0.3px) brightness(0.95);
+      opacity: 0.98;
+      border-color: #4DFF36 !important;
+    }
+
+    /* Variante de Escenario Ancho Completo */
+    @media (min-width: 1024px) {
+      .horiz-stage-wide .horiz-card {
+        width: 360px;
+        height: 465px;
+      }
+      .horiz-stage-wide .horiz-card[data-offset="-1"] {
+        transform: translate3d(-295px, -8px, -45px) scale(0.86);
+      }
+      .horiz-stage-wide .horiz-card[data-offset="1"] {
+        transform: translate3d(295px, -8px, -45px) scale(0.86);
+      }
+      .horiz-stage-wide .horiz-card[data-offset="-2"] {
+        transform: translate3d(-520px, -16px, -95px) scale(0.74);
+      }
+      .horiz-stage-wide .horiz-card[data-offset="2"] {
+        transform: translate3d(520px, -16px, -95px) scale(0.74);
+      }
+    }
+  </style>
+</head>
+
+<body
+  class="bg-eva-bg text-eva-lavender antialiased selection:bg-eva-acid selection:text-black min-h-screen relative flex flex-col pb-16 lg:pb-0">
+
+  <!-- =========================================================================
+       00. HEADER UNIFICADO (IDÉNTICO A INDEX.HTML + FUNCIONAL PARA APP/MÓVIL)
+       ========================================================================= -->
+  <header class="fixed top-0 left-0 w-full h-[64px] z-50 bg-[#140A26]/95 backdrop-blur-md border-b border-eva-border">
+    <div class="max-w-[1520px] mx-auto h-full px-4 sm:px-6 lg:px-10 flex items-center justify-between">
+
+      <!-- Izquierda: Micro-Isotipo Mecha & Nombre (Regresa a Inicio) -->
+      <a href="index.html#hero" class="flex items-center gap-2.5 group">
+        <span
+          class="w-3 h-3 border border-eva-acid bg-eva-acid/20 rotate-45 flex items-center justify-center shrink-0 group-hover:bg-eva-acid transition-all">
+          <span class="w-1 h-1 bg-eva-acid group-hover:bg-black transition-colors"></span>
+        </span>
+        <span class="flex flex-col">
+          <span
+            class="font-display font-extrabold text-sm sm:text-base tracking-wider text-white group-hover:text-eva-acid transition-colors leading-none">
+            ERIK GARCÍA
+          </span>
+          <span class="font-mono text-[9px] text-eva-mist tracking-widest uppercase mt-0.5">SR. UI/UX &amp; AI WORKFLOWS</span>
+        </span>
+      </a>
+
+      <!-- Centro: Enlaces del Menú Limpios y en Tipografía Fina -->
+      <nav class="hidden lg:flex items-center space-x-7 font-mono text-[11px] tracking-wider uppercase text-eva-mist">
+        <a href="index.html#hero"
+          class="hover:text-eva-acid transition-colors py-1 flex items-center gap-1 group">
+          <span class="group-hover:text-eva-acid">Inicio</span>
+        </a>
+        <a href="#catalogo"
+          class="px-2.5 py-1 bg-[#1E1038] border border-eva-acid text-eva-acid font-bold flex items-center gap-1.5 shadow-[0_0_10px_rgba(77,255,54,0.15)]">
+          <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-eva-acid"></i>
+          <span>Portafolio [15]</span>
+        </a>
+        <a href="#flujo-ia"
+          class="hover:text-eva-acid transition-colors py-1 flex items-center gap-1 group">
+          <span class="group-hover:text-eva-acid">Flujo IA</span>
+        </a>
+        <a href="index.html#trayectoria"
+          class="hover:text-eva-acid transition-colors py-1 flex items-center gap-1 group">
+          <span class="group-hover:text-eva-acid">Trayectoria</span>
+        </a>
+        <a href="#contacto"
+          class="hover:text-eva-acid transition-colors py-1 flex items-center gap-1 group">
+          <span class="group-hover:text-eva-acid">Contacto</span>
+        </a>
+      </nav>
+
+      <!-- Derecha: Botón Volver + Botón Descargar CV Refinados -->
+      <div class="flex items-center gap-2.5">
+        <a href="index.html#hero"
+          class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#090412] border border-[#3B1D6E] hover:border-eva-acid text-[11px] font-mono text-eva-lavender hover:text-white uppercase tracking-wider transition-colors">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-eva-acid"></i>
+          <span>Inicio</span>
+        </a>
+
+        <a href="assets/CV-Erik-Enrique-Garcia-Godinez.pdf" download="CV-Erik-Enrique-Garcia-Godinez.pdf"
+          class="px-3.5 py-1.5 bg-[#090412] border border-eva-acid/60 hover:border-eva-acid hover:bg-eva-acid hover:text-black text-eva-acid text-[11px] font-mono font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 group shadow-[0_0_10px_rgba(77,255,54,0.12)]">
+          <i data-lucide="file-down" class="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform"></i>
+          <span>Descargar CV</span>
+        </a>
+
+        <!-- Botón Hamburguesa Táctico para Móvil / App -->
+        <button id="mobileMenuBtn" aria-label="Abrir menú de navegación"
+          class="lg:hidden p-2 border border-eva-border bg-[#090412] text-white hover:border-eva-acid hover:text-eva-acid transition-colors flex items-center justify-center">
+          <i data-lucide="menu" id="mobileMenuIcon" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Tipo App para Móvil y Tablet -->
+    <div id="mobileMenu"
+      class="hidden lg:hidden bg-[#140A26]/98 backdrop-blur-xl border-b-2 border-eva-acid px-4 pt-4 pb-6 shadow-2xl">
+      <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
+        <a href="index.html#hero"
+          class="mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center gap-2">
+          <i data-lucide="home" class="w-4 h-4 text-eva-acid shrink-0"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="#catalogo" class="mobile-nav-link p-3 bg-eva-acid/15 border border-eva-acid text-white font-bold flex items-center gap-2">
+          <i data-lucide="folder-kanban" class="w-4 h-4 text-eva-acid shrink-0"></i>
+          <span>Portafolio [15]</span>
+        </a>
+        <a href="#flujo-ia"
+          class="mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center gap-2">
+          <i data-lucide="cpu" class="w-4 h-4 text-eva-acid shrink-0"></i>
+          <span>Flujo IA</span>
+        </a>
+        <a href="index.html#trayectoria"
+          class="mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-4 h-4 text-eva-acid shrink-0"></i>
+          <span>Trayectoria</span>
+        </a>
+        <a href="#contacto"
+          class="mobile-nav-link col-span-2 p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center justify-center gap-2">
+          <i data-lucide="terminal" class="w-4 h-4 text-eva-acid shrink-0"></i>
+          <span>Contacto</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Navegación Inferior estilo App Nativa (Móvil) -->
+  <nav
+    class="lg:hidden fixed bottom-0 left-0 right-0 h-14 bg-[#140A26]/95 backdrop-blur-md border-t border-eva-border z-40 grid grid-cols-4 font-mono text-[10px]">
+    <a href="index.html#hero"
+      class="flex flex-col items-center justify-center gap-1 text-eva-lavender hover:text-eva-acid transition-colors">
+      <i data-lucide="home" class="w-4 h-4"></i>
+      <span>Inicio</span>
+    </a>
+    <a href="#catalogo"
+      class="flex flex-col items-center justify-center gap-1 text-eva-acid font-bold border-t-2 border-eva-acid bg-eva-acid/5">
+      <i data-lucide="folder-kanban" class="w-4 h-4"></i>
+      <span>Portafolio</span>
+    </a>
+    <a href="index.html#trayectoria"
+      class="flex flex-col items-center justify-center gap-1 text-eva-lavender hover:text-eva-acid transition-colors">
+      <i data-lucide="briefcase" class="w-4 h-4"></i>
+      <span>Trayectoria</span>
+    </a>
+    <a href="#contacto"
+      class="flex flex-col items-center justify-center gap-1 text-eva-lavender hover:text-eva-acid transition-colors">
+      <i data-lucide="mail" class="w-4 h-4"></i>
+      <span>Contacto</span>
+    </a>
+  </nav>
+
+  <main class="w-full pt-[80px] pb-20 flex-1">
+    <div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-10 space-y-8">
+
+      <!-- =========================================================================
+           01. CONSOLA DEDICADA DEL CATÁLOGO DE 15 CASOS (SIN DUPLICACIÓN)
+           ========================================================================= -->
+      <section id="catalogo" class="space-y-8">
+
+        <!-- Barra de Cabecera del Explorador -->
+        <div
+          class="bg-[#140A26] border border-eva-border p-5 sm:p-6 shadow-panel-depth flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-2xl">
+            <div class="flex flex-wrap items-center gap-2 font-mono text-xs">
+              <a href="index.html#hero"
+                class="text-eva-mist hover:text-eva-acid transition-colors flex items-center gap-1">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-eva-acid"></i>
+                <span>PÁGINA PRINCIPAL</span>
+              </a>
+              <span class="text-eva-border">/</span>
+              <span class="text-eva-acid font-bold">ARCHIVO DE CASOS [15]</span>
+            </div>
+            <h1 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+              Catálogo de Proyectos
+            </h1>
+            <p class="font-sans text-sm sm:text-base text-eva-lavender">
+              15 casos de estudio con proyectos destacados y carruseles interactivos organizados por disciplinas.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 font-mono text-xs">
+            <span class="px-3 py-1.5 bg-[#090412] border border-eva-border text-eva-mist flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-eva-acid animate-ping"></span>
+              <span class="text-white font-bold">VISTA JERÁRQUICA ACTIVA</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Barra de Filtros, Píldoras con Iconos y Buscador -->
+        <div class="bg-[#140A26] border border-eva-border p-5 space-y-4 shadow-panel-depth">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+
+            <!-- Buscador -->
+            <div class="lg:col-span-4 relative">
+              <i data-lucide="search" class="w-4 h-4 text-eva-mist absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+              <input id="searchInput" type="text"
+                placeholder="Buscar por proyecto, marca o herramienta..."
+                class="w-full bg-[#090412] border border-eva-border focus:border-eva-acid focus:ring-1 focus:ring-eva-acid text-sm font-sans text-white placeholder-eva-mist pl-10 pr-4 py-2.5 transition-all" />
+            </div>
+
+            <!-- Píldoras de Categoría con Iconos Representativos -->
+            <div class="lg:col-span-8 flex flex-wrap items-center gap-2 font-mono text-xs">
+              <button data-filter="all"
+                class="cat-pill active px-3.5 py-2 border border-eva-acid bg-eva-acid/20 text-white font-bold transition-all flex items-center gap-1.5">
+                <i data-lucide="layers" class="w-3.5 h-3.5 text-eva-acid"></i>
+                <span>Todos [15]</span>
+              </button>
+              <button data-filter="ui-ux"
+                class="cat-pill px-3.5 py-2 border border-eva-border bg-[#090412] text-eva-lavender hover:text-white hover:border-eva-acid transition-all font-medium flex items-center gap-1.5">
+                <i data-lucide="layout-template" class="w-3.5 h-3.5 text-eva-acid"></i>
+                <span>UI/UX [06]</span>
+              </button>
+              <button data-filter="3d-motion"
+                class="cat-pill px-3.5 py-2 border border-eva-border bg-[#090412] text-eva-lavender hover:text-white hover:border-eva-neonPurple transition-all font-medium flex items-center gap-1.5">
+                <i data-lucide="box" class="w-3.5 h-3.5 text-eva-neonPurple"></i>
+                <span>3D &amp; Video [03]</span>
+              </button>
+              <button data-filter="branding"
+                class="cat-pill px-3.5 py-2 border border-eva-border bg-[#090412] text-eva-lavender hover:text-white hover:border-eva-mecha transition-all font-medium flex items-center gap-1.5">
+                <i data-lucide="pen-tool" class="w-3.5 h-3.5 text-eva-mecha"></i>
+                <span>Branding [03]</span>
+              </button>
+              <button data-filter="creative-lab"
+                class="cat-pill px-3.5 py-2 border border-eva-border bg-[#090412] text-eva-lavender hover:text-white hover:border-eva-cyan transition-all font-medium flex items-center gap-1.5">
+                <i data-lucide="camera" class="w-3.5 h-3.5 text-eva-cyan"></i>
+                <span>Foto &amp; IA [03]</span>
+              </button>
+            </div>
+
+          </div>
+
+          <div
+            class="pt-3 border-t border-eva-border flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-eva-mist">
+            <span id="resultsCount" class="text-white font-semibold">MOSTRANDO 15 DE 15 CASOS</span>
+            <span>HAZ CLIC EN CUALQUIER TARJETA PARA ABRIR EL CASO DE ESTUDIO COMPLETO</span>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             VISTA JERÁRQUICA POR DISCIPLINAS
+             =================================================================== -->
+        <div id="hierarchicalView" class="space-y-16">
+          <!-- Inyectado dinámicamente por archivo.js -->
+        </div>
+
+      </section>
+
+      <!-- =========================================================================
+           DIVISOR TÉCNICO // METODOLOGÍA & ACELERACIÓN CON IA
+           ========================================================================= -->
+      <div class="relative flex items-center justify-center py-4 select-none">
+        <div class="w-full h-[1px] bg-eva-border"></div>
+        <div class="absolute px-4 py-1.5 bg-[#090412] border border-eva-border font-mono text-xs text-eva-mist tracking-wider uppercase font-semibold flex items-center gap-3">
+          <span class="text-eva-acid font-bold">+</span>
+          <span>// METODOLOGÍA &amp; ACELERACIÓN DE PRODUCCIÓN CON IA</span>
+          <span class="flex items-center gap-0.5">
+            <span class="w-1.5 h-2 bg-eva-acid"></span>
+            <span class="w-1.5 h-2 bg-eva-acid"></span>
+            <span class="w-1.5 h-2 bg-eva-acid"></span>
+            <span class="w-1.5 h-2 bg-eva-acid"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           SECCIÓN FLUJO DE TRABAJO CON IA (METODOLOGÍA OPERATIVA)
+           ========================================================================= -->
+      <section id="flujo-ia" class="space-y-8 hud-reveal opacity-0 translate-y-8 blur-sm">
+        <div class="max-w-3xl space-y-3">
+          <div class="font-mono text-xs text-eva-mecha font-bold uppercase tracking-wider flex items-center gap-2">
+            <span class="w-2 h-2 bg-eva-mecha"></span>
+            <span>METODOLOGÍA DE TRABAJO &amp; ACELERACIÓN CON IA</span>
+          </div>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white">
+            Cómo acelero el trabajo con Inteligencia Artificial (-80% Tiempo)
+          </h2>
+          <p class="font-sans text-base text-eva-lavender leading-relaxed">
+            La IA no reemplaza el criterio de diseño ni la empatía con el usuario; automatiza tareas mecánicas para pasar de analítica real a interfaces y código funcional en horas en vez de semanas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <article class="bg-[#140A26] border border-eva-border p-6 space-y-4 hover:border-eva-acid transition-colors shadow-panel-depth tactical-card">
+            <div class="tactical-bracket tactical-bracket-tl"></div>
+            <div class="tactical-bracket tactical-bracket-tr"></div>
+            <div class="tactical-bracket tactical-bracket-bl"></div>
+            <div class="tactical-bracket tactical-bracket-br"></div>
+
+            <div class="flex items-center justify-between border-b border-eva-border pb-3">
+              <span class="font-mono text-xs font-bold text-eva-acid bg-[#090412] px-2.5 py-1 border border-eva-border">PASO 01</span>
+              <span class="font-mono text-xs text-eva-mist">Clarity + Stitch + Figma</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white">
+              01. Analítica de Usuario y Prototipado
+            </h3>
+            <p class="font-sans text-sm sm:text-base text-eva-lavender leading-relaxed">
+              Analizo mapas de calor en Microsoft Clarity para detectar fricciones y estructuro interfaces responsivas en Figma y Google Stitch.
+            </p>
+          </article>
+
+          <article class="bg-[#140A26] border border-eva-border p-6 space-y-4 hover:border-eva-acid transition-colors shadow-panel-depth tactical-card">
+            <div class="tactical-bracket tactical-bracket-tl"></div>
+            <div class="tactical-bracket tactical-bracket-tr"></div>
+            <div class="tactical-bracket tactical-bracket-bl"></div>
+            <div class="tactical-bracket tactical-bracket-br"></div>
+
+            <div class="flex items-center justify-between border-b border-eva-border pb-3">
+              <span class="font-mono text-xs font-bold text-eva-acid bg-[#090412] px-2.5 py-1 border border-eva-border">PASO 02</span>
+              <span class="font-mono text-xs text-eva-mist">Maya + Flow + Ps</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white">
+              02. Producción 3D y Assets con IA
+            </h3>
+            <p class="font-sans text-sm sm:text-base text-eva-lavender leading-relaxed">
+              Modelo en Autodesk Maya apoyado en Google Flow para animaciones ligeras, y genero fotografía sintética consistente sin costos de estudio.
+            </p>
+          </article>
+
+          <article class="bg-[#140A26] border border-eva-border p-6 space-y-4 hover:border-eva-acid transition-colors shadow-panel-depth tactical-card">
+            <div class="tactical-bracket tactical-bracket-tl"></div>
+            <div class="tactical-bracket tactical-bracket-tr"></div>
+            <div class="tactical-bracket tactical-bracket-bl"></div>
+            <div class="tactical-bracket tactical-bracket-br"></div>
+
+            <div class="flex items-center justify-between border-b border-eva-border pb-3">
+              <span class="font-mono text-xs font-bold text-eva-acid bg-[#090412] px-2.5 py-1 border border-eva-border">PASO 03</span>
+              <span class="font-mono text-xs text-eva-mist">Antigravity + HTML5</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white">
+              03. Automatización de Código Front-End
+            </h3>
+            <p class="font-sans text-sm sm:text-base text-eva-lavender leading-relaxed">
+              Transformo diseños y bases de datos estructuradas en código HTML5/CSS limpio usando Google Antigravity, ahorrando hasta un 80% del tiempo operativo.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER Y CONTACTO DIRECTO
+       ========================================================================= -->
+  <footer id="contacto" class="w-full bg-[#140A26] border-t border-eva-border mt-8 relative">
+    <div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-10 py-14">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-eva-border items-center">
+
+        <div class="lg:col-span-6 space-y-3">
+          <div
+            class="inline-flex items-center gap-2 font-mono text-xs text-eva-acid font-bold tracking-wider uppercase">
+            <span class="w-2 h-2 rounded-full bg-eva-acid animate-ping"></span>
+            <span>DISPONIBLE</span>
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+            DISEÑO UI/UX, FRONT-END &amp; PROYECTOS ESPECIALES
+          </h2>
+          <p class="font-sans text-base text-eva-lavender max-w-xl leading-relaxed">
+            Contáctame directamente para entrevistas, revisión técnica de portafolio o colaboración.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
+          <a href="mailto:erik.enriquegg@gmail.com"
+            class="p-5 bg-[#090412] border border-eva-border hover:border-eva-acid transition-all group flex flex-col justify-between">
+            <span class="text-xs text-eva-mist flex items-center justify-between">
+              <span>CORREO DIRECTO</span>
+              <i data-lucide="mail" class="w-4 h-4 text-eva-acid"></i>
+            </span>
+            <span
+              class="text-sm sm:text-base text-white font-bold mt-2 break-all group-hover:text-eva-acid transition-colors">
+              erik.enriquegg@gmail.com
+            </span>
+          </a>
+
+          <a href="tel:+525515614467"
+            class="p-5 bg-[#090412] border border-eva-border hover:border-eva-acid transition-all group flex flex-col justify-between">
+            <span class="text-xs text-eva-mist flex items-center justify-between">
+              <span>TELÉFONO / WHATSAPP</span>
+              <i data-lucide="phone" class="w-4 h-4 text-eva-acid"></i>
+            </span>
+            <span class="text-base text-white font-bold mt-2 group-hover:text-eva-acid transition-colors">
+              +52 55 1561 4467
+            </span>
+          </a>
+
+          <div class="p-5 bg-[#090412] border border-eva-border flex flex-col justify-between">
+            <span class="text-xs text-eva-mist flex items-center justify-between">
+              <span>UBICACIÓN</span>
+              <i data-lucide="map-pin" class="w-4 h-4 text-eva-mecha"></i>
+            </span>
+            <span class="text-sm text-white font-bold mt-2">
+              Ciudad de México (CDMX) — Disponible Híbrido / Remoto
+            </span>
+          </div>
+
+          <a href="assets/CV-Erik-Enrique-Garcia-Godinez.pdf" download="CV-Erik-Enrique-Garcia-Godinez.pdf"
+            class="p-5 bg-eva-acid hover:bg-white text-black transition-all flex flex-col justify-between font-bold shadow-acid-glow group">
+            <span class="text-xs tracking-wider uppercase flex items-center justify-between font-extrabold">
+              <span>EXPEDIENTE PDF</span>
+              <i data-lucide="file-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
+            </span>
+            <span class="text-base font-extrabold mt-2">
+              Descargar CV Completo [PDF]
+            </span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-eva-mist">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 bg-eva-acid inline-block"></span>
+          <span class="text-white font-bold">© 2026 ERIK ENRIQUE GARCÍA GODÍNEZ</span>
+          <span>— PORTAFOLIO PROFESIONAL // EDICIÓN EVA-01</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="index.html#hero" class="text-white hover:text-eva-acid transition-colors font-semibold">← Volver a
+            Página Principal</a>
+          <a href="#catalogo" class="text-eva-acid hover:text-white transition-colors font-semibold">Subir al Inicio
+            ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODAL DE DETALLE DE PROYECTO (TERMINAL NERV CON ICONOS FUNCIONALES)
+       ========================================================================= -->
+  <div id="caseStudyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"
+    class="fixed inset-0 z-[90] hidden items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#0C0717]/90 backdrop-blur-xl overflow-y-auto">
+    <section
+      class="relative w-full max-w-[1240px] bg-[#140A26] border-2 border-eva-border shadow-[0_0_80px_rgba(12,7,23,0.98)] overflow-hidden my-auto max-h-[92vh] flex flex-col">
+
+      <!-- Barra Superior del Modal -->
+      <header
+        class="bg-[#1E1038] border-b border-eva-border px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3 shrink-0 select-none">
+        <div class="flex items-center gap-3 min-w-0">
+          <span class="w-2.5 h-2.5 bg-eva-acid shrink-0"></span>
+          <span id="modalPath" class="font-mono text-xs text-white tracking-wider truncate font-bold">
+            PROYECTO // DETALLE DEL CASO DE ESTUDIO
+          </span>
+        </div>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <!-- Selector Modo Día / Modo Noche con Iconos Sun y Moon (Huawei P60) -->
+          <div id="dualToneSwitch"
+            class="hidden items-center bg-[#090412] border border-eva-acid p-0.5 font-mono text-xs">
+            <button id="btnModeDay"
+              class="px-3 py-1 bg-eva-acid text-black font-extrabold transition-all flex items-center gap-1.5">
+              <i data-lucide="sun" class="w-3.5 h-3.5"></i>
+              <span>MODO DÍA (CLARO)</span>
+            </button>
+            <button id="btnModeNight"
+              class="px-3 py-1 text-eva-lavender hover:text-white font-semibold transition-all flex items-center gap-1.5">
+              <i data-lucide="moon" class="w-3.5 h-3.5"></i>
+              <span>MODO NOCHE (OSCURO)</span>
+            </button>
+          </div>
+
+          <button id="modalCloseBtn"
+            class="px-3.5 py-1.5 bg-[#090412] border border-eva-mecha text-white hover:bg-eva-mecha hover:text-black font-mono text-xs font-bold tracking-wider transition-colors flex items-center gap-1.5">
+            <span>[ CERRAR ESC ]</span>
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Cuerpo del Modal -->
+      <div class="overflow-y-auto p-5 sm:p-8 space-y-8 flex-1">
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-eva-border pb-6">
+          <div class="space-y-3 max-w-3xl">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="modalCategory"
+                class="px-3 py-1 bg-[#090412] border border-eva-acid text-eva-acid font-mono text-xs font-bold uppercase tracking-wider">
+                CATEGORÍA
+              </span>
+              <span id="modalRole"
+                class="px-3 py-1 bg-[#090412] border border-[#3B1D6E] text-eva-lavender font-mono text-xs font-bold uppercase tracking-wider">
+                ROL
+              </span>
+              <div id="modalTools" class="flex flex-wrap items-center gap-1.5"></div>
+            </div>
+            <h2 id="modalTitle"
+              class="font-display font-extrabold text-2xl sm:text-4xl text-white tracking-tight leading-tight">
+              Título del Proyecto
+            </h2>
+            <p id="modalShortDesc" class="font-sans text-eva-lavender text-base leading-relaxed font-normal"></p>
+          </div>
+
+          <div id="modalKpis" class="grid grid-cols-3 gap-3 shrink-0"></div>
+        </div>
+
+        <!-- Visor de Mockup en Alta Resolución -->
+        <div class="space-y-2.5">
+          <div id="dayNightStatus"
+            class="flex items-center justify-between px-3.5 py-2 bg-[#090412] border border-eva-border font-mono text-xs text-white">
+            <span class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-eva-acid shadow-acid-glow"></span>
+              <span id="modalModeStatusText" class="font-bold">VISOR DE ALTA RESOLUCIÓN // ACTIVO</span>
+            </span>
+            <span class="text-eva-acid text-xs font-semibold flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+              <span>MOCKUP DE PRODUCCIÓN</span>
+            </span>
+          </div>
+
+          <div
+            class="relative bg-black/75 border border-eva-border flex flex-col items-center justify-center min-h-[300px] overflow-hidden p-3 gap-4">
+            <video id="modalShowcaseVideo" class="hidden w-full h-auto max-h-[580px] object-contain" autoplay loop muted playsinline controls></video>
+            <img id="modalShowcaseImg" src="Futurx-web/imag/portafolio/Landings RS/Portada.png" alt="Caso de Estudio"
+              class="w-full h-auto object-contain max-h-[580px] transition-all duration-300" />
+          </div>
+        </div>
+
+        <!-- Desglose Humano en 3 Columnas con Iconos Distintivos en Títulos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 font-sans pt-2">
+
+          <article class="bg-[#140A26] border border-eva-border p-6 flex flex-col justify-between shadow-panel-depth">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-eva-border/60 pb-2.5">
+                <h3 class="font-mono text-xs uppercase tracking-wider text-eva-acid font-bold flex items-center gap-2">
+                  <i data-lucide="target" class="w-4 h-4 text-eva-mecha shrink-0"></i>
+                  <span>01. EL RETO COMERCIAL</span>
+                </h3>
+              </div>
+              <p id="modalChallenge" class="text-sm sm:text-base text-eva-lavender font-normal leading-relaxed"></p>
+            </div>
+          </article>
+
+          <article class="bg-[#140A26] border border-eva-border p-6 flex flex-col justify-between shadow-panel-depth">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-eva-border/60 pb-2.5">
+                <h3 class="font-mono text-xs uppercase tracking-wider text-eva-acid font-bold flex items-center gap-2">
+                  <i data-lucide="code-2" class="w-4 h-4 text-eva-mecha shrink-0"></i>
+                  <span>02. MI SOLUCIÓN UI/UX</span>
+                </h3>
+              </div>
+              <p id="modalSolution" class="text-sm sm:text-base text-eva-lavender font-normal leading-relaxed"></p>
+            </div>
+          </article>
+
+          <article class="bg-[#140A26] border border-eva-border p-6 flex flex-col justify-between shadow-panel-depth">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-eva-border/60 pb-2.5">
+                <h3 class="font-mono text-xs uppercase tracking-wider text-eva-acid font-bold flex items-center gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-eva-mecha shrink-0"></i>
+                  <span>03. IMPACTO &amp; RESULTADOS</span>
+                </h3>
+              </div>
+              <p id="modalImpact" class="text-sm sm:text-base text-eva-lavender font-normal leading-relaxed"></p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Galería Completa del Proyecto -->
+        <div id="modalGalleryContainer" class="hidden pt-4 space-y-4"></div>
+
+      </div>
+
+      <!-- Pie del Modal con Navegación -->
+      <footer
+        class="bg-[#140A26] border-t border-eva-border px-4 sm:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono shrink-0 select-none">
+        <button id="modalPrevBtn"
+          class="text-eva-lavender hover:text-white transition-colors flex items-center gap-2 group py-1 font-semibold">
+          <i data-lucide="arrow-left"
+            class="w-4 h-4 text-eva-mecha group-hover:-translate-x-1 transition-transform"></i>
+          <span>ANTERIOR: <strong id="modalPrevTitle" class="text-white font-bold">PROYECTO</strong></span>
+        </button>
+
+        <div class="flex items-center gap-2 text-eva-mist text-xs border border-eva-border px-3 py-1 bg-[#090412]">
+          <span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-pulse"></span>
+          <span>EXPEDIENTE: <strong class="text-white font-mono font-bold">ERIK GARCÍA // SR. UI/UX &amp; MULTIMEDIA</strong></span>
+        </div>
+
+        <button id="modalNextBtn"
+          class="btn-chamfer bg-eva-acid hover:bg-white text-black font-extrabold px-5 py-2 flex items-center gap-2 transition-all shadow-acid-glow group">
+          <span>SIGUIENTE: <strong id="modalNextTitle" class="font-extrabold">PROYECTO</strong></span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+      </footer>
+
+    </section>
+  </div>
+
+  <!-- Script del Archivo Maestro (Autocontenido) -->
+  <script src="archivo.js"></script>
+</body>
+
+</html>

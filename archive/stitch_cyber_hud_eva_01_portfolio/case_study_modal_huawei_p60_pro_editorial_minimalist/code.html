@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NERV Terminal // Huawei P60 Pro Case Study</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration with EVA-01 Theme -->
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            eva: {
+              abyss: '#0C0717',        // Fondo primario modal
+              graphite: '#1E1038',     // Marco exterior y tarjetas
+              space: '#150B28',        // Paneles interiores
+              electric: '#3B1D6E',     // Delimitadores técnicos 1px
+              acid: '#4DFF36',         // Verde ácido EVA-01
+              mecha: '#FF5900',        // Naranja mecha
+              titanium: '#FFFFFF',     // Blanco titanio
+              lavender: '#B8B3C7',     // Gris lavanda párrafos
+              mist: '#6D657E'          // Gris niebla datos técnicos
+            }
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* EVA-01 Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0C0717;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3B1D6E;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4DFF36;
+    }
+    /* Grid scanlines overlay */
+    .eva-scanline {
+      background: linear-gradient(rgba(18, 16, 38, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(77, 255, 54, 0.02), rgba(0, 0, 0, 0), rgba(255, 89, 0, 0.02));
+      background-size: 100% 3px, 6px 100%;
+    }
+    .hud-corner {
+      position: relative;
+    }
+    .hud-corner::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px;
+      width: 8px; height: 8px;
+      border-top: 2px solid #4DFF36;
+      border-left: 2px solid #4DFF36;
+      pointer-events: none;
+    }
+    .hud-corner::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; right: -2px;
+      width: 8px; height: 8px;
+      border-bottom: 2px solid #4DFF36;
+      border-right: 2px solid #4DFF36;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-[#07040D] text-eva-lavender font-sans antialiased relative min-h-screen selection:bg-eva-acid selection:text-black overflow-hidden">
+<!-- Ambient Backdrop simulating High-End NERV Tactical Portfolio -->
+<div aria-hidden="true" class="fixed inset-0 overflow-hidden pointer-events-none opacity-20 filter blur-sm select-none z-0">
+<div class="max-w-7xl mx-auto p-8 font-mono text-xs text-eva-mist">
+<div class="flex justify-between border-b border-eva-electric pb-4">
+<span>NERV SYSTEM // MAGI-01 ARCHIVE // ERIK GARCÍA</span>
+<span class="text-eva-acid">SYNC: 99.87%</span>
+</div>
+<div class="my-16 space-y-4">
+<h1 class="text-6xl font-display font-black text-eva-titanium tracking-wider">PROJECT: EVA-01 <span class="text-eva-acid">INTERFACE SUITE</span></h1>
+<p class="max-w-xl text-eva-lavender">Tactical ecommerce conversion architectures and high-density visual telemetry.</p>
+</div>
+</div>
+</div>
+<!-- BEGIN: ModalBackdrop with 20px blur -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-50 bg-[#07040D]/85 backdrop-blur-[20px] flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto" role="dialog">
+<!-- BEGIN: CaseStudyModalContainer -->
+<section class="relative w-full max-w-[1320px] my-auto bg-eva-abyss border-2 border-eva-graphite rounded-xl shadow-[0_0_60px_rgba(12,7,23,0.9),0_0_30px_rgba(59,29,110,0.4)] overflow-hidden z-60 transition-all duration-300 flex flex-col max-h-[95vh] hud-corner">
+<!-- BEGIN: 1. NERV Terminal Header Bar (70px height) -->
+<header class="h-[70px] bg-eva-space/95 border-b border-eva-electric px-4 sm:px-6 flex items-center justify-between gap-4 select-none shrink-0 relative">
+<!-- Top decorative hazard micro-bar -->
+<div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-eva-acid via-eva-electric to-eva-mecha"></div>
+<!-- Left: Hierarchical Path Indicator -->
+<div class="flex items-center gap-3 min-w-0">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-eva-graphite border border-eva-electric shrink-0">
+<span class="w-2 h-2 rounded-full bg-eva-acid animate-pulse"></span>
+<span class="font-mono text-[10px] text-eva-acid font-bold tracking-wider">UNIT-01</span>
+</div>
+<div class="font-mono text-xs truncate">
+<span class="text-eva-mist">c:/user/portafolio/web/</span><span class="text-eva-titanium font-semibold">huawei-p60-pro</span>
+<span class="text-eva-acid font-medium hidden md:inline ml-2 text-[11px]">[STATUS: ACTIVE // UNIT-01]</span>
+</div>
+</div>
+<!-- Right: Viewport Controls, Interactive Dual Switch & Escape Button -->
+<div class="flex items-center gap-2 sm:gap-3 shrink-0">
+<!-- Viewport Controls -->
+<div class="hidden lg:flex items-center bg-eva-abyss border border-eva-electric rounded p-0.5 font-mono text-[11px]">
+<button class="px-2.5 py-1 rounded bg-eva-graphite text-eva-titanium border border-eva-electric/50 flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[13px] text-eva-acid">desktop_windows</span>
+<span>Desktop</span>
+</button>
+<button class="px-2.5 py-1 rounded text-eva-mist hover:text-eva-lavender flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[13px]">smartphone</span>
+<span>Mobile</span>
+</button>
+</div>
+<!-- Interactive Switch: MODO DÍA / MODO NOCHE -->
+<div class="flex items-center bg-eva-graphite/90 border border-eva-electric rounded-lg p-1 font-mono text-xs shadow-inner">
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold transition-all duration-200 bg-eva-acid text-black shadow-[0_0_12px_rgba(77,255,54,0.5)]" id="togglePearlBtn" onclick="setMode('pearl')">
+<span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+<span>MODO DÍA</span>
+</button>
+<button class="flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold transition-all duration-200 text-eva-mist hover:text-eva-lavender" id="toggleBlackBtn" onclick="setMode('black')">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-mist"></span>
+<span>MODO NOCHE</span>
+</button>
+</div>
+<!-- Escape / Close Button with Mecha Orange / Violet accent -->
+<button aria-label="Cerrar modal" class="h-9 px-3 rounded-lg bg-eva-graphite hover:bg-eva-mecha/20 border border-eva-mecha/60 hover:border-eva-mecha text-eva-mecha hover:text-white flex items-center justify-center gap-1.5 text-xs font-mono font-bold transition-all shadow-[0_0_10px_rgba(255,89,0,0.15)] group" onclick="window.history.back()" type="button">
+<span class="text-sm leading-none group-hover:rotate-90 transition-transform duration-200">✕</span>
+<span class="hidden sm:inline">ESC</span>
+</button>
+</div>
+</header>
+<!-- END: 1. NERV Terminal Header Bar -->
+<!-- Scrollable Modal Interior -->
+<div class="overflow-y-auto px-4 sm:px-8 py-6 space-y-7 flex-1 eva-scanline">
+<!-- BEGIN: 2. Encabezado del caso de estudio -->
+<div class="space-y-3 pb-3 border-b border-eva-electric">
+<!-- Mecha Orange Badge -->
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-eva-mecha/10 border border-eva-mecha/40 font-mono text-[11px] text-eva-mecha tracking-wider font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-mecha animate-ping"></span>
+<span>[ E-COMMERCE CAMPAIGN // HARDWARE LAUNCH // RADIOSHACK ]</span>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+<div class="space-y-2 max-w-3xl">
+<h1 class="text-2xl sm:text-3xl md:text-4xl font-display font-bold tracking-tight text-eva-titanium" id="modal-title">
+                Landing Page Huawei P60 Pro <span class="text-eva-mist font-light">— RadioShack</span>
+</h1>
+<p class="text-sm sm:text-base text-eva-lavender leading-relaxed font-sans font-light">
+                Arquitectura interactiva dual con micro-interacciones de producto, optimización de velocidad de carga y adaptación de contraste desarrollada para el lanzamiento retail flagship en México.
+              </p>
+</div>
+<!-- Technical Stack Pills -->
+<div class="flex flex-wrap items-center gap-1.5 font-mono text-xs pt-1 lg:pt-0">
+<span class="px-2.5 py-1 rounded bg-eva-space border border-eva-electric text-eva-lavender font-medium hover:border-eva-acid hover:text-eva-acid transition-colors">Figma</span>
+<span class="px-2.5 py-1 rounded bg-eva-space border border-eva-electric text-eva-lavender font-medium hover:border-eva-acid hover:text-eva-acid transition-colors">Photoshop</span>
+<span class="px-2.5 py-1 rounded bg-eva-space border border-eva-electric text-eva-lavender font-medium hover:border-eva-acid hover:text-eva-acid transition-colors">HTML5 / CSS3</span>
+<span class="px-2.5 py-1 rounded bg-eva-space border border-eva-electric text-eva-lavender font-medium hover:border-eva-acid hover:text-eva-acid transition-colors">Microsoft Clarity</span>
+<span class="px-2.5 py-1 rounded bg-eva-space border border-eva-electric text-eva-acid/90 font-medium">Responsive Engine</span>
+</div>
+</div>
+<!-- BEGIN: 3. Tres tarjetas horizontales de telemetría de impacto (#1E1038 / #3B1D6E) -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-4">
+<!-- Card 1 -->
+<div class="bg-eva-graphite border border-eva-electric rounded-lg p-4 relative overflow-hidden transition-all duration-300 hover:border-eva-acid/60 hover:shadow-[0_0_20px_rgba(77,255,54,0.15)] group">
+<div class="absolute top-0 right-0 w-8 h-8 bg-eva-acid/5 border-b border-l border-eva-electric pointer-events-none flex items-center justify-center font-mono text-[9px] text-eva-mist">01</div>
+<div class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-eva-titanium flex items-baseline gap-1">
+<span class="text-eva-acid font-mono font-semibold text-3xl">+</span><span class="text-eva-titanium">35</span><span class="text-eva-acid font-mono font-semibold">%</span>
+<span class="text-sm font-sans font-medium text-eva-lavender ml-1.5">Retención Visual</span>
+</div>
+<p class="text-xs text-eva-mist font-mono mt-1.5 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-acid"></span>
+                Heatmaps validados vía Microsoft Clarity
+              </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-eva-graphite border border-eva-electric rounded-lg p-4 relative overflow-hidden transition-all duration-300 hover:border-eva-acid/60 hover:shadow-[0_0_20px_rgba(77,255,54,0.15)] group">
+<div class="absolute top-0 right-0 w-8 h-8 bg-eva-acid/5 border-b border-l border-eva-electric pointer-events-none flex items-center justify-center font-mono text-[9px] text-eva-mist">02</div>
+<div class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-eva-titanium flex items-baseline gap-1">
+<span class="text-eva-acid font-mono font-semibold text-3xl">+</span><span class="text-eva-titanium">25</span><span class="text-eva-acid font-mono font-semibold">%</span>
+<span class="text-sm font-sans font-medium text-eva-lavender ml-1.5">Clics en CTA</span>
+</div>
+<p class="text-xs text-eva-mist font-mono mt-1.5 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-acid"></span>
+                Tasa de conversión en pre-orden retail
+              </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-eva-graphite border border-eva-electric rounded-lg p-4 relative overflow-hidden transition-all duration-300 hover:border-eva-acid/60 hover:shadow-[0_0_20px_rgba(77,255,54,0.15)] group">
+<div class="absolute top-0 right-0 w-8 h-8 bg-eva-acid/5 border-b border-l border-eva-electric pointer-events-none flex items-center justify-center font-mono text-[9px] text-eva-mist">03</div>
+<div class="font-display text-xl sm:text-2xl font-bold tracking-tight text-eva-titanium flex items-baseline gap-2">
+<span>Dual Switch</span>
+<span class="text-xs font-mono font-semibold text-eva-acid px-2 py-0.5 rounded bg-eva-acid/10 border border-eva-acid/40">Light / Dark</span>
+</div>
+<p class="text-xs text-eva-mist font-mono mt-2 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-mecha"></span>
+                Interacción reactiva en tiempo real
+              </p>
+</div>
+</div>
+<!-- END: 3. Tarjetas de telemetría -->
+</div>
+<!-- END: 2. Encabezado del caso de estudio -->
+<!-- BEGIN: 4. Visor Central Amplio (Showcase Comparativo con Coordenadas HUD) -->
+<div class="space-y-2.5">
+<!-- HUD Header Telemetry -->
+<div class="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-eva-mist px-1">
+<div class="flex items-center gap-2">
+<span class="text-eva-acid">SYS_VIEW //</span>
+<span class="uppercase tracking-wider text-eva-lavender">Showcase Comparativo · Interfaz de Producto</span>
+</div>
+<div class="flex items-center gap-4 text-[10px]">
+<span class="text-eva-mist">COORD: <strong class="text-eva-lavender font-normal">35.6895° N, 139.6917° E</strong></span>
+<span class="text-eva-acid border border-eva-electric px-1.5 py-0.5 rounded bg-eva-space">NATIVE: 1920 × 1080 PX</span>
+</div>
+</div>
+<!-- HUD Showcase Container Frame -->
+<div class="relative bg-eva-space border border-eva-electric rounded-xl p-3 sm:p-4 overflow-hidden group shadow-[inset_0_0_30px_rgba(12,7,23,0.8)]">
+<!-- HUD Top & Bottom Grid Crosshairs -->
+<div class="absolute top-2 left-2 font-mono text-[9px] text-eva-mist/70 select-none">[01.00 // NERV-SYS]</div>
+<div class="absolute top-2 right-2 font-mono text-[9px] text-eva-mist/70 select-none">[HUD-MATRIX: ON]</div>
+<!-- Secondary Mode Sub-Header -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 pb-2 mb-2 border-b border-eva-electric/60 font-mono text-[11px]">
+<div class="flex items-center justify-between px-3 py-1.5 rounded bg-eva-graphite border border-eva-electric transition-all duration-300" id="labelPearl">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-eva-acid shadow-[0_0_6px_#4DFF36]"></span>
+<span class="text-eva-titanium font-semibold">01. MODO CLARO</span>
+<span class="text-eva-mist">[WHITE PEARL EDITION]</span>
+</div>
+<span class="text-[9px] text-eva-acid uppercase">Activo</span>
+</div>
+<div class="flex items-center justify-between px-3 py-1.5 rounded bg-eva-graphite border border-eva-electric transition-all duration-300" id="labelBlack">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-eva-mist"></span>
+<span class="text-eva-lavender font-semibold">02. MODO OSCURO</span>
+<span class="text-eva-mist">[DEEP BLACK EDITION]</span>
+</div>
+<span class="text-[9px] text-eva-mist uppercase">En Espera</span>
+</div>
+</div>
+<!-- Image Canvas -->
+<div class="relative bg-black/60 rounded-lg overflow-hidden border border-eva-electric/80 flex items-center justify-center">
+<img alt="Landing Page Huawei P60 Pro para RadioShack - Showcase comparativo de diseño claro y oscuro" class="w-full h-auto object-contain max-h-[620px] rounded transition-all duration-500" id="showcaseImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzCq1nAIsHEmNYf0QGD23svKvbscExwN4ocAYE-GUJst2uGK8s7QEJ7aLfbpQwmEaY8PF-zIT0Y8xR1Uv3GEiXP-LIxrr2obGN-WNEtmup3bpXFMRAhH-w28-YVC4YJAinfAdjm-2W_7jub2pcz9lsV4oqaf1ypfC1vHStOnu9lQFCGqAH_qllAwo1qYuENgAyjuGAHIitzLCzshloF9OWPrgxihxjhmFJ5E9-8ZUpYRPt6Tym4q8f"/>
+<!-- Floating Corner HUD Accents -->
+<div class="absolute bottom-3 left-3 px-2 py-1 rounded bg-eva-abyss/85 backdrop-blur-md border border-eva-electric font-mono text-[10px] text-eva-lavender flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-acid"></span>
+<span>Figma Canvas // Export v2.4</span>
+</div>
+<div class="absolute bottom-3 right-3 px-2 py-1 rounded bg-eva-abyss/85 backdrop-blur-md border border-eva-electric font-mono text-[10px] text-eva-mecha flex items-center gap-1.5">
+<span>Dual Dynamic Layout</span>
+</div>
+</div>
+</div>
+</div>
+<!-- END: 4. Visor Central Amplio -->
+<!-- BEGIN: 5. Bloque inferior de análisis en tres columnas simétricas (#150B28 / #3B1D6E) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans pt-1">
+<!-- Columna 1: Contexto & Reto -->
+<article class="bg-eva-space border border-eva-electric rounded-xl p-5 flex flex-col justify-between hover:border-eva-electric/90 transition-all duration-300 group">
+<div class="space-y-3">
+<div class="flex items-center justify-between border-b border-eva-electric/50 pb-2">
+<h3 class="font-mono text-xs uppercase tracking-wider text-eva-acid font-bold flex items-center gap-2">
+<span class="text-eva-mecha font-mono text-sm">▶</span> 01. CONTEXTO &amp; RETO
+                </h3>
+<span class="font-mono text-[10px] text-eva-mist">PHASE: 01</span>
+</div>
+<h4 class="font-display font-semibold text-eva-titanium text-base group-hover:text-eva-acid transition-colors">
+                Desafío de Conversión en Retail Masivo
+              </h4>
+<p class="text-xs sm:text-sm text-eva-lavender font-light leading-relaxed">
+                Superar la alta tasa de abandono previa en compras electrónicas de ticket alto en RadioShack. El objetivo radicaba en balancear la carga visual del dispositivo y sus dos acabados bandera (Rococo Pearl y Deep Black) bajo un tiempo de render inicial inferior a 1.8 segundos.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-eva-electric/60 text-[11px] font-mono text-eva-mist flex items-center justify-between">
+<span>Retail Compliance</span>
+<span class="text-eva-lavender">Sub-1.8s TTFB</span>
+</div>
+</article>
+<!-- Columna 2: Ejecución & Código -->
+<article class="bg-eva-space border border-eva-electric rounded-xl p-5 flex flex-col justify-between hover:border-eva-electric/90 transition-all duration-300 group">
+<div class="space-y-3">
+<div class="flex items-center justify-between border-b border-eva-electric/50 pb-2">
+<h3 class="font-mono text-xs uppercase tracking-wider text-eva-acid font-bold flex items-center gap-2">
+<span class="text-eva-mecha font-mono text-sm">▶</span> 02. EJECUCIÓN &amp; CÓDIGO
+                </h3>
+<span class="font-mono text-[10px] text-eva-mist">PHASE: 02</span>
+</div>
+<h4 class="font-display font-semibold text-eva-titanium text-base group-hover:text-eva-acid transition-colors">
+                Arquitectura Modular y Diseño Atómico
+              </h4>
+<p class="text-xs sm:text-sm text-eva-lavender font-light leading-relaxed">
+                Estructuración por componentes reutilizables y micro-animaciones en CSS modular. Se diseñó un interruptor de paleta en tiempo real que sincroniza la tonalidad cromática general con el acabado seleccionado, resaltando ópticas XMAGE y panel Quad-Curve.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-eva-electric/60 text-[11px] font-mono text-eva-mist flex items-center justify-between">
+<span>Figma &amp; Atomic Design</span>
+<span class="text-eva-lavender">Modular CSS / JS</span>
+</div>
+</article>
+<!-- Columna 3: Métricas de Negocio -->
+<article class="bg-eva-space border border-eva-electric rounded-xl p-5 flex flex-col justify-between hover:border-eva-electric/90 transition-all duration-300 group">
+<div class="space-y-3">
+<div class="flex items-center justify-between border-b border-eva-electric/50 pb-2">
+<h3 class="font-mono text-xs uppercase tracking-wider text-eva-acid font-bold flex items-center gap-2">
+<span class="text-eva-mecha font-mono text-sm">▶</span> 03. MÉTRICAS DE NEGOCIO
+                </h3>
+<span class="font-mono text-[10px] text-eva-mist">PHASE: 03</span>
+</div>
+<h4 class="font-display font-semibold text-eva-titanium text-base group-hover:text-eva-acid transition-colors">
+                Impacto Cuantitativo &amp; Escalabilidad
+              </h4>
+<p class="text-xs sm:text-sm text-eva-lavender font-light leading-relaxed">
+                Incremento sostenido del +35% en conversión sobre el embudo pre-orden retail, tiempo de permanencia medio incrementado a 2m 45s, scroll completo del 85% y estabilidad absoluta con cero colapsos de interfaz durante los picos de campaña digital.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-eva-electric/60 text-[11px] font-mono text-eva-mist flex items-center justify-between">
+<span>+35% Conversion Lift</span>
+<span class="text-eva-acid">0% UI Collapses</span>
+</div>
+</article>
+</div>
+<!-- END: 5. Bloque inferior de análisis -->
+</div>
+<!-- End Scrollable Interior -->
+<!-- BEGIN: 6. Pie del modal con navegación entre proyectos -->
+<footer class="bg-eva-space border-t border-eva-electric px-4 sm:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono shrink-0 select-none">
+<!-- Anterior -->
+<a class="text-eva-mist hover:text-eva-titanium transition-colors flex items-center gap-2 group py-1" href="#proyecto-anterior">
+<span class="group-hover:-translate-x-1 transition-transform text-eva-mecha font-bold">←</span>
+<span>PROYECTO ANTERIOR: <strong class="text-eva-lavender group-hover:text-white font-normal">MALA MORRX</strong></span>
+</a>
+<!-- Telemetría central -->
+<div class="flex items-center gap-2 text-eva-mist text-[11px] border border-eva-electric px-3 py-1 rounded bg-eva-abyss">
+<span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-pulse"></span>
+<span>TERMINAL NODE: <strong class="text-eva-lavender font-mono font-medium">EVA-01 // ENCRYPTED</strong></span>
+</div>
+<!-- Siguiente botón destacado verde ácido -->
+<a class="bg-eva-acid hover:bg-[#5aff45] text-black font-bold px-4 py-2 rounded-lg flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(77,255,54,0.35)] hover:shadow-[0_0_22px_rgba(77,255,54,0.55)] group" href="#siguiente-proyecto">
+<span>SIGUIENTE: ASEGURA VC INSURTECH</span>
+<span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
+</footer>
+<!-- END: 6. Pie del modal -->
+</section>
+<!-- END: CaseStudyModalContainer -->
+</div>
+<!-- END: ModalBackdrop -->
+<!-- Interactive script for Theme Switch Toggle -->
+<script>
+    function setMode(mode) {
+      const pearlBtn = document.getElementById('togglePearlBtn');
+      const blackBtn = document.getElementById('toggleBlackBtn');
+      const labelPearl = document.getElementById('labelPearl');
+      const labelBlack = document.getElementById('labelBlack');
+      const img = document.getElementById('showcaseImage');
+
+      if (mode === 'pearl') {
+        // Pearl Active State
+        pearlBtn.className = "flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold transition-all duration-200 bg-eva-acid text-black shadow-[0_0_12px_rgba(77,255,54,0.5)]";
+        blackBtn.className = "flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold transition-all duration-200 text-eva-mist hover:text-eva-lavender";
+        
+        labelPearl.className = "flex items-center justify-between px-3 py-1.5 rounded bg-eva-graphite border border-eva-acid/60 text-eva-titanium shadow-[0_0_10px_rgba(77,255,54,0.15)] transition-all duration-300";
+        labelBlack.className = "flex items-center justify-between px-3 py-1.5 rounded bg-eva-graphite/40 border border-eva-electric/50 text-eva-mist opacity-70 transition-all duration-300";
+        
+        img.style.filter = "contrast(102%) brightness(100%)";
+      } else {
+        // Black Active State
+        blackBtn.className = "flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold transition-all duration-200 bg-eva-acid text-black shadow-[0_0_12px_rgba(77,255,54,0.5)]";
+        pearlBtn.className = "flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold transition-all duration-200 text-eva-mist hover:text-eva-lavender";
+        
+        labelBlack.className = "flex items-center justify-between px-3 py-1.5 rounded bg-eva-graphite border border-eva-acid/60 text-eva-titanium shadow-[0_0_10px_rgba(77,255,54,0.15)] transition-all duration-300";
+        labelPearl.className = "flex items-center justify-between px-3 py-1.5 rounded bg-eva-graphite/40 border border-eva-electric/50 text-eva-mist opacity-70 transition-all duration-300";
+        
+        img.style.filter = "contrast(115%) brightness(92%) hue-rotate(2deg)";
+      }
+    }
+  </script>
+</body></html>

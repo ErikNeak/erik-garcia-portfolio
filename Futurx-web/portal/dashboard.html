@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta name="description" content="Portal privado para clientes de Futurx: gestiona tus requerimientos de diseño, revisa entregas y sigue tareas activas." />
+    <title>Dashboard de Cliente - Futurx</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Red Hat Display', sans-serif;
+            color: #f1e0d1;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .grainy-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 20%, rgba(0, 196, 188, 0.1) 0%, transparent 40%);
+        }
+
+        .status-badge {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .status-requested { background: rgba(255, 158, 0, 0.2); color: #ff9e00; border: 1px solid rgba(255, 158, 0, 0.3); }
+        .status-progress { background: rgba(0, 196, 188, 0.2); color: #00c4bc; border: 1px solid rgba(0, 196, 188, 0.3); }
+        .status-review { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .status-completed { background: rgba(34, 197, 94, 0.2); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+        #request-modal {
+            transition: all 0.3s ease;
+        }
+        #request-modal.hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 158, 0, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 158, 0, 0.5);
+        }
+
+        @keyframes flash-red-border {
+            0%, 100% { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 4px rgba(239, 68, 68, 0.1); }
+            50% { border-color: rgba(239, 68, 68, 0.9); box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
+        }
+        .flash-alert-card {
+            animation: flash-red-border 1.5s infinite ease-in-out !important;
+            border-width: 1.5px !important;
+        }
+    </style>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../imag/Icono naranja.png">
+    <link rel="apple-touch-icon" href="../imag/Icono naranja.png">
+    <link rel="icon" type="image/svg+xml" href="../imag/favicon.svg">
+</head>
+
+<body class="bg-[#0a0a0a] grainy-gradient min-h-screen">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-3 bg-[#161616]/70 backdrop-blur-lg rounded-2xl mt-6 mx-auto w-[90%] max-w-7xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] backdrop-saturate-150">
+        <a href="../index.html" class="flex items-center hover:scale-105 transition-transform">
+            <img src="../imag/Logo naranja.png" alt="Futurx" class="h-8">
+        </a>
+        <div id="dynamic-nav-links" class="hidden md:flex items-center gap-8">
+            <!-- Rendered dynamically by JavaScript based on active role -->
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Testing Role Selector -->
+            <select id="role-selector" class="bg-[#161616] border border-white/10 rounded-xl py-1.5 px-3 text-xs text-white focus:border-[#ff9e00] outline-none">
+                <option value="client" selected>Rol: Cliente</option>
+                <option value="employee">Rol: Empleado</option>
+                <option value="admin">Rol: Administrador</option>
+            </select>
+            
+            <div class="text-right hidden sm:block mr-4 border-r border-white/10 pr-4">
+                <p id="role-display-label" class="text-[10px] text-white/40 uppercase tracking-widest font-sans">Portal Cliente</p>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <p id="user-display" class="font-bold text-xs text-white">Invitado</p>
+                </div>
+            </div>
+            <a href="https://wa.me/yournumber" target="_blank" class="hidden lg:flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-xs font-bold text-white hover:bg-white/10 transition-all mr-2">
+                <span class="material-symbols-outlined text-sm text-[#00c4bc]">chat_bubble</span>
+                Hablar con Soporte
+            </a>
+            <button id="logout-btn" class="text-white/60 hover:text-red-400 transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-xl">logout</span>
+            </button>
+            <!-- Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-[60]">
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed top-24 right-6 left-6 z-[55] liquid-glass rounded-[32px] p-12 flex flex-col items-center gap-6 transition-all duration-500 opacity-0 pointer-events-none -translate-y-10 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div id="dynamic-mobile-nav-links" class="flex flex-col items-center gap-6 w-full">
+            <!-- Rendered dynamically by JavaScript based on active role -->
+        </div>
+        <button id="mobile-logout-btn" class="text-xl font-bold text-red-400 tracking-widest uppercase mt-4">Cerrar Sesión</button>
+    </div>
+
+    <main id="view-dashboard" class="pt-32 pb-20 px-8 max-w-7xl mx-auto">
+        <!-- Stats Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div id="stat-card-plan" class="liquid-glass p-6 rounded-3xl border-white/10 flex flex-col justify-between relative overflow-hidden">
+                <!-- Status dot -->
+                <div class="absolute top-6 right-6 w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <div>
+                    <p class="text-white/40 font-sans uppercase tracking-[0.2em] text-[10px] mb-2">Plan Actual</p>
+                    <h3 id="plan-name-display" class="text-xl font-black text-white">Cargando...</h3>
+                </div>
+            </div>
+            <div id="stat-card-credits" class="liquid-glass p-6 rounded-3xl border-white/10">
+                <p class="text-white/40 font-sans uppercase tracking-[0.2em] text-[10px] mb-2">Créditos Diseño</p>
+                <h3 id="design-credits-display" class="text-xl font-black text-white">Ilimitado</h3>
+            </div>
+            <div id="stat-card-tasks" class="liquid-glass p-6 rounded-3xl border-white/10">
+                <p class="text-white/40 font-sans uppercase tracking-[0.2em] text-[10px] mb-2">Tareas Activas</p>
+                <h3 id="active-tasks-display" class="text-xl font-black text-white">0</h3>
+            </div>
+            <div id="stat-card-bomberazos" class="liquid-glass p-6 rounded-3xl border-white/10 border-red-500/20">
+                <p class="text-red-400/60 font-sans uppercase tracking-[0.2em] text-[10px] mb-2">Bomberazos Restantes</p>
+                <div class="flex items-center justify-between">
+                    <h3 id="bomberazos-display" class="text-xl font-black text-red-400">- / -</h3>
+                    <span class="material-symbols-outlined text-red-400/40">local_fire_department</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-6">
+            <div class="flex flex-col gap-4 w-full md:w-auto">
+                <div class="flex items-center gap-6 mb-2">
+                    <button onclick="switchTab('active')" id="tab-active" class="text-sm font-bold uppercase tracking-widest text-[#ff9e00] border-b-2 border-[#ff9e00] pb-2 transition-all">Activas</button>
+                    <button onclick="switchTab('archived')" id="tab-archived" class="text-sm font-bold uppercase tracking-widest text-white/40 pb-2 hover:text-white transition-all">Archivadas</button>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative flex-1 md:w-64">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/20 text-xl">search</span>
+                        <input id="task-search" type="text" placeholder="Buscar por nombre..." 
+                            class="w-full bg-white/5 border border-white/10 rounded-xl py-2 pl-10 pr-4 text-xs text-white focus:border-[#ff9e00] focus:ring-0 transition-all">
+                    </div>
+                    <select id="priority-filter" class="bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-xs text-white/60 focus:border-[#ff9e00] outline-none">
+                        <option value="all">Prioridad: Todas</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Prioridad">Prioridad</option>
+                        <option value="Urgente">Urgente</option>
+                        <option value="Bomberazo">Bomberazo</option>
+                    </select>
+                    <!-- Specialty Filter for Employees -->
+                    <select id="specialty-filter" class="hidden bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-xs text-white/60 focus:border-[#ff9e00] outline-none">
+                        <option value="all">Especialidad: Todas</option>
+                        <option value="DG">Diseñador Gráfico (DG)</option>
+                        <option value="PW">Programador Web (PW)</option>
+                        <option value="EV">Editor de Video (EV)</option>
+                        <option value="EM">Estratega Marketing (EM)</option>
+                    </select>
+                    <!-- Toggle view button for Admin -->
+                    <button id="admin-toggle-btn" onclick="toggleAdminView()" class="hidden bg-white/5 border border-white/10 hover:bg-white/10 rounded-xl py-2 px-4 text-xs text-white flex items-center gap-2 transition-all">
+                        <span class="material-symbols-outlined text-sm text-[#ff9e00]" id="admin-toggle-icon">public</span>
+                        <span id="admin-toggle-text">Pantalla General</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <button id="admin-panel-btn" onclick="toggleClientsPanel()" class="hidden w-full md:w-auto bg-white/5 border border-white/10 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-sm text-[#ff9e00]">group</span>
+                    <span id="admin-panel-btn-text">Panel de Clientes</span>
+                </button>
+                <button id="btn-nueva-solicitud" class="w-full md:w-auto bg-[#ff9e00] text-[#1a120a] px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(255,158,0,0.3)] transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-sm">add_circle</span>
+                    Nueva Solicitud
+                </button>
+            </div>
+        </div>
+
+        <!-- Specialty Filter Bar for Employees -->
+        <div id="employee-specialty-bar" class="hidden flex items-center gap-4 mb-6 bg-white/5 border border-white/10 p-2 rounded-2xl w-fit">
+            <button onclick="setSpecialtyFilter('all')" id="btn-spec-all" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all bg-[#ff9e00] text-[#1a120a]">Todos</button>
+            <button onclick="setSpecialtyFilter('DG')" id="btn-spec-DG" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all text-white/60 hover:text-white hover:bg-white/5">Diseño Gráfico</button>
+            <button onclick="setSpecialtyFilter('PW')" id="btn-spec-PW" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all text-white/60 hover:text-white hover:bg-white/5">Web/UX</button>
+            <button onclick="setSpecialtyFilter('EV')" id="btn-spec-EV" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all text-white/60 hover:text-white hover:bg-white/5">Video</button>
+        </div>
+
+        <!-- Clients Panel for Admin -->
+        <div id="clients-panel-container" class="hidden liquid-glass p-8 rounded-[2.5rem] border-white/10 shadow-2xl relative overflow-hidden mb-12">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#ff9e00]/5 blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+            <div class="flex items-center justify-between mb-8 relative z-10">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Gestión Interna de Clientes</h3>
+                    <p class="text-white/40 text-xs mt-1">Configuración y límites operativos de clientes de Futurx</p>
+                </div>
+                <button onclick="openAdminClientModal()" class="bg-[#ff9e00] text-[#1a120a] hover:shadow-[0_0_20px_rgba(255,158,0,0.3)] px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <span class="material-symbols-outlined text-sm">person_add</span>
+                    Dar de Alta Cliente Custom
+                </button>
+            </div>
+            
+            <!-- Table of clients -->
+            <div class="overflow-x-auto relative z-10">
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/10 text-white/40 uppercase tracking-wider text-[10px]">
+                            <th class="py-4 px-6">Empresa</th>
+                            <th class="py-4 px-6">Plan Base</th>
+                            <th class="py-4 px-6 text-center">Límite Marcas</th>
+                            <th class="py-4 px-6 text-center">Límite Carriles</th>
+                            <th class="py-4 px-6 text-center">Bomberazos (Disponibles / Totales)</th>
+                            <th class="py-4 px-6 text-right">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-clients-tbody" class="divide-y divide-white/5">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tablero Kanban -->
+        <div id="kanban-container" class="flex flex-col lg:flex-row gap-6 w-full lg:overflow-x-auto pb-6 custom-scrollbar items-start select-none">
+            <!-- Columna 1: Fila de Espera (Backlog) -->
+            <div class="kanban-column w-full lg:min-w-[270px] lg:flex-1 liquid-glass rounded-3xl p-5 border-white/10 flex flex-col gap-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ff9e00]"></span>
+                        <h4 class="font-bold text-white tracking-wide text-xs font-sans uppercase tracking-[0.1em]">Fila de Espera</h4>
+                    </div>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full text-[10px] font-black text-white/60 kanban-counter">0</span>
+                </div>
+                <div class="flex flex-col gap-4 flex-1 kanban-tasks-container min-h-[150px]" data-status="requested">
+                    <div class="text-center py-8 text-white/20 text-xs loading-placeholder">
+                        <span class="material-symbols-outlined animate-spin text-lg mb-1 block">refresh</span>
+                        Cargando...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 2: En Producción -->
+            <div class="kanban-column w-full lg:min-w-[270px] lg:flex-1 liquid-glass rounded-3xl p-5 border-white/10 flex flex-col gap-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#00c4bc]"></span>
+                        <h4 class="font-bold text-white tracking-wide text-xs font-sans uppercase tracking-[0.1em]">En Producción</h4>
+                    </div>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full text-[10px] font-black text-white/60 kanban-counter">0</span>
+                </div>
+                <div class="flex flex-col gap-4 flex-1 kanban-tasks-container min-h-[150px]" data-status="En Proceso">
+                    <div class="text-center py-8 text-white/20 text-xs loading-placeholder">
+                        <span class="material-symbols-outlined animate-spin text-lg mb-1 block">refresh</span>
+                        Cargando...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 3: Revisión Cliente -->
+            <div class="kanban-column w-full lg:min-w-[270px] lg:flex-1 liquid-glass rounded-3xl p-5 border-white/10 flex flex-col gap-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#3b82f6]"></span>
+                        <h4 class="font-bold text-white tracking-wide text-xs font-sans uppercase tracking-[0.1em]">Revisión Cliente</h4>
+                    </div>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full text-[10px] font-black text-white/60 kanban-counter">0</span>
+                </div>
+                <div class="flex flex-col gap-4 flex-1 kanban-tasks-container min-h-[150px]" data-status="En Revisión">
+                    <div class="text-center py-8 text-white/20 text-xs loading-placeholder">
+                        <span class="material-symbols-outlined animate-spin text-lg mb-1 block">refresh</span>
+                        Cargando...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 4: Completado -->
+            <div class="kanban-column w-full lg:min-w-[270px] lg:flex-1 liquid-glass rounded-3xl p-5 border-white/10 flex flex-col gap-4">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#22c55e]"></span>
+                        <h4 class="font-bold text-white tracking-wide text-xs font-sans uppercase tracking-[0.1em]">Completado</h4>
+                    </div>
+                    <span class="bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full text-[10px] font-black text-white/60 kanban-counter">0</span>
+                </div>
+                <div class="flex flex-col gap-4 flex-1 kanban-tasks-container min-h-[150px]" data-status="Entregado">
+                    <div class="text-center py-8 text-white/20 text-xs loading-placeholder">
+                        <span class="material-symbols-outlined animate-spin text-lg mb-1 block">refresh</span>
+                        Cargando...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] hidden items-center justify-center p-6">
+        <div id="feedback-modal" class="liquid-glass w-full max-w-lg rounded-[2.5rem] border-white/10 shadow-2xl relative overflow-hidden hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none grainy-overlay"></div>
+            
+            <div class="p-10 relative z-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Feedback / Cambios</h2>
+                        <p id="feedback-task-name" class="text-[#ff9e00] text-xs font-bold uppercase tracking-widest mt-1"></p>
+                    </div>
+                    <button id="close-feedback-modal-btn" class="text-white/40 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <form id="feedback-form" class="space-y-6">
+                    <input type="hidden" name="task_name" id="feedback-hidden-task-name">
+                    
+                    <div class="space-y-2">
+                        <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Comentarios o Cambios Solicitados</label>
+                        <textarea name="comments" required rows="5"
+                            class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#3b82f6] focus:ring-1 focus:ring-[#3b82f6] rounded-xl py-3 px-4 text-white text-sm"
+                            placeholder="Escribe aquí los ajustes que necesitas o tus comentarios sobre el entregable..."></textarea>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <button type="submit" name="action" value="revision"
+                            class="flex-1 py-4 bg-[#3b82f6] text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:shadow-[0_0_20px_rgba(59, 130, 246,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2">
+                            Solicitar Cambios
+                        </button>
+                        <button type="submit" name="action" value="comment"
+                            class="flex-1 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95">
+                            Solo Comentar
+                        </button>
+                    </div>
+                    <p class="text-[10px] text-white/20 text-center uppercase tracking-widest">Al solicitar cambios, el estatus pasará a "En Revisión" automáticamente.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="request-modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] hidden items-center justify-center p-6">
+        <div id="request-modal" class="liquid-glass w-full max-w-xl rounded-[2.5rem] border-white/10 shadow-2xl relative overflow-hidden hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none grainy-overlay"></div>
+            
+            <div class="p-10 relative z-10">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-white">Nueva Tarea</h2>
+                    <button id="close-request-modal-btn" class="text-white/40 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <form id="request-form" class="space-y-6 max-h-[60vh] overflow-y-auto pr-4 custom-scrollbar">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Título de la Solicitud</label>
+                            <input name="task_name" type="text" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                                placeholder="Ej. Rediseño de Logo" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Categoría de Servicio</label>
+                            <select name="category" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm">
+                                <option value="Diseño & Identidad">Diseño & Identidad ($9,800)</option>
+                                <option value="Diseño Web & UX">Diseño Web & UX ($13,500)</option>
+                                <option value="Multimedia">Multimedia & Audiovisual ($8,000)</option>
+                                <option value="Redes">Contenido & Redes Sociales ($6,000)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Velocidad de Entrega</label>
+                            <select name="speed" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm">
+                                <option value="Estándar">Estándar (3 días)</option>
+                                <option value="Express">Express (2 días / +15%)</option>
+                                <option value="Flash">Flash (1 día / +60%) 🔥</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Enlace de Activos (Google Drive)</label>
+                            <input name="driveUrl" type="text" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                                placeholder="https://drive.google.com/..." />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Formato de Salida (Opcional)</label>
+                            <input name="format" type="text"
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                                placeholder="Ej. PNG, MP4, PDF" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Dimensiones / Tamaño (Opcional)</label>
+                            <input name="dimensions" type="text"
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                                placeholder="Ej. 1080x1920, A4" />
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Descripción y Detalles del Brief</label>
+                        <textarea name="description" required rows="4"
+                            class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                            placeholder="Describe lo que necesitas, tono de marca, textos que debe incluir, etc."></textarea>
+                    </div>
+
+                    <div class="flex items-start gap-3 px-2">
+                        <input type="checkbox" name="validation_check" id="validation_check" required
+                            class="mt-1 bg-[#0a0a0a] border-white/10 rounded text-[#ff9e00] focus:ring-[#ff9e00] focus:ring-offset-0" />
+                        <label for="validation_check" class="text-xs text-white/60 select-none cursor-pointer">
+                            ✓ Declaro que esta solicitud cuenta con copys y referencias finales aprobadas.
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submit-request-btn"
+                        class="w-full py-4 bg-[#ff9e00] text-[#1a120a] rounded-xl font-bold text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(255,158,0,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2 mt-4">
+                        <span>Enviar Solicitud de Tarea</span>
+                        <span class="material-symbols-outlined text-sm">send</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin: Alta de Cliente Custom Modal -->
+    <div id="admin-custom-client-modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[100] hidden items-center justify-center p-6">
+        <div id="admin-custom-client-modal" class="liquid-glass w-full max-w-xl rounded-[2.5rem] border-white/10 shadow-2xl relative overflow-hidden hidden">
+            <div class="absolute inset-0 opacity-[0.03] pointer-events-none grainy-overlay"></div>
+            
+            <div class="p-10 relative z-10">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-white">Alta de Cliente Custom</h2>
+                    <button onclick="closeAdminClientModal()" class="text-white/40 hover:text-white transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <form id="admin-client-form" class="space-y-6 max-h-[60vh] overflow-y-auto pr-4 custom-scrollbar">
+                    <div class="space-y-2">
+                        <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Nombre de la Empresa</label>
+                        <input name="company" type="text" required
+                            class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                            placeholder="Ej. Acme Corp" />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Correo Electrónico (Contacto)</label>
+                        <input name="email" type="email" required
+                            class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm"
+                            placeholder="contacto@acme.com" />
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Plan Base</label>
+                            <select name="plan" required class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm outline-none">
+                                <option value="S-01: Gráfico Básico">S-01: Gráfico Básico</option>
+                                <option value="S-02: UX Estratégico">S-02: UX Estratégico</option>
+                                <option value="S-03: Audiovisual Pro">S-03: Audiovisual Pro</option>
+                                <option value="P-01: Presencia Visual">P-01: Presencia Visual</option>
+                                <option value="P-02: Contenido Pro">P-02: Contenido Pro</option>
+                                <option value="P-03: Dominio Digital">P-03: Dominio Digital</option>
+                                <option value="Custom Plan">Plan Custom / Especial</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Límite de Marcas</label>
+                            <input name="brandsLimit" type="number" min="1" value="1" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Trabajos Simultáneos (Carriles)</label>
+                            <input name="carrilesLimit" type="number" min="1" value="1" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="font-sans text-[10px] uppercase tracking-[0.2em] text-white/40 px-2">Bomberazos Asignados</label>
+                            <input name="bomberazosMax" type="number" min="0" value="3" required
+                                class="w-full bg-[#0a0a0a] border-white/10 border focus:border-[#ff9e00] focus:ring-1 focus:ring-[#ff9e00] rounded-xl py-3 px-4 text-white text-sm" />
+                        </div>
+                    </div>
+<button type="submit" id="submit-admin-client-btn"
+                        class="w-full py-4 bg-[#ff9e00] text-[#1a120a] rounded-xl font-bold text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(255,158,0,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2 mt-4">
+                        <span>Registrar Cliente</span>
+                        <span class="material-symbols-outlined text-sm">person_add</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="module">
+        import { auth, db } from './firebase-config.js';
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { doc, getDoc, collection, addDoc, query, where, getDocs, orderBy, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+        // Make database and state globally accessible
+        window.db = db;
+        
+        window.futurxState = {
+            role: 'client', // 'client', 'employee', 'admin'
+            bomberazosDisponibles: 0,
+            bomberazosUsados: 0,
+            clientes: [],
+            tasks: [],
+            activeClientUid: null,
+            activeSpecialtyFilter: 'all'
+        };
+        
+        let currentUser = null;
+        let adminViewMode = 'all'; // all, my-brand
+        
+        const WEBHOOK_BASE_URL = "https://tu-vps.com"; // Reemplazar con la URL real de n8n
+
+        // Helper para enviar webhooks asíncronos
+        async function dispatchWebhook(endpoint, payload) {
+            try {
+                const response = await fetch(`${WEBHOOK_BASE_URL}/webhook/${endpoint}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                console.log(`Webhook ${endpoint} response status: ${response.status}`);
+            } catch (err) {
+                console.error(`Error sending webhook to ${endpoint}:`, err);
+            }
+        }
+        window.dispatchWebhook = dispatchWebhook;
+
+        // Setup ruteo cliente-SPA
+        function showView(viewName) {
+            const dbView = document.getElementById('view-dashboard');
+            const planView = document.getElementById('view-plan');
+            const navDb = document.getElementById('nav-btn-dashboard');
+            const navPlan = document.getElementById('nav-btn-plan');
+            const mobDb = document.getElementById('mobile-nav-btn-dashboard');
+            const mobPlan = document.getElementById('mobile-nav-btn-plan');
+            
+            if (viewName === 'plan') {
+                if (dbView) dbView.classList.add('hidden');
+                if (planView) planView.classList.remove('hidden');
+                
+                if (navDb) {
+                    navDb.className = "font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer";
+                }
+                if (navPlan) {
+                    navPlan.className = "font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest cursor-pointer";
+                }
+                if (mobDb) {
+                    mobDb.className = "text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors cursor-pointer";
+                }
+                if (mobPlan) {
+                    mobPlan.className = "text-xl font-bold text-[#ff9e00] tracking-widest uppercase border-b-2 border-[#ff9e00] cursor-pointer";
+                }
+            } else {
+                if (planView) planView.classList.add('hidden');
+                if (dbView) dbView.classList.remove('hidden');
+                
+                if (navDb) {
+                    navDb.className = "font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest cursor-pointer";
+                }
+                if (navPlan) {
+                    navPlan.className = "font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer";
+                }
+                if (mobDb) {
+                    mobDb.className = "text-xl font-bold text-[#ff9e00] tracking-widest uppercase border-b-2 border-[#ff9e00] cursor-pointer";
+                }
+                if (mobPlan) {
+                    mobPlan.className = "text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors cursor-pointer";
+                }
+            }
+        }
+
+        // Control de acceso basado en roles
+        async function renderViewByRole() {
+            const role = window.futurxState.role;
+            
+            // Sync selector dropdown
+            const roleSelector = document.getElementById('role-selector');
+            if (roleSelector) roleSelector.value = role;
+
+            // Update header labels
+            const roleLabel = document.getElementById('role-display-label');
+            if (roleLabel) {
+                if (role === 'client') roleLabel.textContent = 'Portal Cliente';
+                if (role === 'employee') roleLabel.textContent = 'Portal Equipo';
+                if (role === 'admin') roleLabel.textContent = 'Portal Admin';
+            }
+            
+            // Dynamic Navbar Links
+            const navLinksContainer = document.getElementById('dynamic-nav-links');
+            const mobileLinksContainer = document.getElementById('dynamic-mobile-nav-links');
+            
+            let linksHtml = '';
+            let mobileLinksHtml = '';
+            
+            if (role === 'client') {
+                linksHtml = `
+                    <a id="nav-link-panel" class="font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest cursor-pointer">Panel</a>
+                    <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer" onclick="openModal()">+ Nueva Solicitud</a>
+                    <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1" href="https://wa.me/5215555555555" target="_blank">Soporte</a>
+                `;
+                mobileLinksHtml = `
+                    <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase border-b-2 border-[#ff9e00] cursor-pointer" onclick="toggleMobileMenu()">Panel</a>
+                    <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors cursor-pointer" onclick="openModal(); toggleMobileMenu();">+ Nueva Solicitud</a>
+                    <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="https://wa.me/5215555555555" target="_blank">Soporte</a>
+                `;
+            } else if (role === 'employee') {
+                const specFilter = window.futurxState.activeSpecialtyFilter;
+                
+                const getSpecClass = (spec) => spec === specFilter
+                    ? "font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest cursor-pointer"
+                    : "font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer";
+                    
+                const getMobSpecClass = (spec) => spec === specFilter
+                    ? "text-[#ff9e00] border-b-2 border-[#ff9e00]"
+                    : "text-white hover:text-[#ff9e00]";
+                    
+                linksHtml = `
+                    <a class="${getSpecClass('all')}" onclick="setSpecialtyFilter('all')">Todos</a>
+                    <a class="${getSpecClass('DG')}" onclick="setSpecialtyFilter('DG')">Diseño Gráfico</a>
+                    <a class="${getSpecClass('PW')}" onclick="setSpecialtyFilter('PW')">Web/UX</a>
+                    <a class="${getSpecClass('EV')}" onclick="setSpecialtyFilter('EV')">Video</a>
+                `;
+                
+                mobileLinksHtml = `
+                    <a class="text-xl font-bold ${getMobSpecClass('all')} tracking-widest uppercase cursor-pointer" onclick="setSpecialtyFilter('all'); toggleMobileMenu();">Todos</a>
+                    <a class="text-xl font-bold ${getMobSpecClass('DG')} tracking-widest uppercase cursor-pointer" onclick="setSpecialtyFilter('DG'); toggleMobileMenu();">Diseño Gráfico</a>
+                    <a class="text-xl font-bold ${getMobSpecClass('PW')} tracking-widest uppercase cursor-pointer" onclick="setSpecialtyFilter('PW'); toggleMobileMenu();">Web/UX</a>
+                    <a class="text-xl font-bold ${getMobSpecClass('EV')} tracking-widest uppercase cursor-pointer" onclick="setSpecialtyFilter('EV'); toggleMobileMenu();">Video</a>
+                `;
+            } else if (role === 'admin') {
+                const clientsPanel = document.getElementById('clients-panel-container');
+                const isClientsPanelVisible = clientsPanel && !clientsPanel.classList.contains('hidden');
+                
+                const kanbanClass = !isClientsPanelVisible 
+                    ? "font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest cursor-pointer"
+                    : "font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer";
+                    
+                const clientsClass = isClientsPanelVisible
+                    ? "font-sans text-[#ff9e00] font-medium border-b-2 border-[#ff9e00] pb-1 text-sm uppercase tracking-widest cursor-pointer"
+                    : "font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer";
+                    
+                linksHtml = `
+                    <a class="${kanbanClass}" onclick="hideClientsPanel()">Tablero Kanban</a>
+                    <a class="${clientsClass}" onclick="toggleClientsPanel()">Gestión Clientes</a>
+                    <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer" onclick="openAdminClientModal()">+ Alta Cliente</a>
+                    <a class="font-sans text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all pb-1 cursor-pointer" onclick="openModal()">+ Nueva Solicitud</a>
+                `;
+                
+                const mobKanbanClass = !isClientsPanelVisible ? "text-[#ff9e00] border-b-2 border-[#ff9e00]" : "text-white hover:text-[#ff9e00]";
+                const mobClientsClass = isClientsPanelVisible ? "text-[#ff9e00] border-b-2 border-[#ff9e00]" : "text-white hover:text-[#ff9e00]";
+                
+                mobileLinksHtml = `
+                    <a class="text-xl font-bold ${mobKanbanClass} tracking-widest uppercase cursor-pointer" onclick="hideClientsPanel(); toggleMobileMenu();">Tablero Kanban</a>
+                    <a class="text-xl font-bold ${mobClientsClass} tracking-widest uppercase cursor-pointer" onclick="toggleClientsPanel(); toggleMobileMenu();">Gestión Clientes</a>
+                    <a class="text-xl font-bold text-white hover:text-[#ff9e00] tracking-widest uppercase cursor-pointer" onclick="openAdminClientModal(); toggleMobileMenu();">+ Alta Cliente</a>
+                    <a class="text-xl font-bold text-white hover:text-[#ff9e00] tracking-widest uppercase cursor-pointer" onclick="openModal(); toggleMobileMenu();">+ Nueva Solicitud</a>
+                `;
+            }
+            
+            if (navLinksContainer) navLinksContainer.innerHTML = linksHtml;
+            if (mobileLinksContainer) mobileLinksContainer.innerHTML = mobileLinksHtml;
+
+            // Employee Specialty Filter Bar & Selector Dropdown
+            const specFilterSelect = document.getElementById('specialty-filter');
+            const employeeSpecialtyBar = document.getElementById('employee-specialty-bar');
+            if (role === 'employee' || role === 'admin') {
+                if (specFilterSelect) specFilterSelect.classList.remove('hidden');
+                if (employeeSpecialtyBar) employeeSpecialtyBar.classList.remove('hidden');
+            } else {
+                if (specFilterSelect) {
+                    specFilterSelect.classList.add('hidden');
+                    specFilterSelect.value = 'all';
+                }
+                if (employeeSpecialtyBar) employeeSpecialtyBar.classList.add('hidden');
+            }
+
+            // Admin features
+            const adminToggle = document.getElementById('admin-toggle-btn');
+            const adminPanelBtn = document.getElementById('admin-panel-btn');
+            if (role === 'admin') {
+                if (adminToggle) adminToggle.classList.remove('hidden');
+                if (adminPanelBtn) adminPanelBtn.classList.remove('hidden');
+            } else {
+                if (adminToggle) adminToggle.classList.add('hidden');
+                if (adminPanelBtn) adminPanelBtn.classList.add('hidden');
+                hideClientsPanel();
+            }
+
+            // Stats Cards Visibility
+            const statPlan = document.getElementById('stat-card-plan');
+            const statCredits = document.getElementById('stat-card-credits');
+            const statBomberazos = document.getElementById('stat-card-bomberazos');
+
+            if (role === 'client') {
+                if (statPlan) statPlan.classList.remove('hidden');
+                if (statCredits) statCredits.classList.remove('hidden');
+                if (statBomberazos) statBomberazos.classList.remove('hidden');
+            } else if (role === 'employee') {
+                if (statPlan) statPlan.classList.add('hidden');
+                if (statCredits) statCredits.classList.remove('hidden');
+                if (statBomberazos) statBomberazos.classList.add('hidden');
+            } else if (role === 'admin') {
+                if (adminViewMode === 'my-brand') {
+                    if (statPlan) statPlan.classList.remove('hidden');
+                    if (statCredits) statCredits.classList.remove('hidden');
+                    if (statBomberazos) statBomberazos.classList.remove('hidden');
+                } else {
+                    if (statPlan) statPlan.classList.add('hidden');
+                    if (statCredits) statCredits.classList.remove('hidden');
+                    if (statBomberazos) statBomberazos.classList.add('hidden');
+                }
+            }
+
+            if (currentUser) {
+                await loadTasks(currentUser.uid);
+            }
+        }
+        window.renderViewByRole = renderViewByRole;
+
+        // Event listener para el Selector de Rol en Pruebas
+        document.getElementById('role-selector').addEventListener('change', (e) => {
+            window.futurxState.role = e.target.value;
+            renderViewByRole();
+        });
+
+        // Specialty filter bar handler
+        function setSpecialtyFilter(specialty) {
+            window.futurxState.activeSpecialtyFilter = specialty;
+            
+            const buttons = {
+                'all': document.getElementById('btn-spec-all'),
+                'DG': document.getElementById('btn-spec-DG'),
+                'PW': document.getElementById('btn-spec-PW'),
+                'EV': document.getElementById('btn-spec-EV')
+            };
+            
+            Object.keys(buttons).forEach(key => {
+                const btn = buttons[key];
+                if (!btn) return;
+                if (key === specialty) {
+                    btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all bg-[#ff9e00] text-[#1a120a]";
+                } else {
+                    btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all text-white/60 hover:text-white hover:bg-white/5";
+                }
+            });
+
+            const specSelect = document.getElementById('specialty-filter');
+            if (specSelect) {
+                specSelect.value = specialty;
+            }
+            
+            updateFilters();
+            renderViewByRole();
+        }
+        window.setSpecialtyFilter = setSpecialtyFilter;
+
+        if (document.getElementById('specialty-filter')) {
+            document.getElementById('specialty-filter').addEventListener('change', (e) => {
+                setSpecialtyFilter(e.target.value);
+            });
+        }
+
+        // Clients Panel Toggle Functions
+        function toggleClientsPanel() {
+            const clientsPanel = document.getElementById('clients-panel-container');
+            const kanbanContainer = document.getElementById('kanban-container');
+            const adminPanelBtnText = document.getElementById('admin-panel-btn-text');
+            
+            if (clientsPanel && kanbanContainer) {
+                if (clientsPanel.classList.contains('hidden')) {
+                    clientsPanel.classList.remove('hidden');
+                    kanbanContainer.classList.add('hidden');
+                    if (adminPanelBtnText) adminPanelBtnText.textContent = "Ver Kanban";
+                    renderClientsTable();
+                } else {
+                    clientsPanel.classList.add('hidden');
+                    kanbanContainer.classList.remove('hidden');
+                    if (adminPanelBtnText) adminPanelBtnText.textContent = "Panel de Clientes";
+                }
+            }
+            renderViewByRole();
+        }
+        window.toggleClientsPanel = toggleClientsPanel;
+
+        function hideClientsPanel() {
+            const clientsPanel = document.getElementById('clients-panel-container');
+            const kanbanContainer = document.getElementById('kanban-container');
+            const adminPanelBtnText = document.getElementById('admin-panel-btn-text');
+            if (clientsPanel) clientsPanel.classList.add('hidden');
+            if (kanbanContainer) kanbanContainer.classList.remove('hidden');
+            if (adminPanelBtnText) adminPanelBtnText.textContent = "Panel de Clientes";
+            renderViewByRole();
+        }
+
+        // Render Clients Table
+        function renderClientsTable() {
+            const tbody = document.getElementById('admin-clients-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            
+            const clients = window.futurxState.clientes;
+            if (clients.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="py-8 text-center text-white/40">
+                            No hay clientes registrados.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            clients.forEach(client => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-white/5 text-white/80 hover:bg-white/[0.02] transition-colors";
+                
+                const avail = (client.bomberazosMax || 0) - (client.bomberazosUsed || 0);
+                const bomberazosStr = `${avail < 0 ? 0 : avail} / ${client.bomberazosMax || 0}`;
+                
+                tr.innerHTML = `
+                    <td class="py-4 px-6 font-bold text-white">${client.name || 'Sin Nombre'}</td>
+                    <td class="py-4 px-6 text-white/60">${client.planActual || 'Sin Plan'}</td>
+                    <td class="py-4 px-6 text-center">${client.brandsLimit || 1}</td>
+                    <td class="py-4 px-6 text-center">${client.carrilesLimit || 1}</td>
+                    <td class="py-4 px-6 text-center font-semibold text-red-400">${bomberazosStr}</td>
+                    <td class="py-4 px-6 text-right">
+                        <div class="flex items-center justify-end gap-3">
+                            <button onclick="simulateClient('${client.uid}')" class="bg-[#ff9e00]/10 hover:bg-[#ff9e00]/20 text-[#ff9e00] px-3 py-1.5 rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all">
+                                Simular
+                            </button>
+                            <button onclick="editClientLimits('${client.uid}')" class="bg-white/5 hover:bg-white/10 text-white px-3 py-1.5 rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all">
+                                Editar
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.simulateClient = function(uid) {
+            const client = window.futurxState.clientes.find(c => c.uid === uid);
+            if (!client) return;
+            
+            // Set simulated client as active
+            window.currentUserData = client;
+            window.futurxState.activeClientUid = uid;
+            
+            // Switch to client role
+            window.futurxState.role = 'client';
+            
+            // Hide clients panel
+            hideClientsPanel();
+            
+            // Update UI and reload tasks
+            updateUI();
+            renderViewByRole();
+            
+            alert(`Simulando entorno para el cliente: ${client.name}`);
+        };
+
+        window.editClientLimits = async function(uid) {
+            const client = window.futurxState.clientes.find(c => c.uid === uid);
+            if (!client) return;
+            
+            const newPlanName = prompt(`Plan Actual para ${client.name}:`, client.planActual || 'Sin Plan');
+            if (newPlanName === null) return;
+
+            const newBrands = prompt(`Límite de Marcas para ${client.name}:`, client.brandsLimit || 1);
+            if (newBrands === null) return;
+            
+            const newCarriles = prompt(`Límite de Trabajos Simultáneos (Carriles) para ${client.name}:`, client.carrilesLimit || 1);
+            if (newCarriles === null) return;
+            
+            const newBomberazos = prompt(`Límite de Bomberazos para ${client.name}:`, client.bomberazosMax || 0);
+            if (newBomberazos === null) return;
+            
+            client.planActual = newPlanName;
+            client.brandsLimit = parseInt(newBrands) || 1;
+            client.carrilesLimit = parseInt(newCarriles) || 1;
+            client.bomberazosMax = parseInt(newBomberazos) || 0;
+            
+            // Save to Firestore
+            try {
+                const userRef = doc(db, "users", uid);
+                await updateDoc(userRef, {
+                    planActual: client.planActual,
+                    brandsLimit: client.brandsLimit,
+                    carrilesLimit: client.carrilesLimit,
+                    bomberazosMax: client.bomberazosMax
+                });
+                
+                // If currently simulating this client, update current simulated data
+                if (window.currentUserData && window.currentUserData.uid === uid) {
+                    window.currentUserData.planActual = client.planActual;
+                    window.currentUserData.brandsLimit = client.brandsLimit;
+                    window.currentUserData.carrilesLimit = client.carrilesLimit;
+                    window.currentUserData.bomberazosMax = client.bomberazosMax;
+                    updateUI();
+                }
+                
+                renderClientsTable();
+                alert('Límites actualizados correctamente.');
+            } catch (err) {
+                console.error("Error updating client limits in Firestore:", err);
+                alert("Límites actualizados localmente para la simulación.");
+                renderClientsTable();
+            }
+        };
+
+        // Load Clients Data
+        async function loadClientsData() {
+            try {
+                const q = query(collection(db, "users"));
+                const querySnapshot = await getDocs(q);
+                
+                let fetchedClients = [];
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    fetchedClients.push({
+                        uid: doc.id,
+                        name: data.name || data.company || doc.id,
+                        email: data.email || '',
+                        planActual: data.planActual || 'Sin Plan',
+                        bomberazosMax: data.bomberazosMax || 0,
+                        bomberazosUsed: data.bomberazosUsed || 0,
+                        brandsLimit: data.brandsLimit || 1,
+                        carrilesLimit: data.carrilesLimit || 1,
+                        billingCycleStart: data.billingCycleStart || ''
+                    });
+                });
+                
+                // Seed with defaults if database is empty
+                if (fetchedClients.length === 0) {
+                    fetchedClients = [
+                        { uid: 'client_futurx_seed', name: 'Futurx Agency (Demo)', email: 'demo@futurx.com', planActual: 'S-02: UX Estratégico', bomberazosMax: 3, bomberazosUsed: 1, brandsLimit: 3, carrilesLimit: 2 },
+                        { uid: 'client_acme_seed', name: 'Acme Corp (Demo)', email: 'demo@acme.com', planActual: 'P-01: Presencia Visual', bomberazosMax: 0, bomberazosUsed: 0, brandsLimit: 1, carrilesLimit: 1 }
+                    ];
+                    
+                    for (const c of fetchedClients) {
+                        try {
+                            await setDoc(doc(db, "users", c.uid), {
+                                name: c.name,
+                                email: c.email,
+                                planActual: c.planActual,
+                                bomberazosMax: c.bomberazosMax,
+                                bomberazosUsed: c.bomberazosUsed,
+                                brandsLimit: c.brandsLimit,
+                                carrilesLimit: c.carrilesLimit
+                            });
+                        } catch (e) {
+                            console.warn(e);
+                        }
+                    }
+                }
+                
+                window.futurxState.clientes = fetchedClients;
+                renderClientsTable();
+            } catch (err) {
+                console.error("Error loading clients:", err);
+                // Fallback mock database
+                window.futurxState.clientes = [
+                    { uid: 'client_futurx_seed', name: 'Futurx Agency (Demo)', email: 'demo@futurx.com', planActual: 'S-02: UX Estratégico', bomberazosMax: 3, bomberazosUsed: 1, brandsLimit: 3, carrilesLimit: 2 },
+                    { uid: 'client_acme_seed', name: 'Acme Corp (Demo)', email: 'demo@acme.com', planActual: 'P-01: Presencia Visual', bomberazosMax: 0, bomberazosUsed: 0, brandsLimit: 1, carrilesLimit: 1 }
+                ];
+                renderClientsTable();
+            }
+        }
+
+        // Admin Alta de Cliente Custom Modal Actions
+        function openAdminClientModal() {
+            const overlay = document.getElementById('admin-custom-client-modal-overlay');
+            const modal = document.getElementById('admin-custom-client-modal');
+            if (overlay && modal) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                setTimeout(() => modal.classList.remove('hidden'), 10);
+            }
+        }
+        window.openAdminClientModal = openAdminClientModal;
+
+        function closeAdminClientModal() {
+            const overlay = document.getElementById('admin-custom-client-modal-overlay');
+            const modal = document.getElementById('admin-custom-client-modal');
+            if (modal && overlay) {
+                modal.classList.add('hidden');
+                setTimeout(() => {
+                    overlay.classList.remove('flex');
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
+        }
+        window.closeAdminClientModal = closeAdminClientModal;
+
+        // Admin Custom Client Form Submit
+        document.getElementById('admin-client-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-admin-client-btn');
+            const btnText = btn.querySelector('span:first-child');
+            const originalText = btnText ? btnText.textContent : 'Registrar Cliente';
+            
+            if (btnText) btnText.textContent = 'Guardando...';
+            btn.disabled = true;
+            
+            const formData = new FormData(e.target);
+            const company = formData.get('company');
+            const email = formData.get('email');
+            const plan = formData.get('plan');
+            const brandsLimit = parseInt(formData.get('brandsLimit')) || 1;
+            const carrilesLimit = parseInt(formData.get('carrilesLimit')) || 1;
+            const bomberazosMax = parseInt(formData.get('bomberazosMax')) || 0;
+            
+            const newClient = {
+                name: company,
+                email: email,
+                planActual: plan,
+                bomberazosMax: bomberazosMax,
+                bomberazosUsed: 0,
+                brandsLimit: brandsLimit,
+                carrilesLimit: carrilesLimit,
+                billingCycleStart: new Date().toISOString()
+            };
+            
+            try {
+                const newUid = 'client_' + Date.now();
+                newClient.uid = newUid;
+                
+                await setDoc(doc(db, "users", newUid), newClient);
+                
+                window.futurxState.clientes.push(newClient);
+                renderClientsTable();
+                alert('¡Cliente creado con éxito!');
+                closeAdminClientModal();
+                e.target.reset();
+            } catch (err) {
+                console.error("Error creating custom client:", err);
+                alert("Ocurrió un error al guardar el cliente.");
+            } finally {
+                btn.disabled = false;
+                if (btnText) btnText.textContent = originalText;
+            }
+        });
+
+        // Global Document Event Delegation
+        document.addEventListener('click', (e) => {
+            // Open Request modal
+            if (e.target.closest('#btn-nueva-solicitud')) {
+                e.preventDefault();
+                openModal();
+            }
+            
+            // Close Request modal
+            if (e.target.closest('#close-request-modal-btn')) {
+                e.preventDefault();
+                closeModal();
+            }
+            
+            // Close Request overlay click
+            if (e.target === document.getElementById('request-modal-overlay')) {
+                closeModal();
+            }
+
+            // Close Feedback modal
+            if (e.target.closest('#close-feedback-modal-btn')) {
+                e.preventDefault();
+                closeFeedbackModal();
+            }
+            
+            // Close Feedback overlay click
+            if (e.target === document.getElementById('feedback-modal-overlay')) {
+                closeFeedbackModal();
+            }
+
+            // Close Cancel modal
+            if (e.target.closest('#close-cancel-modal-btn')) {
+                e.preventDefault();
+                closeCancelModal();
+            }
+            
+            // Close Cancel overlay click
+            if (e.target === document.getElementById('cancel-modal-overlay')) {
+                closeCancelModal();
+            }
+
+            // Close Admin client modal
+            if (e.target.closest('#close-admin-client-modal-btn')) {
+                e.preventDefault();
+                closeAdminClientModal();
+            }
+            
+            // Close Admin client overlay click
+            if (e.target === document.getElementById('admin-custom-client-modal-overlay')) {
+                closeAdminClientModal();
+            }
+        });
+
+        // User Auth Observer
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUser = user;
+                const userDocRef = doc(db, "users", user.uid);
+                const userDoc = await getDoc(userDocRef);
+                
+                let userData = {};
+                if (userDoc.exists()) {
+                    userData = userDoc.data();
+                    
+                    // Lazy Reset Logic para Bomberazos
+                    if (userData.billingCycleStart) {
+                        const cycleStart = new Date(userData.billingCycleStart);
+                        const now = new Date();
+                        const nextCycle = new Date(cycleStart);
+                        nextCycle.setMonth(nextCycle.getMonth() + 1);
+                        
+                        if (now >= nextCycle) {
+                            await updateDoc(userDocRef, {
+                                bomberazosUsed: 0,
+                                billingCycleStart: now.toISOString()
+                            });
+                            userData.bomberazosUsed = 0;
+                            userData.billingCycleStart = now.toISOString();
+                        }
+                    }
+                } else {
+                    userData = {
+                        name: user.email.split('@')[0],
+                        email: user.email,
+                        planActual: 'Sin Plan',
+                        bomberazosMax: 3,
+                        bomberazosUsed: 0,
+                        brandsLimit: 3,
+                        carrilesLimit: 2,
+                        billingCycleStart: new Date().toISOString()
+                    };
+                    await setDoc(userDocRef, userData);
+                }
+
+                if (!window.futurxState.activeClientUid) {
+                    window.currentUserData = userData;
+                }
+                
+                const userDisplay = document.getElementById('user-display');
+                if (userDisplay) {
+                    userDisplay.textContent = window.currentUserData.name || window.currentUserData.email || user.email;
+                }
+
+                await loadClientsData();
+                
+                window.futurxState.role = document.getElementById('role-selector').value;
+                await renderViewByRole();
+                updateUI();
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+
+        // Form Submission - Nueva Solicitud
+        document.getElementById('request-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submit-request-btn');
+            const btnText = btn.querySelector('span:first-child');
+            const originalText = btnText ? btnText.textContent : 'Enviar Solicitud';
+            
+            if (!currentUser) {
+                alert('Debe iniciar sesión para crear una solicitud.');
+                return;
+            }
+
+            btn.disabled = true;
+            if (btnText) btnText.textContent = 'Enviando...';
+            
+            const formData = new FormData(e.target);
+            const speed = formData.get('speed');
+            let mappedPriority = 'Normal';
+            if (speed === 'Flash') mappedPriority = 'Bomberazo';
+            else if (speed === 'Express') mappedPriority = 'Urgente';
+            
+            const clientUid = window.futurxState.activeClientUid || (currentUser ? currentUser.uid : null);
+            const clientEmail = (window.currentUserData && window.currentUserData.email) || (currentUser ? currentUser.email : '');
+
+            if (!clientUid) {
+                alert('Error: No se pudo identificar el cliente asociado para esta solicitud.');
+                btn.disabled = false;
+                if (btnText) btnText.textContent = originalText;
+                return;
+            }
+
+            const data = {
+                uid: clientUid,
+                client_email: clientEmail,
+                task_name: formData.get('task_name'),
+                category: formData.get('category'),
+                speed: speed,
+                priority: mappedPriority,
+                driveUrl: formData.get('driveUrl'),
+                format: formData.get('format') || '',
+                dimensions: formData.get('dimensions') || '',
+                description: formData.get('description'),
+                status: 'requested',
+                createdAt: new Date().toISOString()
+            };
+
+            // Bomberazos Validation (velocidad Flash)
+            if (speed === 'Flash') {
+                const max = window.currentUserData ? (window.currentUserData.bomberazosMax || 0) : 0;
+                const used = window.currentUserData ? (window.currentUserData.bomberazosUsed || 0) : 0;
+                const disponibles = max - used;
+                
+                if (disponibles <= 0) {
+                    alert('Límite de Bomberazos alcanzado: Has agotado tus bomberazos este mes. Por favor mejora tu plan o espera a tu próximo ciclo de facturación para renovarlos.');
+                    btn.disabled = false;
+                    if (btnText) btnText.textContent = originalText;
+                    return;
+                }
+                
+                // Reactive UI updates immediately BEFORE database insertion
+                window.currentUserData.bomberazosUsed = used + 1;
+                window.futurxState.bomberazosUsados = used + 1;
+                window.futurxState.bomberazosDisponibles = max - (used + 1);
+                
+                const simClient = window.futurxState.clientes.find(c => c.uid === clientUid);
+                if (simClient) {
+                    simClient.bomberazosUsed = used + 1;
+                }
+                
+                updateUI(); // Immediate header stats refresh
+                
+                // Update Firestore
+                try {
+                    const userDocRef = doc(db, "users", clientUid);
+                    await updateDoc(userDocRef, {
+                        bomberazosUsed: used + 1
+                    });
+                } catch (err) {
+                    console.error("Error updating bomberazos count in Firestore:", err);
+                }
+            }
+
+            try {
+                await addDoc(collection(db, "tasks"), data);
+                
+                dispatchWebhook('nueva-solicitud', {
+                    userId: clientUid,
+                    taskTitle: data.task_name,
+                    category: data.category,
+                    priority: data.priority,
+                    driveUrl: data.driveUrl
+                });
+
+                alert('¡Solicitud enviada con éxito!');
+                closeModal();
+                loadTasks(currentUser ? currentUser.uid : clientUid);
+                e.target.reset();
+            } catch (error) {
+                console.error('Error adding document:', error);
+                alert('Error al enviar la solicitud: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                if (btnText) btnText.textContent = originalText;
+            }
+        });
+
+        // Setup Drag and Drop helpers & events
+        let draggedCard = null;
+
+        function updateCardBorderColor(card, status) {
+            card.classList.remove('border-white/10', 'border-[#00c4bc]/30', 'border-[#3b82f6]/30', 'border-[#22c55e]/30');
+            card.classList.remove('hover:border-[#00c4bc]/50', 'hover:border-[#3b82f6]/50', 'hover:border-[#22c55e]/50', 'hover:border-white/20');
+            if (status === 'En Proceso') {
+                card.classList.add('border-[#00c4bc]/30', 'hover:border-[#00c4bc]/50');
+            } else if (status === 'En Revisión') {
+                card.classList.add('border-[#3b82f6]/30', 'hover:border-[#3b82f6]/50');
+            } else if (status === 'Entregado') {
+                card.classList.add('border-[#22c55e]/30', 'hover:border-[#22c55e]/50');
+            } else {
+                card.classList.add('border-white/10', 'hover:border-white/20');
+            }
+        }
+
+        // Obtener el especialista a cargo
+        function getTaskSpecialist(task) {
+            if (task.specialist) return task.specialist;
+            const name = task.task_name.toLowerCase();
+            if (name.includes('video') || name.includes('multimedia') || name.includes('edición') || name.includes('motion') || name.includes('clip') || name.includes('reel') || name.includes('audio')) {
+                return 'EV';
+            }
+            if (name.includes('web') || name.includes('app') || name.includes('ux') || name.includes('ui') || name.includes('código') || name.includes('desarrollo') || name.includes('html')) {
+                return 'PW';
+            }
+            if (name.includes('redes') || name.includes('social') || name.includes('post') || name.includes('contenido') || name.includes('marketing') || name.includes('copys')) {
+                return 'EM';
+            }
+            return 'DG';
+        }
+
+        function renderSpecialistAvatars(specialistCode) {
+            const avatars = {
+                'EV': `<div class="inline-block h-5.5 w-5.5 rounded-full ring-2 ring-[#161616] bg-gradient-to-br from-red-500 to-pink-600 text-[8px] font-black text-white flex items-center justify-center cursor-default" title="Editor de Video">EV</div>`,
+                'PW': `<div class="inline-block h-5.5 w-5.5 rounded-full ring-2 ring-[#161616] bg-gradient-to-br from-[#00c4bc] to-[#008080] text-[8px] font-black text-white flex items-center justify-center cursor-default" title="Programador Web">PW</div>
+                       <div class="inline-block h-5.5 w-5.5 rounded-full ring-2 ring-[#161616] bg-gradient-to-br from-[#ff9e00] to-[#ff6a00] text-[8px] font-black text-[#1a120a] flex items-center justify-center cursor-default" title="Diseñador Gráfico">DG</div>`,
+                'EM': `<div class="inline-block h-5.5 w-5.5 rounded-full ring-2 ring-[#161616] bg-gradient-to-br from-[#3b82f6] to-blue-600 text-[8px] font-black text-white flex items-center justify-center cursor-default" title="Estratega de Marketing">EM</div>
+                       <div class="inline-block h-5.5 w-5.5 rounded-full ring-2 ring-[#161616] bg-gradient-to-br from-[#ff9e00] to-[#ff6a00] text-[8px] font-black text-[#1a120a] flex items-center justify-center cursor-default" title="Diseñador Gráfico">DG</div>`,
+                'DG': `<div class="inline-block h-5.5 w-5.5 rounded-full ring-2 ring-[#161616] bg-gradient-to-br from-[#ff9e00] to-[#ff6a00] text-[8px] font-black text-[#1a120a] flex items-center justify-center cursor-default" title="Diseñador Gráfico">DG</div>`
+            };
+            return avatars[specialistCode] || avatars['DG'];
+        }
+
+        function setupCardDragEvents(card) {
+            card.addEventListener('dragstart', (e) => {
+                draggedCard = card;
+                card.classList.add('opacity-40');
+                card.classList.remove('cursor-grab');
+                card.classList.add('cursor-grabbing');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', card.getAttribute('data-id'));
+            });
+
+            card.addEventListener('dragend', () => {
+                draggedCard = null;
+                card.classList.remove('opacity-40');
+                card.classList.remove('cursor-grabbing');
+                card.classList.add('cursor-grab');
+                
+                const containers = document.querySelectorAll('.kanban-tasks-container');
+                containers.forEach(c => c.classList.remove('bg-white/[0.04]', 'border-dashed', 'border', 'border-white/20', 'rounded-2xl'));
+            });
+        }
+
+        function setupContainersDragEvents() {
+            const containers = document.querySelectorAll('.kanban-tasks-container');
+            containers.forEach(container => {
+                container.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                });
+
+                container.addEventListener('dragenter', (e) => {
+                    e.preventDefault();
+                    container.classList.add('bg-white/[0.04]', 'border-dashed', 'border', 'border-white/20', 'rounded-2xl');
+                });
+
+                container.addEventListener('dragleave', () => {
+                    container.classList.remove('bg-white/[0.04]', 'border-dashed', 'border', 'border-white/20', 'rounded-2xl');
+                });
+
+                container.addEventListener('drop', async (e) => {
+                    e.preventDefault();
+                    container.classList.remove('bg-white/[0.04]', 'border-dashed', 'border', 'border-white/20', 'rounded-2xl');
+                    
+                    const taskId = e.dataTransfer.getData('text/plain');
+                    if (!taskId || !draggedCard) return;
+
+                    const newStatus = container.getAttribute('data-status');
+                    const oldStatus = draggedCard.getAttribute('data-kanban-status');
+
+                    if (newStatus === oldStatus) return;
+
+                    container.appendChild(draggedCard);
+                    draggedCard.setAttribute('data-kanban-status', newStatus);
+                    updateCardBorderColor(draggedCard, newStatus);
+
+                    const currentBtn = draggedCard.querySelector('.feedback-btn');
+                    if (newStatus === 'En Revisión') {
+                        if (!currentBtn) {
+                            const footerDiv = draggedCard.querySelector('.card-footer-info');
+                            const btn = document.createElement('button');
+                            btn.className = "feedback-btn mt-3 w-full py-1.5 bg-[#3b82f6]/20 border border-[#3b82f6]/30 hover:bg-[#3b82f6]/40 text-white rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all duration-200";
+                            btn.setAttribute('onclick', `event.stopPropagation(); openFeedbackModal('${draggedCard.getAttribute('data-name')}')`);
+                            btn.innerHTML = 'Feedback / Cambios';
+                            draggedCard.insertBefore(btn, footerDiv);
+                        }
+                    } else {
+                        if (currentBtn) {
+                            currentBtn.remove();
+                        }
+                    }
+
+                    try {
+                        const docRef = doc(db, "tasks", taskId);
+                        await updateDoc(docRef, { status: newStatus });
+                        console.log(`Task ${taskId} status updated to ${newStatus} in Firestore.`);
+                        
+                        dispatchWebhook('cambio-estatus', {
+                            taskId: taskId,
+                            oldStatus: oldStatus,
+                            newStatus: newStatus,
+                            timestamp: new Date().toISOString()
+                        });
+                    } catch (err) {
+                        console.error("Error updating status in Firestore:", err);
+                        const oldContainer = document.querySelector(`.kanban-tasks-container[data-status="${oldStatus}"]`);
+                        if (oldContainer) {
+                            oldContainer.appendChild(draggedCard);
+                            draggedCard.setAttribute('data-kanban-status', oldStatus);
+                            updateCardBorderColor(draggedCard, oldStatus);
+                        }
+                    }
+
+                    updateActiveTasksCounter();
+                    updateKanbanCounters();
+                });
+            });
+        }
+
+        // Asignación Dinámica para Admin
+        async function changeTaskAssignment(taskId, newSpecialist) {
+            try {
+                const docRef = doc(db, "tasks", taskId);
+                await updateDoc(docRef, { specialist: newSpecialist });
+                console.log(`Task ${taskId} assigned to ${newSpecialist} in Firestore.`);
+                
+                const card = document.querySelector(`.task-card[data-id="${taskId}"]`);
+                if (card) {
+                    card.setAttribute('data-specialist', newSpecialist);
+                    const avatarContainer = card.querySelector('.avatar-container');
+                    if (avatarContainer) {
+                        avatarContainer.innerHTML = renderSpecialistAvatars(newSpecialist);
+                    }
+                }
+                
+                dispatchWebhook('cambio-estatus', {
+                    taskId: taskId,
+                    specialist: newSpecialist,
+                    timestamp: new Date().toISOString(),
+                    action: 'assignment-change'
+                });
+            } catch (err) {
+                console.error("Error updating assignment:", err);
+                alert("Error al actualizar la asignación.");
+            }
+        }
+        window.changeTaskAssignment = changeTaskAssignment;
+
+        function createCardElement(id, task) {
+            const card = document.createElement('div');
+            card.className = "task-card liquid-glass p-4 rounded-2xl cursor-grab active:cursor-grabbing hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border flex flex-col justify-between";
+            card.setAttribute('draggable', 'true');
+            card.setAttribute('data-id', id);
+            card.setAttribute('data-name', task.task_name);
+            card.setAttribute('data-priority', task.priority);
+            card.setAttribute('data-archive-status', task.status === 'archived' ? 'archived' : 'active');
+            card.setAttribute('data-kanban-status', task.status);
+            
+            const specialistVal = getTaskSpecialist(task);
+            card.setAttribute('data-specialist', specialistVal);
+
+            if (task.priority === 'Bomberazo' || task.speed === 'Flash') {
+                card.classList.add('flash-alert-card');
+            }
+
+            updateCardBorderColor(card, task.status);
+
+            let priorityHtml = '';
+            if (task.priority === 'Bomberazo' || task.speed === 'Flash') {
+                priorityHtml = `<span class="text-[9px] font-black px-2 py-0.5 bg-red-500/20 text-red-400 rounded-md border border-red-500/30 uppercase tracking-wider animate-pulse">Flash 🔥</span>`;
+            } else if (task.priority === 'Urgente') {
+                priorityHtml = `<span class="text-[9px] font-black px-2 py-0.5 bg-[#ff9e00]/20 text-[#ff9e00] rounded-md border border-[#ff9e00]/30 uppercase tracking-wider">Urgente</span>`;
+            } else if (task.priority === 'Prioridad') {
+                priorityHtml = `<span class="text-[9px] font-black px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded-md border border-blue-500/30 uppercase tracking-wider">Prioridad</span>`;
+            } else {
+                priorityHtml = `<span class="text-[9px] font-black px-2 py-0.5 bg-white/10 text-white/40 rounded-md border border-white/20 uppercase tracking-wider">${task.priority ? task.priority.toUpperCase() : 'NORMAL'}</span>`;
+            }
+
+            let dateStr = 'Reciente';
+            if (task.createdAt) {
+                const d = new Date(task.createdAt);
+                dateStr = d.toLocaleDateString();
+            }
+
+            const specialistsHtml = renderSpecialistAvatars(specialistVal);
+            const isReview = task.status === 'En Revisión';
+            const feedbackBtnHtml = isReview ? `
+                <button onclick="event.stopPropagation(); openFeedbackModal('${task.task_name}')" class="feedback-btn mt-3 w-full py-1.5 bg-[#3b82f6]/20 border border-[#3b82f6]/30 hover:bg-[#3b82f6]/40 text-white rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all duration-200">
+                    Feedback / Cambios
+                </button>
+            ` : '';
+
+            const role = window.futurxState.role;
+            let adminSelectHtml = `
+              <div class="mt-2 pt-2 border-t border-white/5 flex items-center justify-between gap-2">
+                  <span class="text-[9px] uppercase tracking-wider text-white/40">Asignar:</span>
+                  <select onchange="changeTaskAssignment('${id}', this.value); event.stopPropagation();" class="bg-[#161616] border border-white/10 rounded-lg py-1 px-2 text-[10px] text-white focus:border-[#ff9e00] outline-none">
+                      <option value="DG" ${specialistVal === 'DG' ? 'selected' : ''}>DG (Diseño)</option>
+                      <option value="PW" ${specialistVal === 'PW' ? 'selected' : ''}>PW (Web)</option>
+                      <option value="EV" ${specialistVal === 'EV' ? 'selected' : ''}>EV (Video)</option>
+                      <option value="EM" ${specialistVal === 'EM' ? 'selected' : ''}>EM (Redes)</option>
+                  </select>
+              </div>
+            `;
+
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        ${priorityHtml}
+                        <button onclick="event.stopPropagation(); archiveTask(this)" class="text-white/20 hover:text-white transition-colors" title="Archivar">
+                            <span class="material-symbols-outlined text-base">archive</span>
+                        </button>
+                    </div>
+                    <h5 class="font-bold text-white text-sm mb-1 line-clamp-2">${task.task_name}</h5>
+                    <p class="text-[10px] text-white/40 mb-3">${task.format ? task.format : ''} ${task.dimensions ? ' • ' + task.dimensions : ''}</p>
+                </div>
+                <div>
+                    ${feedbackBtnHtml}
+                    <div class="card-footer-info flex items-center justify-between gap-2 mt-3 pt-3 border-t border-white/5">
+                        <div class="flex items-center gap-1 text-[10px] text-white/40 font-medium">
+                            <span class="material-symbols-outlined text-[12px]">calendar_today</span>
+                            <span>${dateStr}</span>
+                        </div>
+                        <div class="avatar-container flex -space-x-1.5 overflow-hidden">
+                            ${specialistsHtml}
+                        </div>
+                    </div>
+                    ${role === 'admin' ? adminSelectHtml : ''}
+                </div>
+            `;
+
+            setupCardDragEvents(card);
+
+            return card;
+        }
+
+        async function loadTasks(uid) {
+            try {
+                let q;
+                const role = window.futurxState.role;
+                
+                if (role === 'client') {
+                    const targetUid = window.futurxState.activeClientUid || uid;
+                    q = query(collection(db, "tasks"), where("uid", "==", targetUid));
+                } else if (role === 'employee') {
+                    q = query(collection(db, "tasks"));
+                } else if (role === 'admin') {
+                    if (adminViewMode === 'my-brand') {
+                        q = query(collection(db, "tasks"), where("uid", "==", uid));
+                    } else {
+                        q = query(collection(db, "tasks"));
+                    }
+                }
+
+                const querySnapshot = await getDocs(q);
+                const containers = document.querySelectorAll('.kanban-tasks-container');
+                containers.forEach(c => c.innerHTML = '');
+                
+                window.futurxState.tasks = [];
+                
+                if (querySnapshot.empty) {
+                    containers.forEach(c => {
+                        c.innerHTML = `
+                            <div class="text-center py-8 text-white/20 text-xs">
+                                Sin tareas
+                            </div>
+                        `;
+                    });
+                    const activeTasksDisp = document.getElementById('active-tasks-display');
+                    if (activeTasksDisp) activeTasksDisp.textContent = "0";
+                    updateKanbanCounters();
+                    return;
+                }
+                
+                let activeCount = 0;
+
+                querySnapshot.forEach((doc) => {
+                    const task = doc.data();
+                    window.futurxState.tasks.push({ id: doc.id, ...task });
+                    const card = createCardElement(doc.id, task);
+                    
+                    if (task.status === 'En Proceso' || task.status === 'En Revisión') {
+                        activeCount++;
+                    }
+
+                    const targetContainer = document.querySelector(`.kanban-tasks-container[data-status="${task.status}"]`);
+                    if (targetContainer) {
+                        targetContainer.appendChild(card);
+                    } else {
+                        const requestedContainer = document.querySelector(`.kanban-tasks-container[data-status="requested"]`);
+                        if (requestedContainer) requestedContainer.appendChild(card);
+                    }
+                });
+                
+                const activeTasksDisp = document.getElementById('active-tasks-display');
+                if (activeTasksDisp) activeTasksDisp.textContent = activeCount.toString();
+                
+                setupContainersDragEvents();
+                updateFilters();
+
+            } catch (error) {
+                console.error("Error loading tasks:", error);
+                const containers = document.querySelectorAll('.kanban-tasks-container');
+                containers.forEach(c => {
+                    c.innerHTML = `
+                        <div class="text-center py-8 text-red-400/80 text-xs">
+                            Error al cargar
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.href = '../index.html';
+            } catch (error) {
+                console.error("Error signing out: ", error);
+            }
+        });
+
+        // Search & Filter listeners
+        document.getElementById('task-search').addEventListener('input', updateFilters);
+        document.getElementById('priority-filter').addEventListener('change', updateFilters);
+
+        function updateFilters() {
+            const searchTerm = document.getElementById('task-search').value.toLowerCase();
+            const priorityFilter = document.getElementById('priority-filter').value;
+            const specialtyFilter = window.futurxState.activeSpecialtyFilter;
+            const currentTab = document.getElementById('tab-active').classList.contains('text-[#ff9e00]') ? 'active' : 'archived';
+            
+            const cards = document.querySelectorAll('.task-card');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const priority = card.getAttribute('data-priority');
+                const archiveStatus = card.getAttribute('data-archive-status');
+                const specialist = card.getAttribute('data-specialist');
+                
+                const matchesSearch = name.includes(searchTerm);
+                const matchesPriority = priorityFilter === 'all' || priority === priorityFilter;
+                const matchesTab = archiveStatus === currentTab;
+                
+                if (matchesSearch && matchesPriority && matchesTab) {
+                    card.style.display = '';
+                    
+                    if (specialtyFilter !== 'all') {
+                        if (specialist !== specialtyFilter) {
+                            card.classList.remove('opacity-100');
+                            card.classList.add('opacity-30');
+                        } else {
+                            card.classList.remove('opacity-30');
+                            card.classList.add('opacity-100');
+                        }
+                    } else {
+                        card.classList.remove('opacity-30');
+                        card.classList.add('opacity-100');
+                    }
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            updateKanbanCounters();
+        }
+
+        function updateKanbanCounters() {
+            const columns = ['requested', 'En Proceso', 'En Revisión', 'Entregado'];
+            columns.forEach(status => {
+                const container = document.querySelector(`.kanban-tasks-container[data-status="${status}"]`);
+                if (container) {
+                    const visibleCards = container.querySelectorAll('.task-card:not([style*="display: none"])');
+                    const counter = container.closest('.kanban-column').querySelector('.kanban-counter');
+                    if (counter) {
+                        counter.textContent = visibleCards.length;
+                    }
+                }
+            });
+        }
+
+        function updateActiveTasksCounter() {
+            const processCount = document.querySelectorAll('.task-card[data-kanban-status="En Proceso"][data-archive-status="active"]').length;
+            const reviewCount = document.querySelectorAll('.task-card[data-kanban-status="En Revisión"][data-archive-status="active"]').length;
+            const activeCount = processCount + reviewCount;
+            const activeTasksDisp = document.getElementById('active-tasks-display');
+            if (activeTasksDisp) activeTasksDisp.textContent = activeCount;
+        }
+
+        function switchTab(tab) {
+            const activeBtn = document.getElementById('tab-active');
+            const archivedBtn = document.getElementById('tab-archived');
+            
+            if (tab === 'active') {
+                if (activeBtn) activeBtn.className = "text-sm font-bold uppercase tracking-widest text-[#ff9e00] border-b-2 border-[#ff9e00] pb-2 transition-all";
+                if (archivedBtn) archivedBtn.className = "text-sm font-bold uppercase tracking-widest text-white/40 pb-2 hover:text-white transition-all";
+            } else {
+                if (archivedBtn) archivedBtn.className = "text-sm font-bold uppercase tracking-widest text-[#ff9e00] border-b-2 border-[#ff9e00] pb-2 transition-all";
+                if (activeBtn) activeBtn.className = "text-sm font-bold uppercase tracking-widest text-white/40 pb-2 hover:text-white transition-all";
+            }
+            updateFilters();
+        }
+
+        function archiveTask(btn) {
+            const card = btn.closest('.task-card');
+            const isArchived = card.getAttribute('data-archive-status') === 'archived';
+            
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px)';
+            card.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                card.setAttribute('data-archive-status', isArchived ? 'active' : 'archived');
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (icon) icon.textContent = isArchived ? 'archive' : 'unarchive';
+                btn.title = isArchived ? 'Archivar' : 'Desarchivar';
+                
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                
+                updateFilters();
+                updateActiveTasksCounter();
+            }, 300);
+        }
+
+        // Mobile Menu Toggling
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                const isHidden = mobileMenu.classList.contains('opacity-0');
+                if (isHidden) {
+                    mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    mobileMenu.classList.add('opacity-100', 'translate-y-0');
+                } else {
+                    mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-10');
+                    mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                }
+            }
+        }
+        const mobMenuBtn = document.getElementById('mobile-menu-btn');
+        if (mobMenuBtn) mobMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        const mobLogoutBtn = document.getElementById('mobile-logout-btn');
+        if (mobLogoutBtn) {
+            mobLogoutBtn.addEventListener('click', async () => {
+                try {
+                    await signOut(auth);
+                    window.location.href = '../index.html';
+                } catch (error) {
+                    console.error("Error signing out: ", error);
+                }
+            });
+        }
+
+        // Toggle Admin View Mode
+        function toggleAdminView() {
+            const btnText = document.getElementById('admin-toggle-text');
+            const btnIcon = document.getElementById('admin-toggle-icon');
+            if (adminViewMode === 'all') {
+                adminViewMode = 'my-brand';
+                if (btnText) btnText.textContent = 'Mi Marca';
+                if (btnIcon) btnIcon.textContent = 'person';
+            } else {
+                adminViewMode = 'all';
+                if (btnText) btnText.textContent = 'Pantalla General';
+                if (btnIcon) btnIcon.textContent = 'public';
+            }
+            renderViewByRole();
+        }
+        window.toggleAdminView = toggleAdminView;
+
+        // Feedback Modal Logic
+        function openFeedbackModal(taskName) {
+            const overlay = document.getElementById('feedback-modal-overlay');
+            const modal = document.getElementById('feedback-modal');
+            const feedbackTaskName = document.getElementById('feedback-task-name');
+            const feedbackHiddenTask = document.getElementById('feedback-hidden-task-name');
+            
+            if (feedbackTaskName) feedbackTaskName.textContent = taskName;
+            if (feedbackHiddenTask) feedbackHiddenTask.value = taskName;
+            
+            if (overlay && modal) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                setTimeout(() => modal.classList.remove('hidden'), 10);
+            }
+        }
+
+        function closeFeedbackModal() {
+            const overlay = document.getElementById('feedback-modal-overlay');
+            const modal = document.getElementById('feedback-modal');
+            if (modal && overlay) {
+                modal.classList.add('hidden');
+                setTimeout(() => {
+                    overlay.classList.remove('flex');
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        document.getElementById('feedback-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitter = e.submitter;
+            const action = submitter.value;
+            
+            const formData = new FormData(e.target);
+            const data = {
+                client_email: currentUser ? currentUser.email : 'Invitado',
+                task_name: formData.get('task_name'),
+                comments: formData.get('comments'),
+                action: action, 
+                date: new Date().toLocaleString()
+            };
+
+            console.log('Feedback enviado:', data);
+            alert('Feedback enviado correctamente. Se ha notificado al equipo.');
+            closeFeedbackModal();
+            e.target.reset();
+        });
+
+        // Modal Logic
+        function openModal() {
+            const overlay = document.getElementById('request-modal-overlay');
+            const modal = document.getElementById('request-modal');
+            if (overlay && modal) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.remove('hidden');
+                }, 10);
+            }
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('request-modal-overlay');
+            const modal = document.getElementById('request-modal');
+            if (modal && overlay) {
+                modal.classList.add('hidden');
+                setTimeout(() => {
+                    overlay.classList.remove('flex');
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Lógica de Plan Management
+        function updateUI() {
+            if (!window.currentUserData) return;
+
+            const userData = window.currentUserData;
+            const hasActivePlan = userData.planActual && userData.planActual !== 'Cancelado' && userData.planActual !== 'Sin Plan';
+
+            // Actualizar tarjetas de estadísticas del dashboard
+            document.getElementById('plan-name-display').textContent = userData.planActual || 'Ninguno';
+            const maxBomberazos = userData.bomberazosMax || 0;
+            const usedBomberazos = userData.bomberazosUsed || 0;
+            const restantes = maxBomberazos - usedBomberazos;
+            document.getElementById('bomberazos-display').textContent = `${restantes < 0 ? 0 : restantes} / ${maxBomberazos}`;
+
+            if (hasActivePlan) {
+                document.getElementById('current-plan-card').classList.remove('hidden');
+                document.getElementById('no-plan-card').classList.add('hidden');
+                
+                document.getElementById('plan-name').textContent = userData.planActual;
+                document.getElementById('bomberazos-stat').textContent = `${restantes < 0 ? 0 : restantes} / ${maxBomberazos}`;
+                
+                const statusText = document.getElementById('plan-status-text');
+                statusText.textContent = 'Activo';
+                statusText.className = 'text-xl font-bold text-green-400';
+
+                const prices = {
+                    'P-01: Presencia Visual': '$4,500',
+                    'P-02: Contenido Pro': '$7,500',
+                    'P-03: Dominio Digital': '$12,000',
+                    'S-01: Gráfico Básico': '$6,500',
+                    'S-02: UX Estratégico': '$9,500',
+                    'S-03: Audiovisual Pro': '$13,500'
+                };
+                document.getElementById('plan-price').innerHTML = `${prices[userData.planActual] || '$Custom'} <span class="text-sm font-normal text-white/40">MXN</span>`;
+            } else {
+                document.getElementById('current-plan-card').classList.add('hidden');
+                document.getElementById('no-plan-card').classList.remove('hidden');
+            }
+
+            if (userData.billingCycleStart) {
+                const date = new Date(userData.billingCycleStart);
+                document.getElementById('billing-cycle-text').textContent = `Inició facturación el ${date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`;
+            }
+
+            // Propuesta Personalizada
+            if (userData.proposedPlan) {
+                const prop = userData.proposedPlan;
+                document.getElementById('proposed-name').textContent = prop.name;
+                document.getElementById('proposed-bomberazos').textContent = `${prop.bomberazos} al mes`;
+                document.getElementById('proposed-price').innerHTML = `$${prop.price} <span class="text-xs font-normal opacity-60">/ mes</span>`;
+                
+                const propCard = document.getElementById('proposed-plan-card');
+                propCard.classList.remove('hidden');
+                propCard.classList.add('block');
+
+                // Aceptar propuesta
+                document.getElementById('accept-proposal-btn').onclick = async () => {
+                    try {
+                        const userRef = doc(db, "users", currentUser.uid);
+                        await updateDoc(userRef, {
+                            planActual: prop.name,
+                            bomberazosMax: prop.bomberazos,
+                            bomberazosUsed: 0,
+                            proposedPlan: null
+                        });
+                        
+                        dispatchWebhook('gestion-plan', {
+                            userId: currentUser.uid,
+                            action: 'upgrade',
+                            planTarget: prop.name
+                        });
+                        
+                        alert('¡Propuesta aceptada con éxito! Tu plan ha sido actualizado.');
+                        const userDoc = await getDoc(userRef);
+                        if (userDoc.exists()) {
+                            window.currentUserData = userDoc.data();
+                            updateUI();
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('Error al aceptar propuesta.');
+                    }
+                };
+            } else {
+                const propCard = document.getElementById('proposed-plan-card');
+                if (propCard) propCard.classList.add('hidden');
+            }
+        }
+
+        window.switchPlanTab = (tab) => {
+            const socialBtn = document.getElementById('tab-social');
+            const webBtn = document.getElementById('tab-web');
+            const socialPlans = document.getElementById('plans-social');
+            const webPlans = document.getElementById('plans-web');
+
+            if (tab === 'social') {
+                socialBtn.className = "px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-[#ff9e00] text-[#1a120a] shadow-[0_0_30px_rgba(255,158,0,0.4)] hover:scale-105 active:scale-95";
+                webBtn.className = "px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 active:scale-95";
+                socialPlans.classList.remove('hidden');
+                socialPlans.classList.add('grid');
+                webPlans.classList.remove('grid');
+                webPlans.classList.add('hidden');
+            } else {
+                webBtn.className = "px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-[#00c4bc] text-[#002d2b] shadow-[0_0_30px_rgba(0,196,188,0.4)] hover:scale-105 active:scale-95";
+                socialBtn.className = "px-10 py-4 rounded-xl font-bold uppercase tracking-widest text-xs transition-all bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 active:scale-95";
+                webPlans.classList.remove('hidden');
+                webPlans.classList.add('grid');
+                socialPlans.classList.remove('grid');
+                socialPlans.classList.add('hidden');
+            }
+        };
+
+        async function subscribePlan(planId) {
+            const planNames = {
+                'p-01': 'P-01: Presencia Visual',
+                'p-02': 'P-02: Contenido Pro',
+                'p-03': 'P-03: Dominio Digital',
+                's-01': 'S-01: Gráfico Básico',
+                's-02': 'S-02: UX Estratégico',
+                's-03': 'S-03: Audiovisual Pro'
+            };
+            const planBomberazos = {
+                'p-01': 0,
+                'p-02': 4,
+                'p-03': 6,
+                's-01': 2,
+                's-02': 3,
+                's-03': 4
+            };
+            const planName = planNames[planId] || 'Custom Plan';
+            const bomberazosMax = planBomberazos[planId] || 0;
+
+            if (currentUser) {
+                try {
+                    const userRef = doc(db, "users", currentUser.uid);
+                    await updateDoc(userRef, {
+                        planActual: planName,
+                        bomberazosMax: bomberazosMax,
+                        bomberazosUsed: 0,
+                        billingCycleStart: new Date().toISOString()
+                    });
+                    
+                    dispatchWebhook('gestion-plan', {
+                        userId: currentUser.uid,
+                        action: 'upgrade',
+                        planTarget: planName
+                    });
+
+                    alert(`¡Te has suscrito con éxito al plan ${planName}!`);
+                    const userDoc = await getDoc(userRef);
+                    if (userDoc.exists()) {
+                        window.currentUserData = userDoc.data();
+                        updateUI();
+                    }
+                } catch (error) {
+                    console.error("Error subscribing:", error);
+                    alert("Error al suscribirse.");
+                }
+            } else {
+                alert("Inicia sesión primero.");
+            }
+        }
+        window.subscribePlan = subscribePlan;
+
+        // Modales de Plan Cancellation
+        const cancelOverlay = document.getElementById('cancel-modal-overlay');
+        const cancelModal = document.getElementById('cancel-modal');
+        const cancelBtn = document.getElementById('cancel-btn');
+
+        if (cancelBtn) {
+            cancelBtn.onclick = () => {
+                cancelOverlay.classList.remove('hidden');
+                cancelOverlay.classList.add('flex');
+                setTimeout(() => cancelModal.classList.remove('scale-90'), 10);
+            };
+        }
+
+        window.closeCancelModal = () => {
+            cancelModal.classList.add('scale-90');
+            setTimeout(() => {
+                cancelOverlay.classList.remove('flex');
+                cancelOverlay.classList.add('hidden');
+            }, 300);
+        };
+
+        document.getElementById('confirm-cancel-btn').onclick = async () => {
+            const btn = document.getElementById('confirm-cancel-btn');
+            btn.disabled = true;
+            btn.textContent = 'Procesando...';
+
+            try {
+                if (currentUser) {
+                    const userRef = doc(db, "users", currentUser.uid);
+                    await updateDoc(userRef, {
+                        planActual: 'Cancelado',
+                        bomberazosMax: 0,
+                        bomberazosUsed: 0
+                    });
+
+                    dispatchWebhook('gestion-plan', {
+                        userId: currentUser.uid,
+                        action: 'cancel',
+                        planTarget: 'Cancelado'
+                    });
+
+                    alert('Suscripción cancelada. Tus beneficios se detendrán al finalizar el ciclo.');
+                    closeCancelModal();
+                    const userDoc = await getDoc(userRef);
+                    if (userDoc.exists()) {
+                        window.currentUserData = userDoc.data();
+                        updateUI();
+                    }
+                }
+            } catch (error) {
+                console.error("Error cancelling:", error);
+                alert("Ocurrió un error. Intenta de nuevo.");
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Sí, Cancelar Suscripción';
+            }
+        };
+
+        // Exponer funciones al scope global
+        window.showView = showView;
+        window.switchTab = switchTab;
+        window.archiveTask = archiveTask;
+        window.openFeedbackModal = openFeedbackModal;
+        window.closeFeedbackModal = closeFeedbackModal;
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.toggleMobileMenu = toggleMobileMenu;
+
+    </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({duration: 800, once: true});</script>
+</body>
+
+</html>

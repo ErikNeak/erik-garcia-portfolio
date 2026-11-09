@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>STUDIO_VOID | Portafolio de Innovación</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Red+Hat+Display:wght@300..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Red Hat Display', sans-serif;
+            color: #f1e0d1;
+            overflow-x: hidden;
+        }
+
+        .liquid-glass {
+            background: rgba(22, 22, 22, 0.7);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .grainy-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 10% 20%, rgba(0, 196, 188, 0.1) 0%, transparent 40%);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Hamburger Animation */
+        #mobile-menu-btn span {
+            transition: all 0.3s ease;
+        }
+        #mobile-menu-btn.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        #mobile-menu-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+        #mobile-menu-btn.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#ffb868",
+                        "surface-container": "#271e15",
+                        "secondary-fixed": "#63f8ef",
+                        "inverse-on-surface": "#382f25",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-surface": "#f1e0d1",
+                        "tertiary": "#d2cfcf",
+                        "surface-container-highest": "#3d3329",
+                        "surface-container-high": "#32281f",
+                        "on-secondary-container": "#004a47",
+                        "on-secondary-fixed-variant": "#00504c",
+                        "secondary-fixed-dim": "#3ddcd3",
+                        "on-surface-variant": "#dac2ad",
+                        "on-primary": "#482900",
+                        "primary-fixed-dim": "#ffb868",
+                        "on-tertiary-container": "#474646",
+                        "on-primary-fixed-variant": "#673d00",
+                        "outline": "#a28d79",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-background": "#f1e0d1",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#663c00",
+                        "on-secondary": "#003734",
+                        "primary-fixed": "#ffddbb",
+                        "primary-container": "#ff9e00",
+                        "on-primary-fixed": "#2b1700",
+                        "inverse-surface": "#f1e0d1",
+                        "on-tertiary": "#313030",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00c2ba",
+                        "background": "#1a120a",
+                        "surface-container-lowest": "#140d05",
+                        "tertiary-container": "#b6b4b3",
+                        "secondary": "#41ded6",
+                        "surface": "#1a120a",
+                        "outline-variant": "#544433",
+                        "surface-dim": "#1a120a",
+                        "error-container": "#93000a",
+                        "surface-bright": "#42372d",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary": "#ffc586",
+                        "surface-variant": "#3d3329",
+                        "surface-container-low": "#221a11",
+                        "on-secondary-fixed": "#00201e",
+                        "inverse-primary": "#885200"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "body-lg": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "display-xl": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../imag/Icono naranja.png">
+    <link rel="apple-touch-icon" href="../imag/Icono naranja.png">
+    <link rel="icon" type="image/svg+xml" href="../imag/favicon.svg">
+</head>
+
+<body class="bg-background grainy-gradient min-h-screen">
+    <!-- TopNavBar -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-3 bg-[#161616]/70 backdrop-blur-lg rounded-2xl mt-6 mx-auto w-[90%] max-w-7xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] backdrop-saturate-150">
+        <a href="../index.html" class="flex items-center hover:scale-105 transition-transform">
+            <img src="../imag/Logo naranja.png" alt="Futurx" class="h-8">
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../index.html#proceso">¿Cómo funciona?</a>
+            <a class="nav-link font-['Space_Grotesk'] text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all" href="../secciones/servicios.html">Servicios</a>
+            <a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../secciones/planes.html">Planes</a>
+            <a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase font-medium text-[#ff9e00] border-b-2 border-[#ff9e00] pb-1"
+                href="#">Portafolio</a>
+            <a class="font-['Space_Grotesk'] text-sm tracking-wide uppercase font-medium text-white/60 hover:text-white transition-all"
+                href="../secciones/terminos.html">Suscripción</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- <a href="../portal/login.html" class="hidden md:flex text-white/60 hover:text-[#ff9e00] font-['Space_Grotesk'] text-sm font-bold uppercase tracking-widest transition-all px-4 py-2 border border-white/10 rounded-lg">
+                Portal Cliente
+            </a> -->
+            <a href="../secciones/contacto.html"
+                class="hidden sm:flex bg-[#ff9e00] text-[#1a120a] px-6 py-2 rounded-lg font-['Space_Grotesk'] text-sm font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(255,158,0,0.4)] transition-all scale-95 active:scale-90 items-center justify-center">
+                Contacto
+            </a>
+            <!-- Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 z-[60]">
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+                <span class="w-6 h-0.5 bg-white rounded-full"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay (Floating Window Style) -->
+    <div id="mobile-menu" class="fixed top-24 right-6 left-6 z-[55] liquid-glass rounded-[32px] p-12 flex flex-col items-center gap-8 transition-all duration-500 opacity-0 pointer-events-none -translate-y-10 border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../index.html#inicio">Inicio</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../index.html#proceso">Proceso</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../secciones/servicios.html">Servicios</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../secciones/planes.html">Planes</a>
+        <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase border-b-2 border-[#ff9e00]" href="#">Portafolio</a>
+        <a class="text-xl font-bold text-white tracking-widest uppercase hover:text-[#ff9e00] transition-colors" href="../secciones/terminos.html">Suscripción</a>
+        <a class="text-xl font-bold text-[#ff9e00] tracking-widest uppercase border border-[#ff9e00]/30 px-8 py-3 rounded-xl bg-[#ff9e00]/5 w-full text-center" href="../secciones/contacto.html">Contacto</a>
+        <!-- <a class="text-lg font-bold text-white/60 tracking-widest uppercase" href="../portal/login.html">Portal Cliente</a> -->
+    </div>
+
+    <main class="relative pt-40 pb-20 px-6 max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <section data-aos="fade-up" class="mb-xl text-center md:text-left">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/30 bg-secondary/10 mb-6">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span class="font-label-bold text-[10px] text-secondary uppercase tracking-[0.2em]">Liquid Glass Engine
+                    V1.0</span>
+            </div>
+            <h1 class="font-display-xl text-white mb-6 max-w-4xl">
+                Portafolio de <span class="text-primary-container">Innovación</span>
+            </h1>
+            <p class="font-body-lg text-on-surface/60 max-w-2xl leading-relaxed">
+                Transformando visiones complejas en experiencias digitales de alto rendimiento. Nuestra ingeniería
+                creativa fusiona estética brutalista con tecnología de vanguardia para líderes del mañana.
+            </p>
+        </section>
+        <!-- Project Grid (Bento Style) -->
+        <section data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Project 1: NeoVault OS -->
+            <div
+                class="md:col-span-8 group relative overflow-hidden rounded-xl border border-white/10 liquid-glass h-[500px]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
+                   
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoPWvemEASO2XOVQ60ua_QWG_EDBiZ7a_ONZRQvjIsoCtNSc_Mez4J016yMCzfznT6o7bSdJN7tZfYVZGI_kXZtmh6bGpZ89wuqzTREIDSHAlVsh9N9-3RIywOGJoIabeLCZYBZMiP0zhSue0u3oClqUVOATbv2ALlAMqL93QUvws5HoQKcxI1hblVCWwCfk2WtsHktD66ibArsYHREWi4W-C9sXWozo2lYAHUWFRZd5h3iIEb0dKz6VXvwiwdx426Tzv6hKOn6HY" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="font-label-bold text-secondary uppercase tracking-widest text-[10px] mb-2">FinTech
+                                / Web3</p>
+                            <h3 class="font-headline-lg text-white">NeoVault OS</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-white/50 group-hover:text-primary transition-colors text-4xl">arrow_outward</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 2: Void_Protocol -->
+            <div
+                class="md:col-span-4 group relative overflow-hidden rounded-xl border border-white/10 liquid-glass h-[500px]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-50"
+                   
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBox2gzKZ56Go0eWlJaBwpzmq_m0jnjGofwFCszV2g1fLCcrui8bYu_Iz0RLxO90tpMAhunLXxV-0FJZ6QeOiSZsLtMJoAaDPMLb_NvfF7AWkwDnVUNIQ4hQJIpiah3j8u9FZ_S1MK-6MytxXv1RUTuse5Qx2MC6GQJcrQ877FGIEWGouP1TrO-wrY30tXIIiUPmlW2g21hlovV6STs86vZo4TqDCaIhsiw7BFlocGnxSEF4CYvo3S_xd6BlPO3DiDjmQ0o-mPGJmw" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <p class="font-label-bold text-secondary uppercase tracking-widest text-[10px] mb-2">Infrastructure
+                    </p>
+                    <h3 class="font-headline-md text-white">Void_Protocol</h3>
+                </div>
+            </div>
+            <!-- Project 3: Aether Fit -->
+            <div
+                class="md:col-span-4 group relative overflow-hidden rounded-xl border border-white/10 liquid-glass h-[400px]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40"
+                   
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4sNOpwOhaBeTFLW4M7-MHC0Pl77P1ztQenttu31Mo7RUMWysgrQ8feMUL62cJk9V_Iq6CYlgps_mbMryJFSofx7K7Tf0M0o9i5IHtBazJIj002zB37pW8EoBFxiOskOjeZBi5zvUDJ1ePdNXOGaOnwemLV76Ye8Jqq-MCS_80vS-VBm3mZWRXGF23rZJjMZK8p8ivPaH7__C3SCnFLRLduHnrGL70kOQ4m1iIa5Nts6Ric6la0qqKKja6BDVvDSrx22FqqNpQTNA" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <p class="font-label-bold text-secondary uppercase tracking-widest text-[10px] mb-2">Health &amp;
+                        Fitness</p>
+                    <h3 class="font-headline-md text-white">Aether Fit</h3>
+                </div>
+            </div>
+            <!-- Project 4: Synthetic_Mind -->
+            <div
+                class="md:col-span-8 group relative overflow-hidden rounded-xl border border-white/10 liquid-glass h-[400px]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
+                   
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQLJZTt2M0E6mQrViAwhRxRlSZWurus4M-K3wIL4IcBh8uhEyv4POsldBNuHgATwNfZxTKucmCOhOT35ta5YEQk9GivEWNm5dypegd9JxzAi3hvPbClyddSIvm3VpbYrc3muOh4kBqoZepa3cth6T4qe5csD4Tf28P2ISOd_NhY_09Y8RjaTghs7eyBGV35L_4mK8x8TaW-FIDFo9AlG2qEnDnzJXV91FFfNizw7rjT42Xp6Ir_cgzZYVEpiMS61nqnta2PACMwVQ" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="font-label-bold text-secondary uppercase tracking-widest text-[10px] mb-2">AI
+                                Interface</p>
+                            <h3 class="font-headline-lg text-white">Synthetic_Mind</h3>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-white/50 group-hover:text-primary transition-colors text-4xl">neurology</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 5: Nexus Architecture -->
+            <div
+                class="md:col-span-6 group relative overflow-hidden rounded-xl border border-white/10 liquid-glass h-[450px]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-50"
+                   
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ2kXwoEyBZixcPFTtMczifQfwa5-9bp1uJTnuobLfmve5IFQoLPKVbvee2ZNlHJ2PVc1O-N8nliW8PQ08S2jnpMcx3tO91DqS6EsyyJej3wDDK90kfWgyPwsEm7cJoMgO1kuDTqyK-Nc1InIk_CiGgcmz_CnnG6goRP8mRgz3NDZYhq1Vp56JWg-IN_mY5F_XRJRqE0wNZl_wZBloL3g_kDSh_FVTFjfpyGf74dlefCVuPaiCIR6v1lNnBRgWcex8q0iFoCEAO80" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <p class="font-label-bold text-secondary uppercase tracking-widest text-[10px] mb-2">Brutalist Web
+                    </p>
+                    <h3 class="font-headline-md text-white">Nexus Architecture</h3>
+                </div>
+            </div>
+            <!-- Project 6: LogiTrack Global -->
+            <div
+                class="md:col-span-6 group relative overflow-hidden rounded-xl border border-white/10 liquid-glass h-[450px]">
+                <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-40"
+                   
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_BWROP6Z7S20e9lslOos9mlaQGaQ78fvHUggehETKuDCr9Ky5fiEeySRRp8hP8CKMyR9zBT4_kkmQaDduQqu-OjzgnwjHQ4BCMczCYAHjCfewH7gDIQEJHi3L6Du_u3wIln-W4G68Cw3TeXyIouuDUPeN4SnbJmc3mnTciimxeH45h_-MJCjAPK313wY1BTuasq8infbFdogGLKhS-Wi2RH8we9LXVnQjiFDfdtYHP8Pyqs-nzvPxe1iWtiH7j8tDmmHFmjomjVs" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <p class="font-label-bold text-secondary uppercase tracking-widest text-[10px] mb-2">Dashboard /
+                        SaaS</p>
+                    <h3 class="font-headline-md text-white">LogiTrack Global</h3>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section data-aos="fade-up"
+            class="mt-xl py-20 px-12 rounded-2xl border border-primary-container/20 bg-primary-container/5 relative overflow-hidden text-center">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 blur-[100px]"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 blur-[100px]"></div>
+            <h2 class="font-headline-lg text-white mb-6">¿Listo para el siguiente nivel?</h2>
+            <p class="font-body-lg text-on-surface/60 mb-10 max-w-xl mx-auto">Colaboremos para construir la
+                infraestructura digital que definirá tu industria.</p>
+            <button
+                class="bg-primary-container text-on-primary-container px-10 py-4 rounded-full font-label-bold uppercase tracking-[0.2em] hover:scale-105 hover:shadow-[0_0_30px_rgba(255,158,0,0.5)] transition-all">
+                Hablemos de tu visión
+            </button>
+        </section>
+    </main>
+    <!-- Footer -->
+        <footer class="bg-[#0a0a0a] border-t border-white/5 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-lg font-bold text-white"><img src="../imag/Logo naranja.png" alt="Futurx" class="h-8"></div>
+            <div class="flex flex-wrap justify-center gap-8 items-center">
+                <a class="flex items-center gap-2 font-['Space_Grotesk'] text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="#">
+                    <span class="material-symbols-outlined text-sm">photo_camera</span> Instagram
+                </a>
+                <a class="flex items-center gap-2 font-['Space_Grotesk'] text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="../secciones/terminos.html#privacy">
+                    <span class="material-symbols-outlined text-sm">security</span> Política de Privacidad
+                </a>
+                <a class="flex items-center gap-2 font-['Space_Grotesk'] text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="../secciones/terminos.html#terms">
+                    <span class="material-symbols-outlined text-sm">gavel</span> Términos de Servicio
+                </a>
+                <a class="flex items-center gap-2 font-['Space_Grotesk'] text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="#">
+                    <span class="material-symbols-outlined text-sm">chat</span> WhatsApp
+                </a>
+                <a class="flex items-center gap-2 font-['Space_Grotesk'] text-xs text-white/40 hover:text-[#ff9e00] transition-colors opacity-80 hover:opacity-100" href="mailto:hello@futurx.studio">
+                    <span class="material-symbols-outlined text-sm">mail</span> Correo
+                </a>
+            </div>
+                        <!-- Selector de Divisa -->
+            <div class="flex items-center gap-1 bg-white/5 border border-white/10 rounded-xl p-1 font-['Space_Grotesk'] text-[10px] font-bold">
+                <button onclick="changeFooterCurrency('MXN')" id="footer-btn-mxn" class="px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]">MXN</button>
+                <button onclick="changeFooterCurrency('USD')" id="footer-btn-usd" class="px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white">USD</button>
+            </div>
+            <div class="font-['Space_Grotesk'] text-xs text-white/40">© 2024 Futurx Studio. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+    <!-- Urgency Bar -->
+    <div id="urgency-bar" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-[#ff9e00] text-[#1a120a] py-2 px-6 rounded-full shadow-[0_10px_40px_rgba(255,158,0,0.4)] w-auto max-w-[90%] md:max-w-max border border-[#1a120a]/10 transition-opacity duration-300">
+        <div class="flex items-center gap-6 whitespace-nowrap">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-xl animate-pulse">rocket_launch</span>
+                <p class="font-bold text-xs uppercase tracking-widest hidden sm:block">15% OFF DE LANZAMIENTO</p>
+                <p class="font-bold text-[10px] uppercase tracking-widest sm:hidden">15% OFF</p>
+            </div>
+            <div class="h-4 w-px bg-[#1a120a]/20"></div>
+            <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold opacity-70">CÓDIGO:</span>
+                <span class="bg-[#1a120a] text-white px-2 py-0.5 rounded font-black tracking-widest text-xs">FUTURX15</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urgencyBar = document.getElementById('urgency-bar');
+            const footer = document.querySelector('footer');
+
+            window.addEventListener('scroll', () => {
+                if (!urgencyBar || !footer) return;
+                const footerRect = footer.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (footerRect.top <= windowHeight) {
+                    urgencyBar.style.opacity = '0';
+                    urgencyBar.style.pointerEvents = 'none';
+                } else {
+                    urgencyBar.style.opacity = '1';
+                    urgencyBar.style.pointerEvents = 'auto';
+                }
+            });
+        });
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuLinks = mobileMenu.querySelectorAll('a');
+
+            function toggleMenu() {
+                menuBtn.classList.toggle('open');
+                mobileMenu.classList.toggle('opacity-0');
+                mobileMenu.classList.toggle('pointer-events-none');
+                mobileMenu.classList.toggle('-translate-y-10');
+                // document.body.classList.toggle('overflow-hidden');
+            }
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', toggleMenu);
+                menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+            }
+        });
+    </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({duration: 800, once: true});</script>
+
+    <!-- Global Currency Persistence Script -->
+    <script>
+        var isUSD = false;
+        function initGlobalCurrency() {
+            const currency = localStorage.getItem('currency') || 'MXN';
+            window.isUSD = (currency === 'USD');
+            if (typeof isUSD !== 'undefined') {
+                isUSD = window.isUSD;
+            }
+            updateFooterCurrencyUI(currency);
+            
+            if (typeof updatePrices === 'function') {
+                updatePrices();
+            }
+            if (typeof calcularPresupuesto === 'function') {
+                calcularPresupuesto();
+            }
+        }
+
+        function changeFooterCurrency(currency) {
+            localStorage.setItem('currency', currency);
+            window.isUSD = (currency === 'USD');
+            if (typeof isUSD !== 'undefined') {
+                isUSD = window.isUSD;
+            }
+            updateFooterCurrencyUI(currency);
+            
+            if (typeof updatePrices === 'function') {
+                updatePrices();
+            }
+            if (typeof calcularPresupuesto === 'function') {
+                calcularPresupuesto();
+            }
+        }
+
+        function updateFooterCurrencyUI(currency) {
+            const btnMxn = document.getElementById('footer-btn-mxn');
+            const btnUsd = document.getElementById('footer-btn-usd');
+            if (!btnMxn || !btnUsd) return;
+            
+            if (currency === 'USD') {
+                btnMxn.className = "px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white";
+                btnUsd.className = "px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]";
+            } else {
+                btnUsd.className = "px-2.5 py-1 rounded-lg transition-all text-white/40 hover:text-white";
+                btnMxn.className = "px-2.5 py-1 rounded-lg transition-all text-white bg-[#ff9e00]";
+            }
+        }
+
+        // Initialize on DOMContentLoaded or immediately if already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGlobalCurrency);
+        } else {
+            initGlobalCurrency();
+        }
+    </script>
+</body>
+
+</html>

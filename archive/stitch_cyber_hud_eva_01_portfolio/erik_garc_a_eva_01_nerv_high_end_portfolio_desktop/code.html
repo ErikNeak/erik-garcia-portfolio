@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Erik García — EVA-01 Cyberpunk Técnico Minimalista // Portfolio</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "eva-bg": "#0C0717",
+            "eva-panel": "#150B28",
+            "eva-surface": "#1E1038",
+            "eva-border": "#3B1D6E",
+            "eva-grid": "#28144A",
+            "eva-acid": "#4DFF36",
+            "eva-alert": "#FF5900",
+            "eva-text-body": "#B8B3C7",
+            "eva-text-muted": "#6D657E",
+            "eva-white": "#FFFFFF"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0C0717;
+        color: #B8B3C7;
+        font-family: 'Inter', sans-serif;
+        scroll-behavior: smooth;
+      }
+    }
+    .eva-hazard {
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(59, 29, 110, 0.2),
+        rgba(59, 29, 110, 0.2) 8px,
+        transparent 8px,
+        transparent 16px
+      );
+    }
+    .grid-lines {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(40, 20, 74, 0.35) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(40, 20, 74, 0.35) 1px, transparent 1px);
+    }
+    @keyframes evaFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
+    }
+    .floating-eva {
+      animation: evaFloat 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-eva-bg text-eva-text-body antialiased selection:bg-eva-acid selection:text-black">
+<!-- 1. TOPBAR HUD CINEMÁTICA (70px) -->
+<header class="fixed top-0 left-0 w-full h-[70px] z-50 bg-eva-panel/85 backdrop-blur-md border-b border-eva-border">
+<div class="max-w-[1440px] mx-auto h-full px-6 lg:px-12 flex items-center justify-between">
+<!-- Left: Brand + EVA Unit Indicator -->
+<div class="flex items-center gap-3">
+<a class="font-display font-bold tracking-tight text-eva-white text-base hover:text-eva-acid transition-colors" href="#">
+          ERIK GARCÍA
+        </a>
+<span class="inline-flex items-center px-2 py-0.5 text-[10px] font-mono tracking-wider bg-eva-acid/10 border border-eva-acid/40 text-eva-acid font-semibold rounded-none">
+          [EVA_UNIT_01 // SENIOR_DIR]
+        </span>
+</div>
+<!-- Center: Technical Navigation Links -->
+<nav class="hidden md:flex items-center space-x-10 font-mono text-xs tracking-widest text-eva-text-body">
+<a class="hover:text-eva-acid transition-colors flex items-center gap-1.5 group" href="#proyectos">
+<span class="text-eva-text-muted group-hover:text-eva-acid">01.</span> PORTAFOLIO
+        </a>
+<a class="hover:text-eva-acid transition-colors flex items-center gap-1.5 group" href="#flujo-ia">
+<span class="text-eva-text-muted group-hover:text-eva-acid">02.</span> FLUJO_IA
+        </a>
+<a class="hover:text-eva-acid transition-colors flex items-center gap-1.5 group" href="#trayectoria">
+<span class="text-eva-text-muted group-hover:text-eva-acid">03.</span> EXPERIENCIA
+        </a>
+<a class="hover:text-eva-acid transition-colors flex items-center gap-1.5 group" href="#contacto">
+<span class="text-eva-text-muted group-hover:text-eva-acid">04.</span> CONTACTO
+        </a>
+</nav>
+<!-- Right: Operational Status & Download CTA -->
+<div class="flex items-center gap-5">
+<div class="hidden sm:flex items-center gap-2.5 px-3 py-1 bg-eva-bg border border-eva-border">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-eva-acid opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-eva-acid"></span>
+</span>
+<span class="font-mono text-[11px] font-medium text-eva-white tracking-widest">STATUS: DISPONIBLE</span>
+</div>
+<a class="font-mono text-xs px-4 py-2 border border-eva-border hover:border-eva-acid text-eva-white hover:text-eva-acid hover:shadow-[0_0_12px_rgba(77,255,54,0.25)] transition-all duration-200" href="#contacto">
+          DESCARGAR CV [PDF]
+        </a>
+</div>
+</div>
+</header>
+<main class="w-full pt-[70px]">
+<!-- 2. HERO SECTION / TERMINAL DE MANDO (SIN CAJA CONTENEDORA + MARCA DE AGUA GIGANTE) -->
+<section class="relative max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-24 grid-lines overflow-hidden">
+<!-- Marca de agua tipográfica gigante en el fondo -->
+<div class="absolute inset-0 pointer-events-none select-none flex items-center justify-center -z-0 overflow-hidden">
+<span class="font-display font-black tracking-widest text-[80px] sm:text-[130px] lg:text-[180px] text-white/[0.04] whitespace-nowrap">
+    EVA-01 // UI-UX
+  </span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center relative z-10">
+<!-- Columna Izquierda: Información de mando -->
+<div class="lg:col-span-7 flex flex-col items-start space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-eva-alert/10 border border-eva-alert/40 text-eva-alert font-mono text-xs font-semibold tracking-wider">
+<span class="inline-block w-1.5 h-1.5 bg-eva-alert animate-pulse"></span>
+            E-COMMERCE ARCHITECTURE • GENERATIVE AI PIPELINES
+          </div>
+<h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-[58px] text-eva-white leading-[1.06] tracking-tight">
+            Interfaces de alta conversión<br/>
+            y dirección técnica<br/>
+            con IA
+          </h1>
+<p class="font-sans text-eva-text-body text-base lg:text-lg leading-relaxed max-w-2xl font-light">
+            Optimización y arquitectura de plataformas masivas de comercio electrónico con telemetría de comportamiento en Microsoft Clarity, ingeniería de diseño modular y pipelines generativos sin fricción visual.
+          </p>
+<div class="pt-4 flex flex-wrap items-center gap-4">
+<a class="px-7 py-3.5 bg-eva-acid hover:bg-white text-black font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-[0_0_20px_rgba(77,255,54,0.3)]" href="#proyectos">
+              EXPLORAR TRABAJOS
+            </a>
+<a class="px-7 py-3.5 border border-eva-border bg-eva-panel/60 text-eva-white hover:text-eva-acid hover:border-eva-acid font-mono text-xs tracking-wider transition-all duration-200" href="#flujo-ia">
+              PROCESO TÉCNICO
+            </a>
+</div>
+<!-- Metadatos de Sistema Terminal -->
+<div class="pt-4 flex items-center gap-6 font-mono text-[11px] text-eva-text-muted border-t border-eva-grid w-full">
+<span>[ PROTOCOLO: NERV_v4.1 ]</span>
+<span>[ SYSTEM: HIGH-CONVERSION ]</span>
+<span class="text-eva-acid">[ LATENCIA: 0.12ms ]</span>
+</div>
+</div>
+<!-- Columna Derecha: Render 3D Consola EVA-01 flotando libremente (+40% más grande, sin caja contenedora) -->
+<div class="lg:col-span-5 relative flex items-center justify-center py-6">
+<!-- Resplandor y halo volumétrico violeta/ácido suave -->
+<div class="absolute -inset-10 bg-gradient-to-tr from-[#3B1D6E]/35 via-[#4DFF36]/15 to-[#150B28]/50 blur-3xl rounded-full pointer-events-none -z-10"></div>
+<div class="relative w-full max-w-[560px] lg:max-w-none flex flex-col items-center floating-eva">
+<!-- Render 3D limpio con drop shadow cinematográfico -->
+<div class="relative w-full aspect-[4/3] sm:aspect-[16/11] flex items-center justify-center">
+<img alt="Consola Portátil EVA-01 3D Render" class="w-full h-full object-contain filter drop-shadow-[0_20px_45px_rgba(77,255,54,0.22)] drop-shadow-[0_0_60px_rgba(59,29,110,0.6)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-EwtTwKsSA_zQ10hG55eiOSaFWZ5MyqsFIJeXQ7XZMuagywHFk8T3K8Bawh06a1h_PwaF7_L84fZWrSpZ2WNuRc4Vhv3OXZVEv2DlKHMI9x5ybgylbA3P300_yTPqyMNHREJ83y7o-ONyxi2GOOEVESDrj0-PCavBIN8uPSQ0ggJ-BPIkzV9jHyBYLxKn45erSlPnp3UyATzvCOiunGJHsQwJxBP8Dfot8uW2qP0g4KDQc8sGhefP"/>
+<!-- Indicadores técnicos HUD flotantes sutiles -->
+<div class="absolute top-2 right-4 font-mono text-[10px] bg-eva-bg/85 border border-eva-border/80 px-2 py-0.5 text-eva-acid backdrop-blur-sm">
+        [ SPEC_EVA-01 // ACTIVE ]
+      </div>
+<div class="absolute bottom-2 left-4 font-mono text-[10px] bg-eva-bg/85 border border-eva-border/80 px-2.5 py-1 text-eva-text-muted backdrop-blur-sm">
+        RENDER ENGINE: MAYA + FLOW
+      </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. TIRA DE RESULTADOS Y TELEMETRÍA (KPI RUNNER) -->
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 my-14">
+<section class="border border-eva-border bg-eva-surface/90 backdrop-blur-md p-8 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-32 h-1 bg-eva-acid"></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-eva-border/60">
+<!-- KPI 1 -->
+<div class="pt-4 sm:pt-0 sm:px-6 first:pl-0 flex flex-col justify-center">
+<div class="font-mono text-[10px] text-eva-text-muted tracking-widest uppercase mb-1">TELEMETRÍA // EXPERIENCIA</div>
+<div class="font-display font-bold text-4xl text-eva-white tracking-tight flex items-baseline gap-1">
+<span class="text-eva-acid font-mono">+</span>6 <span class="text-lg font-mono text-eva-text-body">Años</span>
+</div>
+<p class="font-sans text-xs text-eva-text-body mt-2 leading-relaxed font-light">
+              Diseño corporativo y e-commerce masivo de escala retail nacional.
+            </p>
+</div>
+<!-- KPI 2 -->
+<div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center">
+<div class="font-mono text-[10px] text-eva-text-muted tracking-widest uppercase mb-1">OPTIMIZACIÓN // IA WORKFLOW</div>
+<div class="font-display font-bold text-4xl text-eva-white tracking-tight flex items-baseline gap-1">
+              -80<span class="text-eva-acid font-mono">%</span> <span class="text-lg font-mono text-eva-text-body">Tiempo</span>
+</div>
+<p class="font-sans text-xs text-eva-text-body mt-2 leading-relaxed font-light">
+              Aceleración front-end y prototipado asistido con herramientas generativas.
+            </p>
+</div>
+<!-- KPI 3 -->
+<div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center">
+<div class="font-mono text-[10px] text-eva-text-muted tracking-widest uppercase mb-1">MÉTRICA // CLARITY CRO</div>
+<div class="font-display font-bold text-4xl text-eva-white tracking-tight flex items-baseline gap-1">
+<span class="text-eva-acid font-mono">+</span>35<span class="text-eva-acid font-mono">%</span> <span class="text-lg font-mono text-eva-text-body">Conversión</span>
+</div>
+<p class="font-sans text-xs text-eva-text-body mt-2 leading-relaxed font-light">
+              Retención y reducción de fricciones validada mediante heatmaps de usuario.
+            </p>
+</div>
+<!-- KPI 4 -->
+<div class="pt-4 sm:pt-0 sm:px-6 last:pr-0 flex flex-col justify-center">
+<div class="font-mono text-[10px] text-eva-text-muted tracking-widest uppercase mb-1">CAMPAÑAS // RETAIL INTENSITY</div>
+<div class="font-display font-bold text-4xl text-eva-white tracking-tight flex items-baseline gap-1">
+<span class="text-eva-acid font-mono">+</span>25<span class="text-eva-acid font-mono">%</span> <span class="text-lg font-mono text-eva-text-body">Clics CTR</span>
+</div>
+<p class="font-sans text-xs text-eva-text-body mt-2 leading-relaxed font-light">
+              Rendimiento superior en landing pages para Hot Sale y Buen Fin.
+            </p>
+</div>
+</div>
+</section>
+</div>
+<!-- SEPARADOR TÉCNICO SEC_01 -->
+<div class="w-full h-10 flex items-center justify-center relative my-10 overflow-hidden">
+<div class="absolute inset-0 eva-hazard"></div>
+<div class="w-full border-b border-eva-border absolute"></div>
+<div class="relative z-10 px-5 py-1 bg-eva-panel border border-eva-border text-eva-acid font-mono text-xs tracking-widest shadow-md">
+        // SEC_01 : PROYECTOS_SELECCIONADOS
+      </div>
+</div>
+<!-- 4. MATRIZ DE PROYECTOS CLASIFICADOS (BENTO GRID SIMÉTRICO DE 2 FILAS EXACTAS) -->
+<section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-12" id="proyectos">
+<!-- Encabezado de Matriz y Filtros Interactivos -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-eva-border">
+<div>
+<span class="font-mono text-xs text-eva-alert tracking-widest uppercase block mb-1">ÍNDICE DE CASOS Y ENTREGABLES</span>
+<h2 class="font-display font-bold text-3xl md:text-4xl text-eva-white tracking-tight">
+            Matriz de Proyectos Clasificados
+          </h2>
+</div>
+<div class="flex flex-wrap items-center gap-3 font-mono text-xs">
+<button class="px-3.5 py-1.5 border border-eva-acid bg-eva-acid/10 text-eva-acid font-medium">TODOS</button>
+<button class="px-3.5 py-1.5 border border-eva-border text-eva-text-body hover:border-eva-acid hover:text-eva-acid transition-colors">UI/UX &amp; E-COMMERCE</button>
+<button class="px-3.5 py-1.5 border border-eva-border text-eva-text-body hover:border-eva-acid hover:text-eva-acid transition-colors">3D &amp; MOTION</button>
+<button class="px-3.5 py-1.5 border border-eva-border text-eva-text-body hover:border-eva-acid hover:text-eva-acid transition-colors">BRANDING</button>
+</div>
+</div>
+<!-- Bento Grid Simétrico: Fila 1 (60% + 40%) y Fila 2 (33.3% + 33.3% + 33.3%) sin huecos vacíos -->
+<div class="space-y-8 pt-10">
+<!-- FILA 1: Dos columnas (60% / 40%) -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<!-- Fila 1 - Columna Izquierda (60%): RadioShack: Huawei P60 Pro -->
+<div class="lg:col-span-3 border border-eva-border bg-eva-panel hover:border-eva-acid transition-all duration-300 group flex flex-col justify-between p-6">
+<div class="relative w-full aspect-[16/9] bg-eva-bg overflow-hidden border border-eva-border/60">
+<img alt="RadioShack Huawei P60 Pro" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMXa9IKdfmen0gOpAyQdnm3AD72rqEKoRKJ4xnmLgeWnxDKyEGlGuNXsLWqcI7ud-DSO_gdfNEd4LzqtICA9GdbnyHISgY9gutKpKwXrqyEM6bjpD_bWjZlZoApm-0qwBuQg4i0Udl6VjbARIzlmuaOCoTyp0PcXwu85vHcAfi69lEluAmFwJEygk4-TQZJVxJhgPYS6WTNh410tZr9Rt7-5hAIor76s2wwWgNUE9voWot7qYMu_HO"/>
+<div class="absolute top-3 left-3 bg-eva-bg/90 border border-eva-border px-2.5 py-1 font-mono text-[10px] text-eva-acid">
+          FLAGSHIP E-COMMERCE
+        </div>
+</div>
+<div class="pt-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex flex-wrap items-center gap-2 font-mono text-[11px] mb-2.5">
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">FIGMA</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">CLARITY</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">HTML5/CSS</span>
+<span class="px-2 py-0.5 bg-eva-alert/15 border border-eva-alert/40 text-eva-alert font-bold">RETAIL HIGH-SCALE</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-eva-white group-hover:text-eva-acid transition-colors">
+            RadioShack: Huawei P60 Pro Dual-Tone Landing
+          </h3>
+<p class="font-sans text-eva-text-body text-sm mt-2 leading-relaxed">
+            Arquitectura de aterrizaje responsiva con selector dark/light dinámico según color de terminal. Optimizada mediante heatmaps de Clarity para reducir fugas en embudo.
+          </p>
+</div>
+<div class="pt-6 mt-4 border-t border-eva-border/60 flex items-center justify-between">
+<span class="font-mono text-xs text-eva-text-muted">ID: RS-P60-2023</span>
+<a class="font-mono text-xs text-eva-white group-hover:text-eva-acid flex items-center gap-1.5 transition-colors" href="#contacto">
+            VER CASO DE ESTUDIO <span class="text-eva-acid font-bold">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Fila 1 - Columna Derecha (40%): Asegura VC Insurtech -->
+<div class="lg:col-span-2 border border-eva-border bg-eva-panel hover:border-eva-acid transition-all duration-300 group flex flex-col justify-between p-6">
+<div class="relative w-full aspect-[16/9] bg-eva-bg overflow-hidden border border-eva-border/60">
+<img alt="Asegura VC Insurtech" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtdvk84zEhT58IMUeCYos8i1dHi0JzMDzeUm7uEphRZmDptc06IHNBqhK8TS34tksX30ngE-tf82N99mdceLmK9XaLJWTpsQp6d9uP97iYt2NvimvCKcGGUWNSJKWRcTOhbGhGhbahcPAVLK4weoRqxSyrRvtTMMYqxErtpzpF_S54_-WWs_6f-5Xc9sd_KgjGWhD9Neef2p76lNER7B_9f8VHtoxTAfWaMxOBl1L6lyNsgmjJt_3d"/>
+<div class="absolute top-3 left-3 bg-eva-bg/90 border border-eva-border px-2.5 py-1 font-mono text-[10px] text-eva-acid">
+          INSURTECH
+        </div>
+</div>
+<div class="pt-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex flex-wrap items-center gap-2 font-mono text-[11px] mb-2.5">
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">GOOGLE STITCH</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">FIGMA</span>
+</div>
+<h3 class="font-display font-bold text-xl text-eva-white group-hover:text-eva-acid transition-colors">
+            Asegura VC • Plataforma Insurtech
+          </h3>
+<p class="font-sans text-eva-text-body text-sm mt-2 leading-relaxed">
+            Plataforma integral de cotización ágil formulada con Google Stitch y componentes atómicos en Figma.
+          </p>
+</div>
+<div class="pt-6 mt-4 border-t border-eva-border/60 flex items-center justify-between">
+<span class="font-mono text-xs text-eva-text-muted">ID: INSUR-VC-02</span>
+<a class="font-mono text-xs text-eva-white group-hover:text-eva-acid flex items-center gap-1.5 transition-colors" href="#contacto">
+            VER CASO DE ESTUDIO <span class="text-eva-acid font-bold">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- FILA 2: Tres columnas idénticas (33.33% cada una) alineadas horizontalmente -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Fila 2 - Tarjeta 1: Mascota Robótica 3D & Consola EVA -->
+<div class="border border-eva-border bg-eva-panel hover:border-eva-acid transition-all duration-300 group flex flex-col justify-between p-6">
+<div class="relative w-full aspect-[16/9] bg-eva-bg overflow-hidden border border-eva-border/60">
+<img alt="Mascota Robótica 3D &amp; Consola EVA" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGQVv-lyVcIHObpr4LOiRrPnVALdqY1F-RYejJE4K3sDS198Tysfh4A2EXbqkNoMV09h2AZUcl8h8XQt8oHA4F3JSSzDEdadG6StIzqKT-9kv6j1eZGC5fqmpPwoeAXcHfFG7pkht-7QQwsYXZEDl0NLcMfyQdRQk9ScbqbGgy4NZef-zc9Klq1jKjJ76c-T1-3--jZdZtr53UwSWmC0IjTZp_MpfQ1wOeG2mKDea5JLT34oq2nbyO"/>
+<div class="absolute top-3 left-3 bg-eva-bg/90 border border-eva-border px-2.5 py-1 font-mono text-[10px] text-eva-acid">
+          CGI // HARD-SURFACE
+        </div>
+</div>
+<div class="pt-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex flex-wrap items-center gap-2 font-mono text-[11px] mb-2.5">
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">AUTODESK MAYA</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">GOOGLE FLOW</span>
+</div>
+<h3 class="font-display font-bold text-xl text-eva-white group-hover:text-eva-acid transition-colors">
+            Mascota Robótica 3D &amp; Consola EVA
+          </h3>
+<p class="font-sans text-eva-text-body text-sm mt-2 leading-relaxed">
+            Modelado hard-surface y optimización de renderizado en Google Flow, con reducción de tiempos de producción 3D.
+          </p>
+</div>
+<div class="pt-6 mt-4 border-t border-eva-border/60 flex items-center justify-between">
+<span class="font-mono text-xs text-eva-text-muted">ID: CGI-EVA-3D</span>
+<a class="font-mono text-xs text-eva-white group-hover:text-eva-acid flex items-center gap-1.5 transition-colors" href="#contacto">
+            VER CASO DE ESTUDIO <span class="text-eva-acid font-bold">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Fila 2 - Tarjeta 2: Videoclip Ilegal & VFX Streetwear -->
+<div class="border border-eva-border bg-eva-panel hover:border-eva-acid transition-all duration-300 group flex flex-col justify-between p-6">
+<div class="relative w-full aspect-[16/9] bg-eva-bg overflow-hidden border border-eva-border/60">
+<img alt="Videoclip Ilegal VFX Streetwear" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoauN-FCcp55zG3E5f0y_j7x4FiytxfjvZFLYqyObG6xIaImssjC2LHKg768EcZrWxJS6AerufiYrhPWQqGjhbLnzQNaJXmyTIm81Khesqrl2mvlIr3DFaguS3nZUkemjOTB-QanpSNqbhvTjXATjQ0RG-0qT8Jy99nrgksPQI3NMtzjzx1DVVhQkQQVEMTI6mHHdYx6FOszCeVTTumTW-nzwNFHuEGJzH_MT1fRqUwZQieBrjndMR"/>
+<div class="absolute top-3 left-3 bg-eva-bg/90 border border-eva-border px-2.5 py-1 font-mono text-[10px] text-eva-acid">
+          VFX &amp; COLOR
+        </div>
+</div>
+<div class="pt-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex flex-wrap items-center gap-2 font-mono text-[11px] mb-2.5">
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">DAVINCI</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">AFTER EFFECTS</span>
+</div>
+<h3 class="font-display font-bold text-xl text-eva-white group-hover:text-eva-acid transition-colors">
+            Videoclip Ilegal &amp; VFX Streetwear
+          </h3>
+<p class="font-sans text-eva-text-body text-sm mt-2 leading-relaxed">
+            Gradación de color cinematográfico y dirección de motion para lanzamiento musical independiente.
+          </p>
+</div>
+<div class="pt-6 mt-4 border-t border-eva-border/60 flex items-center justify-between">
+<span class="font-mono text-xs text-eva-text-muted">ID: VFX-ILEGAL-04</span>
+<a class="font-mono text-xs text-eva-white group-hover:text-eva-acid flex items-center gap-1.5 transition-colors" href="#contacto">
+            VER CASO DE ESTUDIO <span class="text-eva-acid font-bold">→</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Fila 2 - Tarjeta 3: Mala Morrx & Dealer Media Branding -->
+<div class="border border-eva-border bg-eva-panel hover:border-eva-acid transition-all duration-300 group flex flex-col justify-between p-6">
+<div class="relative w-full aspect-[16/9] bg-eva-bg overflow-hidden border border-eva-border/60">
+<img alt="Mala Morrx &amp; Dealer Media Branding" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMxLaenZa72LWFZzlo8GNd-4zNvr-NHHrsEDRRb92et2_CVXOBvO-KBLmOOBaW0KsjHKFV-ggrYCxH9n_3o6h6mrCzvAca-RdBEzzCn_irxxx4HmIYYmHXUfchhEx0AY12HifDnGivNnohb7Q59j_3B_GLTjheFSXvVqVDGl8x-Moi9gT8TNfd9vymOIGRVLBECldGp3axlUDDQFJERF9ZNe6QGsBoBhy0EMAsLB3ZwbH8qSuR2LO6"/>
+<div class="absolute top-3 left-3 bg-eva-bg/90 border border-eva-border px-2.5 py-1 font-mono text-[10px] text-eva-acid">
+          BRAND IDENTITY SYSTEM
+        </div>
+</div>
+<div class="pt-6 flex flex-col justify-between flex-1">
+<div>
+<div class="flex flex-wrap items-center gap-2 font-mono text-[11px] mb-2.5">
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">ILLUSTRATOR</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">BRANDING</span>
+<span class="px-2 py-0.5 bg-eva-surface border border-eva-border text-eva-white">PACKAGING</span>
+</div>
+<h3 class="font-display font-bold text-xl text-eva-white group-hover:text-eva-acid transition-colors">
+            Mala Morrx &amp; Dealer Media Branding
+          </h3>
+<p class="font-sans text-eva-text-body text-sm mt-2 leading-relaxed">
+            Desarrollo de identidad corporativa integral, tipografía geométrica customizada, empaque y activos visuales streetwear.
+          </p>
+</div>
+<div class="pt-6 mt-4 border-t border-eva-border/60 flex items-center justify-between">
+<span class="font-mono text-xs text-eva-text-muted">ID: BRAND-MM-2023</span>
+<a class="font-mono text-xs text-eva-white group-hover:text-eva-acid flex items-center gap-1.5 transition-colors" href="#contacto">
+            VER CASO DE ESTUDIO <span class="text-eva-acid font-bold">→</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SEPARADOR TÉCNICO SEC_02 -->
+<div class="w-full h-10 flex items-center justify-center relative my-10 overflow-hidden">
+<div class="absolute inset-0 eva-hazard"></div>
+<div class="w-full border-b border-eva-border absolute"></div>
+<div class="relative z-10 px-5 py-1 bg-eva-panel border border-eva-border text-eva-acid font-mono text-xs tracking-widest shadow-md">
+        // SEC_02 : PIPELINE_IA
+      </div>
+</div>
+<!-- 5. SECUENCIA OPERATIVA CON IA (PIPELINE STEPPER) -->
+<section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-16" id="flujo-ia">
+<div class="max-w-2xl mb-12">
+<span class="font-mono text-xs text-eva-alert tracking-widest uppercase block mb-1">METODOLOGÍA &amp; FLUJO GENERATIVO</span>
+<h2 class="font-display font-bold text-3xl md:text-4xl text-eva-white tracking-tight">
+          Secuencia Operativa con IA
+        </h2>
+<p class="font-sans text-eva-text-body text-sm md:text-base mt-2 font-light">
+          Protocolo en 4 etapas sincronizadas para maximizar la velocidad de despliegue sin degradar el rigor de ingeniería ni la identidad visual.
+        </p>
+</div>
+<!-- Stepper de 4 Módulos con Conectores Lineales y Pulso Lumínico -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+<!-- Conector luminoso transversal en Desktop -->
+<div class="hidden lg:block absolute top-[28px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-eva-border via-eva-acid to-eva-border -z-0 opacity-40"></div>
+<!-- Módulo 01 -->
+<div class="relative z-10 border border-eva-border bg-eva-panel p-6 flex flex-col justify-between hover:border-eva-acid transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-eva-border font-mono text-xs">
+<span class="px-2 py-0.5 bg-eva-acid text-black font-bold">01</span>
+<span class="text-eva-text-muted">CRO // CLARITY</span>
+</div>
+<h3 class="font-display font-bold text-lg text-eva-white mt-5">01. Datos &amp; UX</h3>
+<p class="font-sans text-xs md:text-sm text-eva-text-body mt-2.5 leading-relaxed">
+              Auditoría cuantitativa mediante mapas de calor y grabaciones de sesión en Microsoft Clarity para detectar puntos críticos de fricción.
+            </p>
+</div>
+<div class="pt-5 mt-6 border-t border-eva-border font-mono text-[11px] text-eva-acid">
+            MS CLARITY + GA4
+          </div>
+</div>
+<!-- Módulo 02 -->
+<div class="relative z-10 border border-eva-border bg-eva-panel p-6 flex flex-col justify-between hover:border-eva-acid transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-eva-border font-mono text-xs">
+<span class="px-2 py-0.5 bg-eva-surface text-eva-white font-bold border border-eva-border">02</span>
+<span class="text-eva-text-muted">SYSTEM // STITCH</span>
+</div>
+<h3 class="font-display font-bold text-lg text-eva-white mt-5">02. UI Tokens</h3>
+<p class="font-sans text-xs md:text-sm text-eva-text-body mt-2.5 leading-relaxed">
+              Generación de tokens visuales y arquitectura en Google Stitch coordinada con librerías de componentes atómicos en Figma.
+            </p>
+</div>
+<div class="pt-5 mt-6 border-t border-eva-border font-mono text-[11px] text-eva-acid">
+            FIGMA + STITCH
+          </div>
+</div>
+<!-- Módulo 03 -->
+<div class="relative z-10 border border-eva-border bg-eva-panel p-6 flex flex-col justify-between hover:border-eva-acid transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-eva-border font-mono text-xs">
+<span class="px-2 py-0.5 bg-eva-surface text-eva-white font-bold border border-eva-border">03</span>
+<span class="text-eva-text-muted">FLOW // MAYA</span>
+</div>
+<h3 class="font-display font-bold text-lg text-eva-white mt-5">03. 3D &amp; Pipeline</h3>
+<p class="font-sans text-xs md:text-sm text-eva-text-body mt-2.5 leading-relaxed">
+              Modelado hard-surface y texturizado en Maya, procesado en Google Flow con aceleración computacional de hasta un 70%.
+            </p>
+</div>
+<div class="pt-5 mt-6 border-t border-eva-border font-mono text-[11px] text-eva-acid">
+            MAYA + GOOGLE FLOW
+          </div>
+</div>
+<!-- Módulo 04 -->
+<div class="relative z-10 border border-eva-border bg-eva-panel p-6 flex flex-col justify-between hover:border-eva-acid transition-colors">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-eva-border font-mono text-xs">
+<span class="px-2 py-0.5 bg-eva-alert text-black font-bold">04</span>
+<span class="text-eva-text-muted">DEPLOY // CODE</span>
+</div>
+<h3 class="font-display font-bold text-lg text-eva-white mt-5">04. Front-End</h3>
+<p class="font-sans text-xs md:text-sm text-eva-text-body mt-2.5 leading-relaxed">
+              Maquetación limpia HTML5/Tailwind asistida por Google Antigravity y Google AI Studio para un despliegue directo a producción.
+            </p>
+</div>
+<div class="pt-5 mt-6 border-t border-eva-border font-mono text-[11px] text-eva-acid">
+            ANTIGRAVITY + AI STUDIO
+          </div>
+</div>
+</div>
+</section>
+<!-- SEPARADOR TÉCNICO SEC_03 -->
+<div class="w-full h-10 flex items-center justify-center relative my-10 overflow-hidden">
+<div class="absolute inset-0 eva-hazard"></div>
+<div class="w-full border-b border-eva-border absolute"></div>
+<div class="relative z-10 px-5 py-1 bg-eva-panel border border-eva-border text-eva-acid font-mono text-xs tracking-widest shadow-md">
+        // SEC_03 : EXPEDIENTE_SENIOR
+      </div>
+</div>
+<!-- 6. EXPEDIENTE PROFESIONAL Y TECH STACK -->
+<section class="max-w-[1440px] mx-auto px-6 lg:px-12 py-16" id="trayectoria">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+<!-- Columna Izquierda: Línea temporal de cargos directivos -->
+<div class="lg:col-span-7 flex flex-col space-y-10">
+<div>
+<span class="font-mono text-xs text-eva-alert tracking-widest uppercase block mb-1">HISTORIAL OPERATIVO</span>
+<h2 class="font-display font-bold text-3xl md:text-4xl text-eva-white tracking-tight">
+              Trayectoria y Liderazgo
+            </h2>
+</div>
+<div class="space-y-8">
+<!-- Posición 1: Grupo Gigante -->
+<div class="border border-eva-border bg-eva-panel p-6 md:p-8 hover:border-eva-border/90 transition-colors">
+<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs mb-3 pb-3 border-b border-eva-border/60">
+<span class="text-eva-white font-bold text-sm tracking-wider">GRUPO GIGANTE</span>
+<span class="px-2.5 py-0.5 bg-eva-surface border border-eva-border text-eva-acid">NOV 2021 — ACTUALIDAD</span>
+</div>
+<h3 class="font-display font-bold text-xl text-eva-white">
+                Diseñador Web &amp; Gráfico Senior // Analista de Diseño
+              </h3>
+<p class="font-sans text-xs text-eva-alert font-mono mt-1">
+                Office Depot • RadioShack • Casa Marchand • Petco
+              </p>
+<p class="font-sans text-sm text-eva-text-body mt-4 leading-relaxed font-light">
+                Supervisión técnica del equipo multimedia y maquetación front-end. Arquitectura de landing pages masivas para eventos de alto tráfico (Hot Sale, Buen Fin). Reducción de hasta un 80% en tiempos de iteración técnica mediante automatizaciones e integración de modelos generativos de lenguaje y prototipado.
+              </p>
+</div>
+<!-- Posición 2: Consultoría Freelance -->
+<div class="border border-eva-border bg-eva-panel p-6 md:p-8 hover:border-eva-border/90 transition-colors">
+<div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs mb-3 pb-3 border-b border-eva-border/60">
+<span class="text-eva-white font-bold text-sm tracking-wider">CONSULTORÍA FREELANCE</span>
+<span class="px-2.5 py-0.5 bg-eva-surface border border-eva-border text-eva-text-body">2019 — ACTUALIDAD</span>
+</div>
+<h3 class="font-display font-bold text-xl text-eva-white">
+                Diseñador UI/UX &amp; Productor Audiovisual
+              </h3>
+<p class="font-sans text-sm text-eva-text-body mt-4 leading-relaxed font-light">
+                Dirección de proyectos de interacción web de punta a punta, creación de identidades de marca complejas para clientes de streetwear y retail, y desarrollo de material CGI y secuencias de video con corrección de color y VFX avanzado.
+              </p>
+</div>
+<!-- Formación Académica -->
+<div class="border border-eva-border bg-eva-surface p-6">
+<div class="font-mono text-xs text-eva-alert mb-4 uppercase tracking-widest font-semibold">FORMACIÓN ACADÉMICA Y CREDENCIALES</div>
+<div class="space-y-4 font-sans text-sm">
+<div>
+<div class="text-eva-white font-medium">Licenciatura en Diseño, Animación y Arte Digital</div>
+<div class="text-eva-text-muted text-xs mt-0.5 font-mono">Universidad Tecnológica de México (UNITEC) • 2022 — 2023</div>
+</div>
+<div class="border-t border-eva-border/60 pt-3">
+<div class="text-eva-white font-medium">Licenciatura en Diseño Gráfico (Titulado)</div>
+<div class="text-eva-text-muted text-xs mt-0.5 font-mono">Universidad Tecnológica de México (UNITEC) • 2017 — 2021</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Columna Derecha: Matriz de competencias en pastillas oscuras -->
+<div class="lg:col-span-5 flex flex-col space-y-10">
+<div>
+<span class="font-mono text-xs text-eva-alert tracking-widest uppercase block mb-1">ARSENAL DE INGENIERÍA</span>
+<h2 class="font-display font-bold text-3xl md:text-4xl text-eva-white tracking-tight">
+              Matriz de Stack
+            </h2>
+</div>
+<div class="space-y-6">
+<!-- Área 1: UI/UX & Product Design -->
+<div class="border border-eva-border bg-eva-panel p-6">
+<div class="font-mono text-xs text-eva-white font-bold mb-3.5 pb-2.5 border-b border-eva-border flex justify-between">
+<span>UI/UX &amp; PRODUCT DESIGN</span>
+<span class="text-eva-acid">[CORE]</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-white flex items-center justify-between">
+<span>Figma (Advanced)</span>
+<span class="w-1.5 h-1.5 bg-eva-acid"></span>
+</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Photoshop</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Illustrator</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">InDesign</div>
+</div>
+</div>
+<!-- Área 2: IA Generativa & Workflows -->
+<div class="border border-eva-border bg-eva-panel p-6">
+<div class="font-mono text-xs text-eva-white font-bold mb-3.5 pb-2.5 border-b border-eva-border flex justify-between">
+<span>IA GENERATIVA &amp; WORKFLOWS</span>
+<span class="text-eva-alert">[ACCEL]</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-white flex items-center justify-between">
+<span>Google Stitch</span>
+<span class="w-1.5 h-1.5 bg-eva-alert"></span>
+</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Google Flow</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Google Antigravity</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Google AI Studio</div>
+</div>
+</div>
+<!-- Área 3: Front-End & Analytics -->
+<div class="border border-eva-border bg-eva-panel p-6">
+<div class="font-mono text-xs text-eva-white font-bold mb-3.5 pb-2.5 border-b border-eva-border flex justify-between">
+<span>FRONT-END &amp; ANALYTICS</span>
+<span class="text-eva-acid">[METRICS]</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-white flex items-center justify-between">
+<span>HTML5 / Tailwind</span>
+<span class="w-1.5 h-1.5 bg-eva-acid"></span>
+</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">CSS3 Modules</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-white flex items-center justify-between">
+<span>MS Clarity</span>
+<span class="w-1.5 h-1.5 bg-eva-acid"></span>
+</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Google Analytics 4</div>
+</div>
+</div>
+<!-- Área 4: Audiovisual & 3D -->
+<div class="border border-eva-border bg-eva-panel p-6">
+<div class="font-mono text-xs text-eva-white font-bold mb-3.5 pb-2.5 border-b border-eva-border flex justify-between">
+<span>AUDIOVISUAL &amp; 3D</span>
+<span class="text-eva-text-muted">[CGI]</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Autodesk Maya</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">Premiere Pro</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">After Effects</div>
+<div class="bg-eva-surface px-3 py-2 border border-eva-border text-eva-text-body">DaVinci Resolve</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. FOOTER TERMINAL DE CIERRE (MINIMALISTA, ANCHO COMPLETO, 1PX BORDE, 3 BOTONES PUERTO) -->
+<footer class="w-full border-t border-[#3B1D6E] bg-eva-panel relative" id="contacto">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
+<!-- Fila Principal: Estatus de Comunicación + 3 Botones Grandes de Conexión -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-10 pb-12 border-b border-eva-border/60">
+<div class="max-w-xl">
+<div class="flex items-center gap-2.5 font-mono text-xs text-eva-acid mb-3">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-eva-acid opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-eva-acid"></span>
+</span>
+<span class="tracking-widest font-semibold">SISTEMA DISPONIBLE // CDMX</span>
+</div>
+<h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-eva-white leading-tight">
+        TERMINAL DE ENLACE // DISPONIBLE PARA INCORPORACIÓN
+      </h2>
+<p class="font-sans text-eva-text-body text-sm mt-2.5 font-light leading-relaxed">
+        Dirección de arte digital, optimización UI/UX para e-commerce de alto flujo y flujos técnicos con IA generativa.
+      </p>
+</div>
+<!-- 3 Botones Destacados Grandes Interactivos tipo Puerto de Conexión -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full lg:w-auto">
+<!-- Puerto 1: LinkedIn -->
+<a class="px-6 py-4 bg-eva-surface hover:bg-eva-border border border-eva-border hover:border-eva-acid text-eva-white hover:text-eva-acid font-mono text-xs font-semibold tracking-wider transition-all duration-200 flex items-center justify-center gap-2 text-center" href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+<span>LINKEDIN</span>
+<span class="text-eva-acid font-bold">↗</span>
+</a>
+<!-- Puerto 2: Correo Directo -->
+<a class="px-6 py-4 bg-eva-surface hover:bg-eva-border border border-eva-border hover:border-eva-acid text-eva-white hover:text-eva-acid font-mono text-xs font-semibold tracking-wider transition-all duration-200 flex items-center justify-center gap-2 text-center" href="mailto:erik.enriquegg@gmail.com">
+<span>CORREO DIRECTO</span>
+<span class="text-eva-acid font-bold">@</span>
+</a>
+<!-- Puerto 3: Descargar CV en Verde Ácido Sólido -->
+<a class="px-8 py-4 bg-eva-acid hover:bg-white text-black font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 shadow-[0_0_20px_rgba(77,255,54,0.35)] flex items-center justify-center gap-2 text-center" href="#">
+<span>DESCARGAR CV [PDF]</span>
+<span class="text-black font-black">↓</span>
+</a>
+</div>
+</div>
+<!-- Pie Minimalista Técnico con Copyright 2025 -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-eva-text-muted">
+<div class="flex items-center gap-3">
+<span class="text-eva-white font-medium">ERIK GARCÍA © 2025</span>
+<span class="text-eva-border">•</span>
+<span>CIUDAD DE MÉXICO // NERV SPEC EVA-01</span>
+</div>
+<div class="flex items-center space-x-6 text-eva-text-body">
+<span class="text-eva-acid font-medium">[ ALL SYSTEMS NOMINAL ]</span>
+<a class="hover:text-eva-acid transition-colors" href="#">SUBIR AL INICIO ↑</a>
+</div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
