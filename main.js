@@ -2175,10 +2175,16 @@ document.addEventListener('DOMContentLoaded', () => {
           bar.style.boxShadow = '0 0 10px #FF003C';
         });
 
-        // Línea láser de la foto de perfil en rojo táctico
+        // Línea láser de la foto de perfil en rojo táctico al forzar entrada (en modo normal es verde)
         const pScanline = document.getElementById("portraitScanline");
         if (pScanline) {
           pScanline.className = "pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FF003C] to-transparent opacity-95 blur-[0.5px] animate-visor-scanline z-20 shadow-[0_0_10px_#FF003C]";
+        }
+
+        // Línea láser del primer video de presentación en rojo táctico al forzar entrada (en modo normal es verde)
+        const vScanline = document.getElementById("heroVideoScanline");
+        if (vScanline) {
+          vScanline.className = "pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FF003C] to-transparent opacity-95 blur-[1px] animate-visor-scanline z-20 shadow-[0_0_10px_#FF003C]";
         }
 
         // Tono rojo fuego sutil en el aura del hero video reel

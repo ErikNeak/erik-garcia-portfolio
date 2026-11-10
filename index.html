@@ -821,7 +821,7 @@
               </div>
 
               <!-- Línea de Escaneo Holográfica Láser (Scanline) -->
-              <div class="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-eva-acid to-transparent opacity-80 blur-[1px] animate-visor-scanline z-20"></div>
+              <div id="heroVideoScanline" class="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-eva-acid to-transparent opacity-80 blur-[1px] animate-visor-scanline z-20"></div>
 
               <!-- Video Player HTML5 Directo y Fluido -->
               <div class="relative z-10 w-full h-full flex flex-col items-center justify-center overflow-hidden bg-black/60">
@@ -1245,8 +1245,8 @@
               <div class="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 border-b-2 border-r-2 border-eva-acid pointer-events-none z-20"></div>
 
               <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] overflow-hidden bg-[#090412]">
-                <!-- Scanline láser holográfico rojo táctico -->
-                <div id="portraitScanline" class="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FF003C] to-transparent opacity-85 blur-[0.5px] animate-visor-scanline z-20 shadow-[0_0_8px_#FF003C]"></div>
+                <!-- Scanline láser holográfico táctico (Verde en modo normal, Rojo en modo forzado) -->
+                <div id="portraitScanline" class="pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-eva-acid to-transparent opacity-80 blur-[0.5px] animate-visor-scanline z-20"></div>
                 
                 <img 
                   src="assets/extracted_03_781x863.jpg" 
