@@ -10,212 +10,98 @@
  * Base de Datos Oficial de Proyectos (15 Casos de Estudio con Copywriting Humano)
  */
 
+/**
+ * ERIK GARCÍA — PORTAFOLIO PROFESIONAL // EVA-01 EDITION
+ * Base de Datos Oficial de Proyectos (8 Casos de Estudio Maestros sin Duplicación)
+ */
+
 const projectsData = [
   // =========================================================================
-  // CATEGORÍA A: UI/UX & E-COMMERCE
+  // CATEGORÍA A: UI/UX & E-COMMERCE CRO
   // =========================================================================
   {
     id: "asegura-vc",
-    title: "Asegura con V.C. — Plataforma Web UX/UI & Modelos IA",
-    role: "Lead UI/UX & AI Workflow",
-    client: "Asegura con V.C. • Lead UI/UX & AI Workflow",
+    title: "Asegura con V.C. — Ecosistema Digital & Modelos IA",
+    role: "Lead UI/UX & AI Creative Specialist",
+    client: "Asegura con V.C. • Ecosistema Web & IA",
     category: "ui-ux",
     categoryLabel: "Diseño UX/UI & IA",
     year: "2026",
-    tools: ["Figma", "Google Stitch", "HTML5/CSS", "Prompts de IA"],
-    shortDesc: "Plataforma web de seguros orientada a conversión, con ecosistema visual fotorrealista generado con IA.",
-    metrics: "-90% tiempo de desarrollo + Contenido IA 24/7",
+    tools: ["Figma", "Google Stitch", "HTML5/CSS", "Prompts de IA", "Photoshop", "Lightroom"],
+    shortDesc: "Plataforma web de seguros orientada a conversión inmediata, fusionada con una suite de fotografía sintética y modelos hiperrealistas generados con IA.",
+    metrics: "-90% tiempo de maquetación + Contenido IA 24/7",
     image: "Futurx-web/imag/portafolio/Asegura con VC/Portada.png",
     showcaseImage: "Futurx-web/imag/portafolio/Asegura con VC/02-Asegura Con VC.png",
     heroVideo: "Futurx-web/imag/portafolio/Asegura con VC/01-Asegura Con VC.mp4",
     isHuawei: false,
     hasDualTone: false,
-    challenge: "Diseñar una plataforma que generara confianza y cotizaciones inmediatas, resolviendo la falta de sesiones fotográficas presenciales de la clienta.",
-    solution: "Estructuré un flujo UX/UI sin fricción en Google Stitch y Figma con CTAs estratégicos, y generé modelos con IA consistentes con su fisonomía para producir retratos corporativos continuos.",
-    impact: "Reducción del 90% en tiempos de maquetación y captación activa convirtiendo visitas en prospectos calificados.",
+    challenge: "Diseñar una plataforma de alta confianza y captación que simplificara pólizas complejas, resolviendo la imposibilidad física de agendar sesiones fotográficas presenciales recurrentes de la titular.",
+    solution: "Estructuré un flujo UX/UI sin fricción con CTAs de cotización en menos de 3 pasos usando Google Stitch y Figma, al tiempo que sinteticé modelos fotorrealistas con IA basados en su fisonomía exacta para generar retratos y reels comerciales 24/7 sin costos de set.",
+    impact: "Reducción del 90% en tiempos de despliegue web, cero gastos en sets de rodaje y captación continua convirtiendo tráfico frío en prospectos calificados.",
     kpis: [
-      { value: "UX/UI", label: "Arquitectura sin fricción", desc: "Flujo optimizado hacia la cotización inmediata" },
-      { value: "24/7", label: "Modelos fotorrealistas con IA", desc: "Contenido corporativo continuo sin sesiones presenciales" },
-      { value: "-90%", label: "Tiempo de desarrollo web", desc: "Aceleración de maquetación y entrega con Google Stitch" }
+      { value: "UX/UI", label: "Arquitectura sin fricción", desc: "Cotización directa en 3 pasos orientada a conversión" },
+      { value: "100% IA", label: "Modelos fotorrealistas 24/7", desc: "Retratos ejecutivos y reels continuos con consistencia facial exacta" },
+      { value: "-90%", label: "Tiempo de despliegue", desc: "Entrega ágil y maquetación acelerada con Google Stitch" }
     ],
     gallery: [
       { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/02-Asegura Con VC.png", label: "Vista Principal UX/UI — Asegura con V.C." },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/03-Asegura Con VC.png", label: "Sección de Servicios y Pólizas" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/04-Asegura Con VC.png", label: "Arquitectura de Conversión y Confianza" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/03-Asegura Con VC.png", label: "Arquitectura de Servicios y Pólizas" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/04-Asegura Con VC.png", label: "Sistema de Confianza y Conversión" },
       { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/05-Asegura Con VC.png", label: "Diseño de Interfaz y Componentes" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/06-Asegura Con VC.png", label: "Experiencia Mobile y Cotizador" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/07-Asegura Con VC.png", label: "Ecosistema Visual con IA — Modelo 01" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/08-Asegura Con VC.png", label: "Ecosistema Visual con IA — Modelo 02" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/09-Asegura Con VC.png", label: "Ecosistema Visual con IA — Modelo 03" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/10-Asegura Con VC.png", label: "Ecosistema Visual con IA — Modelo 04" },
-      { type: "video", src: "Futurx-web/imag/portafolio/Asegura con VC/11-Asegura Con VC.mp4", label: "Reel Interactivo IA — 01" },
-      { type: "video", src: "Futurx-web/imag/portafolio/Asegura con VC/12-Asegura Con VC.mp4", label: "Reel Interactivo IA — 02" }
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/06-Asegura Con VC.png", label: "Experiencia Mobile First & Cotizador" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/07-Asegura Con VC.png", label: "Fotografía Sintética IA — Escenario Ejecutivo 01" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/08-Asegura Con VC.png", label: "Fotografía Sintética IA — Retrato Corporativo 02" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/09-Asegura Con VC.png", label: "Fotografía Sintética IA — Escenario de Confianza 03" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/10-Asegura Con VC.png", label: "Fotografía Sintética IA — Presencia de Marca 04" },
+      { type: "video", src: "Futurx-web/imag/portafolio/Asegura con VC/11-Asegura Con VC.mp4", label: "Reel Interactivo IA — Clip Comercial 01" },
+      { type: "video", src: "Futurx-web/imag/portafolio/Asegura con VC/12-Asegura Con VC.mp4", label: "Reel Interactivo IA — Clip Comercial 02" }
     ]
   },
   {
-    id: "retailer-tecnologico-rs",
-    title: "Retailer Tecnológico — Sistema de Landings E-Commerce",
-    role: "Senior UI/UX Designer",
+    id: "radioshack-mexico",
+    title: "RadioShack México — Ecosistema E-Commerce CRO & Landings",
+    role: "Senior UI/UX Designer & CRO Lead",
     client: "Grupo Gigante (RadioShack) • Senior UI/UX Designer",
     category: "ui-ux",
-    categoryLabel: "Diseño UX/UI / E-Commerce",
+    categoryLabel: "Diseño UX/UI / E-Commerce CRO",
     year: "2024",
-    tools: ["Figma", "Photoshop", "HTML5/CSS", "Microsoft Clarity", "Mobile First"],
-    shortDesc: "Sistema modular de 6 landings comerciales de alta conversión para lanzamientos y temporadas masivas.",
-    metrics: "6 Campañas Nacionales Desktop & Mobile First",
+    tools: ["Figma", "Photoshop", "HTML5/CSS", "Microsoft Clarity", "Mobile First", "CRO"],
+    shortDesc: "Ecosistema integral de landings comerciales de alta conversión para lanzamientos masivos y temporadas pico (Huawei P60 Día/Noche, Buen Fin, Drones DJI, GoPro y Zona Gamer).",
+    metrics: "6 Campañas Nacionales +35% Retención y +25% Clics al Carrito",
     image: "Futurx-web/imag/portafolio/Landings RS/Portada.png",
-    showcaseImage: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-D-Buen Fin.jpg",
-    heroVideo: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-banner.mp4",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Desplegar múltiples campañas simultáneas (Buen Fin, Gaming, Drones) con personalidad propia sin romper la identidad de marca ni saturar la pantalla móvil.",
-    solution: "Apliqué metodología Mobile First con layouts CRO especializados: estéticas oscuras en Gaming, dinamismo en drones y botones de compra siempre al alcance del pulgar.",
-    impact: "6 campañas nacionales de alto tráfico con experiencia de compra ágil y aumento sostenido en conversiones hacia carrito.",
-    kpis: [
-      { value: "CRO", label: "Botones al alcance del pulgar", desc: "CTAs optimizados para conversión táctil rápida" },
-      { value: "6 Campañas", label: "Ecosistema escalable", desc: "Buen Fin, DJI, GoPro, Gaming, P60 y Promociones" },
-      { value: "Mobile 1st", label: "Diseño adaptativo 16:9 y 9:16", desc: "Arquitectura responsiva para móvil y desktop" }
-    ],
-    gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-D-Buen Fin.jpg", label: "Campaña Buen Fin — Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-M-Buen Fin.jpg", label: "Campaña Buen Fin — Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-D-DJI.png", label: "Lanzamiento Drones DJI — Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-M-DJI.png", label: "Lanzamiento Drones DJI — Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/03-Landing RS-D-Go pro.png", label: "Cámaras de Acción GoPro — Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/03-Landing RS-M-Go pro.png", label: "Cámaras de Acción GoPro — Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-D-Gamer.png", label: "Ecosistema Gamer — Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-M-Gamer.png", label: "Ecosistema Gamer — Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-D-P60.jpg", label: "Lanzamiento Huawei P60 Pro — Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-M-P60.jpg", label: "Lanzamiento Huawei P60 Pro — Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/06-Landing RS-D-Promo mes.jpg", label: "Promoción del Mes — Desktop" }
-    ]
-  },
-  {
-    id: "huawei-p60-pro",
-    title: "Huawei P60 Pro — Landing Interactiva Dual-Tone",
-    role: "UI/UX & Maquetación",
-    client: "RadioShack / Huawei • UI/UX & Maquetación",
-    category: "ui-ux",
-    categoryLabel: "Diseño UX/UI / E-Commerce",
-    year: "2024",
-    tools: ["Figma", "Photoshop", "HTML5/CSS", "Microsoft Clarity"],
-    shortDesc: "Landing de lanzamiento con interruptor interactivo Día/Noche para explorar los acabados Rococo Pearl y Feather-Sand Black.",
-    metrics: "+35% de permanencia en página",
-    image: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-D-P60.jpg",
     showcaseImage: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-D-P60.jpg",
     heroVideo: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-banner.mp4",
     isHuawei: true,
     hasDualTone: true,
     imgDay: "assets/modal_huawei_day.png",
     imgNight: "assets/modal_huawei_night.png",
-    challenge: "Mostrar el teléfono insignia en sus dos colores y destacar sus cámaras XMAGE sin aburrir al usuario con una ficha técnica eterna.",
-    solution: "Diseñé y maqueté una experiencia interactiva con switch dual Día/Noche que transforma toda la interfaz en tiempo real para lucir ambos modelos.",
-    impact: "+35% en tiempo de permanencia validado en Microsoft Clarity y +25% en clics directos a preventa.",
+    challenge: "Diseñar e implementar una suite de campañas comerciales de alto tráfico simultáneas (Huawei P60, Buen Fin, Drones, Cámaras, Gaming) manteniendo coherencia de marca, velocidad de carga instantánea y máxima conversión táctil en dispositivos móviles.",
+    solution: "Desarrollé una arquitectura CRO Mobile First con componentes modulares: implementé un switch interactivo Día/Noche para lucir los dos acabados del Huawei P60, pestañas sin recarga para ofertas de Buen Fin, comparadores visuales de drones y cámaras para venta cruzada, y una atmósfera neón inmersiva para la categoría gamer.",
+    impact: "Aumento validado en Microsoft Clarity de +35% de tiempo de retención en lanzamientos, +25% de incremento directo en clics hacia el carrito y +30% en venta cruzada de accesorios.",
     kpis: [
-      { value: "+35%", label: "Tiempo en pantalla", desc: "Mayor retención y exploración de producto con mapas de interacción" },
-      { value: "Día / Noche", label: "Switch interactivo en vivo", desc: "Alterna en tiempo real entre Perla y Negro" },
-      { value: "+25%", label: "Clics hacia preventa", desc: "Paso directo hacia el carrito de compra" }
+      { value: "+35%", label: "Retención y tiempo en pantalla", desc: "Validado con mapas de calor y grabaciones en Microsoft Clarity" },
+      { value: "+25%", label: "CTR directo al carrito", desc: "Botones de compra al alcance del pulgar optimizados para mobile" },
+      { value: "6 Campañas", label: "Ecosistema unificado nacional", desc: "Huawei P60 Dual-Tone, Buen Fin, DJI, GoPro, Gamer y Promo Mes" }
     ],
     gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-D-P60.jpg", label: "Huawei P60 Pro — Versión Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-M-P60.jpg", label: "Huawei P60 Pro — Versión Mobile" },
-      { type: "image", src: "assets/modal_huawei_day.png", label: "Vista Interactiva — Modo Día (Rococo Pearl)" },
-      { type: "image", src: "assets/modal_huawei_night.png", label: "Vista Interactiva — Modo Noche (Feather-Sand Black)" }
-    ]
-  },
-  {
-    id: "buen-fin-retail",
-    title: "Campaña Buen Fin — Landing Page de Alta Conversión",
-    role: "UI/UX & Estrategia CRO",
-    client: "RadioShack • UI/UX & Estrategia CRO",
-    category: "ui-ux",
-    categoryLabel: "Diseño UX/UI / E-Commerce",
-    year: "2024",
-    tools: ["Figma", "Photoshop", "HTML5/CSS", "Microsoft Clarity"],
-    shortDesc: "Arquitectura promocional de alta demanda diseñada para encontrar ofertas en consolas y pantallas en menos de 3 segundos.",
-    metrics: "+25% clics hacia el carrito (CTR)",
-    image: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-D-Buen Fin.jpg",
-    showcaseImage: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-D-Buen Fin.jpg",
-    heroVideo: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-banner.mp4",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Canalizar miles de usuarios simultáneos en picos de tráfico hacia ofertas específicas antes de que abandonen la página.",
-    solution: "Organicé la interfaz con pestañas desplegables laterales en desktop e inferiores en móvil, sumando carruseles de carga rápida sin recargar la página.",
-    impact: "+25% de incremento en clics directos al carrito durante la temporada comercial más fuerte del año.",
-    kpis: [
-      { value: "+25%", label: "Clics al carrito (CTR)", desc: "Incremento directo hacia el checkout" },
-      { value: "Mobile 1st", label: "Pestañas sin recarga", desc: "Navegación fluida e instantánea en móvil" },
-      { value: "CRO", label: "Basado en mapas de calor", desc: "Optimización continua con Microsoft Clarity" }
-    ],
-    gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-D-Buen Fin.jpg", label: "Landing Buen Fin — Versión Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-M-Buen Fin.jpg", label: "Landing Buen Fin — Versión Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/06-Landing RS-D-Promo mes.jpg", label: "Landing Promo del Mes — Versión Desktop" }
-    ]
-  },
-  {
-    id: "dji-gopro",
-    title: "Drones DJI & Cámaras GoPro — Landings de Producto",
-    role: "UI/UX Designer",
-    client: "RadioShack / DJI / GoPro • UI/UX Designer",
-    category: "ui-ux",
-    categoryLabel: "Diseño UX/UI / E-Commerce",
-    year: "2024",
-    tools: ["Figma", "Photoshop", "Diseño Responsivo"],
-    shortDesc: "Páginas de producto dinámicas con evolución cronológica (Hero 10 a 13) y módulos de venta cruzada.",
-    metrics: "+30% en venta cruzada de accesorios",
-    image: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-D-DJI.png",
-    showcaseImage: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-D-DJI.png",
-    heroVideo: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-banner.mp4",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Explicar visualmente las mejoras entre generaciones de cámaras y drones e impulsar la compra conjunta de baterías y accesorios.",
-    solution: "Diseñé una cuadrícula asimétrica en Figma con fotocomposiciones de aventura en Photoshop y comparadores visuales directos.",
-    impact: "+30% en adición de baterías, estuches y estabilizadores junto al equipo principal.",
-    kpis: [
-      { value: "+30%", label: "Venta cruzada de accesorios", desc: "Mayor adición de complementos al carrito" },
-      { value: "DJI + GoPro", label: "Narrativa visual de acción", desc: "Composiciones de aventura de alto impacto" },
-      { value: "Dual View", label: "Retícula adaptativa", desc: "Experiencia optimizada para Desktop y Mobile" }
-    ],
-    gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-D-DJI.png", label: "Landing DJI — Versión Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-M-DJI.png", label: "Landing DJI — Versión Mobile" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/03-Landing RS-D-Go pro.png", label: "Landing GoPro — Versión Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/03-Landing RS-M-Go pro.png", label: "Landing GoPro — Versión Mobile" }
-    ]
-  },
-  {
-    id: "gamer-perifericos",
-    title: "Zona Gamer & Periféricos — Experiencia E-Commerce",
-    role: "UI/UX & Dirección Visual",
-    client: "RadioShack • UI/UX & Dirección Visual",
-    category: "ui-ux",
-    categoryLabel: "Diseño UX/UI / E-Commerce",
-    year: "2024",
-    tools: ["Figma", "Photoshop", "Mobile First", "CRO"],
-    shortDesc: "Interfaz inmersiva en modo oscuro y acentos neón con filtrado rápido para consolas, controles y audio.",
-    metrics: "+40% retención de usuarios en categoría",
-    image: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-D-Gamer.png",
-    showcaseImage: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-D-Gamer.png",
-    heroVideo: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-banner.mp4",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Conectar con el exigente público gamer mediante una atmósfera atractiva sin afectar la velocidad de carga ni la claridad de compra.",
-    solution: "Construí una interfaz oscura con iluminación ambiental verde, texturas personalizadas en tarjetas y filtros rápidos por plataforma.",
-    impact: "Se posicionó entre las secciones con mayor permanencia (+40%) e interacción de la tienda.",
-    kpis: [
-      { value: "+40%", label: "Retención en catálogo", desc: "Mayor tiempo de exploración y compra" },
-      { value: "Dark UI", label: "Atmósfera gamer neón", desc: "Estética inmersiva con acentos luminosos" },
-      { value: "Filtros", label: "Búsqueda ágil por consola", desc: "Navegación segmentada por plataforma y marca" }
-    ],
-    gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-D-Gamer.png", label: "Landing Zona Gamer — Versión Desktop" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-M-Gamer.png", label: "Landing Zona Gamer — Versión Mobile" }
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-D-P60.jpg", label: "Lanzamiento Huawei P60 Pro — Versión Desktop" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/05-Landing RS-M-P60.jpg", label: "Lanzamiento Huawei P60 Pro — Versión Mobile" },
+      { type: "image", src: "assets/modal_huawei_day.png", label: "Switch Dual-Tone — Modo Día (Rococo Pearl)" },
+      { type: "image", src: "assets/modal_huawei_night.png", label: "Switch Dual-Tone — Modo Noche (Feather-Sand Black)" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-D-Buen Fin.jpg", label: "Campaña Buen Fin — Versión Desktop" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/01-Landing RS-M-Buen Fin.jpg", label: "Campaña Buen Fin — Versión Mobile" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-D-DJI.png", label: "Lanzamiento Drones DJI — Versión Desktop" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/02-Landing RS-M-DJI.png", label: "Lanzamiento Drones DJI — Versión Mobile" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/03-Landing RS-D-Go pro.png", label: "Cámaras de Acción GoPro — Versión Desktop" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/03-Landing RS-M-Go pro.png", label: "Cámaras de Acción GoPro — Versión Mobile" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-D-Gamer.png", label: "Ecosistema Zona Gamer — Versión Desktop" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/04-Landing RS-M-Gamer.png", label: "Ecosistema Zona Gamer — Versión Mobile" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Landings RS/06-Landing RS-D-Promo mes.jpg", label: "Campaña Promoción del Mes — Versión Desktop" }
     ]
   },
 
   // =========================================================================
-  // CATEGORÍA B: 3D, VIDEO & VFX
+  // CATEGORÍA B: 3D, VIDEO & PRODUCCIÓN AUDIOVISUAL
   // =========================================================================
   {
     id: "robot-3d-eva",
@@ -225,83 +111,83 @@ const projectsData = [
     category: "3d-motion",
     categoryLabel: "Modelado 3D / Prototipado Visual",
     year: "2023",
-    tools: ["Autodesk Maya", "Google Flow", "Photoshop"],
-    shortDesc: "Modelado tridimensional desde cero de consola portátil retro-futurista con iluminación volumétrica y animación fluida.",
+    tools: ["Autodesk Maya", "Google Flow", "Photoshop", "Topología 3D"],
+    shortDesc: "Modelado tridimensional hard-surface de una consola portátil táctica inspirada en Evangelion, con biseles milimétricos, iluminación volumétrica y animación en Google Flow.",
     metrics: "Modelado Hard-Surface + Animación en Google Flow",
     image: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva-gamer-cover.png",
     showcaseImage: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva-gamer-cover.png",
     heroVideo: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva gamer.mp4",
     isHuawei: false,
     hasDualTone: false,
-    challenge: "Construir digitalmente un prototipo de hardware retro-futurista con detalle milimétrico y animarlo sin tiempos excesivos de render.",
-    solution: "Modelé la geometría completa en Autodesk Maya cuidando biseles y materiales, e integré Google Flow para optimizar la articulación y el renderizado.",
-    impact: "Reducción drástica en tiempos de producción 3D y pieza central interactiva de identidad visual.",
+    challenge: "Construir digitalmente un prototipo de hardware retro-futurista con detalle milimétrico, iluminación cinematográfica y animarlo sin tiempos excesivos de renderizado.",
+    solution: "Modelé la geometría completa en Autodesk Maya cuidando biseles, ranuras de ventilación y acabados mecha, e integré Google Flow para optimizar la articulación orbital y el render final.",
+    impact: "Reducción drástica en tiempos de producción 3D y creación de la pieza insignia de identidad visual de todo el sistema.",
     kpis: [
-      { value: "Maya", label: "Modelado poligonal desde cero", desc: "Geometría limpia con biseles milimétricos" },
-      { value: "Google Flow", label: "Optimización de animación", desc: "Flujo ágil de render y articulación fluida" },
-      { value: "Hard-Surface", label: "Materiales y luz neón", desc: "Iluminación volumétrica y texturizado mecha" }
+      { value: "Maya", label: "Modelado poligonal desde cero", desc: "Geometría hard-surface con biseles milimétricos" },
+      { value: "Google Flow", label: "Flujo ágil de renderizado", desc: "Animación orbital y render optimizado en tiempo récord" },
+      { value: "Hard-Surface", label: "Materiales e iluminación mecha", desc: "Iluminación volumétrica y texturas de alta precisión" }
     ],
     gallery: [
-      { type: "video", src: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva gamer.mp4", label: "Showreel 3D — Consola Retro-Futurista" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva-gamer-cover.png", label: "Render Principal — Consola Retro-Futurista" }
+      { type: "video", src: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva gamer.mp4", label: "Showreel 3D — Consola Retro-Futurista EVA-01" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Modelado-Eva gamer/02-Eva-gamer-cover.png", label: "Render Principal — Vista Isométrica de Consola" }
     ]
   },
   {
     id: "shaki-rs",
     title: "SHAKI RS — Mascota Corporativa 3D & Digital Asset",
-    role: "Character 3D Artist",
-    client: "Sector Retail • Character 3D Artist",
+    role: "Character 3D Artist & Rigging",
+    client: "Sector Retail (RadioShack) • Character 3D Artist",
     category: "3d-motion",
     categoryLabel: "Modelado 3D / Branding",
     year: "2025",
     tools: ["Autodesk Maya", "Google Flow", "Photoshop", "Topología 3D"],
-    shortDesc: "Traducción de mascota conceptual 2D a personaje tridimensional con topología limpia lista para rigging y animación.",
-    metrics: "Digital Asset 3D articulado para campañas",
+    shortDesc: "Traducción integral de personaje conceptual 2D a modelo tridimensional articulado con topología limpia para rigging y animación multiformato.",
+    metrics: "Digital Asset 3D articulado para campañas comerciales",
     image: "Futurx-web/imag/portafolio/Shaki RS/Portada.jpeg",
     showcaseImage: "Futurx-web/imag/portafolio/Shaki RS/01-Shaki RS.png",
     heroVideo: "Futurx-web/imag/portafolio/Shaki RS/06-Shaki RS.mp4",
     isHuawei: false,
     hasDualTone: false,
-    challenge: "Llevar una mascota corporativa plana a un entorno 3D preservando su expresión carismática y dejándola lista para múltiples posturas.",
-    solution: "Esculpí y modelé el personaje en Autodesk Maya con flujo poligonal limpio y optimicé sus secuencias de movimiento con Google Flow.",
-    impact: "Activo digital versátil que permite a la marca generar renders en cualquier pose sin redibujar desde cero.",
+    challenge: "Llevar una mascota corporativa plana a un entorno 3D preservando su carisma, expresión y proporciones, asegurando una malla óptima para múltiples poses de campaña.",
+    solution: "Esculpí y modelé el personaje en Autodesk Maya con flujo poligonal continuo y cuádruple, preparando puntos de articulación para rigging y optimizando secuencias en Google Flow.",
+    impact: "Activo digital de marca versátil y reusable que permite generar renders publicitarios en cualquier pose y ángulo sin necesidad de redibujar desde cero.",
     kpis: [
-      { value: "2D a 3D", label: "Traducción fiel de personaje", desc: "Preservación del carisma y proporciones clave" },
-      { value: "Topología", label: "Lista para rigging en Maya", desc: "Flujo poligonal limpio en Autodesk Maya" },
-      { value: "Asset 3D", label: "Reutilizable en campañas", desc: "Renders y poses multiángulo sin redibujar" }
+      { value: "2D a 3D", label: "Traducción fiel de personaje", desc: "Preservación milimétrica del carisma y proporciones clave" },
+      { value: "Topología", label: "Malla lista para rigging", desc: "Flujo poligonal cuádruple limpio en Autodesk Maya" },
+      { value: "Asset 3D", label: "Reutilizable en campañas", desc: "Generación de renders y poses multiángulo sin redibujar" }
     ],
     gallery: [
       { type: "image", src: "Futurx-web/imag/portafolio/Shaki RS/01-Shaki RS.png", label: "SHAKI RS — Render de Estudio 01" },
       { type: "image", src: "Futurx-web/imag/portafolio/Shaki RS/02-Shaki RS.png", label: "SHAKI RS — Expresión y Volumetría 02" },
       { type: "image", src: "Futurx-web/imag/portafolio/Shaki RS/03-Shaki RS.png", label: "SHAKI RS — Vista de Ángulo y Materiales 03" },
       { type: "image", src: "Futurx-web/imag/portafolio/Shaki RS/04-Shaki RS.png", label: "SHAKI RS — Topología y Malla 3D 04" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Shaki RS/05-Shaki RS.png", label: "SHAKI RS — Aplicación de Personaje 05" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Shaki RS/05-Shaki RS.png", label: "SHAKI RS — Aplicación Comercial de Personaje 05" },
       { type: "video", src: "Futurx-web/imag/portafolio/Shaki RS/06-Shaki RS.mp4", label: "SHAKI RS — Animación 3D en Movimiento" }
     ]
   },
   {
     id: "videoclip-ilegal",
-    title: "ILEGAL — Videoclip Oficial (Dirección & Color Grading)",
-    role: "Director & Colorista",
+    title: "ILEGAL — Videoclip Oficial (Dirección, Cine & VFX)",
+    role: "Director, Cinematografía & Colorista",
     client: "El Pluma X Fino CM ft Abe Puga • Director & Colorista",
     category: "3d-motion",
     categoryLabel: "Producción Audiovisual & Color",
     year: "2021",
-    tools: ["DaVinci Resolve", "Premiere Pro", "After Effects"],
-    shortDesc: "Dirección, rodaje nocturno, edición rítmica y corrección de color cinematográfica junto con entregables verticales.",
+    tools: ["DaVinci Resolve", "Premiere Pro", "After Effects", "Dirección Cinematográfica"],
+    shortDesc: "Dirección de rodaje nocturno urbano, cinematografía de alto contraste, montaje rítmico, efectos visuales y corrección de color en DaVinci Resolve junto a entregables verticales 9:16.",
     metrics: "Producción End-to-End + Paquete 9:16 multiplataforma",
     image: "Futurx-web/imag/portafolio/video-ilegal/06-Ilegal.jpg",
     showcaseImage: "Futurx-web/imag/portafolio/video-ilegal/06-Ilegal.jpg",
     heroVideo: "Futurx-web/imag/portafolio/video-ilegal/01-Banner Ilegal.mp4",
     isHuawei: false,
     hasDualTone: false,
-    challenge: "Ejecutar un rodaje urbano nocturno con estética de cine digital y entregar formatos adaptados para promoción en redes.",
-    solution: "Dirigí el rodaje en locación, realicé el montaje rítmico en Premiere Pro y apliqué etalonaje digital en DaVinci Resolve para potenciar la narrativa nocturna.",
-    impact: "Entrega integral en 16:9 para YouTube y cortes 9:16 que impulsaron el lanzamiento en plataformas sociales.",
+    challenge: "Ejecutar un rodaje urbano nocturno con estética cinematográfica sin luces invasivas y estructurar cortes dinámicos adaptados tanto para salas/YouTube en 16:9 como para TikTok e Instagram en 9:16.",
+    solution: "Dirigí la puesta en escena en locación real, realicé el montaje rítmico en Premiere Pro con efectos visuales en After Effects y apliqué etalonaje digital en DaVinci Resolve para potenciar la narrativa nocturna urbana.",
+    impact: "Master final en 16:9 y paquete de 3 adaptaciones verticales 9:16 de alto impacto que impulsaron el alcance en plataformas de streaming y redes sociales.",
     kpis: [
-      { value: "End-to-End", label: "Rodaje, edición y VFX", desc: "Pre-producción, dirección y post-producción completa" },
-      { value: "DaVinci", label: "Color grading nocturno", desc: "Atmósfera nocturna de alto contraste y gradación cinemática" },
-      { value: "9:16", label: "Paquete de reels verticales", desc: "Adaptaciones verticales para redes sociales" }
+      { value: "End-to-End", label: "Dirección, rodaje y VFX", desc: "Pre-producción, dirección en set, edición y post-producción completa" },
+      { value: "DaVinci", label: "Color grading nocturno", desc: "Atmósfera nocturna cinemática con contraste y curvas precisas" },
+      { value: "9:16 Pack", label: "Reels verticales adaptados", desc: "3 adaptaciones con reencuadre dinámico para redes sociales" }
     ],
     gallery: [
       { type: "image", src: "Futurx-web/imag/portafolio/video-ilegal/02-Ilegal.jpg", label: "Fotograma Oficial — ILEGAL 01" },
@@ -317,42 +203,43 @@ const projectsData = [
   },
 
   // =========================================================================
-  // CATEGORÍA C: BRANDING & IDENTIDAD
+  // CATEGORÍA C: BRANDING, IDENTIDAD & DIRECCIÓN DE ARTE
   // =========================================================================
   {
     id: "malamorrx-streetwear",
-    title: "Mala Morra — Branding 360°, Motion & Streetwear",
-    role: "Brand & Motion Designer",
-    client: "Mala Morra • Brand & Motion Designer",
+    title: "Mala Morra — Branding 360°, Lookbook Editorial & Motion",
+    role: "Director de Marca, Arte & Fotografía",
+    client: "Mala Morra • Director de Marca & Arte",
     category: "branding",
-    categoryLabel: "Identidad Visual / Dirección de Arte",
+    categoryLabel: "Identidad Visual & Fotografía Editorial",
     year: "2024",
-    tools: ["Illustrator", "After Effects", "Procreate", "Autodesk Maya"],
-    shortDesc: "Identidad de marca contracultural para prendas intervenidas: logotipo retro-cartoon, animación y gráfica textil.",
-    metrics: "Universo visual 360°: Logo, Motion, Apparel y 3D",
+    tools: ["Illustrator", "After Effects", "Procreate", "Autodesk Maya", "Lightroom", "Photoshop"],
+    shortDesc: "Universo de marca contracultural para moda streetwear intervenida: imagotipo retro-cartoon, gráfica textil serigráfica, animación en After Effects y lookbook fotográfico en locación urbana.",
+    metrics: "Universo visual 360°: Logo, Motion, Apparel y Lookbook",
     image: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/Portada-Portafolio.png",
     showcaseImage: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/02-mala morra.png",
     heroVideo: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/01-mala morra.mp4",
     isHuawei: false,
     hasDualTone: false,
-    challenge: "Crear una identidad rebelde para ropa de segunda mano con intervención moderna que funcionara igual de bien en etiquetas físicas y video digital.",
-    solution: "Diseñé el imagotipo en Illustrator con estética retro, animé sus cortinillas en After Effects y creé arte híbrido 2D/3D (Procreate + Maya) para estampados.",
-    impact: "Marca cohesiva y memorable aplicada en prendas físicas, empaques y campañas digitales.",
+    challenge: "Construir una identidad rebelde y auténtica para una marca de prendas intervenidas, unificando el diseño textil físico con cortinillas animadas en video y un lookbook fotográfico callejero que evitara la frialdad de un catálogo estándar.",
+    solution: "Diseñé el imagotipo en Illustrator con trazo retro, desarrollé gráfica para serigrafía mediante Procreate y Maya, animé el logotipo en After Effects y dirigí sesiones de fotografía editorial en locaciones urbanas con gradación en Lightroom.",
+    impact: "Identidad unificada en todos los puntos de contacto: prendas intervenidas vendidas en colecciones cápsula, empaques, cortinillas digitales y lookbook de alto impacto en redes.",
     kpis: [
-      { value: "Motion", label: "Logotipo animado", desc: "Comportamiento digital dinámico para cortinillas" },
-      { value: "Apparel", label: "Gráfica para serigrafía", desc: "Arte original de alto contraste para prendas" },
-      { value: "2D + 3D", label: "Integración Procreate y Maya", desc: "Hibridación visual única para aplicaciones textiles" }
+      { value: "Motion", label: "Logotipo animado", desc: "Comportamiento digital dinámico para cortinillas y banners" },
+      { value: "Apparel", label: "Gráfica para serigrafía", desc: "Ilustraciones originales de alto contraste preparadas para textil" },
+      { value: "Lookbook", label: "Fotografía editorial urbana", desc: "Dirección de poses, iluminación en locación y revelado en Lightroom" }
     ],
     gallery: [
       { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/02-mala morra.png", label: "Ilustración de Apparel & Gráfica Principal — Mala Morra" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/03-mala morra.jpeg", label: "Lookbook Editorial — Mala Morra 01" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/04-mala morra.jpeg", label: "Lookbook Editorial — Mala Morra 02" },
-      { type: "video", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/05-Mala morra.mp4", label: "Motion Graphics & Animación de Marca — Mala Morra" }
+      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/03-mala morra.jpeg", label: "Lookbook Editorial Urbano — Toma 01" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/04-mala morra.jpeg", label: "Lookbook Editorial Urbano — Toma 02" },
+      { type: "video", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/05-Mala morra.mp4", label: "Motion Graphics & Animación de Marca — Mala Morra" },
+      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/Portada-Portafolio.png", label: "Composición de Identidad y Merchandising" }
     ]
   },
   {
     id: "dealer-branding",
-    title: "Dealer Media — Identidad Visual & Paquete Gráfico",
+    title: "Dealer Media — Identidad Visual & Sistema Gráfico",
     role: "Brand & Multimedia Designer",
     client: "Dealer Media • Brand & Multimedia Designer",
     category: "branding",
@@ -372,6 +259,9 @@ const projectsData = [
       { value: "Legible", label: "Optimizado para avatares", desc: "Se distingue con nitidez en pantallas de celular" },
       { value: "+40 Episodios", label: "Sistema gráfico continuo", desc: "Misma línea visual en YouTube, Twitch y redes" },
       { value: "Motion", label: "Intros y créditos animados", desc: "Paquete broadcast completo con identidad sólida" }
+    ],
+    gallery: [
+      { type: "image", src: "assets/proj_dealer_brand.jpg", label: "Sistema de Identidad Visual — Dealer Media" }
     ]
   },
   {
@@ -396,97 +286,9 @@ const projectsData = [
       { value: "Áureo", label: "Precisión geométrica", desc: "Trazo matemático con base en espiral dorada" },
       { value: "Minimalista", label: "Síntesis en trazos limpios", desc: "Diseño memorable sin saturación visual" },
       { value: "Versátil", label: "Escalable a todo formato", desc: "Excelente legibilidad en impresos y pantallas" }
-    ]
-  },
-
-  // =========================================================================
-  // CATEGORÍA D: FOTOGRAFÍA, ILUSTRACIÓN & ARTE
-  // =========================================================================
-  {
-    id: "mala-morra-lookbook",
-    title: "Mala Morra & Streetwear — Lookbook Editorial Urbano",
-    role: "Director de Fotografía & Arte",
-    client: "Mala Morra / Moda Independiente • Director de Fotografía & Arte",
-    category: "creative-lab",
-    categoryLabel: "Fotografía Editorial & Ilustración",
-    year: "2024",
-    tools: ["Lightroom", "Photoshop", "Procreate", "Dirección de Arte"],
-    shortDesc: "Sesiones fotográficas en locación urbana con estética streetwear/cyberpunk y diseño de prendas para lanzamiento.",
-    metrics: "Dirección fotográfica urbana + Arte de colección",
-    image: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/03-mala morra.jpeg",
-    showcaseImage: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/03-mala morra.jpeg",
-    heroVideo: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/05-Mala morra.mp4",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Capturar la esencia callejera de las prendas en sesiones reales, evitando el aspecto frío de un catálogo tradicional.",
-    solution: "Dirigí las sesiones en locación jugando con ángulos contrapicados, iluminación contrastada y revelado de color en Lightroom y Photoshop.",
-    impact: "Material editorial de alto impacto visual para venta en línea y campañas en redes sociales.",
-    kpis: [
-      { value: "Lookbook", label: "Fotografía en locación", desc: "Dirección de poses y atmósfera urbana streetwear" },
-      { value: "Color", label: "Revelado en Lightroom", desc: "Gradación de color y contrastes profundos" },
-      { value: "Coherencia", label: "Prenda y foto unificadas", desc: "Cohesión visual entre diseño textil y lookbook" }
     ],
     gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/03-mala morra.jpeg", label: "Fotografía Editorial Lookbook — Toma 01" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/04-mala morra.jpeg", label: "Fotografía Editorial Lookbook — Toma 02" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/02-mala morra.png", label: "Ilustración Original para Línea de Apparel" }
-    ]
-  },
-  {
-    id: "asegura-vc-ai-models",
-    title: "Asegura con V.C. — Fotografía Sintética Consistente con IA",
-    role: "AI Creative Specialist",
-    client: "Asegura con V.C. • AI Creative Specialist",
-    category: "creative-lab",
-    categoryLabel: "Inteligencia Artificial / Arte Visual",
-    year: "2026",
-    tools: ["Prompts de IA", "Photoshop", "Lightroom", "Dirección Fotográfica"],
-    shortDesc: "Producción de retratos ejecutivos y clips comerciales generados con IA a partir de fotografías multiángulo reales.",
-    metrics: "Assets comerciales con consistencia física exacta",
-    image: "Futurx-web/imag/portafolio/Asegura con VC/07-Asegura Con VC.png",
-    showcaseImage: "Futurx-web/imag/portafolio/Asegura con VC/07-Asegura Con VC.png",
-    heroVideo: "Futurx-web/imag/portafolio/Asegura con VC/11-Asegura Con VC.mp4",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Producir un banco de imágenes y videos profesionales de la titular sin incurrir en costos y tiempos de sesiones fotográficas extensas.",
-    solution: "Generé modelos base con consistencia facial y lumínica exacta a partir de tomas multiángulo, refinando detalles en Photoshop y Lightroom.",
-    impact: "Optimización total de presupuesto al sustituir sesiones de estudio por generación bajo demanda 24/7.",
-    kpis: [
-      { value: "100% IA", label: "Consistencia facial exacta", desc: "Modelos entrenados con rasgos fisonómicos reales" },
-      { value: "0 Sesiones", label: "Ahorro de estudio y rodaje", desc: "Reducción total de costos de set y traslados" },
-      { value: "Foto + Video", label: "Retratos y reels activos", desc: "Ecosistema visual continuo para redes y web" }
-    ],
-    gallery: [
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/07-Asegura Con VC.png", label: "Modelo Generado con IA — Escenario 01" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/08-Asegura Con VC.png", label: "Modelo Generado con IA — Escenario 02" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/09-Asegura Con VC.png", label: "Modelo Generado con IA — Escenario 03" },
-      { type: "image", src: "Futurx-web/imag/portafolio/Asegura con VC/10-Asegura Con VC.png", label: "Modelo Generado con IA — Escenario 04" },
-      { type: "video", src: "Futurx-web/imag/portafolio/Asegura con VC/11-Asegura Con VC.mp4", label: "Video Generado con IA — Clip 01" },
-      { type: "video", src: "Futurx-web/imag/portafolio/Asegura con VC/12-Asegura Con VC.mp4", label: "Video Generado con IA — Clip 02" }
-    ]
-  },
-  {
-    id: "seiko-relojeria",
-    title: "Seiko — Fotografía Macro de Producto",
-    role: "Fotógrafo de Producto",
-    client: "Proyecto Editorial / Seiko • Fotógrafo de Producto",
-    category: "creative-lab",
-    categoryLabel: "Fotografía & Arte",
-    year: "2022",
-    tools: ["Fotografía de Estudio", "Lightroom", "Photoshop"],
-    shortDesc: "Fotografía publicitaria de relojería analógica en estudio, resaltando el acero cepillado sin reflejos invasivos.",
-    metrics: "Control de iluminación en metales y cristal",
-    image: "assets/proj_seiko.jpg",
-    showcaseImage: "assets/proj_seiko.jpg",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Fotografiar un reloj metálico logrando que la carátula y los biseles se vieran nítidos sin reflejar las luces del estudio.",
-    solution: "Configuré un esquema de iluminación controlada y realicé retoque de precisión en Lightroom y Photoshop para destacar la textura metálica.",
-    impact: "Imagen publicitaria elegante lista para catálogo comercial e impresos.",
-    kpis: [
-      { value: "Macro", label: "Textura de acero cepillado", desc: "Nitidez óptica en detalles milimétricos" },
-      { value: "Luz", label: "Control de reflejos en cristal", desc: "Lectura diáfana de la carátula analógica" },
-      { value: "Post", label: "Retoque fino en Ps y Lr", desc: "Corrección de color y contraste para catálogo" }
+      { type: "image", src: "assets/proj_cyclops_studio.jpg", label: "Retícula Geométrica y Rediseño Áureo — Cyclops Studio" }
     ]
   }
 ];
@@ -620,13 +422,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalPrevTitle = document.getElementById('modalPrevTitle');
   const modalNextTitle = document.getElementById('modalNextTitle');
 
-  // 4 Divisiones Oficiales
+  // 3 Divisiones Maestras Oficiales
   const divisions = [
     {
       id: 'ui-ux',
       code: 'DIV_01',
-      title: 'Diseño UI/UX & E-Commerce',
-      subtitle: 'Landings comerciales para marcas masivas, ecosistemas con IA y diseño web centrado en la conversión.',
+      title: 'Diseño UI/UX & E-Commerce CRO',
+      subtitle: 'Plataformas web con IA, ecosistemas de comercio electrónico para marcas masivas y arquitectura centrada en la conversión.',
       accentColor: '#4DFF36',
       badgeClass: 'text-eva-acid border-eva-acid/60 bg-[#090412]'
     },
@@ -634,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: '3d-motion',
       code: 'DIV_02',
       title: 'Modelado 3D, Video & Producción',
-      subtitle: 'Prototipado 3D y personajes en Autodesk Maya, producción audiovisual End-to-End y color grading en DaVinci Resolve.',
+      subtitle: 'Prototipado 3D hard-surface y personajes en Autodesk Maya, producción cinematográfica End-to-End y color grading en DaVinci Resolve.',
       accentColor: '#A855F7',
       badgeClass: 'text-eva-neonPurple border-eva-neonPurple/60 bg-[#090412]'
     },
@@ -642,21 +444,13 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'branding',
       code: 'DIV_03',
       title: 'Identidad Visual & Dirección de Arte',
-      subtitle: 'Universos gráficos, logotipos animados (Motion Graphics) e identidad para marcas de streetwear y estudios.',
+      subtitle: 'Universos de marca 360°, logotipos animados (Motion Graphics), lookbooks editoriales y sistemas gráficos de precisión áurea.',
       accentColor: '#FF5900',
       badgeClass: 'text-eva-mecha border-eva-mecha/60 bg-[#090412]'
-    },
-    {
-      id: 'creative-lab',
-      code: 'DIV_04',
-      title: 'Fotografía Editorial, Ilustración & IA',
-      subtitle: 'Lookbooks de campaña urbana, ilustración original de apparel y producción fotográfica con modelos de IA.',
-      accentColor: '#00F0FF',
-      badgeClass: 'text-eva-cyan border-eva-cyan/60 bg-[#090412]'
     }
   ];
 
-  const flagshipIds = ['asegura-vc', 'robot-3d-eva', 'malamorrx-streetwear', 'mala-morra-lookbook'];
+  const flagshipIds = ['asegura-vc', 'radioshack-mexico', 'robot-3d-eva', 'shaki-rs', 'videoclip-ilegal', 'malamorrx-streetwear'];
 
   function refreshLucideIcons() {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
@@ -1176,7 +970,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!featuredBentoGrid) return;
     const featuredIds = [
       'asegura-vc',
-      'retailer-tecnologico-rs',
+      'radioshack-mexico',
       'robot-3d-eva',
       'shaki-rs',
       'videoclip-ilegal',
@@ -1486,9 +1280,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal(projectId) {
       let proj = null;
       const aliases = {
-        'huawei-p60-dual-tone': 'huawei-p60-pro',
+        'huawei-p60-dual-tone': 'radioshack-mexico',
+        'huawei-p60-pro': 'radioshack-mexico',
+        'retailer-tecnologico-rs': 'radioshack-mexico',
+        'buen-fin-retail': 'radioshack-mexico',
+        'dji-gopro': 'radioshack-mexico',
+        'gamer-perifericos': 'radioshack-mexico',
         'robot-eva-handheld': 'robot-3d-eva',
-        'asegura-vc-portal': 'asegura-vc'
+        'asegura-vc-portal': 'asegura-vc',
+        'asegura-vc-ai-models': 'asegura-vc',
+        'mala-morra-lookbook': 'malamorrx-streetwear',
+        'seiko-relojeria': 'radioshack-mexico'
       };
       const targetId = aliases[projectId] || projectId;
       if (typeof targetId === 'number') {
