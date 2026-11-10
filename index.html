@@ -463,7 +463,7 @@
   </style>
 </head>
 
-<body class="bg-eva-bg text-eva-lavender antialiased selection:bg-eva-acid selection:text-black min-h-screen relative flex flex-col pb-16 lg:pb-0">
+<body class="bg-eva-bg text-eva-lavender antialiased selection:bg-eva-acid selection:text-black min-h-screen relative flex flex-col pb-0">
 
   <!-- =========================================================================
        PRELOADER / BOOT SEQUENCE (EXCLUSIVO DE PÁGINA PRINCIPAL)
@@ -703,54 +703,43 @@
       </div>
     </div>
 
-    <!-- Menú Desplegable Tipo App para Móvil y Tablet -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-[#140A26]/98 backdrop-blur-xl border-b-2 border-eva-acid px-4 pt-4 pb-6 shadow-2xl">
+    <!-- Menú Desplegable Táctico para Móvil y Tablet (Fondo 100% Sólido, Opaco y de Alto Contraste) -->
+    <div id="mobileMenu" class="hidden lg:hidden absolute top-[64px] left-0 right-0 w-full bg-[#080312] border-b-2 border-eva-acid shadow-[0_25px_60px_rgba(0,0,0,0.98)] px-4 pt-5 pb-6 z-50">
+      <!-- Barra de estado táctico del menú móvil -->
+      <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#3B1D6E] font-mono text-[10px] text-eva-mist">
+        <span class="flex items-center gap-1.5 text-eva-acid font-bold">
+          <span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-ping"></span>
+          <span>SISTEMA DE NAVEGACIÓN // NERV</span>
+        </span>
+        <span class="text-eva-lavender">EDICIÓN EVA-01</span>
+      </div>
+
       <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
-        <a href="#proyectos" class="mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center gap-2">
+        <a href="#proyectos" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center gap-2.5 transition-all">
           <i data-lucide="star" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Proyectos</span>
         </a>
-        <a href="archivo.html" class="mobile-nav-link p-3 bg-eva-acid/15 border border-eva-acid text-white font-bold flex items-center gap-2">
+        <a href="archivo.html" class="mobile-nav-link p-3.5 bg-[#1A0C33] border-2 border-eva-acid text-eva-acid hover:text-white font-black flex items-center gap-2.5 shadow-[0_0_15px_rgba(77,255,54,0.2)] transition-all">
           <i data-lucide="folder-kanban" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Portafolio [15]</span>
         </a>
-        <a href="#trayectoria" class="mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center gap-2">
+        <a href="#trayectoria" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center gap-2.5 transition-all">
           <i data-lucide="briefcase" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Trayectoria</span>
         </a>
-        <a href="#stack" class="mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center gap-2">
+        <a href="#stack" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center gap-2.5 transition-all">
           <i data-lucide="layers" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Stack</span>
         </a>
-        <a href="#contacto" class="col-span-2 mobile-nav-link p-3 bg-[#090412] border border-eva-border hover:border-eva-acid text-white flex items-center justify-center gap-2">
+        <a href="#contacto" class="col-span-2 mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center justify-center gap-2.5 transition-all">
           <i data-lucide="terminal" class="w-4 h-4 text-eva-acid shrink-0"></i>
-          <span>Contacto</span>
+          <span>Contacto Directo</span>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Barra de Navegación Inferior estilo App Nativa (Móvil) -->
-  <nav class="lg:hidden fixed bottom-0 left-0 right-0 h-14 bg-[#140A26]/95 backdrop-blur-md border-t border-eva-border z-40 grid grid-cols-4 font-mono text-[10px]">
-    <a href="#hero" class="flex flex-col items-center justify-center gap-1 text-eva-acid font-bold border-t-2 border-eva-acid bg-eva-acid/5">
-      <i data-lucide="home" class="w-4 h-4"></i>
-      <span>Inicio</span>
-    </a>
-    <a href="archivo.html" class="flex flex-col items-center justify-center gap-1 text-eva-lavender hover:text-eva-acid transition-colors">
-      <i data-lucide="folder-kanban" class="w-4 h-4 text-eva-mecha"></i>
-      <span>Portafolio</span>
-    </a>
-    <a href="#trayectoria" class="flex flex-col items-center justify-center gap-1 text-eva-lavender hover:text-eva-acid transition-colors">
-      <i data-lucide="briefcase" class="w-4 h-4"></i>
-      <span>Trayectoria</span>
-    </a>
-    <a href="#contacto" class="flex flex-col items-center justify-center gap-1 text-eva-lavender hover:text-eva-acid transition-colors">
-      <i data-lucide="mail" class="w-4 h-4"></i>
-      <span>Contacto</span>
-    </a>
-  </nav>
-
-  <main class="w-full pt-[76px] sm:pt-[84px] pb-24 flex-1">
+  <main class="w-full pt-[76px] sm:pt-[84px] pb-16 flex-1">
     <div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-10 space-y-16">
       
       <!-- =========================================================================
