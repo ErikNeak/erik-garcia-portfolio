@@ -830,6 +830,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!autoPlayBar) return;
       autoPlayBar.style.transition = 'none';
       autoPlayBar.style.width = '0%';
+      // Si se forzó la entrada a la página, la barra de tempo del carrusel se tiñe de rojo
+      if (window.isForcedLaunch || isForcedLaunch) {
+        autoPlayBar.style.backgroundColor = '#FF003C';
+        autoPlayBar.style.boxShadow = '0 0 10px #FF003C';
+      }
       if (isAutoPlaying && projectsList.length > 1) {
         void autoPlayBar.offsetWidth; // Reflow
         autoPlayBar.style.transition = `width ${autoPlayDelay}ms linear`;
@@ -2141,6 +2146,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Override manual / Easter Egg: Si presionó antes del 100% (Modo Berserk EVA-01)
       if (isManual && syncProgress < 100) {
         isForcedLaunch = true;
+        window.isForcedLaunch = true;
         if (overrideMsg) {
           overrideMsg.innerHTML = `
             <div class="flex items-center justify-center gap-2 text-[#FF2A55] font-bold">
@@ -2154,7 +2160,7 @@ document.addEventListener('DOMContentLoaded', () => {
           overrideMsg.className = "w-full max-w-md mt-2 p-2.5 border-2 border-[#FF003C] bg-[#2A050F]/90 text-white font-mono text-xs font-bold text-center tracking-wider animate-pulse shadow-[0_0_30px_rgba(255,0,60,0.5)]";
         }
 
-        // Tonalidad roja de emergencia sutil estilo EVA-01 Berserk (no invasivo)
+        // Tonalidad roja de emergencia sutil estilo EVA-01 Berserk en el boot
         if (bootScreen) {
           bootScreen.style.boxShadow = "inset 0 0 100px rgba(255, 0, 60, 0.45)";
           const scanline = bootScreen.querySelector(".animate-boot-scanline");
@@ -2163,15 +2169,16 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        // Dejar un badge táctico NERV Berserk en el Hero del portafolio (elegante y no invasivo)
-        if (heroBadgeContainer) {
-          heroBadgeContainer.innerHTML = `
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#20050C]/90 border border-[#FF003C] text-[#FF4D6D] font-mono text-[11px] font-bold tracking-wider animate-pulse shadow-[0_0_15px_rgba(255,0,60,0.35)]">
-              <span class="w-2 h-2 rounded-full bg-[#FF003C] animate-ping"></span>
-              <span>🚨 PROTOCOLO NERV // MODO BERSERK ACTIVADO [SYNC > 400%]</span>
-              <span class="text-white/60 font-mono text-[10px] hidden sm:inline">• EVA-01 OVERRIDE</span>
-            </div>
-          `;
+        // Barra de tempo del carrusel en rojo al forzar la entrada
+        document.querySelectorAll('.horiz-autoplay-bar').forEach(bar => {
+          bar.style.backgroundColor = '#FF003C';
+          bar.style.boxShadow = '0 0 10px #FF003C';
+        });
+
+        // Línea láser de la foto de perfil en rojo táctico
+        const pScanline = document.getElementById("portraitScanline");
+        if (pScanline) {
+          pScanline.className = "pointer-events-none absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#FF003C] to-transparent opacity-95 blur-[0.5px] animate-visor-scanline z-20 shadow-[0_0_10px_#FF003C]";
         }
 
         // Tono rojo fuego sutil en el aura del hero video reel

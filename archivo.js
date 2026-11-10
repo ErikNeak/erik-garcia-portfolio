@@ -830,6 +830,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!autoPlayBar) return;
       autoPlayBar.style.transition = 'none';
       autoPlayBar.style.width = '0%';
+      if (window.isForcedLaunch) {
+        autoPlayBar.style.backgroundColor = '#FF003C';
+        autoPlayBar.style.boxShadow = '0 0 10px #FF003C';
+      }
       if (isAutoPlaying && projectsList.length > 1) {
         void autoPlayBar.offsetWidth; // Reflow
         autoPlayBar.style.transition = `width ${autoPlayDelay}ms linear`;
