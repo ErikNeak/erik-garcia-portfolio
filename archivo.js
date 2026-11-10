@@ -20,6 +20,11 @@
  * Base de Datos Oficial de Proyectos (8 Casos de Estudio Maestros sin Duplicación)
  */
 
+/**
+ * ERIK GARCÍA — PORTAFOLIO PROFESIONAL // EVA-01 EDITION
+ * Base de Datos Oficial de Proyectos (8 Casos de Estudio Maestros sin Duplicación)
+ */
+
 const projectsData = [
   // =========================================================================
   // CATEGORÍA A: UI/UX & E-COMMERCE CRO
@@ -215,7 +220,7 @@ const projectsData = [
     categoryLabel: "Identidad Visual & Fotografía Editorial",
     year: "2024",
     tools: ["Illustrator", "After Effects", "Procreate", "Autodesk Maya", "Lightroom", "Photoshop"],
-    shortDesc: "Universo de marca contracultural para moda streetwear intervenida: imagotipo retro-cartoon, gráfica textil serigráfica, animación en After Effects y lookbook fotográfico en locación urbana.",
+    shortDesc: "Universo de marca contracultural para moda streetwear intervenida: imagotipo retro-cartoon, gráfica textil serigráfica, animación en After Effects, letras 3D en Maya y lookbook fotográfico en locación urbana.",
     metrics: "Universo visual 360°: Logo, Motion, Apparel y Lookbook",
     image: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/Portada-Portafolio.png",
     showcaseImage: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/02-mala morra.png",
@@ -232,37 +237,47 @@ const projectsData = [
     ],
     gallery: [
       { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/02-mala morra.png", label: "Ilustración de Apparel & Gráfica Principal — Mala Morra" },
+      { type: "image", src: "assets/malamorra_logo_vector.jpg", label: "Imagotipo Vectorial Retro & Esencia de Marca (PDF pág. 16)" },
+      { type: "image", src: "assets/malamorra_branding_apparel.jpg", label: "Aplicación de Marca & Gráfica Textil (PDF pág. 16)" },
+      { type: "image", src: "assets/malamorra_barbie_maya3d.jpg", label: "Ilustración Anime Barbie para Mala Morrx — Letras 3D en Autodesk Maya (PDF pág. 25)" },
       { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/03-mala morra.jpeg", label: "Lookbook Editorial Urbano — Toma 01" },
       { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/04-mala morra.jpeg", label: "Lookbook Editorial Urbano — Toma 02" },
+      { type: "image", src: "assets/lookbook_enjoy_rebel.jpg", label: "Lookbook Streetwear & Cyberpunk en Locación (PDF pág. 21)" },
+      { type: "image", src: "assets/lookbook_enjoy_toma01.jpg", label: "Lookbook Streetwear — Detalle de Prenda en Set" },
       { type: "video", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/05-Mala morra.mp4", label: "Motion Graphics & Animación de Marca — Mala Morra" },
       { type: "image", src: "Futurx-web/imag/portafolio/Multiples proyectos-Mala morra/Portada-Portafolio.png", label: "Composición de Identidad y Merchandising" }
     ]
   },
   {
     id: "dealer-branding",
-    title: "Dealer Media — Identidad Visual & Sistema Gráfico",
-    role: "Brand & Multimedia Designer",
+    title: "Dealer Media — Identidad Visual & Producción Audiovisual",
+    role: "Brand Designer, Audiovisual & Motion Lead",
     client: "Dealer Media • Brand & Multimedia Designer",
     category: "branding",
-    categoryLabel: "Branding & Identidad",
+    categoryLabel: "Branding & Producción Audiovisual",
     year: "2023",
-    tools: ["Illustrator", "Photoshop", "After Effects", "Premiere Pro"],
-    shortDesc: "Sistema de identidad underground, imagotipo escalable, intros animadas y cintillos para canal de sneakers y podcast.",
+    tools: ["Illustrator", "Photoshop", "After Effects", "Premiere Pro", "Dirección de Arte"],
+    shortDesc: "Sistema de identidad underground, imagotipo escalable, manual de marca, escenografía de podcast, intros animadas y cintillos para canal de sneakers.",
     metrics: "Identidad unificada en +40 episodios y redes",
     image: "assets/proj_dealer_brand.jpg",
     showcaseImage: "assets/proj_dealer_brand.jpg",
     isHuawei: false,
     hasDualTone: false,
-    challenge: "Unificar la imagen de un grupo de creadores de contenido en YouTube, Twitch e Instagram con una estética moderna y callejera.",
-    solution: "Desarrollé un imagotipo sólido de alta legibilidad en pantallas móviles y produje todas las cortinillas, créditos y portadas del canal.",
-    impact: "Identidad visual consistente a lo largo de más de 40 episodios producidos.",
+    challenge: "Unificar la imagen de un grupo de creadores de contenido en YouTube, Twitch e Instagram con una estética moderna y callejera, abarcando desde el logotipo hasta el set de grabación y los cintillos en video.",
+    solution: "Desarrollé un imagotipo sólido con manual de retícula y color, produje la escenografía física del set de podcast, y animé cintillos dinámicos y portadas en After Effects y Photoshop.",
+    impact: "Identidad visual y línea gráfica consistente a lo largo de más de 40 episodios producidos en múltiples plataformas.",
     kpis: [
-      { value: "Legible", label: "Optimizado para avatares", desc: "Se distingue con nitidez en pantallas de celular" },
-      { value: "+40 Episodios", label: "Sistema gráfico continuo", desc: "Misma línea visual en YouTube, Twitch y redes" },
-      { value: "Motion", label: "Intros y créditos animados", desc: "Paquete broadcast completo con identidad sólida" }
+      { value: "Legible", label: "Optimizado para avatares", desc: "Se distingue con nitidez en pantallas de celular y redes" },
+      { value: "+40 Episodios", label: "Sistema gráfico continuo", desc: "Misma línea visual en YouTube, Twitch, TikTok y podcast" },
+      { value: "Motion & Set", label: "Cintillos y escenografía", desc: "Paquete broadcast completo con identidad sólida" }
     ],
     gallery: [
-      { type: "image", src: "assets/proj_dealer_brand.jpg", label: "Sistema de Identidad Visual — Dealer Media" }
+      { type: "image", src: "assets/proj_dealer_brand.jpg", label: "Sistema de Identidad Visual & Imagotipo Oficial (PDF pág. 17)" },
+      { type: "image", src: "assets/dealer_manual_identidad.jpg", label: "Manual de Identidad, Paleta Cromática y Retícula (PDF pág. 17)" },
+      { type: "image", src: "assets/dealer_prod_estudio.jpg", label: "Producción Audiovisual & Set de Grabación (PDF pág. 13)" },
+      { type: "image", src: "assets/dealer_prod_cintillos.jpg", label: "Motion Graphics & Cintillos Animados para Video (PDF pág. 13)" },
+      { type: "image", src: "assets/dealer_prod_set_podcast.jpg", label: "Escenografía & Tomas de Set de Podcast (PDF pág. 13)" },
+      { type: "image", src: "assets/dealer_prod_portadas.jpg", label: "Sistema de Portadas para YouTube & Twitch (PDF pág. 13)" }
     ]
   },
   {
@@ -289,7 +304,42 @@ const projectsData = [
       { value: "Versátil", label: "Escalable a todo formato", desc: "Excelente legibilidad en impresos y pantallas" }
     ],
     gallery: [
-      { type: "image", src: "assets/proj_cyclops_studio.jpg", label: "Retícula Geométrica y Rediseño Áureo — Cyclops Studio" }
+      { type: "image", src: "assets/proj_cyclops_studio.jpg", label: "Isotipo y Aplicación de Marca — Cyclops Studio (PDF pág. 18)" },
+      { type: "image", src: "assets/cyclops_reticula_aurea.jpg", label: "Retícula Geométrica y Construcción con Proporción Áurea (PDF pág. 18)" }
+    ]
+  },
+  {
+    id: "ilustraciones-digitales",
+    title: "Ilustración Digital, Fan Art & Arte Textil — Naruto, JoJo's & Cyberpunk",
+    role: "Ilustrador Digital & Concept Artist",
+    client: "Proyectos de Autor, Streetwear & Colección",
+    category: "branding",
+    categoryLabel: "Ilustración Digital / Apparel",
+    year: "2024",
+    tools: ["Procreate", "Photoshop", "Autodesk Maya", "Ilustración Digital", "Textil"],
+    shortDesc: "Colección de ilustraciones digitales y fan arts concebidos para serigrafía en prendas streetwear y piezas de autor (Pain y Kurama de Naruto, JoJo's Bizarre Adventure, Geisha Cyberpunk y Barbie Mala Morra).",
+    metrics: "Ilustraciones 100% Originales + Adaptaciones Textil & 3D",
+    image: "assets/ilustracion_pain_naruto.jpg",
+    showcaseImage: "assets/ilustracion_pain_naruto.jpg",
+    isHuawei: false,
+    hasDualTone: false,
+    challenge: "Traducir referencias de cultura pop y anime en ilustraciones de alta resolución con paletas de color y trazos optimizados para serigrafía textil y formatos digitales.",
+    solution: "Combiné el trazo orgánico táctil en Procreate con la versatilidad de retoque y separación de color en Photoshop, integrando tipografía 3D modelada en Autodesk Maya para composiciones híbridas.",
+    impact: "Ilustraciones aplicadas con éxito en colecciones de camisetas streetwear, estampados y piezas de portafolio con alto impacto visual.",
+    kpis: [
+      { value: "Procreate", label: "Trazo e entintado digital", desc: "Técnica digital directa con pinceles personalizados" },
+      { value: "Photoshop", label: "Separación para serigrafía", desc: "Ajuste cromático y composición de arte final para prendas" },
+      { value: "Maya 3D", label: "Tipografía dimensional", desc: "Integración de letras 3D modeladas para piezas especiales" }
+    ],
+    gallery: [
+      { type: "image", src: "assets/ilustracion_pain_naruto.jpg", label: "Pain (Naruto) — Fusión Digital en Photoshop & Procreate (PDF pág. 23)" },
+      { type: "image", src: "assets/ilustracion_pain_detalle.jpg", label: "Pain (Naruto) — Detalle de Textura y Trazos (PDF pág. 23)" },
+      { type: "image", src: "assets/ilustracion_geisha_kurama.jpg", label: "Geisha Cyberpunk (Diseño para Camiseta) & Kurama (PDF pág. 24)" },
+      { type: "image", src: "assets/ilustracion_kurama_detalle.jpg", label: "Kurama (Naruto) — Ilustración en Procreate (PDF pág. 24)" },
+      { type: "image", src: "assets/ilustracion_jojo_barbie.jpg", label: "JoJo's Bizarre Adventure & Anime Barbie Mala Morrx (PDF pág. 25)" },
+      { type: "image", src: "assets/ilustracion_jojo_detalle.jpg", label: "JoJo's Bizarre Adventure — Detalle de Ilustración (PDF pág. 25)" },
+      { type: "image", src: "assets/ann_colors_audiovisual.jpg", label: "Ann Colors — Dirección Gráfica & Portadas Street (PDF pág. 15)" },
+      { type: "image", src: "assets/animacion_vfx_rotoscopia.jpg", label: "Rotoscopia Tipográfica & Animación VFX (PDF pág. 14)" }
     ]
   }
 ];
@@ -1004,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       {
         id: 'branding',
-        label: '03. Branding [3]',
+        label: '03. Branding [4]',
         accentColor: '#FF5900',
         deckLabel: 'DIV_03 // IDENTIDAD VISUAL & ARTE',
         getProjects: () => projectsData.filter(p => p.category === 'branding')
@@ -1345,7 +1395,14 @@ document.addEventListener('DOMContentLoaded', () => {
       'asegura-vc-portal': 'asegura-vc',
       'asegura-vc-ai-models': 'asegura-vc',
       'mala-morra-lookbook': 'malamorrx-streetwear',
-      'seiko-relojeria': 'radioshack-mexico'
+      'seiko-relojeria': 'radioshack-mexico',
+        'ilustraciones': 'ilustraciones-digitales',
+        'ilustracion': 'ilustraciones-digitales',
+        'pain-naruto': 'ilustraciones-digitales',
+        'jojo-barbie': 'ilustraciones-digitales',
+        'geisha-kurama': 'ilustraciones-digitales',
+        'ann-colors': 'ilustraciones-digitales',
+        'dealer-prod': 'dealer-branding'
     };
     const targetId = aliases[projectId] || projectId;
     if (typeof targetId === 'number') {
