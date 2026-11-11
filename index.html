@@ -67,8 +67,22 @@
       background-color: #0C0717;
       color: #EDE8F5;
       font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+      text-wrap: balance;
+      font-feature-settings: "ss01", "ss02";
+    }
+
+    p, li {
+      text-wrap: pretty;
     }
 
     ::-webkit-scrollbar {
@@ -646,15 +660,15 @@
           <span class="w-1 h-1 bg-eva-acid group-hover:bg-black transition-colors"></span>
         </span>
         <span class="flex flex-col">
-          <span class="font-display font-extrabold text-sm sm:text-base tracking-wider text-white group-hover:text-eva-acid transition-colors leading-none">
+          <span class="font-display font-bold text-base sm:text-[17px] tracking-tight text-white group-hover:text-eva-acid transition-colors leading-none">
             ERIK GARCÍA
           </span>
-          <span class="font-mono text-[9px] text-eva-mist tracking-widest uppercase mt-0.5">SR. UI/UX &amp; AI WORKFLOWS</span>
+          <span class="font-mono text-[10px] text-eva-mist font-normal tracking-[0.12em] uppercase mt-1">SR. UI/UX &amp; AI WORKFLOWS</span>
         </span>
       </a>
 
       <!-- Centro: Enlaces del Menú Limpios y en Tipografía Fina -->
-      <nav class="hidden lg:flex items-center space-x-7 font-mono text-[11px] tracking-wider uppercase text-eva-mist">
+      <nav class="hidden lg:flex items-center space-x-8 font-mono text-xs font-medium tracking-[0.08em] uppercase text-eva-mist">
         <a href="#proyectos" class="hover:text-eva-acid transition-colors py-1 flex items-center gap-1 group">
           <span class="group-hover:text-eva-acid">Proyectos</span>
         </a>
@@ -671,13 +685,13 @@
 
       <!-- Derecha: Status Rojo NERV + Botón Portafolio + Botón CV Refinados -->
       <div class="flex items-center gap-2 sm:gap-2.5">
-        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 bg-[#1A030A] border border-[#FF003C]/40 text-[#FF4D6D] font-mono text-[10px] tracking-wider">
+        <div class="hidden xl:flex items-center gap-1.5 px-2.5 py-1 bg-[#1A030A] border border-[#FF003C]/40 text-[#FF4D6D] font-mono text-[10px] font-medium tracking-[0.08em]">
           <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-ping"></span>
           <span>CONDICIÓN ROJA</span>
         </div>
         <a 
           href="archivo.html" 
-          class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-[#090412] border border-[#3B1D6E] hover:border-eva-acid text-eva-lavender hover:text-white text-[11px] font-mono font-medium tracking-wider uppercase transition-all"
+          class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 bg-[#090412] border border-[#3B1D6E] hover:border-eva-acid text-eva-lavender hover:text-white text-xs font-mono font-medium tracking-[0.06em] uppercase transition-all"
         >
           <i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-eva-acid"></i>
           <span>Portafolio [8]</span>
@@ -686,7 +700,7 @@
         <a 
           href="assets/CV-Erik-Enrique-Garcia-Godinez.pdf" 
           download="CV-Erik-Enrique-Garcia-Godinez.pdf" 
-          class="px-3.5 py-1.5 bg-[#090412] border border-eva-acid/60 hover:border-eva-acid hover:bg-eva-acid hover:text-black text-eva-acid text-[11px] font-mono font-bold tracking-wider uppercase transition-all flex items-center gap-1.5 group shadow-[0_0_10px_rgba(77,255,54,0.12)]"
+          class="px-3.5 py-1.5 bg-[#090412] border border-eva-acid/60 hover:border-eva-acid hover:bg-eva-acid hover:text-black text-eva-acid text-xs font-mono font-semibold tracking-[0.06em] uppercase transition-all flex items-center gap-1.5 group shadow-[0_0_10px_rgba(77,255,54,0.12)]"
         >
           <i data-lucide="file-down" class="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform"></i>
           <span>Descargar CV</span>
@@ -706,32 +720,32 @@
     <!-- Menú Desplegable Táctico para Móvil y Tablet (Fondo 100% Sólido, Opaco y de Alto Contraste) -->
     <div id="mobileMenu" class="hidden lg:hidden absolute top-[64px] left-0 right-0 w-full bg-[#080312] border-b-2 border-eva-acid shadow-[0_25px_60px_rgba(0,0,0,0.98)] px-4 pt-5 pb-6 z-50">
       <!-- Barra de estado táctico del menú móvil -->
-      <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#3B1D6E] font-mono text-[10px] text-eva-mist">
-        <span class="flex items-center gap-1.5 text-eva-acid font-bold">
+      <div class="flex items-center justify-between pb-3 mb-3 border-b border-[#3B1D6E] font-mono text-[11px] text-eva-mist">
+        <span class="flex items-center gap-1.5 text-eva-acid font-semibold tracking-wider">
           <span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-ping"></span>
           <span>SISTEMA DE NAVEGACIÓN // NERV</span>
         </span>
-        <span class="text-eva-lavender">EDICIÓN EVA-01</span>
+        <span class="text-eva-lavender font-normal">EDICIÓN EVA-01</span>
       </div>
 
-      <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
-        <a href="#proyectos" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center gap-2.5 transition-all">
+      <div class="grid grid-cols-2 gap-2.5 font-mono text-xs tracking-wide">
+        <a href="#proyectos" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-medium flex items-center gap-2.5 transition-all">
           <i data-lucide="star" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Proyectos</span>
         </a>
-        <a href="archivo.html" class="mobile-nav-link p-3.5 bg-[#1A0C33] border-2 border-eva-acid text-eva-acid hover:text-white font-black flex items-center gap-2.5 shadow-[0_0_15px_rgba(77,255,54,0.2)] transition-all">
+        <a href="archivo.html" class="mobile-nav-link p-3.5 bg-[#1A0C33] border-2 border-eva-acid text-eva-acid hover:text-white font-bold flex items-center gap-2.5 shadow-[0_0_15px_rgba(77,255,54,0.2)] transition-all">
           <i data-lucide="folder-kanban" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Portafolio [8]</span>
         </a>
-        <a href="#trayectoria" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center gap-2.5 transition-all">
+        <a href="#trayectoria" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-medium flex items-center gap-2.5 transition-all">
           <i data-lucide="briefcase" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Trayectoria</span>
         </a>
-        <a href="#stack" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center gap-2.5 transition-all">
+        <a href="#stack" class="mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-medium flex items-center gap-2.5 transition-all">
           <i data-lucide="layers" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Stack</span>
         </a>
-        <a href="#contacto" class="col-span-2 mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-bold flex items-center justify-center gap-2.5 transition-all">
+        <a href="#contacto" class="col-span-2 mobile-nav-link p-3.5 bg-[#140A26] border border-[#3B1D6E] hover:border-eva-acid hover:bg-[#1E1038] text-white font-medium flex items-center justify-center gap-2.5 transition-all">
           <i data-lucide="terminal" class="w-4 h-4 text-eva-acid shrink-0"></i>
           <span>Contacto Directo</span>
         </a>
@@ -745,25 +759,30 @@
       <!-- =========================================================================
            01. ENCABEZADO HERO COMMAND CENTER (CON VISOR MILITAR NERV & SYNC RATE)
            ========================================================================= -->
-      <section id="hero" class="pt-6 sm:pt-10 pb-6 border-b border-eva-border hud-reveal opacity-0 translate-y-8 blur-sm">
+      <section id="hero" class="pt-6 sm:pt-10 pb-8 border-b border-eva-border hud-reveal opacity-0 translate-y-8 blur-sm">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
           <!-- Columna Izquierda: Copywriting Humano & Directo -->
           <div class="lg:col-span-6 space-y-6 flex flex-col justify-center">
             <div id="hero-status-container" class="empty:hidden"></div>
 
-            <h1 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[46px] text-white tracking-tight leading-[1.12]">
-              DISEÑO DE INTERFACES DE ALTA CONVERSIÓN <span class="text-eva-acid">IMPULSADO POR IA</span>
+            <div class="inline-flex items-center gap-2 font-mono text-xs text-eva-acid font-semibold tracking-[0.12em] uppercase">
+              <span class="w-2 h-2 bg-eva-acid"></span>
+              <span>DISEÑADOR SENIOR UI/UX • FRONT-END &amp; MULTIMEDIA</span>
+            </div>
+
+            <h1 class="font-display font-bold text-3xl sm:text-5xl lg:text-[50px] xl:text-[54px] text-white tracking-[-0.03em] leading-[1.06]">
+              Diseño de interfaces de alta conversión <span class="text-eva-acid">impulsado por IA</span>
             </h1>
 
-            <p class="font-sans text-base sm:text-lg text-eva-lavender leading-relaxed font-normal max-w-2xl">
-              Diseñador Senior UI/UX, Web y Multimedia especializado en plataformas e-commerce y sistemas digitales de alto impacto. Combino análisis de comportamiento de usuario, arquitectura de conversión CRO y flujos de automatización con <strong class="text-white font-semibold">IA generativa</strong> para transformar requerimientos de negocio en productos rentables, escalables y hasta 5 veces más rápidos de implementar.
+            <p class="font-sans text-base sm:text-[17px] lg:text-[18px] text-eva-lavender/95 leading-[1.72] font-normal max-w-2xl">
+              Especializado en plataformas <strong class="text-white font-semibold">e-commerce</strong> y ecosistemas digitales de alto impacto. Combino análisis de comportamiento de usuario, arquitectura de conversión <strong class="text-white font-semibold">CRO</strong> y flujos de automatización con <strong class="text-eva-acid font-semibold">IA generativa</strong> para transformar objetivos comerciales en productos rentables, escalables y hasta 5 veces más rápidos de implementar.
             </p>
 
-            <div class="pt-2 flex flex-wrap items-center gap-3.5">
+            <div class="pt-2 flex flex-wrap items-center gap-4">
               <a 
                 href="archivo.html" 
-                class="btn-chamfer px-5 py-3 bg-eva-acid hover:bg-white text-black font-mono text-xs font-extrabold uppercase tracking-wider transition-all shadow-acid-glow flex items-center gap-2 group"
+                class="btn-chamfer px-6 py-3.5 bg-eva-acid hover:bg-white text-black font-mono text-xs sm:text-[13px] font-bold uppercase tracking-[0.08em] transition-all shadow-acid-glow flex items-center gap-2.5 group"
               >
                 <i data-lucide="folder-kanban" class="w-4 h-4"></i>
                 <span>Explorar Portafolio [8 Casos]</span>
@@ -771,7 +790,7 @@
               </a>
               <a 
                 href="#proyectos" 
-                class="btn-chamfer px-5 py-3 bg-[#090412] hover:bg-[#1E1038] text-white border border-[#3B1D6E] hover:border-eva-acid font-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 group"
+                class="btn-chamfer px-6 py-3.5 bg-[#090412] hover:bg-[#1E1038] text-white border border-[#3B1D6E] hover:border-eva-acid font-mono text-xs sm:text-[13px] font-medium uppercase tracking-[0.08em] transition-all flex items-center gap-2.5 group"
               >
                 <span>Ver Casos Insignia</span>
                 <i data-lucide="arrow-down" class="w-4 h-4 text-eva-acid group-hover:translate-y-0.5 transition-transform"></i>
@@ -895,57 +914,57 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-eva-border">
           
           <div class="pt-4 sm:pt-0 sm:px-6 first:pl-0 flex flex-col justify-center group">
-            <div class="font-mono text-xs text-eva-mist tracking-wider uppercase mb-1 flex items-center gap-1.5 font-semibold">
-              <span class="w-2 h-2 rounded-full bg-eva-acid"></span>
+            <div class="font-mono text-[11px] sm:text-xs text-eva-mist tracking-[0.1em] uppercase mb-1.5 flex items-center gap-1.5 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-eva-acid"></span>
               VISUALIZACIÓN CRO
             </div>
-            <div class="font-display font-extrabold text-4xl text-white tracking-tight flex items-baseline gap-1.5">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight flex items-baseline gap-2">
               <span class="counter-val text-eva-acid font-mono font-bold" data-target="35" data-prefix="+" data-suffix="%">+35%</span>
-              <span class="text-base font-mono text-white">Retención</span>
+              <span class="text-sm font-mono text-white/90 font-medium">Retención</span>
             </div>
-            <p class="font-sans text-sm text-eva-lavender mt-2 leading-relaxed">
+            <p class="font-sans text-xs sm:text-sm text-eva-lavender/90 mt-2 leading-relaxed font-normal">
               Incremento en tiempo de permanencia y retención validado en analítica de usuario.
             </p>
           </div>
 
           <div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center group">
-            <div class="font-mono text-xs text-eva-mist tracking-wider uppercase mb-1 flex items-center gap-1.5 font-semibold">
-              <span class="w-2 h-2 rounded-full bg-eva-acid"></span>
+            <div class="font-mono text-[11px] sm:text-xs text-eva-mist tracking-[0.1em] uppercase mb-1.5 flex items-center gap-1.5 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-eva-acid"></span>
               CARGA OPERATIVA HTML
             </div>
-            <div class="font-display font-extrabold text-4xl text-white tracking-tight flex items-baseline gap-1.5">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight flex items-baseline gap-2">
               <span class="counter-val text-eva-acid font-mono font-bold" data-target="80" data-prefix="-" data-suffix="%">-80%</span>
-              <span class="text-base font-mono text-white">Ahorro</span>
+              <span class="text-sm font-mono text-white/90 font-medium">Ahorro</span>
             </div>
-            <p class="font-sans text-sm text-eva-lavender mt-2 leading-relaxed">
+            <p class="font-sans text-xs sm:text-sm text-eva-lavender/90 mt-2 leading-relaxed font-normal">
               Automatización de datos de Excel a código HTML mediante prompts de IA.
             </p>
           </div>
 
           <div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center group">
-            <div class="font-mono text-xs text-eva-mist tracking-wider uppercase mb-1 flex items-center gap-1.5 font-semibold">
-              <span class="w-2 h-2 rounded-full bg-eva-acid"></span>
+            <div class="font-mono text-[11px] sm:text-xs text-eva-mist tracking-[0.1em] uppercase mb-1.5 flex items-center gap-1.5 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-eva-acid"></span>
               CONVERSIÓN EN CLICS
             </div>
-            <div class="font-display font-extrabold text-4xl text-white tracking-tight flex items-baseline gap-1.5">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight flex items-baseline gap-2">
               <span class="counter-val text-eva-acid font-mono font-bold" data-target="25" data-prefix="+" data-suffix="%">+25%</span>
-              <span class="text-base font-mono text-white">CTR</span>
+              <span class="text-sm font-mono text-white/90 font-medium">CTR</span>
             </div>
-            <p class="font-sans text-sm text-eva-lavender mt-2 leading-relaxed">
+            <p class="font-sans text-xs sm:text-sm text-eva-lavender/90 mt-2 leading-relaxed font-normal">
               Aumento directo de clics (CTR) en campañas masivas de Hot Sale y Buen Fin.
             </p>
           </div>
 
           <div class="pt-4 sm:pt-0 sm:px-6 flex flex-col justify-center group">
-            <div class="font-mono text-xs text-eva-mist tracking-wider uppercase mb-1 flex items-center gap-1.5 font-semibold">
-              <span class="w-2 h-2 rounded-full bg-eva-mecha"></span>
+            <div class="font-mono text-[11px] sm:text-xs text-eva-mist tracking-[0.1em] uppercase mb-1.5 flex items-center gap-1.5 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-eva-mecha"></span>
               TIEMPOS DE ENTREGA
             </div>
-            <div class="font-display font-extrabold text-4xl text-white tracking-tight flex items-baseline gap-1.5">
+            <div class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight flex items-baseline gap-2">
               <span class="counter-val text-eva-acid font-mono font-bold" data-target="40" data-prefix="-" data-suffix="%">-40%</span>
-              <span class="text-base font-mono text-white">Entrega</span>
+              <span class="text-sm font-mono text-white/90 font-medium">Entrega</span>
             </div>
-            <p class="font-sans text-sm text-eva-lavender mt-2 leading-relaxed">
+            <p class="font-sans text-xs sm:text-sm text-eva-lavender/90 mt-2 leading-relaxed font-normal">
               Optimización de producción interna dando soporte simultáneo a 4 marcas.
             </p>
           </div>
@@ -958,7 +977,7 @@
            ========================================================================= -->
       <div class="relative flex items-center justify-center py-4 select-none">
         <div class="w-full h-[1px] bg-eva-border"></div>
-        <div class="absolute px-4 py-1.5 bg-[#090412] border border-eva-border font-mono text-xs text-eva-mist tracking-wider uppercase font-semibold flex items-center gap-3">
+        <div class="absolute px-4 py-1.5 bg-[#090412] border border-eva-border font-mono text-xs text-eva-mist tracking-wider uppercase font-medium flex items-center gap-3">
           <span class="text-eva-acid font-bold">+</span>
           <span>// SEC_01 : SELECCIÓN DE CASOS DE ESTUDIO INSIGNIA</span>
           <span class="flex items-center gap-0.5">
@@ -977,15 +996,15 @@
         
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-eva-border pb-6">
           <div class="space-y-2">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-bold tracking-wider">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-semibold tracking-wider">
               <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-pulse"></span>
               <span>AVISO TÁCTICO // SELECCIÓN DESTACADA</span>
             </div>
-            <div class="font-mono text-xs text-eva-acid font-bold uppercase tracking-wider flex items-center gap-2">
+            <div class="font-mono text-xs text-eva-acid font-semibold uppercase tracking-wider flex items-center gap-2">
               <i data-lucide="folder-kanban" class="w-4 h-4"></i>
               <span>01 // SELECCIÓN INSIGNIA</span>
             </div>
-            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
               Portafolio
             </h2>
           </div>
@@ -993,7 +1012,7 @@
           <div class="flex flex-wrap items-center gap-3">
             <a 
               href="archivo.html" 
-              class="btn-chamfer px-6 sm:px-8 py-3.5 sm:py-4 bg-eva-acid hover:bg-white text-black font-mono text-xs sm:text-sm font-black uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(77,255,54,0.45)] hover:shadow-[0_0_35px_rgba(255,255,255,0.7)] flex items-center gap-2.5 sm:gap-3 group border-2 border-eva-acid shrink-0"
+              class="btn-chamfer px-6 sm:px-8 py-3.5 sm:py-4 bg-eva-acid hover:bg-white text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_25px_rgba(77,255,54,0.45)] hover:shadow-[0_0_35px_rgba(255,255,255,0.7)] flex items-center gap-2.5 sm:gap-3 group border-2 border-eva-acid shrink-0"
             >
               <i data-lucide="folder-kanban" class="w-4 h-4 sm:w-5 sm:h-5 text-black"></i>
               <span>Entrar al Portafolio [8 Casos]</span>
@@ -1014,21 +1033,21 @@
           <div class="tactical-bracket tactical-bracket-bl"></div>
           <div class="tactical-bracket tactical-bracket-br"></div>
 
-          <div class="space-y-2 text-center md:text-left">
-            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-[#090412] border border-eva-acid/40 text-eva-acid font-mono text-xs font-bold">
+          <div class="space-y-2.5 text-center md:text-left">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 bg-[#090412] border border-eva-acid/40 text-eva-acid font-mono text-xs font-semibold">
               <span>ARCHIVO INTERACTIVO COMPLETO // 8 CASOS DE ESTUDIO</span>
             </div>
-            <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white">
+            <h3 class="font-display font-bold text-xl sm:text-2xl text-white tracking-tight">
               ¿Quieres explorar los 8 casos maestros por categoría, tabla técnica o consola Workbench?
             </h3>
-            <p class="font-sans text-sm sm:text-base text-eva-lavender max-w-2xl">
+            <p class="font-sans text-sm sm:text-[15px] text-eva-lavender/90 max-w-2xl leading-relaxed">
               Accede al explorador dedicado con filtros por disciplina (UI/UX &amp; CRO, 3D &amp; Video, Branding &amp; Arte), buscador en tiempo real e inspector técnico.
             </p>
           </div>
 
           <a 
             href="archivo.html" 
-            class="btn-chamfer px-7 py-4 bg-eva-acid hover:bg-white text-black font-mono text-xs font-extrabold uppercase tracking-wider transition-all shadow-acid-glow flex items-center gap-2.5 shrink-0 group"
+            class="btn-chamfer px-7 py-4 bg-eva-acid hover:bg-white text-black font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-acid-glow flex items-center gap-2.5 shrink-0 group"
           >
             <i data-lucide="layers" class="w-4 h-4"></i>
             <span>Ver los 8 Casos de Estudio</span>
@@ -1043,7 +1062,7 @@
            ========================================================================= -->
       <div class="relative flex items-center justify-center py-4 select-none">
         <div class="w-full h-[1px] bg-eva-border"></div>
-        <div class="absolute px-4 py-1.5 bg-[#090412] border border-eva-border font-mono text-xs text-eva-mist tracking-wider uppercase font-semibold flex items-center gap-3">
+        <div class="absolute px-4 py-1.5 bg-[#090412] border border-eva-border font-mono text-xs text-eva-mist tracking-wider uppercase font-medium flex items-center gap-3">
           <span class="text-eva-acid font-bold">+</span>
           <span>// SEC_01 : TRAYECTORIA PROFESIONAL, EXPEDIENTE CV &amp; STACK</span>
           <span class="flex items-center gap-0.5">
@@ -1062,18 +1081,18 @@
         
         <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-eva-border pb-6 gap-4">
           <div>
-            <div class="font-mono text-xs text-eva-acid tracking-wider uppercase mb-2 flex items-center gap-2 font-bold">
+            <div class="font-mono text-xs text-eva-acid tracking-wider uppercase mb-2 flex items-center gap-2 font-semibold">
               <span class="w-2 h-2 bg-eva-acid"></span>
               <span>CURRICULUM VITAE // ERIK ENRIQUE GARCÍA GODÍNEZ</span>
             </div>
-            <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
+            <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
               Experiencia Laboral, Educación y Software
             </h2>
           </div>
           <a 
             href="assets/CV-Erik-Enrique-Garcia-Godinez.pdf" 
             download="CV-Erik-Enrique-Garcia-Godinez.pdf"
-            class="btn-chamfer self-start md:self-auto px-5 py-3 bg-eva-acid hover:bg-white text-black font-mono text-xs font-extrabold uppercase tracking-wider transition-all shadow-acid-glow flex items-center gap-2 group"
+            class="btn-chamfer self-start md:self-auto px-5 py-3 bg-eva-acid hover:bg-white text-black font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-acid-glow flex items-center gap-2 group"
           >
             <span>Descargar CV Completo [PDF]</span>
             <i data-lucide="file-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
@@ -1090,11 +1109,11 @@
               <span class="tracking-wider uppercase">FICHA TÉCNICA // DATOS CLAVE DE CONTRATACIÓN</span>
             </div>
             <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
-              <span class="px-2.5 py-1 bg-[#090412] text-eva-acid border border-eva-acid/60 font-bold flex items-center gap-1.5">
+              <span class="px-2.5 py-1 bg-[#090412] text-eva-acid border border-eva-acid/60 font-semibold flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-eva-acid animate-ping"></span>
                 <span>DISPONIBLE</span>
               </span>
-              <span class="px-2.5 py-1 bg-[#090412] text-white border border-eva-border font-semibold">
+              <span class="px-2.5 py-1 bg-[#090412] text-white border border-eva-border font-medium">
                 EXPERIENCIA: +6 AÑOS
               </span>
             </div>
@@ -1102,27 +1121,27 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-4 font-mono text-xs">
             <div class="space-y-1">
-              <span class="text-eva-mist text-[11px] block uppercase">UBICACIÓN</span>
+              <span class="text-eva-mist text-[11px] block uppercase font-medium">UBICACIÓN</span>
               <span class="text-white font-bold block text-sm">Ciudad de México (CDMX)</span>
-              <span class="text-eva-lavender text-[11px] block">Disponibilidad Inmediata</span>
+              <span class="text-eva-lavender/80 text-[11px] block">Disponibilidad Inmediata</span>
             </div>
 
             <div class="space-y-1">
-              <span class="text-eva-mist text-[11px] block uppercase">ROL PRINCIPAL</span>
+              <span class="text-eva-mist text-[11px] block uppercase font-medium">ROL PRINCIPAL</span>
               <span class="text-white font-bold block text-sm">Diseñador Senior UI/UX</span>
-              <span class="text-eva-lavender text-[11px] block">Web &amp; Dirección Multimedia</span>
+              <span class="text-eva-lavender/80 text-[11px] block">Web &amp; Dirección Multimedia</span>
             </div>
 
             <div class="space-y-1">
-              <span class="text-eva-mist text-[11px] block uppercase">ESPECIALIDAD CRO &amp; IA</span>
+              <span class="text-eva-mist text-[11px] block uppercase font-medium">ESPECIALIDAD CRO &amp; IA</span>
               <span class="text-eva-acid font-bold block text-sm">E-Commerce CRO &amp; UX</span>
-              <span class="text-eva-lavender text-[11px] block">Design Systems &amp; Flujos IA</span>
+              <span class="text-eva-lavender/80 text-[11px] block">Design Systems &amp; Flujos IA</span>
             </div>
 
             <div class="space-y-1">
-              <span class="text-eva-mist text-[11px] block uppercase">FORMACIÓN PROFESIONAL</span>
+              <span class="text-eva-mist text-[11px] block uppercase font-medium">FORMACIÓN PROFESIONAL</span>
               <span class="text-white font-bold block text-sm">Lic. en Diseño, Animación y Arte Digital</span>
-              <span class="text-eva-lavender text-[11px] block">Doble Licenciatura • UNITEC</span>
+              <span class="text-eva-lavender/80 text-[11px] block">Doble Licenciatura • UNITEC</span>
             </div>
           </div>
         </div>
@@ -1131,7 +1150,7 @@
           
           <!-- Columna Izquierda (7 cols): Historial Laboral y Formación -->
           <div class="lg:col-span-7 space-y-6">
-            <h3 class="font-mono text-sm uppercase tracking-wider text-white border-l-2 border-eva-acid pl-3 font-bold">
+            <h3 class="font-mono text-xs uppercase tracking-wider text-white border-l-2 border-eva-acid pl-3 font-semibold">
               Experiencia Profesional
             </h3>
 
@@ -1140,10 +1159,10 @@
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-eva-border">
                 <div>
                   <div class="flex flex-wrap items-center gap-2 mb-2">
-                    <span class="inline-block px-2.5 py-0.5 bg-[#090412] text-eva-acid border border-eva-acid/50 font-mono text-xs font-bold">
+                    <span class="inline-block px-2.5 py-0.5 bg-[#090412] text-eva-acid border border-eva-acid/50 font-mono text-xs font-semibold">
                       NOVIEMBRE 2021 — ACTUALIDAD | CDMX
                     </span>
-                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-bold">
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-[#1A030A] border border-[#FF003C]/50 text-[#FF4D6D] font-mono text-[10px] font-semibold">
                       <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C]"></span>ROL PRINCIPAL
                     </span>
                   </div>
@@ -1151,16 +1170,16 @@
                     Diseñador Web y Gráfico Senior (Analista de Diseño)
                   </h4>
                 </div>
-                <span class="font-mono text-xs text-white bg-[#090412] px-3 py-1.5 border border-eva-border font-semibold">
+                <span class="font-mono text-xs text-white bg-[#090412] px-3 py-1.5 border border-eva-border font-medium">
                   Grupo Gigante
                 </span>
               </div>
 
-              <div class="mt-3 font-mono text-xs text-eva-mist font-medium">
-                MARCAS ASIGNADAS: <strong class="text-white">Office Depot • RadioShack • Casa Marchand • Petco</strong>
+              <div class="mt-3 font-mono text-xs text-eva-mist font-normal">
+                MARCAS ASIGNADAS: <strong class="text-white font-medium">Office Depot • RadioShack • Casa Marchand • Petco</strong>
               </div>
 
-              <ul class="mt-4 space-y-3 text-sm sm:text-base text-eva-lavender font-normal leading-relaxed">
+              <ul class="mt-4 space-y-3.5 text-sm sm:text-[15px] text-eva-lavender/95 font-normal leading-relaxed">
                 <li class="flex items-start gap-3">
                   <span class="text-eva-acid font-mono font-bold mt-0.5">01.</span>
                   <span><strong class="text-white font-semibold">Coordinación de equipo:</strong> Lideré y coordiné un equipo de 4 diseñadores en la producción simultánea de assets y campañas digitales para 4 marcas comerciales, reduciendo tiempos de entrega en un <strong class="text-eva-acid font-semibold">40%</strong>.</span>
@@ -1180,23 +1199,23 @@
             <article class="bg-[#140A26] border border-eva-border p-6 sm:p-8 relative group hover:border-eva-acid transition-colors shadow-panel-depth">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-eva-border">
                 <div>
-                  <span class="inline-block px-2.5 py-0.5 bg-[#090412] text-eva-mecha border border-eva-mecha/50 font-mono text-xs font-bold mb-2">
+                  <span class="inline-block px-2.5 py-0.5 bg-[#090412] text-eva-mecha border border-eva-mecha/50 font-mono text-xs font-semibold mb-2">
                     2019 — ACTUALIDAD | CDMX
                   </span>
                   <h4 class="font-display font-bold text-xl sm:text-2xl text-white">
                     Consultor e Integrador Independiente (Diseño, Multimedia e IA)
                   </h4>
                 </div>
-                <span class="font-mono text-xs text-white bg-[#090412] px-3 py-1.5 border border-eva-border font-semibold">
+                <span class="font-mono text-xs text-white bg-[#090412] px-3 py-1.5 border border-eva-border font-medium">
                   Proyectos Freelance
                 </span>
               </div>
 
-              <div class="mt-3 font-mono text-xs text-eva-mist font-medium">
-                CLIENTES DESTACADOS: <strong class="text-white">Asegura con V.C. • RadioShack • Mala Morrx • Dealer Media • Venus Mx</strong>
+              <div class="mt-3 font-mono text-xs text-eva-mist font-normal">
+                CLIENTES DESTACADOS: <strong class="text-white font-medium">Asegura con V.C. • RadioShack • Mala Morrx • Dealer Media • Venus Mx</strong>
               </div>
 
-              <ul class="mt-4 space-y-3 text-sm sm:text-base text-eva-lavender font-normal leading-relaxed">
+              <ul class="mt-4 space-y-3.5 text-sm sm:text-[15px] text-eva-lavender/95 font-normal leading-relaxed">
                 <li class="flex items-start gap-3">
                   <span class="text-eva-mecha font-mono font-bold mt-0.5">01.</span>
                   <span><strong class="text-white font-semibold">Desarrollo Web con IA:</strong> Diseñé y desarrollé sitios web y plataformas de captación de leads mediante integración de Figma, Google Stitch y Google Antigravity, logrando reducciones del <strong class="text-eva-mecha font-semibold">90%</strong> en tiempos de maquetación.</span>
@@ -1214,17 +1233,17 @@
 
             <!-- Formación Académica -->
             <div class="pt-4 space-y-4">
-              <h3 class="font-mono text-sm uppercase tracking-wider text-white border-l-2 border-eva-mecha pl-3 font-bold">
+              <h3 class="font-mono text-xs uppercase tracking-wider text-white border-l-2 border-eva-mecha pl-3 font-semibold">
                 Educación Universitaria
               </h3>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="bg-[#140A26] border border-eva-border p-5">
-                  <div class="font-mono text-xs text-eva-acid font-bold mb-1">2022 — 2023 (5 Cuatrimestres)</div>
+                  <div class="font-mono text-xs text-eva-acid font-semibold mb-1">2022 — 2023 (5 Cuatrimestres)</div>
                   <div class="font-display font-bold text-white text-base">Lic. en Diseño, Animación y Arte Digital</div>
                   <div class="font-mono text-xs text-eva-mist mt-1">UNITEC — Campus Cuitláhuac</div>
                 </div>
                 <div class="bg-[#140A26] border border-eva-border p-5">
-                  <div class="font-mono text-xs text-eva-acid font-bold mb-1">2017 — 2021 (Titulado)</div>
+                  <div class="font-mono text-xs text-eva-acid font-semibold mb-1">2017 — 2021 (Titulado)</div>
                   <div class="font-display font-bold text-white text-base">Licenciatura en Diseño Gráfico</div>
                   <div class="font-mono text-xs text-eva-mist mt-1">UNITEC — Campus Cuitláhuac</div>
                 </div>
@@ -1268,10 +1287,10 @@
             <!-- Matriz de Dominio de Software con id="stack" para navegación directa -->
             <div id="stack" class="scroll-mt-24 space-y-3">
               <div class="flex items-center justify-between">
-                <h3 class="font-mono text-sm uppercase tracking-wider text-white border-l-2 border-eva-acid pl-3 font-bold">
+                <h3 class="font-mono text-xs uppercase tracking-wider text-white border-l-2 border-eva-acid pl-3 font-semibold">
                   Dominio de Software &amp; Herramientas
                 </h3>
-                <span class="hidden sm:inline-block font-mono text-[10px] text-[#FF4D6D] bg-[#20050C] border border-[#FF003C]/50 px-2 py-0.5 font-bold tracking-wider">
+                <span class="hidden sm:inline-block font-mono text-[10px] text-[#FF4D6D] bg-[#20050C] border border-[#FF003C]/50 px-2 py-0.5 font-semibold tracking-wider">
                   CLASIFICACIÓN NERV // NIVEL 01
                 </span>
               </div>
@@ -1281,11 +1300,11 @@
                 <!-- Bloque 1: UI/UX & Diseño -->
                 <div class="space-y-3 border-b border-eva-border pb-5">
                   <div class="flex items-center justify-between font-mono text-xs">
-                    <span class="text-white font-bold flex items-center gap-2">
+                    <span class="text-white font-semibold flex items-center gap-2">
                       <i data-lucide="figma" class="w-4 h-4 text-eva-acid"></i>
                       <span>01. DISEÑO &amp; UI/UX</span>
                     </span>
-                    <span class="text-eva-acid font-bold">AVANZADO</span>
+                    <span class="text-eva-acid font-semibold">AVANZADO</span>
                   </div>
                   <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
                     <div class="flex items-center gap-2.5 px-3 py-2 bg-[#090412] border border-[#3B1D6E] text-white font-medium hover:border-eva-acid transition-colors">
@@ -1318,14 +1337,14 @@
                 <!-- Bloque 2: IA & Automatización -->
                 <div class="space-y-3 border-b border-eva-border pb-5">
                   <div class="flex items-center justify-between font-mono text-xs">
-                    <span class="text-white font-bold flex items-center gap-2">
+                    <span class="text-white font-semibold flex items-center gap-2">
                       <i data-lucide="sparkles" class="w-4 h-4 text-eva-acid"></i>
                       <span>02. IA &amp; AUTOMATIZACIÓN</span>
                     </span>
-                    <span class="text-eva-acid font-bold">-80% TIEMPO</span>
+                    <span class="text-eva-acid font-semibold">-80% TIEMPO</span>
                   </div>
                   <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
-                    <div class="flex items-center gap-2.5 px-3 py-2 bg-[#090412] border border-eva-acid/60 text-eva-acid font-bold hover:border-white transition-colors">
+                    <div class="flex items-center gap-2.5 px-3 py-2 bg-[#090412] border border-eva-acid/60 text-eva-acid font-semibold hover:border-white transition-colors">
                       <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="#4DFF36" stroke-width="1.8"/><path d="M8 15L12 7L16 15M9.5 12.5H14.5" stroke="#4DFF36" stroke-width="1.8" stroke-linecap="round"/></svg>
                       <span>Google Antigravity</span>
                     </div>
@@ -1351,11 +1370,11 @@
                 <!-- Bloque 3: Web & Analítica CRO -->
                 <div class="space-y-3 border-b border-eva-border pb-5">
                   <div class="flex items-center justify-between font-mono text-xs">
-                    <span class="text-white font-bold flex items-center gap-2">
+                    <span class="text-white font-semibold flex items-center gap-2">
                       <i data-lucide="code" class="w-4 h-4 text-eva-mecha"></i>
                       <span>03. WEB &amp; ANALÍTICA CRO</span>
                     </span>
-                    <span class="text-eva-mecha font-bold">PRODUCCIÓN</span>
+                    <span class="text-eva-mecha font-semibold">PRODUCCIÓN</span>
                   </div>
                   <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
                     <div class="flex items-center gap-2.5 px-3 py-2 bg-[#090412] border border-[#3B1D6E] text-white font-medium hover:border-eva-acid transition-colors">
@@ -1384,11 +1403,11 @@
                 <!-- Bloque 4: Audiovisual & 3D -->
                 <div class="space-y-3">
                   <div class="flex items-center justify-between font-mono text-xs">
-                    <span class="text-white font-bold flex items-center gap-2">
+                    <span class="text-white font-semibold flex items-center gap-2">
                       <i data-lucide="film" class="w-4 h-4 text-eva-neonPurple"></i>
                       <span>04. AUDIOVISUAL &amp; 3D</span>
                     </span>
-                    <span class="text-eva-neonPurple font-bold">VFX &amp; CINE</span>
+                    <span class="text-eva-neonPurple font-semibold">VFX &amp; CINE</span>
                   </div>
                   <div class="grid grid-cols-2 gap-2.5 font-mono text-xs">
                     <div class="flex items-center gap-2.5 px-3 py-2 bg-[#090412] border border-[#3B1D6E] text-white font-medium hover:border-eva-acid transition-colors">
@@ -1427,46 +1446,46 @@
     <div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-10 py-14">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-12 border-b border-eva-border items-center">
         
-        <div class="lg:col-span-6 space-y-3">
-          <div class="inline-flex items-center gap-2 font-mono text-xs text-eva-acid font-bold tracking-wider uppercase">
+        <div class="lg:col-span-6 space-y-3.5">
+          <div class="inline-flex items-center gap-2 font-mono text-xs text-eva-acid font-semibold tracking-wider uppercase">
             <span class="w-2 h-2 rounded-full bg-eva-acid animate-ping"></span>
-            <span>DISPONIBLE</span>
+            <span>DISPONIBLE PARA PROYECTOS &amp; CONTRATACIÓN</span>
           </div>
-          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white tracking-tight">
-            DISEÑO UI/UX, FRONT-END &amp; PROYECTOS ESPECIALES
+          <h2 class="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight leading-tight">
+            Diseño UI/UX, Front-End &amp; Proyectos Especiales
           </h2>
-          <p class="font-sans text-base text-eva-lavender max-w-xl leading-relaxed">
+          <p class="font-sans text-sm sm:text-base text-eva-lavender/90 max-w-xl leading-relaxed font-normal">
             Contáctame directamente para entrevistas, revisión técnica de portafolio o colaboración.
           </p>
         </div>
 
         <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
           <a href="mailto:erik.enriquegg@gmail.com" class="p-5 bg-[#090412] border border-eva-border hover:border-eva-acid transition-all group flex flex-col justify-between">
-            <span class="text-xs text-eva-mist flex items-center justify-between">
+            <span class="text-xs text-eva-mist flex items-center justify-between font-medium">
               <span>CORREO DIRECTO</span>
               <i data-lucide="mail" class="w-4 h-4 text-eva-acid"></i>
             </span>
-            <span class="text-sm sm:text-base text-white font-bold mt-2 break-all group-hover:text-eva-acid transition-colors">
+            <span class="text-sm sm:text-base text-white font-semibold mt-2 break-all group-hover:text-eva-acid transition-colors">
               erik.enriquegg@gmail.com
             </span>
           </a>
 
           <a href="tel:+525515614467" class="p-5 bg-[#090412] border border-eva-border hover:border-eva-acid transition-all group flex flex-col justify-between">
-            <span class="text-xs text-eva-mist flex items-center justify-between">
+            <span class="text-xs text-eva-mist flex items-center justify-between font-medium">
               <span>TELÉFONO / WHATSAPP</span>
               <i data-lucide="phone" class="w-4 h-4 text-eva-acid"></i>
             </span>
-            <span class="text-base text-white font-bold mt-2 group-hover:text-eva-acid transition-colors">
+            <span class="text-base text-white font-semibold mt-2 group-hover:text-eva-acid transition-colors">
               +52 55 1561 4467
             </span>
           </a>
 
           <div class="p-5 bg-[#090412] border border-eva-border flex flex-col justify-between">
-            <span class="text-xs text-eva-mist flex items-center justify-between">
+            <span class="text-xs text-eva-mist flex items-center justify-between font-medium">
               <span>UBICACIÓN</span>
               <i data-lucide="map-pin" class="w-4 h-4 text-eva-mecha"></i>
             </span>
-            <span class="text-sm text-white font-bold mt-2">
+            <span class="text-sm text-white font-semibold mt-2">
               Ciudad de México (CDMX)
             </span>
           </div>
@@ -1476,11 +1495,11 @@
             download="CV-Erik-Enrique-Garcia-Godinez.pdf"
             class="p-5 bg-eva-acid hover:bg-white text-black transition-all flex flex-col justify-between font-bold shadow-acid-glow group"
           >
-            <span class="text-xs tracking-wider uppercase flex items-center justify-between font-extrabold">
+            <span class="text-xs tracking-wider uppercase flex items-center justify-between font-bold">
               <span>EXPEDIENTE PDF</span>
               <i data-lucide="file-down" class="w-4 h-4 group-hover:translate-y-0.5 transition-transform"></i>
             </span>
-            <span class="text-base font-extrabold mt-2">
+            <span class="text-base font-bold mt-2">
               Descargar CV Completo [PDF]
             </span>
           </a>
@@ -1491,15 +1510,15 @@
       <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-eva-mist">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 bg-eva-acid inline-block"></span>
-          <span class="text-white font-bold">© 2026 ERIK ENRIQUE GARCÍA GODÍNEZ</span>
+          <span class="text-white font-semibold">© 2026 ERIK ENRIQUE GARCÍA GODÍNEZ</span>
           <span>— PORTAFOLIO PROFESIONAL // EDICIÓN EVA-01</span>
         </div>
         <div class="flex flex-wrap items-center gap-4">
-          <div class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#1A030A] border border-[#FF003C]/40 text-[#FF4D6D] text-[10px] font-bold">
+          <div class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-[#1A030A] border border-[#FF003C]/40 text-[#FF4D6D] text-[10px] font-semibold">
             <span class="w-1.5 h-1.5 rounded-full bg-[#FF003C] animate-pulse"></span>
             <span>NERV DEFENSE // CONDICIÓN ROJA</span>
           </div>
-          <a href="archivo.html" class="text-eva-acid hover:text-white transition-colors font-bold flex items-center gap-1">
+          <a href="archivo.html" class="text-eva-acid hover:text-white transition-colors font-semibold flex items-center gap-1">
             <span>Abrir Portafolio Completo [8 CASOS]</span>
             <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
           </a>
@@ -1566,11 +1585,11 @@
             <div id="modalTools" class="flex flex-wrap items-center gap-1.5"></div>
           </div>
           
-          <h2 id="modalTitle" class="w-full font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-snug">
+          <h2 id="modalTitle" class="w-full font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-snug">
             Título del Proyecto
           </h2>
           
-          <p id="modalShortDesc" class="w-full font-sans text-eva-lavender text-base sm:text-lg leading-relaxed font-normal max-w-4xl"></p>
+          <p id="modalShortDesc" class="w-full font-sans text-eva-lavender/95 text-base sm:text-lg leading-relaxed font-normal max-w-4xl"></p>
 
           <div id="modalKpis" class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 w-full"></div>
         </div>

@@ -591,24 +591,24 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-[#3B1D6E]/80 z-20 relative">
           <div class="flex items-center gap-2 font-mono text-xs">
             <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: ${accentColor}"></span>
-            <span class="px-2 py-0.5 bg-[#090412] border border-[#3B1D6E] font-bold tracking-wider text-[11px]" style="color: ${accentColor}">
+            <span class="px-2 py-0.5 bg-[#090412] border border-[#3B1D6E] font-semibold tracking-wider text-[11px]" style="color: ${accentColor}">
               // ${deckLabel}
             </span>
-            <span class="carousel-counter text-eva-mist font-bold text-[11px]"></span>
+            <span class="carousel-counter text-eva-mist font-semibold text-[11px]"></span>
           </div>
 
           <div class="flex items-center gap-2 font-mono text-xs">
-            <button type="button" class="btn-horiz-autoplay px-2.5 py-1.5 bg-[#090412] border border-eva-border hover:border-eva-acid text-eva-mist hover:text-eva-acid transition-all flex items-center gap-1.5 cursor-pointer text-[10px] font-bold" title="Pausar / Reanudar reproducción automática">
+            <button type="button" class="btn-horiz-autoplay px-2.5 py-1.5 bg-[#090412] border border-eva-border hover:border-eva-acid text-eva-mist hover:text-eva-acid transition-all flex items-center gap-1.5 cursor-pointer text-[10px] font-semibold" title="Pausar / Reanudar reproducción automática">
               <span class="autoplay-dot w-1.5 h-1.5 rounded-full bg-eva-acid animate-ping"></span>
               <span class="autoplay-label">AUTO</span>
             </button>
-            <button type="button" class="btn-horiz-prev px-3.5 py-1.5 bg-[#090412] border-2 border-eva-acid hover:bg-eva-acid/20 text-eva-acid transition-all flex items-center gap-1.5 cursor-pointer font-extrabold text-xs shadow-[0_0_15px_rgba(77,255,54,0.25)] group" aria-label="Proyecto anterior">
-              <i data-lucide="chevron-left" class="w-4 h-4 stroke-[3] text-eva-acid group-hover:-translate-x-0.5 transition-transform"></i>
-              <span class="text-[11px] font-extrabold tracking-wider">ANT</span>
+            <button type="button" class="btn-horiz-prev px-3.5 py-1.5 bg-[#090412] border-2 border-eva-acid hover:bg-eva-acid/20 text-eva-acid transition-all flex items-center gap-1.5 cursor-pointer font-bold text-xs shadow-[0_0_12px_rgba(77,255,54,0.2)] group" aria-label="Proyecto anterior">
+              <i data-lucide="arrow-left" class="w-4 h-4 stroke-[2.5] text-eva-acid group-hover:-translate-x-1 transition-transform"></i>
+              <span class="text-[11px] font-bold tracking-wider">ANT</span>
             </button>
-            <button type="button" class="btn-horiz-next px-4 py-1.5 bg-eva-acid hover:bg-white text-black border-2 border-eva-acid transition-all flex items-center gap-1.5 cursor-pointer font-black text-xs shadow-acid-glow group" aria-label="Proyecto siguiente">
+            <button type="button" class="btn-horiz-next px-4 py-1.5 bg-eva-acid hover:bg-white text-black border-2 border-eva-acid transition-all flex items-center gap-1.5 cursor-pointer font-extrabold text-xs shadow-acid-glow group" aria-label="Proyecto siguiente">
               <span class="text-[11px] font-extrabold tracking-wider">SIG</span>
-              <i data-lucide="chevron-right" class="w-4 h-4 stroke-[3] text-black group-hover:translate-x-0.5 transition-transform"></i>
+              <i data-lucide="arrow-right" class="w-4 h-4 stroke-[2.5] text-black group-hover:translate-x-1 transition-transform"></i>
             </button>
           </div>
 
@@ -793,13 +793,13 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Cabecera del Destacado -->
             <div class="flex items-center justify-between gap-2 mb-4 font-mono text-xs">
               <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 bg-eva-acid text-black font-extrabold text-[11px] tracking-wider uppercase flex items-center gap-1.5 shadow-acid-glow">
+                <span class="px-2.5 py-1 bg-eva-acid text-black font-bold text-[11px] tracking-wider uppercase flex items-center gap-1.5 shadow-acid-glow">
                   <i data-lucide="star" class="w-3.5 h-3.5 fill-black"></i>
                   <span>PROYECTO DESTACADO</span>
                 </span>
-                <span class="text-eva-mist font-semibold hidden sm:inline truncate max-w-[150px]">${proj.client || 'Proyecto'}</span>
+                <span class="text-eva-mist font-medium hidden sm:inline truncate max-w-[150px]">${proj.client || 'Proyecto'}</span>
               </div>
-              <span class="px-2 py-0.5 bg-[#090412] border border-[#3B1D6E] text-eva-acid font-bold text-xs">
+              <span class="px-2 py-0.5 bg-[#090412] border border-[#3B1D6E] text-eva-acid font-semibold text-xs">
                 ${numStr} / ${totalStr} • ${proj.year}
               </span>
             </div>
@@ -814,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#140A26]/80 via-transparent to-transparent"></div>
               ${proj.isHuawei ? `
-                <div class="absolute bottom-2.5 left-2.5 bg-[#090412]/95 border border-eva-mecha px-2.5 py-1 font-mono text-[11px] text-eva-mecha font-bold flex items-center gap-1.5 shadow-lg">
+                <div class="absolute bottom-2.5 left-2.5 bg-[#090412]/95 border border-eva-mecha px-2.5 py-1 font-mono text-[11px] text-eva-mecha font-semibold flex items-center gap-1.5 shadow-lg">
                   <span class="w-2 h-2 rounded-full bg-eva-mecha animate-ping"></span>
                   <span>SWITCH DÍA / NOCHE DISPONIBLE</span>
                 </div>
@@ -823,10 +823,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- Título y Descripción -->
             <div class="space-y-2">
-              <h3 class="font-display font-extrabold text-xl sm:text-2xl text-white group-hover:text-eva-acid transition-colors leading-snug">
+              <h3 class="font-display font-bold text-xl sm:text-2xl text-white group-hover:text-eva-acid transition-colors leading-snug tracking-tight">
                 ${proj.title}
               </h3>
-              <p class="font-sans text-sm text-eva-lavender leading-relaxed font-normal">
+              <p class="font-sans text-sm sm:text-[15px] text-eva-lavender/90 leading-relaxed font-normal">
                 ${proj.shortDesc}
               </p>
             </div>
@@ -836,7 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Métrica Clave -->
             <div class="p-3 bg-[#090412] border border-[#3B1D6E] flex items-center justify-between gap-3">
               <div>
-                <div class="font-mono text-[10px] text-eva-mist font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <div class="font-mono text-[10px] text-eva-mist font-semibold uppercase tracking-wider flex items-center gap-1.5">
                   <i data-lucide="trending-up" class="w-3.5 h-3.5 text-eva-acid"></i>
                   <span>IMPACTO CLAVE</span>
                 </div>
@@ -844,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   ${proj.metrics}
                 </div>
               </div>
-              <span class="px-2 py-1 bg-[#140A26] border border-[#3B1D6E] font-mono text-[10px] text-white shrink-0">
+              <span class="px-2 py-1 bg-[#140A26] border border-[#3B1D6E] font-mono text-[10px] text-white shrink-0 font-medium">
                 ${proj.categoryLabel}
               </span>
             </div>
@@ -852,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Herramientas y Botón -->
             <div class="flex flex-wrap gap-1.5">${toolsHtml}</div>
 
-            <button type="button" class="btn-chamfer w-full py-2.5 bg-eva-acid text-black font-mono text-xs font-extrabold flex items-center justify-center gap-2 group-hover:bg-white transition-all shadow-acid-glow cursor-pointer">
+            <button type="button" class="btn-chamfer w-full py-2.5 bg-eva-acid text-black font-mono text-xs font-bold flex items-center justify-center gap-2 group-hover:bg-white transition-all shadow-acid-glow cursor-pointer tracking-wider uppercase">
               <span>Ver Caso de Estudio</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </button>
@@ -1359,9 +1359,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalKpis.innerHTML = proj.kpis.map(kpi => `
       <div class="p-4 bg-[#090412] border border-[#3B1D6E] space-y-1.5">
-        <div class="font-mono text-xs text-eva-mist uppercase tracking-wider font-bold">${kpi.label}</div>
-        <div class="font-display font-extrabold text-2xl sm:text-3xl text-eva-acid">${kpi.value}</div>
-        <div class="font-sans text-xs sm:text-sm text-eva-lavender leading-relaxed font-normal">${kpi.desc}</div>
+        <div class="font-mono text-xs text-eva-mist uppercase tracking-wider font-semibold">${kpi.label}</div>
+        <div class="font-display font-bold text-2xl sm:text-3xl text-eva-acid">${kpi.value}</div>
+        <div class="font-sans text-xs sm:text-sm text-eva-lavender/90 leading-relaxed font-normal">${kpi.desc}</div>
       </div>
     `).join('');
 
