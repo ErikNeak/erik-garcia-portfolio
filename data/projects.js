@@ -315,9 +315,7 @@ export const projectsData = [
       { type: "image", src: "assets/ilustracion_geisha_kurama.jpg", label: "Geisha Cyberpunk (Diseño para Camiseta) & Kurama (PDF pág. 24)" },
       { type: "image", src: "assets/ilustracion_kurama_detalle.jpg", label: "Kurama (Naruto) — Ilustración en Procreate (PDF pág. 24)" },
       { type: "image", src: "assets/ilustracion_jojo_barbie.jpg", label: "JoJo's Bizarre Adventure & Anime Barbie Mala Morrx (PDF pág. 25)" },
-      { type: "image", src: "assets/ilustracion_jojo_detalle.jpg", label: "JoJo's Bizarre Adventure — Detalle de Ilustración (PDF pág. 25)" },
-      { type: "image", src: "assets/ann_colors_audiovisual.jpg", label: "Ann Colors — Dirección Gráfica & Portadas Street (PDF pág. 15)" },
-      { type: "image", src: "assets/animacion_vfx_rotoscopia.jpg", label: "Rotoscopia Tipográfica & Animación VFX (PDF pág. 14)" }
+      { type: "image", src: "assets/ilustracion_jojo_detalle.jpg", label: "JoJo's Bizarre Adventure — Detalle de Ilustración (PDF pág. 25)" }
     ]
   }
 ];
