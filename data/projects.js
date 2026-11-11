@@ -259,34 +259,6 @@ export const projectsData = [
     ]
   },
   {
-    id: "cyclops-studio",
-    title: "Cyclops Studio — Rediseño con Retícula Áurea",
-    role: "Brand Designer",
-    client: "Cyclops Studio • Brand Designer",
-    category: "branding",
-    categoryLabel: "Branding & Identidad",
-    year: "2022",
-    tools: ["Illustrator", "Proporción Áurea", "Diseño Vectorial"],
-    shortDesc: "Rediseño minimalista de imagotipo fundamentado en círculos de proporción áurea para equilibrio óptico perfecto.",
-    metrics: "Construcción matemática con proporción áurea",
-    image: "assets/proj_cyclops_studio.jpg",
-    showcaseImage: "assets/proj_cyclops_studio.jpg",
-    isHuawei: false,
-    hasDualTone: false,
-    challenge: "Sintetizar un logotipo anterior saturado en un símbolo minimalista, moderno y perfectamente balanceado.",
-    solution: "Utilicé la retícula áurea en Illustrator para trazar la geometría exacta del ojo central, logrando simetría y limpieza visual.",
-    impact: "Isotipo atemporal y escalable, fácil de animar y aplicar en cualquier soporte.",
-    kpis: [
-      { value: "Áureo", label: "Precisión geométrica", desc: "Trazo matemático con base en espiral dorada" },
-      { value: "Minimalista", label: "Síntesis en trazos limpios", desc: "Diseño memorable sin saturación visual" },
-      { value: "Versátil", label: "Escalable a todo formato", desc: "Excelente legibilidad en impresos y pantallas" }
-    ],
-    gallery: [
-      { type: "image", src: "assets/proj_cyclops_studio.jpg", label: "Isotipo y Aplicación de Marca — Cyclops Studio (PDF pág. 18)" },
-      { type: "image", src: "assets/cyclops_reticula_aurea.jpg", label: "Retícula Geométrica y Construcción con Proporción Áurea (PDF pág. 18)" }
-    ]
-  },
-  {
     id: "ilustraciones-digitales",
     title: "Ilustración Digital, Fan Art & Arte Textil — Naruto, JoJo's & Cyberpunk",
     role: "Ilustrador Digital & Concept Artist",
